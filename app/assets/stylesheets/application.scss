@@ -4,3 +4,87 @@
 @import "colours";
 @import "shims";
 @import "css3";
+@import "grid_layout";
+
+.outer-block {
+  @include outer-block;
+}
+
+.inner-block {
+  @include inner-block;
+}
+
+#hmrc-manuals-frontend {
+  header {
+    background: $hm-revenue-customs;
+    padding: $gutter;
+    color: white;
+    margin: 0 (-$gutter);
+    @include core-16;
+    @extend %contain-floats;
+
+    @include media(tablet){
+      margin: 5px 0 0 0;
+
+      .primary, .secondary {
+        float: left;
+      }
+      .primary {
+        width: $two-thirds;
+      }
+      .secondary {
+        width: $one-third;
+
+        .secondary-inner {
+          padding-left: $gutter;
+        }
+      }
+    }
+
+    .manual-type {
+      @include heading-24;
+    }
+
+    h1 {
+      @include core-36;
+      font-weight:bold;
+      padding: 0 0 $gutter-half 0;
+
+      @include media(tablet){
+        padding: 0 0 $gutter 0;
+      }
+    }
+
+    a {
+      color: white;
+    }
+
+    time {
+      @include bold-19;
+      display: block;
+    }
+
+    dl {
+      margin-bottom: $gutter-half;
+
+      @include media(tablet){
+        margin-bottom: $gutter;
+      }
+    }
+
+    dt {
+      float: left;
+      clear: left;
+      width: auto;
+      min-width: 100px;
+
+      @include media(tablet){
+        min-width: 120px;
+      }
+
+      &:after {
+        content: ':';
+      }
+    }
+  }
+}
