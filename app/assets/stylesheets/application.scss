@@ -87,4 +87,37 @@
       }
     }
   }
+
+  .breadcrumb-trail {
+    margin:10px 0 0 0;
+    padding:0 0;
+    border-bottom: 1px solid $border-colour;
+    @extend %contain-floats;
+
+    li {
+      @include core-16;
+      background-image: url(image-path("separator.png"));
+      background-position: 100% 10%;
+      background-repeat: no-repeat;
+      float: left;
+      list-style: none;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding: 0 20px 10px 0;
+
+      @include media(tablet){
+        background-position: 100% 28%;
+      }
+
+      @include device-pixel-ratio() {
+        background-image: image-url("separator-2x.png");
+        background-size: 6px 11px;
+      }
+
+      &.last-child {
+        background-image:none;
+      }
+    }
+
+  }
 }
