@@ -174,8 +174,11 @@
       }
     }
 
-    .subsection-body {
-      display:none;
+    .subsection-body{
+      margin-left: 100px;
+       @include media(tablet){
+         margin-left:130px;
+       }
     }
   }
 }
