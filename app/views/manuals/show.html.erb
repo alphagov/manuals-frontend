@@ -7,7 +7,7 @@
     </div>
     <% @document['details']['sections'].each do | section | %>
       <section class='manual-subsection'>
-        <div class='subsection-title'><span class='subsection-id '><%= section['details']['manual-section-id'] %></span><h4 name='<%=section['details']['manual-section-id']%>'><a href=#'<%= section['details']['manual-section-id'] %>'><%= section['title'] %></a></h4></div>
+        <div class='subsection-title'><span class='subsection-id '><%= section['details']['manual-section-id'] %></span><h4 id='<%=section['details']['manual-section-id']%>'><a href='#<%= section['details']['manual-section-id'] %>'><%= section['title'] %></a></h4></div>
         <div class='subsection-body govspeak'><%= section['details']['body'].html_safe %></div>
       </section>
     <% end %>
