@@ -1,12 +1,14 @@
 <%= render partial: "header" %>
+<div class='manual-section'>
+  <h2><%=@document['id'] %> <strong><%=@document['title'] %></strong></h2>
+  <div class='section-content'>
+    <%= @document['details']['body'].html_safe %>
 
-<h2><%=@document['id'] %> <strong><%=@document['title'] %></strong></h2>
-<h3>What are incentive award schemes?</h3>
-<%= @document['body'].html_safe %>
-
-<% @document['sections'].each do | section | %>
-  <section>
-    <span class='section-id'><%= section['id'] %></span><h4><%= section['title'] %></h4>
-    <%= section['body'].html_safe %>
-  </section>
-<% end %>
+    <% @document['details']['sections'].each do | section | %>
+      <section class='manual-subsection'>
+        <div class='subsection-title'><span class='subsection-id '><%= section['details']['manual-section-id'] %></span><h4 name='<%=section['details']['manual-section-id']%>'><a href=#'<%= section['details']['manual-section-id'] %>'><%= section['title'] %></a></h4></div>
+        <div class='subsection-body'><%= section['details']['body'].html_safe %></div>
+      </section>
+    <% end %>
+  </div>
+</div>
