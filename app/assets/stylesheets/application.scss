@@ -131,7 +131,6 @@
     }
 
     .section-content {
-      margin-left:$gutter;
        @include media(tablet){
          margin-left:$gutter*2;
        }
