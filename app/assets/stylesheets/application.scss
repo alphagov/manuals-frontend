@@ -97,6 +97,10 @@
     border-bottom: 1px solid $border-colour;
     @extend %contain-floats;
 
+    strong {
+      font-weight:bold;
+    }
+
     li {
       @include core-16;
       background-image: url(image-path("separator.png"));
@@ -119,6 +123,7 @@
 
       &.last-child {
         background-image:none;
+        color: $secondary-text-colour;
       }
     }
   }
@@ -131,13 +136,20 @@
     }
 
     .section-content {
+      margin-top: $gutter-half;
        @include media(tablet){
+         margin-top: $gutter;
+
          margin-left:$gutter*2;
        }
     }
 
     h2 {
       @include heading-27;
+      .title {
+        font-weight:bold;
+        padding-left:$gutter-one-third;
+      }
     }
 
     h3 {
