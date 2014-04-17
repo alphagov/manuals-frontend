@@ -166,12 +166,13 @@
 
       .subsection-id {
         color: $grey-1;
-        float: left;
         padding-right: $gutter-half;
         @include core-24;
 
         @include media(tablet){
            padding-right: $gutter;
+           float: left;
+
          }
       }
 
@@ -182,17 +183,18 @@
       }
 
       h4 {
-        margin-left:100px;
         @include bold-24;
+        padding-top:$gutter-one-third;
 
         @include media(tablet){
           margin-left:130px;
+          padding-top:0;
+
         }
       }
     }
 
     .subsection-body{
-      margin-left: 100px;
        @include media(tablet){
          margin-left:130px;
        }
