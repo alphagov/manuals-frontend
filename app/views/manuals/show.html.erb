@@ -1,6 +1,6 @@
 <%= render partial: "header" %>
 <div class='manual-section'>
-  <h2><%=@document['id'] %> <strong><%=@document['title'] %></strong></h2>
+  <h2><%=@document['details']['manual-section-id'] %> <span class='title'><%=@document['title'] %></span></h2>
   <div class='section-content'>
     <div class='govspeak'>
       <%= @document['details']['body'].html_safe %>
