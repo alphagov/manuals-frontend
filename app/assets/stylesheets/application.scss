@@ -148,15 +148,27 @@
 
   .manual-subsection {
     border-bottom: 1px solid $border-colour;
-    padding:5px 0;
     @include core-19;
 
+    padding:$gutter-half 0 $gutter 0;
+
+    @include media(tablet) {
+      padding:$gutter 0 $gutter*2 0;
+    }
+
+
     .subsection-title {
+      padding-bottom:$gutter-half;
+
+      @include media(tablet) {
+        padding-bottom:$gutter;
+      }
 
       .subsection-id {
         color: $grey-1;
         float: left;
         padding-right: $gutter-half;
+        @include core-24;
 
         @include media(tablet){
            padding-right: $gutter;
@@ -165,11 +177,13 @@
 
       a {
         text-decoration:none;
+        color: $text-colour;
+        cursor:default;
       }
 
       h4 {
-        font-weight:bold;
         margin-left:100px;
+        @include bold-24;
 
         @include media(tablet){
           margin-left:130px;
