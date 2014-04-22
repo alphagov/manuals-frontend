@@ -8,3 +8,7 @@ gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'byebug', group: [:development, :test]
+
+group :development, :test do
+  gem 'jasmine-rails'
+end
