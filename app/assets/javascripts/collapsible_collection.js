@@ -18,14 +18,14 @@
   }
 
   CollapsibleCollection.prototype.closeAll = function closeAll(){
-    for (var sectionId in this.collapsibles) {
-      this.collapsibles[sectionId].close();
+    for (var section in this.collapsibles) {
+      this.collapsibles[section].close();
     }
   }
 
   CollapsibleCollection.prototype.openAll = function openAll(){
-    for (var sectionId in this.collapsibles) {
-      this.collapsibles[sectionId].open();
+    for (var section in this.collapsibles) {
+      this.collapsibles[section].open();
     }
   }
 
