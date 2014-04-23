@@ -12,7 +12,7 @@
   }
 
   CollapsibleCollection.prototype.initCollapsible = function initCollapsible(sectionIndex){
-    var $section = $(this.sections[sectionIndex]);
+    var $section = $(this.$sections[sectionIndex]);
     var collapsible = new GOVUK.Collapsible($section);
     this.collapsibles[$section.attr('data-section-id')] = collapsible;
   }
