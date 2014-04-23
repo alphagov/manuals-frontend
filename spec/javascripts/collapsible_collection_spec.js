@@ -54,12 +54,12 @@ describe('CollapsibleCollection', function(){
       collection.openAll();
 
       for (var collapsible_id in this.collapsibles) {
-        expect($(this.collapsible[collapsible.id]).hasClass('closed')).toBe(false)
+        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(false)
       }
       collection.closeAll();
 
       for (var collapsible_id in this.collapsibles) {
-        expect($(this.collapsible[collapsible.id]).hasClass('closed')).toBe(true)
+        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true)
       }
     });
   });
