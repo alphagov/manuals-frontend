@@ -4,9 +4,9 @@
 
   function CollapsibleCollection(options){
     this.collapsibles = {};
-    this.sections = options.el.find('section');
+    this.$sections = options.el.find('section');
 
-    this.sections.each($.proxy(this.initCollapsible, this));
+    this.$sections.each($.proxy(this.initCollapsible, this));
 
     this.closeAll();
   }
@@ -18,14 +18,14 @@
   }
 
   CollapsibleCollection.prototype.closeAll = function closeAll(){
-    for (var section in this.collapsibles) {
-      this.collapsibles[section].close();
+    for (var sectionId in this.collapsibles) {
+      this.collapsibles[sectionId].close();
     }
   }
 
   CollapsibleCollection.prototype.openAll = function openAll(){
-    for (var section in this.collapsibles) {
-      this.collapsibles[section].open();
+    for (var sectionId in this.collapsibles) {
+      this.collapsibles[sectionId].open();
     }
   }
 
