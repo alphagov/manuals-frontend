@@ -1,10 +1,16 @@
 class ManualsController < ApplicationController
 
   def show
-    @document = JSON.parse(File.open('public/EIM11200.json').read)
-
-    render text: 'Not found', status: 404 unless params[:id] == 'magic-slug'
-
+    if params["section_id"].present?
+      path = "public/EIM/#{params["section_id"]}.json"
+      if File.exists?(path)
+        @document = JSON.parse(File.open(path).read)
+      else
+        render text: 'Not found', status: 404
+      end
+    else
+      render text: 'Not found', status: 404
+    end
   end
 
 end
