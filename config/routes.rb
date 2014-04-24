@@ -1,6 +1,6 @@
 HmrcManualsFrontend::Application.routes.draw do
 
-  resources :manuals, only: [:show]
+  get '/guidance/employment-income-manual/:section_id', to: 'manuals#show'
 
   root to: proc { [404, {}, ['Not found']] }
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)

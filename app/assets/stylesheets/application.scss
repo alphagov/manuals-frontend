@@ -139,7 +139,6 @@
       margin-top: $gutter-half;
        @include media(tablet){
          margin-top: $gutter;
-
          margin-left:$gutter*2;
        }
     }
@@ -154,6 +153,20 @@
 
     h3 {
       @include heading-24;
+      &.title{
+        font-weight:bold;
+        margin-bottom: $gutter-one-third;
+         @include media(tablet){
+            margin-bottom: $gutter-half;
+          }
+        }
+    }
+  }
+
+  .subsection-collection {
+    margin-top: $gutter-half;
+    @include media(tablet){
+      margin-top: $gutter;
     }
   }
 
@@ -233,6 +246,7 @@
       .subsection-body {
         position:absolute;
         left:-9999px;
+        width:100px;
       }
     }
   }
