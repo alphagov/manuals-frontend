@@ -1,17 +1,17 @@
 <%= render partial: "header" %>
 <div class='manual-section'>
-  <h2><%=@document['details']['manual-section-id'] %> <span class='title'><%=@document['title'] %></span></h2>
+  <h2><%=@document['details']['manual_section_id'] %> <span class='title'><%=@document['title'] %></span></h2>
   <div class='section-content'>
     <div class='govspeak'>
-      <%= @document['details']['body'].html_safe %>
+      <%= govspeak_to_html(@document['details']['body']) %>
     </div>
-    <div class='js-collapsible-collection'>
-      <% @document['details']['sections'].each do | section | %>
-        <section class='manual-subsection' data-section-id='<%=section['details']['manual-section-id']%>'>
-          <div class='subsection-title'><span class='subsection-id '><%= section['details']['manual-section-id'] %></span><h4 id='<%=section['details']['manual-section-id']%>'><a href='#<%= section['details']['manual-section-id'] %>'><%= section['title'] %></a></h4></div>
-          <div class='subsection-body govspeak'><%= section['details']['body'].html_safe %></div>
-        </section>
+    <% @document['details']['sections'].each do | section | %>
+    <div class='js-collapsible-collection subsection-collection'>
+      <h3 class='title'><%=section['title'] %></h3>
+      <% section['sections'].each do | subsection | %>
+        <%= render 'section', :section => subsection %>
       <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

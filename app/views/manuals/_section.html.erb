@@ -1,0 +1,11 @@
+<section class='manual-subsection' data-section-id='<%=section['manual-section-id']%>'>
+  <div class='subsection-title'>
+    <span class='subsection-id '><%= section['manual_section_id'] %></span>
+    <h4 id='<%=section['manual_section_id']%>'>
+      <a href='#<%= section['manual_section_id'] %>'><%= section['title'] %></a>
+      </h4>
+    </div>
+  <% if section['body'].present? %>
+    <div class='subsection-body govspeak'><%= govspeak_to_html(section['body']) %></div>
+  <% end %>
+</section>
