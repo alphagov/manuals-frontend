@@ -167,7 +167,6 @@
       padding:$gutter 0 $gutter*2 0;
     }
 
-
     .subsection-title {
       padding-bottom:$gutter-half;
 
@@ -183,7 +182,6 @@
         @include media(tablet){
            padding-right: $gutter;
            float: left;
-
          }
       }
 
@@ -200,15 +198,42 @@
         @include media(tablet){
           margin-left:130px;
           padding-top:0;
-
         }
       }
     }
 
     .subsection-body{
-       @include media(tablet){
+       @include media(tablet) {
          margin-left:130px;
        }
+    }
+
+    .js-enabled &.closed {
+      padding: $gutter-one-third 0;
+      cursor: pointer;
+
+      .subsection-title {
+        padding-bottom:0;
+      }
+
+      .subsection-id {
+        @include core-19;
+      }
+
+      a {
+        color: $link-colour;
+        cursor: pointer;
+      }
+
+      h4 {
+        @include bold-19;
+        padding-top:0;
+      }
+
+      .subsection-body {
+        position:absolute;
+        left:-9999px;
+      }
     }
   }
 }
