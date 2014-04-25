@@ -180,6 +180,17 @@
       padding:$gutter 0 $gutter*2 0;
     }
 
+    .js-enabled & {
+      background:url(image-path("up_arrow.png")) no-repeat 98% 30px;
+      @include media(tablet){
+        background-position: 98% 20px;
+      }
+      @include device-pixel-ratio() {
+        background-image: image-url("up_arrow-2x.png");
+        background-size: 11px 6px;
+      }
+    }
+
     .subsection-title {
       padding-bottom:$gutter-half;
 
@@ -224,6 +235,11 @@
     .js-enabled &.closed {
       padding: $gutter-one-third 0;
       cursor: pointer;
+      background-image:url(image-path("down_arrow.png"));
+      @include device-pixel-ratio() {
+        background-image: image-url("down_arrow-2x.png");
+        background-size: 11px 6px;
+      }
 
       .subsection-title {
         padding-bottom:0;
