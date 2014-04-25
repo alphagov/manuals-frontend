@@ -229,7 +229,9 @@
        }
     }
 
-    .js-enabled &.closed {
+
+    .js-enabled &.closed, &.link-out {
+
       padding:0;
 
       .subsection-title {
@@ -264,6 +266,14 @@
         position:absolute;
         left:-9999px;
         width:100px;
+      }
+    }
+    &.link-out {
+      .subsection-title {
+        background-image:url(image-path("separator.png"));
+        @include device-pixel-ratio() {
+          background-image: image-url("separator-2x.png");
+        }
       }
     }
   }

@@ -4,7 +4,7 @@
 
   function CollapsibleCollection(options){
     this.collapsibles = {};
-    this.$sections = options.el.find('section');
+    this.$sections = options.el.find('.js-openable');
 
     this.$sections.each($.proxy(this.initCollapsible, this));
 
