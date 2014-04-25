@@ -173,29 +173,27 @@
   .manual-subsection {
     border-bottom: 1px solid $border-colour;
     @include core-19;
-
-    padding:$gutter-half 0 $gutter 0;
+    padding-bottom: $gutter;
 
     @include media(tablet) {
-      padding:$gutter 0 $gutter*2 0;
-    }
-
-    .js-enabled & {
-      background:url(image-path("up_arrow.png")) no-repeat 98% 30px;
-      @include media(tablet){
-        background-position: 98% 20px;
-      }
-      @include device-pixel-ratio() {
-        background-image: image-url("up_arrow-2x.png");
-        background-size: 11px 6px;
-      }
+      padding-bottom: $gutter*2;
     }
 
     .subsection-title {
-      padding-bottom:$gutter-half;
+      cursor: pointer;
+      padding: $gutter-half $gutter $gutter-half 0;
 
       @include media(tablet) {
-        padding-bottom:$gutter;
+        padding:$gutter 45px $gutter 0;
+      }
+
+      .js-enabled & {
+        background:url(image-path("up_arrow.png")) no-repeat 98% 50%;
+
+        @include device-pixel-ratio() {
+          background-image: image-url("up_arrow-2x.png");
+          background-size: 11px 6px;
+        }
       }
 
       .subsection-id {
@@ -212,7 +210,6 @@
       a {
         text-decoration:none;
         color: $text-colour;
-        cursor:default;
       }
 
       h4 {
@@ -233,16 +230,20 @@
     }
 
     .js-enabled &.closed {
-      padding: $gutter-one-third 0;
-      cursor: pointer;
-      background-image:url(image-path("down_arrow.png"));
-      @include device-pixel-ratio() {
-        background-image: image-url("down_arrow-2x.png");
-        background-size: 11px 6px;
-      }
+      padding:0;
 
       .subsection-title {
-        padding-bottom:0;
+        padding: $gutter-one-third 25px $gutter-one-third 0;
+        background-image:url(image-path("down_arrow.png"));
+
+        @include device-pixel-ratio() {
+          background-image: image-url("down_arrow-2x.png");
+          background-size: 11px 6px;
+        }
+
+        @include media(tablet){
+          padding: $gutter-one-third 45px $gutter-one-third 0;
+        }
       }
 
       .subsection-id {
@@ -255,7 +256,7 @@
       }
 
       h4 {
-        @include bold-19;
+        @include core-19;
         padding-top:0;
       }
 
