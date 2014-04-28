@@ -103,7 +103,7 @@
 
     li {
       @include core-16;
-      background-image: url(image-path("separator.png"));
+      background-image: image-url("separator.png");
       background-position: 100% 10%;
       background-repeat: no-repeat;
       float: left;
@@ -184,7 +184,7 @@
       padding: $gutter-one-third 0 $gutter-one-third $gutter-two-thirds;
 
       .js-enabled & {
-        background:url(image-path("up_arrow.png")) no-repeat 0% 45%;
+        background: image-url("up_arrow.png") no-repeat 0% 45%;
 
         @include device-pixel-ratio() {
           background-image: image-url("up_arrow-2x.png");
@@ -229,7 +229,7 @@
       padding:0;
 
       .subsection-title {
-        background-image:url(image-path("down_arrow.png"));
+        background-image: image-url("down_arrow.png");
 
         @include device-pixel-ratio() {
           background-image: image-url("down_arrow-2x.png");
@@ -247,7 +247,7 @@
     }
     &.link-out {
       .subsection-title {
-        background-image:url(image-path("separator.png"));
+        background-image: image-url("separator.png");
         @include device-pixel-ratio() {
           background-image: image-url("separator-2x.png");
         }
