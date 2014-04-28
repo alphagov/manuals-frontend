@@ -181,11 +181,7 @@
 
     .subsection-title {
       cursor: pointer;
-      padding: $gutter-half $gutter $gutter-half 0;
-
-      @include media(tablet) {
-        padding:$gutter 45px $gutter 0;
-      }
+      padding: $gutter-one-third $gutter $gutter-one-third 0;
 
       .js-enabled & {
         background:url(image-path("up_arrow.png")) no-repeat 98% 50%;
@@ -198,8 +194,6 @@
 
       .subsection-id {
         color: $secondary-text-colour;
-        padding-right: $gutter-half;
-        @include core-24;
 
         @include media(tablet){
            padding-right: $gutter;
@@ -210,16 +204,18 @@
       a {
         text-decoration:none;
         color: $text-colour;
+        cursor: pointer;
       }
 
       h4 {
-        @include bold-24;
-        padding-top:$gutter-one-third;
+        @include core-19;
+        padding-top:0;
+        margin-left: 0;
 
         @include media(tablet){
-          margin-left:130px;
-          padding-top:0;
+          margin-left:118px;
         }
+
       }
     }
 
@@ -231,11 +227,9 @@
 
 
     .js-enabled &.closed, &.link-out {
-
       padding:0;
 
       .subsection-title {
-        padding: $gutter-one-third 25px $gutter-one-third 0;
         background-image:url(image-path("down_arrow.png"));
 
         @include device-pixel-ratio() {
@@ -247,25 +241,13 @@
           padding: $gutter-one-third 45px $gutter-one-third 0;
         }
       }
-
-      .subsection-id {
-        @include core-19;
-      }
-
-      a {
-        color: $link-colour;
-        cursor: pointer;
-      }
-
-      h4 {
-        @include core-19;
-        padding-top:0;
-      }
-
       .subsection-body {
         position:absolute;
         left:-9999px;
         width:100px;
+      }
+      a {
+        color: $link-colour;
       }
     }
     &.link-out {
