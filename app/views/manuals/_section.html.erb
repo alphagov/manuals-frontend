@@ -3,7 +3,7 @@
     <span class='subsection-id '><%= section['manual_section_id'] %></span>
     <h4 id='<%=section['manual_section_id']%>'>
       <% if section['body'].present? %>
-        <a><%= section['title'] %></a>
+        <a href='/guidance/employment-income-manual/<%=section['manual_section_id']%>'><%= section['title'] %></a>
       <% else %>
         <a href='/guidance/employment-income-manual/<%=section['manual_section_id']%>'><%= section['title'] %></a>
       <% end %>
