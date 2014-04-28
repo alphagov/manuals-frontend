@@ -184,11 +184,11 @@
       padding: $gutter-one-third 0 $gutter-one-third $gutter-two-thirds;
 
       .js-enabled & {
-        background: image-url("up_arrow.png") no-repeat 0% 45%;
+        background: image-url("arrows_sprite.png") no-repeat -30px 12px;
 
         @include device-pixel-ratio() {
-          background-image: image-url("up_arrow-2x.png");
-          background-size: 11px 6px;
+          background-image: image-url("arrows_sprite-2x.png");
+          background-size: 44px 78px;
         }
       }
 
@@ -229,11 +229,11 @@
       padding:0;
 
       .subsection-title {
-        background-image: image-url("down_arrow.png");
+        background: image-url("arrows_sprite.png") no-repeat 0px -51px;
 
         @include device-pixel-ratio() {
-          background-image: image-url("down_arrow-2x.png");
-          background-size: 11px 6px;
+          background-image: image-url("arrows_sprite-2x.png");
+          background-size: 44px 78px;
         }
       }
       .subsection-body {
@@ -245,11 +245,14 @@
         color: $link-colour;
       }
     }
+
     &.link-out {
       .subsection-title {
-        background-image: image-url("separator.png");
+        background: image-url("arrows_sprite.png") no-repeat -17px -19px;
+
         @include device-pixel-ratio() {
-          background-image: image-url("separator-2x.png");
+          background-image: image-url("arrows_sprite-2x.png");
+          background-size: 44px 78px;
         }
       }
     }
