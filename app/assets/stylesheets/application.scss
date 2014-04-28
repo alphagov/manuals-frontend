@@ -225,7 +225,8 @@
     }
 
 
-    .js-enabled &.closed, &.link-out {
+    .js-enabled &.closed,
+    &.link-out {
       padding:0;
 
       .subsection-title {
