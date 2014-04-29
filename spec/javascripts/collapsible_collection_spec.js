@@ -4,7 +4,7 @@ describe('CollapsibleCollection', function(){
   beforeEach(function(){
     var collectionString =
       '<div class="js-collapsible-collection">'+
-        '<section class="manual-subsection closed" data-section-id="EIM11205">'+
+        '<section class="manual-subsection js-openable" data-section-id="EIM11205">'+
           '<div class="subsection-title">'+
             '<span class="subsection-id ">EIM11205</span>'+
             '<h4 id="EIM11205">'+
@@ -16,7 +16,7 @@ describe('CollapsibleCollection', function(){
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct employee by entering into a PAYE settlement agreement (PSA), the award is not chargeable to tax on the employee. PSAs cannot be used to pay the tax on cash incentive awards. PSAs are covered at EIM11270.</p>'+
           '</div>'+
         '</section>'+
-        '<section class="manual-subsection closed" data-section-id="EIM11210">'+
+        '<section class="manual-subsection js-openable" data-section-id="EIM11210">'+
           '<div class="subsection-title">'+
             '<span class="subsection-id ">EIM11210</span>'+
             '<h4 id="EIM11210">'+
@@ -44,7 +44,7 @@ describe('CollapsibleCollection', function(){
 
     it('should add a new object to collapsibles hash with the id from the section', function(){
       var collectionSize = Object.keys(collection.collapsibles).length;
-      collection.initCollapsible(collection.sections[0]);
+      collection.initCollapsible(collection.$sections[0]);
       expect(Object.keys(collection.collapsibles).length).toBe(collectionSize+1);
     });
   });
