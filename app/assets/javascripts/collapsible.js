@@ -8,8 +8,9 @@
     this.$clickTarget.on('click', $.proxy(this.toggle, this))
   }
 
-  Collapsible.prototype.toggle = function toggle(){
-    this.$section.toggleClass('closed')
+  Collapsible.prototype.toggle = function toggle(event){
+    this.$section.toggleClass('closed');
+    event.preventDefault();
   }
 
   Collapsible.prototype.close = function close(){

@@ -1,8 +1,12 @@
-<section class='manual-subsection' data-section-id='<%=section['manual_section_id']%>'>
+<section class='manual-subsection <%= section['body'].present? ? "js-openable" : "link-out" %>' data-section-id='<%=section['manual_section_id']%>'>
   <div class='subsection-title'>
     <span class='subsection-id '><%= section['manual_section_id'] %></span>
     <h4 id='<%=section['manual_section_id']%>'>
-      <a href='#<%= section['manual_section_id'] %>'><%= section['title'] %></a>
+      <% if section['body'].present? %>
+        <a href='/guidance/employment-income-manual/<%=section['manual_section_id']%>'><%= section['title'] %></a>
+      <% else %>
+        <a href='/guidance/employment-income-manual/<%=section['manual_section_id']%>'><%= section['title'] %></a>
+      <% end %>
     </h4>
   </div>
   <% if section['body'].present? %>

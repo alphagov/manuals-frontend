@@ -103,7 +103,7 @@
 
     li {
       @include core-16;
-      background-image: url(image-path("separator.png"));
+      background-image: image-url("separator.png");
       background-position: 100% 10%;
       background-repeat: no-repeat;
       float: left;
@@ -173,27 +173,33 @@
   .manual-subsection {
     border-bottom: 1px solid $border-colour;
     @include core-19;
-
-    padding:$gutter-half 0 $gutter 0;
+    padding-bottom: $gutter;
 
     @include media(tablet) {
-      padding:$gutter 0 $gutter*2 0;
+      padding-bottom: $gutter*2;
     }
 
     .subsection-title {
-      padding-bottom:$gutter-half;
+      cursor: pointer;
+      padding: $gutter-one-third 0 $gutter-one-third $gutter-two-thirds;
 
-      @include media(tablet) {
-        padding-bottom:$gutter;
+      .js-enabled & {
+        background: image-url("arrows_sprite.png") no-repeat -30px 12px;
+
+        @include device-pixel-ratio() {
+          background-image: image-url("arrows_sprite-2x.png");
+          background-size: 44px 78px;
+        }
+
+        &:hover {
+          background-color:$grey-4;
+        }
       }
 
       .subsection-id {
         color: $secondary-text-colour;
-        padding-right: $gutter-half;
-        @include core-24;
 
         @include media(tablet){
-           padding-right: $gutter;
            float: left;
          }
       }
@@ -201,17 +207,18 @@
       a {
         text-decoration:none;
         color: $text-colour;
-        cursor:default;
+        cursor: pointer;
       }
 
       h4 {
-        @include bold-24;
-        padding-top:$gutter-one-third;
+        @include core-19;
+        padding-top:0;
+        margin-left: 0;
 
         @include media(tablet){
-          margin-left:130px;
-          padding-top:0;
+          margin-left: 110px;
         }
+
       }
     }
 
@@ -221,32 +228,41 @@
        }
     }
 
-    .js-enabled &.closed {
-      padding: $gutter-one-third 0;
-      cursor: pointer;
+
+    .js-enabled &.closed,
+    &.link-out {
+      padding:0;
 
       .subsection-title {
-        padding-bottom:0;
-      }
+        background: image-url("arrows_sprite.png") no-repeat 0px -51px;
 
-      .subsection-id {
-        @include core-19;
+        @include device-pixel-ratio() {
+          background-image: image-url("arrows_sprite-2x.png");
+          background-size: 44px 78px;
+        }
       }
-
-      a {
-        color: $link-colour;
-        cursor: pointer;
-      }
-
-      h4 {
-        @include bold-19;
-        padding-top:0;
-      }
-
       .subsection-body {
         position:absolute;
         left:-9999px;
         width:100px;
+      }
+      a {
+        color: $link-colour;
+      }
+
+      &:hover {
+        background-color:$grey-4;
+      }
+    }
+
+    &.link-out {
+      .subsection-title {
+        background: image-url("arrows_sprite.png") no-repeat -17px -19px;
+
+        @include device-pixel-ratio() {
+          background-image: image-url("arrows_sprite-2x.png");
+          background-size: 44px 78px;
+        }
       }
     }
   }
