@@ -1,15 +1,9 @@
-<section class='manual-subsection <%= section['body'].present? ? "js-openable" : "link-out" %>' data-section-id='<%=section['manual_section_id']%>'>
-  <div class='subsection-title'>
-    <span class='subsection-id '><%= section['manual_section_id'] %></span>
-    <h4 id='<%=section['manual_section_id']%>'>
-      <% if section['body'].present? %>
-        <a href='/guidance/employment-income-manual/<%=section['manual_section_id']%>'><%= section['title'] %></a>
-      <% else %>
-        <a href='/guidance/employment-income-manual/<%=section['manual_section_id']%>'><%= section['title'] %></a>
-      <% end %>
-    </h4>
-  </div>
+<li class='manual-subsection <%= section['body'].present? ? "js-openable" : "link-out" %>' data-section-id='<%=section['manual_section_id']%>'>
+  <a href='/guidance/employment-income-manual/<%=section['manual_section_id']%>' class='subsection-title'>
+    <span class='subsection-id'><%= section['manual_section_id'] %></span>
+    <span class='subsection-title-text'><%= section['title'] %></span>
+  </a>
   <% if section['body'].present? %>
     <div class='subsection-body'><%= govspeak_to_html(section['body']) %></div>
   <% end %>
-</section>
+</li>
