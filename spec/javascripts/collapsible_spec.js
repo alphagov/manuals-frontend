@@ -47,7 +47,7 @@ describe('Collapsible', function(){
     it('should open the collapsible when it is closed', function(){
       collapsible.close();
       expect(collapsible.isClosed()).toBe(true);
-      var event = new Event('click');
+      var event = new $.Event('click');
       collapsible.toggle(event);
       expect(collapsible.isClosed()).toBe(false);
     });
@@ -55,7 +55,7 @@ describe('Collapsible', function(){
     it('should close the collapsible when it is opened', function(){
       collapsible.open();
       expect(collapsible.isClosed()).toBe(false);
-      var event = new Event('click');
+      var event = new $.Event('click');
       collapsible.toggle(event);
       expect(collapsible.isClosed()).toBe(true);
     });
