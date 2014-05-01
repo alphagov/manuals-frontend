@@ -176,12 +176,13 @@
           float:right;
           padding: 0 $gutter 0 0;
         }
-      }
 
-      &.disabled {
-        color:$secondary-text-colour;
-        text-decoration:none;
-        cursor:default;
+
+        &.disabled {
+          color:$secondary-text-colour;
+          text-decoration:none;
+          cursor:default;
+        }
       }
     }
   }
