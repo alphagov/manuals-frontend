@@ -9,8 +9,8 @@
     this.$sections = this.$container.find('.js-openable');
     this.$sections.each($.proxy(this.initCollapsible, this));
 
-    this.$openAll = $("<a href='#' aria-hidden=true class='collection-control'>Open all</a>"),
-    this.$closeAll = $("<a href='#' aria-hidden=true class='collection-control'>Close all</a>");
+    this.$openAll = $("<a href='#' aria-hidden=true>Open all</a>"),
+    this.$closeAll = $("<a href='#' aria-hidden=true>Close all</a>");
     this.addControls();
 
     this.closeAll();
@@ -50,8 +50,9 @@
   }
 
   CollapsibleCollection.prototype.addControls = function addControls(){
-    this.$container.prepend(this.$openAll);
-    this.$container.prepend(this.$closeAll);
+    this.$container.find('ol.section-links').before('<div class="collection-controls"></div>');
+    this.$container.find('.collection-controls').append(this.$openAll);
+    this.$container.find('.collection-controls').append(this.$closeAll);
 
     this.$openAll.on('click', $.proxy(this.openAll, this));
     this.$closeAll.on('click', $.proxy(this.closeAll, this));

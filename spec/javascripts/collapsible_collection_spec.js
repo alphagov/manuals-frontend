@@ -3,31 +3,31 @@ describe('CollapsibleCollection', function(){
 
   beforeEach(function(){
     collectionString =
-      '<div class="js-collapsible-collection">'+
-        '<section class="manual-subsection js-openable" data-section-id="EIM11205">'+
-          '<div class="subsection-title">'+
-            '<span class="subsection-id ">EIM11205</span>'+
-            '<h4 id="EIM11205">'+
-              '<a href="#EIM11205">Tax liability on incentive awards</a>'+
-            '</h4>'+
-          '</div>'+
-          '<div class="subsection-body govspeak">'+
-            '<h5>General</h5>'+
-            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct employee by entering into a PAYE settlement agreement (PSA), the award is not chargeable to tax on the employee. PSAs cannot be used to pay the tax on cash incentive awards. PSAs are covered at EIM11270.</p>'+
-          '</div>'+
-        '</section>'+
-        '<section class="manual-subsection js-openable" data-section-id="EIM11210">'+
-          '<div class="subsection-title">'+
-            '<span class="subsection-id ">EIM11210</span>'+
-            '<h4 id="EIM11210">'+
-              '<a href="#EIM11210">Awards to an employees family or dependants</a>'+
-            '</h4>'+
-          '</div>'+
-          '<div class="subsection-body govspeak">'+
-            '<h5>Sections 74, 83, 91, 721(4) and 721(5) ITEPA 2003</h5>'+
-            '<p>Awards are treated as made to the employee if they are received by members of the employees family or household. There are different definitions of the family circle depending upon whether vouchers are used, or awards are obtained in some other way and are chargeable under the benefits code.</p>'+
-          '</div>'+
-        '</section>'+
+      '<div class="js-collapsible-collection subsection-collection">'+
+        '<ol class="section-links">'+
+          '<li class="manual-subsection js-openable" data-section-id="EIM11205">'+
+            '<a href="#" class="subsection-title">'+
+              '<span class="subsection-id ">EIM11205</span>'+
+              '<span class="subsection-title-text">'+
+                'Tax liability on incentive awards'+
+              '</span>'+
+            '</a>'+
+            '<div class="subsection-body govspeak">'+
+              '<h5>General</h5>'+
+              '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct employee by entering into a PAYE settlement agreement (PSA), the award is not chargeable to tax on the employee. PSAs cannot be used to pay the tax on cash incentive awards. PSAs are covered at EIM11270.</p>'+
+            '</div>'+
+          '</li>'+
+          '<li class="manual-subsection js-openable" data-section-id="EIM11210">'+
+            '<a href="#" class="subsection-title">'+
+              '<span class="subsection-id ">EIM11210</span>'+
+              '<span class="subsection-title-text">Awards to an employees family or dependants</span>'+
+            '</a>'+
+            '<div class="subsection-body govspeak">'+
+              '<h5>Sections 74, 83, 91, 721(4) and 721(5) ITEPA 2003</h5>'+
+              '<p>Awards are treated as made to the employee if they are received by members of the employees family or household. There are different definitions of the family circle depending upon whether vouchers are used, or awards are obtained in some other way and are chargeable under the benefits code.</p>'+
+            '</div>'+
+          '</li>'+
+        '</ol>'+
       '</div>';
 
       collectionHTML = $(collectionString);
@@ -45,7 +45,7 @@ describe('CollapsibleCollection', function(){
       secondCollectionHTML = $(collectionString);
       expect(secondCollectionHTML.find('a.collection-control').length).toBe(0);
       newCollection = new GOVUK.CollapsibleCollection({el:secondCollectionHTML});
-      expect(newCollection.$container.find('a.collection-control').length).toBe(2);
+      expect(newCollection.$container.find('.collection-controls a').length).toBe(2);
     });
 
     it('should add a new object to collapsibles hash with the id from the section', function(){

@@ -6,9 +6,11 @@
     <% @document['details']['sections'].each do | section | %>
     <div class='js-collapsible-collection subsection-collection'>
       <h3 class='title'><%=section['title'] %></h3>
-      <% section['sections'].each do | subsection | %>
-        <%= render 'section', :section => subsection %>
-      <% end %>
+      <ol class='section-links'>
+        <% section['sections'].each do | subsection | %>
+          <%= render 'section', :section => subsection %>
+        <% end %>
+      </ol>
     </div>
     <% end %>
   </div>
