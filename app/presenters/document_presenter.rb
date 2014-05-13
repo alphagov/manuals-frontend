@@ -22,6 +22,14 @@ class DocumentPresenter
     end
   end
 
+  def breadcrumbs
+    root = OpenStruct.new(link: '/guidance/employment-income-manual', label: 'Main contents')
+    crumbs = document['details']['breadcrumbs'][1..-2].map do | section_id |
+      OpenStruct.new(link: "/guidance/employment-income-manual/#{section_id}", label: section_id)
+    end
+    [root] + crumbs
+  end
+
 private
   attr_reader :document
 
