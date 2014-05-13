@@ -1,6 +1,6 @@
-<li class='manual-subsection <%= section['body'].present? ? "js-openable" : "link-out" %>' data-section-id='<%=section['manual_section_id']%>'>
-  <a href='/guidance/employment-income-manual/<%=section['manual_section_id']%>' class='subsection-title'>
-    <span class='subsection-id'><%= section['manual_section_id'] %></span>
+<li class='manual-subsection <%= section['body'].present? ? "js-openable" : "link-out" %>' data-section-id='<%=section['manual-section-id']%>'>
+  <a href='/guidance/employment-income-manual/<%=section['manual-section-id']%>' class='subsection-title'>
+    <span class='subsection-id'><%= section['manual-section-id'] %></span>
     <span class='subsection-title-text'><%= section['title'] %></span>
   </a>
   <% if section['body'].present? %>

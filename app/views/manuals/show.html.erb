@@ -1,6 +1,6 @@
 <%= render partial: "header" %>
 <div class='manual-section'>
-  <h2><%=@document['details']['manual_section_id'] %> <span class='title'><%=@document['title'] %></span></h2>
+  <h2><%=@document['details']['manual-section-id'] %> <span class='title'><%=@document['title'] %></span></h2>
   <div class='section-content'>
     <%= govspeak_to_html(@document['details']['body']) %>
     <% @document['details']['sections'].each do | section | %>
