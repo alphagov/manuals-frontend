@@ -2,7 +2,7 @@ class ManualsController < ApplicationController
 
   def index
     path = "public/EIM/EIMANUAL.json"
-    @document = JSON.parse(File.open(path).read)
+    @document = DocumentPresenter.new(JSON.parse(File.open(path).read))
     render :show
   end
 
@@ -10,7 +10,7 @@ class ManualsController < ApplicationController
     if params["section_id"].present?
       path = "public/EIM/#{params["section_id"]}.json"
       if File.exists?(path)
-        @document = JSON.parse(File.open(path).read)
+        @document = DocumentPresenter.new(JSON.parse(File.open(path).read))
       else
         render text: 'Not found', status: 404
       end

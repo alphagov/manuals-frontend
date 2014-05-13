@@ -20,6 +20,8 @@
   </div>
 </header>
 <ol class='breadcrumb-trail' role='breadcrumbs'>
-  <li><a href='/guidance/employment-income-manual/EIMANUAL'>Main contents</a></li>
-  <li class='last-child'><%= @document['details']['manual-section-id'] %> <strong><%= @document['title'] %></strong></li>
+  <% @document.breadcrumbs.each do | crumb | %>
+    <li> <%= link_to crumb.label, crumb.link %></li>
+  <% end %>
+  <li class='last-child'><strong><%= @document.section_id %></strong></li>
 </ol>
