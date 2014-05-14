@@ -14,7 +14,13 @@
     this.addControls();
 
     this.closeAll();
+
+    var openSectionID = window.location.hash.substr(1);
+    if(typeof(this.collapsibles[openSectionID]) != 'undefined') {
+      this.collapsibles[openSectionID].open();
+    }
   }
+
 
   CollapsibleCollection.prototype.initCollapsible = function initCollapsible(sectionIndex){
     var $section = $(this.$sections[sectionIndex]);
