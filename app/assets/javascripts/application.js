@@ -1,16 +1,18 @@
 //= require_tree .
 
 jQuery(function($) {
+
+  "use strict";
+
   $('.js-collapsible-collection').each(function(){
     new GOVUK.CollapsibleCollection({el:$(this)});
   })
 
   $('.govspeak').on('click', 'a', function(event){
     if (window.location.pathname == event.target.pathname) {
-      $section = $(event.target.hash);
-      if (typeof(section) != undefined) {
+      var $section = $(event.target.hash);
+      if ($section.length != 0) {
         new GOVUK.Collapsible($section).open();
-        event.stopPropagation();
       }
     }
   })
