@@ -9,7 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'unicorn', '4.8.2'
 
-gem 'govspeak'
+gem 'govspeak', '1.5.2'
 
 gem 'plek', '1.7.0'
 gem 'gds-api-adapters', '10.11.0'
