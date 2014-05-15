@@ -41,9 +41,10 @@ GEM
       null_logger
       plek
       rest-client (~> 1.6.3)
-    govspeak (1.5.1)
+    govspeak (1.5.2)
       htmlentities (~> 4)
       kramdown (~> 0.13.3)
+      nokogiri (~> 1.5.10)
       sanitize (~> 2.0.3)
     govuk_frontend_toolkit (0.48.0)
       rails (>= 3.1.0)
@@ -140,7 +141,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   gds-api-adapters (= 10.11.0)
-  govspeak
+  govspeak (= 1.5.2)
   govuk_frontend_toolkit (= 0.48.0)
   jasmine-rails
   plek (= 1.7.0)
