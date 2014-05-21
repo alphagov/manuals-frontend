@@ -141,26 +141,13 @@
       margin-top: $gutter-half;
        @include media(tablet){
          margin-top: $gutter;
-
-         .govspeak {
-           width:$two-thirds;
-         }
        }
     }
 
-    h2 {
-      @include heading-27;
+    h2.section-title {
+      @include core-27;
       .title {
         font-weight:bold;
-        padding-left:$gutter-one-third;
-      }
-    }
-
-    h3 {
-      @include heading-24;
-      &.title {
-        font-weight:bold;
-        margin-bottom: 0;
       }
     }
   }
@@ -285,4 +272,10 @@
       }
     }
   }
+}
+
+/* Govspeak overrides */
+.section-content .govspeak,
+.subsection-body .govspeak {
+  width:$two-thirds;
 }
