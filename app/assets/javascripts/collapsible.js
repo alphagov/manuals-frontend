@@ -5,7 +5,13 @@
   function Collapsible(section){
     this.$section = section;
     this.$clickTarget = this.$section.find('.subsection-title');
-    this.$clickTarget.on('click', $.proxy(this.toggle, this))
+    this.$clickTarget.on('click', $.proxy(this.toggle, this));
+    this.addToggle();
+  }
+
+  Collapsible.prototype.addToggle = function addToggle(){
+    var $toggleHTML = $("<span class='js-toggle'></span>")
+    this.$clickTarget.append($toggleHTML);
   }
 
   Collapsible.prototype.toggle = function toggle(event){
