@@ -23,7 +23,7 @@ class DocumentPresenter
   end
 
   def breadcrumbs
-    root = OpenStruct.new(link: '/guidance/employment-income-manual', label: 'Main contents')
+    root = OpenStruct.new(link: '/guidance/employment-income-manual', label: 'Contents')
     crumbs = document['details']['breadcrumbs'][1..-2].map do | section_id |
       OpenStruct.new(link: "/guidance/employment-income-manual/#{section_id}", label: section_id)
     end
