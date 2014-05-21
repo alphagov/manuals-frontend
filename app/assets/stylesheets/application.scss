@@ -141,7 +141,10 @@
       margin-top: $gutter-half;
        @include media(tablet){
          margin-top: $gutter;
-         margin-left:$gutter*2;
+
+         .govspeak {
+           width:$two-thirds;
+         }
        }
     }
 
@@ -166,6 +169,11 @@
     margin-top: $gutter-half;
     @include media(tablet){
       margin-top: $gutter;
+    }
+
+    .section-links {
+      margin-top:$gutter-half;
+      border-top: 1px solid $border-colour;
     }
 
     .collection-controls {
@@ -196,13 +204,12 @@
     list-style: none;
 
     @include media(tablet) {
-      margin-left: -$gutter;
       padding-bottom: $gutter*2;
     }
 
     .subsection-title {
       cursor: pointer;
-      padding: $gutter-one-third 0 $gutter-one-third $gutter;
+      padding: $gutter-one-third 0;
       text-decoration:none;
       display:block;
 
@@ -227,6 +234,7 @@
       .subsection-title-text {
         margin-left: 100px;
         display:block;
+        font-weight:bold;
 
         @include media(tablet) {
            margin-left: 130px;
@@ -236,7 +244,7 @@
 
     .subsection-body {
        @include media(tablet) {
-         margin-left: 160px;
+         margin-top: $gutter;
        }
     }
 
