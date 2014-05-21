@@ -181,12 +181,15 @@
 
       a {
         padding: 0 $gutter-half 0 0;
+        float:right;
 
-        @include media(tablet) {
-          float:right;
-          padding: 0 $gutter 0 0;
+        &:first-child {
+          padding-right:0
         }
 
+        @include media(tablet) {
+          padding: 0 $gutter 0 0;
+        }
 
         &.disabled {
           color:$secondary-text-colour;
