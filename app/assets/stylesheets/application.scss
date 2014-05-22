@@ -215,6 +215,7 @@
 
         @include device-pixel-ratio() {
           background-image: image-url("arrows_sprite-2x.png");
+          background-size: 32px 50px;
         }
       }
 
@@ -254,6 +255,7 @@
 
         @include device-pixel-ratio() {
           background-image: image-url("arrows_sprite-2x.png");
+          background-size: 32px 50px;
         }
       }
 
