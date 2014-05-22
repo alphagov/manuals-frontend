@@ -229,14 +229,20 @@
       }
 
       .subsection-title-text {
+        font-weight:bold;
+      }
+
+      &.subsection-with-id .subsection-title-text {
         margin-left: 100px;
         display:block;
-        font-weight:bold;
-
         @include media(tablet) {
            margin-left: 130px;
          }
       }
+    }
+    .subsection-summary {
+      display: block;
+      color: $black;
     }
 
     .subsection-body {
