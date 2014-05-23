@@ -1,4 +1,4 @@
-HmrcManualsFrontend::Application.routes.draw do
+ManualsFrontend::Application.routes.draw do
 
   get '/guidance/employment-income-manual', to: 'manuals#index'
   get '/guidance/employment-income-manual/:section_id', to: 'manuals#show'
