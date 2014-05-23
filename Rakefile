@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-HmrcManualsFrontend::Application.load_tasks
+ManualsFrontend::Application.load_tasks

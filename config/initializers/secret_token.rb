@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-HmrcManualsFrontend::Application.config.secret_key_base = '4cb9f970cfd12120dd031a6ad68f10ba090ba8bdd03fbb259f042041daa404eff5caa87e441f6eef74624d57e9da999cd615066b970029081928f6db44f586d7'
+ManualsFrontend::Application.config.secret_key_base = '4cb9f970cfd12120dd031a6ad68f10ba090ba8bdd03fbb259f042041daa404eff5caa87e441f6eef74624d57e9da999cd615066b970029081928f6db44f586d7'
