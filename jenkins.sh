@@ -3,7 +3,7 @@ set -x
 export DISPLAY=:99
 export GOVUK_APP_DOMAIN=test.gov.uk
 export GOVUK_ASSET_ROOT=http://static.test.gov.uk
-export REPO_NAME="alphagov/hmrc-manuals-frontend"
+export REPO_NAME="alphagov/manuals-frontend"
 env
 
 function github_status {
