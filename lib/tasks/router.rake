@@ -7,13 +7,13 @@ namespace :router do
   end
 
   task :register_backend => :router_environment do
-    @router_api.add_backend('hmrc-manuals-frontend', Plek.current.find('hmrc-manuals-frontend', :force_http => true) + "/")
+    @router_api.add_backend('manuals-frontend', Plek.current.find('manuals-frontend', :force_http => true) + "/")
   end
 
   task :register_routes => :router_environment do
-    @router_api.add_route('/guidance/employment-income-manual', 'prefix', 'hmrc-manuals-frontend')
+    @router_api.add_route('/guidance/employment-income-manual', 'prefix', 'manuals-frontend')
   end
 
-  desc 'Register hmrc-manuals-frontend application and routes with the router'
+  desc 'Register manuals-frontend application and routes with the router'
   task :register => [ :register_backend, :register_routes ]
 end
