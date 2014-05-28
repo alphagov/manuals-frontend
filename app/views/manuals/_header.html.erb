@@ -1,12 +1,25 @@
-<header>
+<header class="<%= @document.hmrc? ? 'hmrc' : nil %>">
   <div class='primary'>
-    <span class='manual-type'>HMRC manuals</span>
-    <h1>Employment Income Manual</h1>
+
+    <% if @document.hmrc? %>
+      <span class='manual-type'>HMRC manuals</span>
+    <% end %>
+
+
+    <h1><%= params[:manual_id].titlecase %></h1>
     <dl>
-      <dt>Part of</dt>
-      <dd><a href='#'>Tax guidance</a> and <a href='#'>Employment</a></dd>
-      <dt>Published by</dt>
-      <dd><a href='#'>HM Revenue &amp; Customs</a></dd>
+      <% if @document.topics %>
+        <dt>Part of</dt>
+        <dd>
+          <%= links_to_sentence(@document.topics) %>
+        </dd>
+      <% end %>
+      <% if @document.organisations %>
+        <dt>Published by</dt>
+        <dd>
+          <%= links_to_sentence(@document.organisations) %>
+        </dd>
+      <% end %>
     </dl>
   </div>
   <div class='secondary'>
