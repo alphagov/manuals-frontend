@@ -14,8 +14,13 @@ gem 'govspeak', '1.5.2'
 gem 'plek', '1.7.0'
 gem 'gds-api-adapters', '10.11.0'
 
-gem 'byebug', group: [:development, :test]
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
 
 group :development, :test do
+  gem 'pry'
+  gem 'byebug'
   gem 'jasmine-rails'
 end
