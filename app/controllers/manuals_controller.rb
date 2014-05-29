@@ -1,8 +1,7 @@
 class ManualsController < ApplicationController
 
   def index
-    path = "public/#{params["manual_id"]}/index.json"
-    file = OpenStruct.new(JSON.parse(File.open(path).read))
+    file = ManualsRepository.new.fetch(params["manual_id"])
     @manual = ManualPresenter.new(params["manual_id"], file)
     @document = DocumentPresenter.new(file)
     render :show
@@ -10,10 +9,10 @@ class ManualsController < ApplicationController
 
   def show
     if params["section_id"].present?
-      path = "public/#{params["manual_id"]}/#{params["section_id"]}.json"
-      if File.exists?(path)
+      file = ManualsRepository.new.fetch(params["manual_id"], params["section_id"])
+      if file
         @manual = ManualPresenter.new(params["manual_id"], file)
-        @document = DocumentPresenter.new(JSON.parse(File.open(path).read))
+        @document = DocumentPresenter.new(file)
       else
         render text: 'Not found', status: 404
       end
