@@ -1,4 +1,4 @@
-<% content_for :title, params[:manual_id].titlecase %>
+<% content_for :title, @manual.title %>
 <%= render partial: "header" %>
 <div class='manual-section'>
   <h2 class='section-title'><%= @document.section_id %> <span class='title'><%=@document.title %></span></h2>

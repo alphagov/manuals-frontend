@@ -1,23 +1,23 @@
-<header class="<%= @document.hmrc? ? 'hmrc' : nil %>">
+<header class="<%= @manual.hmrc? ? 'hmrc' : nil %>">
   <div class='primary'>
 
-    <% if @document.hmrc? %>
+    <% if @manual.hmrc? %>
       <span class='manual-type'>HMRC manuals</span>
     <% end %>
 
 
-    <h1><%= params[:manual_id].titlecase %></h1>
+    <h1><%= @manual.title %></h1>
     <dl>
-      <% if @document.topics %>
+      <% if @manual.topics %>
         <dt>Part of</dt>
         <dd>
-          <%= links_to_sentence(@document.topics) %>
+          <%= links_to_sentence(@manual.topics) %>
         </dd>
       <% end %>
-      <% if @document.organisations %>
+      <% if @manual.organisations %>
         <dt>Published by</dt>
         <dd>
-          <%= links_to_sentence(@document.organisations) %>
+          <%= links_to_sentence(@manual.organisations) %>
         </dd>
       <% end %>
     </dl>
