@@ -164,8 +164,7 @@
     }
 
     .title {
-      font-weight: bold;
-      float: left;
+      @include bold-24;
     }
 
     .section-links {
