@@ -170,27 +170,44 @@
     .section-links {
       margin-top:$gutter-half;
       border-top: 1px solid $border-colour;
+      margin-top:$gutter-one-third;
+
+      @include media(tablet) {
+        margin-top: $gutter-half;
+      }
     }
 
-    .collection-controls {
+    .title-controls-wrap {
       @extend %contain-floats;
 
-      a {
-        padding: 0 $gutter-half 0 0;
-        float:right;
-
-        &:first-child {
-          padding-right:0
+      .title {
+        @include media(tablet) {
+          float:left;
+          width: $three-quarters;
         }
+      }
+
+      .collection-controls {
+        display:block;
+        margin-left: -5px;
 
         @include media(tablet) {
-          padding: 0 $gutter 0 0;
+          margin-right:-5px;
+          margin-left:0;
+          float:right;
+          display:inline-block;
         }
 
-        &.disabled {
-          color:$secondary-text-colour;
-          text-decoration:none;
-          cursor:default;
+        a {
+          @include core-16;
+          padding: 0  5px 0 5px;
+          display:inline-block;
+
+          &.disabled {
+            color:$secondary-text-colour;
+            text-decoration:none;
+            cursor:default;
+          }
         }
       }
     }

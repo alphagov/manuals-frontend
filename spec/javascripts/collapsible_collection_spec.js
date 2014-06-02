@@ -4,6 +4,7 @@ describe('CollapsibleCollection', function(){
   beforeEach(function(){
     collectionString =
       '<div class="js-collapsible-collection subsection-collection">'+
+        '<div class="title-controls-wrap"></div>'+
         '<ol class="section-links">'+
           '<li class="manual-subsection js-openable" data-section-id="EIM11205">'+
             '<a href="#" class="subsection-title">'+

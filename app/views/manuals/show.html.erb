@@ -6,7 +6,9 @@
     <%= govspeak_to_html(@document.body) %>
     <% @document.section_groups.each do | group | %>
     <div class='js-collapsible-collection subsection-collection'>
-      <h3 class='title'><%= group.title %></h3>
+      <div class='title-controls-wrap'>
+        <h3 class='title'><%= group.title %></h3>
+      </div>
       <ol class='section-links'>
         <% group.sections.each do | section | %>
           <%= render 'section', :section => section %>

@@ -56,7 +56,7 @@
   }
 
   CollapsibleCollection.prototype.addControls = function addControls(){
-    this.$container.find('ol.section-links').before('<div class="collection-controls"></div>');
+    this.$container.find('.title-controls-wrap').append('<div class="collection-controls"></div>');
     this.$container.find('.collection-controls').append(this.$openAll);
     this.$container.find('.collection-controls').append(this.$closeAll);
 
