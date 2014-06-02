@@ -125,7 +125,9 @@
         background-image: image-url("separator-2x.png");
         background-size: 6px 11px;
       }
-
+      &:first-child {
+        margin-left:0;
+      }
       &.last-child {
         background-image:none;
         color: $secondary-text-colour;
