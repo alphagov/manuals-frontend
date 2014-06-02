@@ -1,6 +1,6 @@
 <li class='manual-subsection <%= section.body.present? ? "js-openable" : "link-out" %>' id='<%= section.section_id %>' data-section-id='<%=section.section_id %>'>
 
-  <a href='/guidance/<%= params[:manual_id] %>/<%= section.section_id %>' class='subsection-title'>
+  <a href='/guidance/<%= params[:manual_id] %>/<%= section.section_id %>' class='subsection-title <%= section.section_id.present? ? 'subsection-with-id' : ''%>'>
     <span class="subsection-heading">
       <% if section.section_id %>
         <span class='subsection-id'><%= section.section_id %></span>

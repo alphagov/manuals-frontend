@@ -230,28 +230,20 @@
       &:hover {
         background-color:$grey-4;
       }
-      .subsection-heading {
-        @extend %contain-floats;
-        &.subsection-with-id .subsection-title-text {
-          display:block;
-        }
-        .subsection-id {
-          color: $secondary-text-colour;
-          float:left;
-          width: 145px;
-          @include media(tablet) {
-            width: 115px;
-          }
-        }
+      .subsection-id {
+        color: $secondary-text-colour;
+        float:left;
+      }
 
-        .subsection-title-text {
-          font-weight:bold;
-          display: block;
-          float: left;
-          width: 100%;
-          @include media(desktop) {
-            width: 85%;
-          }
+      .subsection-title-text {
+        font-weight:bold;
+      }
+
+      &.subsection-with-id .subsection-title-text {
+        margin-left: 100px;
+        display:block;
+        @include media(tablet) {
+          margin-left: 130px;
         }
       }
     }
