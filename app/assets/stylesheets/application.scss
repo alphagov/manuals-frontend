@@ -300,5 +300,7 @@
 /* Govspeak overrides */
 .section-content .govspeak,
 .subsection-body .govspeak {
-  width:$two-thirds;
+  @include media(tablet) {
+    width:$two-thirds;
+  }
 }
