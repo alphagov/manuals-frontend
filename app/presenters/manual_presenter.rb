@@ -1,28 +1,26 @@
 class ManualPresenter
 
-  def initialize(manual_id, document)
-    @manual_id = manual_id
-    @document = document
+  def initialize(manual)
+    @manual = manual
   end
 
   def title
-    @manual_id.titlecase
+    manual['title']
   end
 
   def organisations
-    organisations = @document['details']['published_by']
+    organisations = manual['details']['published_by']
     if organisations
-      @document['details']['published_by'].map do | organisation|
+      manual['details']['published_by'].map do | organisation|
         OrganisationPresenter.new(organisation)
       end
-    else # This is temporary as a way to get around the HMRC placeholder manual not having any organisation data
-      organisation = { 'title' => 'HM Revenue & Customs', 'slug' => 'hm-revenue-customs', 'abbreviation' => 'HMRC' }
-      [OrganisationPresenter.new(organisation)]
+    else
+      []
     end
   end
 
   def topics
-    topics = @document['details']['topics']
+    topics = manual['details']['topics']
     if topics
       topics.map do | topic|
         TopicPresenter.new(topic)

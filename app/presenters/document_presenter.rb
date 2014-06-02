@@ -17,8 +17,12 @@ class DocumentPresenter
   end
 
   def section_groups
-    document['details']['sections'].map do | group |
-      SectionGroupPresenter.new(group)
+    if document['details']['sections'].present?
+      document['details']['sections'].map do | group |
+        SectionGroupPresenter.new(group)
+      end
+    else
+      []
     end
   end
 

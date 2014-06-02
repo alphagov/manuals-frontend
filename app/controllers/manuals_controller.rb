@@ -1,24 +1,27 @@
 class ManualsController < ApplicationController
 
   def index
-    file = ManualsRepository.new.fetch(params["manual_id"])
-    @manual = ManualPresenter.new(params["manual_id"], file)
-    @document = DocumentPresenter.new(file)
+    manual = ManualsRepository.new.fetch(params["manual_id"])
+
+    error_not_found unless manual
+    @manual = ManualPresenter.new(manual)
+    @document = DocumentPresenter.new(manual)
     render :show
   end
 
   def show
-    if params["section_id"].present?
-      file = ManualsRepository.new.fetch(params["manual_id"], params["section_id"])
-      if file
-        @manual = ManualPresenter.new(params["manual_id"], file)
-        @document = DocumentPresenter.new(file)
-      else
-        render text: 'Not found', status: 404
-      end
-    else
-      render text: 'Not found', status: 404
-    end
+    manual = ManualsRepository.new.fetch(params["manual_id"])
+    document = ManualsRepository.new.fetch(params['manual_id'], params['section_id'])
+
+    error_not_found unless manual && document
+    @manual = ManualPresenter.new(manual)
+    @document = DocumentPresenter.new(document)
+  end
+
+  private
+
+  def error_not_found
+    render status: :not_found, text: "404 error not found"
   end
 
 end
