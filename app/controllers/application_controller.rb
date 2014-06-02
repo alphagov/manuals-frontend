@@ -7,10 +7,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :slimmer_headers
 
+  before_filter :set_robots_headers
+
   private
 
   def slimmer_headers
     set_slimmer_headers(template: "header_footer_only")
+  end
+
+  def set_robots_headers
+    response.headers["X-Robots-Tag"] = "none"
   end
 
 end
