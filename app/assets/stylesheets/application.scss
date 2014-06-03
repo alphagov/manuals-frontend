@@ -230,6 +230,10 @@
       display:block;
       position:relative;
 
+      @include ie-lte(7){
+        zoom:1;
+      }
+
       .js-toggle {
         height: 25px;
         width: 25px;
