@@ -1,12 +1,25 @@
-<header>
+<header class="<%= @manual.hmrc? ? 'hmrc' : nil %>">
   <div class='primary'>
-    <span class='manual-type'>HMRC manuals</span>
-    <h1>Employment Income Manual</h1>
+
+    <% if @manual.hmrc? %>
+      <span class='manual-type'>HMRC manuals</span>
+    <% end %>
+
+
+    <h1><%= @manual.title %></h1>
     <dl>
-      <dt>Part of</dt>
-      <dd><a href='#'>Tax guidance</a> and <a href='#'>Employment</a></dd>
-      <dt>Published by</dt>
-      <dd><a href='#'>HM Revenue &amp; Customs</a></dd>
+      <% if @manual.topics %>
+        <dt>Part of</dt>
+        <dd>
+          <%= links_to_sentence(@manual.topics) %>
+        </dd>
+      <% end %>
+      <% if @manual.organisations %>
+        <dt>Published by</dt>
+        <dd>
+          <%= links_to_sentence(@manual.organisations) %>
+        </dd>
+      <% end %>
     </dl>
   </div>
   <div class='secondary'>

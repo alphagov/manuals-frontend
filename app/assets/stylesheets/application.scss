@@ -17,11 +17,14 @@
   @include inner-block;
 }
 
-#hmrc-manuals-frontend {
+#manuals-frontend {
   padding-bottom:$gutter*3;
 
   header {
-    background: $hm-revenue-customs;
+    background: $govuk-blue;
+    &.hmrc {
+      background: $hm-revenue-customs;
+    }
     padding: $gutter;
     color: white;
     margin: 0 (-$gutter);
@@ -122,7 +125,9 @@
         background-image: image-url("separator-2x.png");
         background-size: 6px 11px;
       }
-
+      &:first-child {
+        margin-left:0;
+      }
       &.last-child {
         background-image:none;
         color: $secondary-text-colour;
@@ -158,30 +163,51 @@
       margin-top: $gutter;
     }
 
+    .title {
+      @include bold-24;
+    }
+
     .section-links {
       margin-top:$gutter-half;
       border-top: 1px solid $border-colour;
+      margin-top:$gutter-one-third;
+
+      @include media(tablet) {
+        margin-top: $gutter-half;
+      }
     }
 
-    .collection-controls {
+    .title-controls-wrap {
       @extend %contain-floats;
 
-      a {
-        padding: 0 $gutter-half 0 0;
-        float:right;
-
-        &:first-child {
-          padding-right:0
+      .title {
+        @include media(tablet) {
+          float:left;
+          width: $three-quarters;
         }
+      }
+
+      .collection-controls {
+        display:block;
+        margin-left: -5px;
 
         @include media(tablet) {
-          padding: 0 $gutter 0 0;
+          margin-right:-5px;
+          margin-left:0;
+          float:right;
+          display:inline-block;
         }
 
-        &.disabled {
-          color:$secondary-text-colour;
-          text-decoration:none;
-          cursor:default;
+        a {
+          @include core-16;
+          padding: 0  5px 0 5px;
+          display:inline-block;
+
+          &.disabled {
+            color:$secondary-text-colour;
+            text-decoration:none;
+            cursor:default;
+          }
         }
       }
     }
@@ -204,6 +230,10 @@
       display:block;
       position:relative;
 
+      @include ie-lte(7){
+        zoom:1;
+      }
+
       .js-toggle {
         height: 25px;
         width: 25px;
@@ -222,21 +252,26 @@
       &:hover {
         background-color:$grey-4;
       }
-
       .subsection-id {
         color: $secondary-text-colour;
         float:left;
       }
 
       .subsection-title-text {
+        font-weight:bold;
+      }
+
+      &.subsection-with-id .subsection-title-text {
         margin-left: 100px;
         display:block;
-        font-weight:bold;
-
         @include media(tablet) {
-           margin-left: 130px;
-         }
+          margin-left: 130px;
+        }
       }
+    }
+    .subsection-summary {
+      display: block;
+      color: $black;
     }
 
     .subsection-body {
@@ -279,5 +314,7 @@
 /* Govspeak overrides */
 .section-content .govspeak,
 .subsection-body .govspeak {
-  width:$two-thirds;
+  @include media(tablet) {
+    width:$two-thirds;
+  }
 }

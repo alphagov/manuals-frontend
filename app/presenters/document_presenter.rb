@@ -17,15 +17,22 @@ class DocumentPresenter
   end
 
   def section_groups
-    document['details']['sections'].map do | group |
-      SectionGroupPresenter.new(group)
+    if document['details']['sections'].present?
+      document['details']['sections'].map do | group |
+        SectionGroupPresenter.new(group)
+      end
+    else
+      []
     end
   end
 
   def breadcrumbs
     root = OpenStruct.new(link: '/guidance/employment-income-manual', label: 'Contents')
-    crumbs = document['details']['breadcrumbs'][1..-2].map do | section_id |
-      OpenStruct.new(link: "/guidance/employment-income-manual/#{section_id}", label: section_id)
+    crumbs = []
+    if document['details']['breadcrumbs'].present?
+      crumbs = document['details']['breadcrumbs'][1..-2].map do | section_id |
+        OpenStruct.new(link: "/guidance/employment-income-manual/#{section_id}", label: section_id)
+      end
     end
     [root] + crumbs
   end
@@ -69,6 +76,10 @@ private
       section['manual-section-id']
     end
 
+    def summary
+      section['summary']
+    end
+
     def body
       section['body']
     end
@@ -77,4 +88,5 @@ private
     attr_reader :section
 
   end
+
 end
