@@ -5,6 +5,10 @@ class ManualPresenter
     @manual = manual
   end
 
+  def updated_at
+    Date.parse(manual.updated_at)
+  end
+
   def organisations
     raw_organisations.map { |org| OrganisationPresenter.new(org) }
   end
