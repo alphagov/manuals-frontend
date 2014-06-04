@@ -8,13 +8,13 @@
 
     <h1><%= @manual.title %></h1>
     <dl>
-      <% if @manual.topics %>
+      <% if @manual.topics.any? %>
         <dt>Part of</dt>
         <dd>
           <%= links_to_sentence(@manual.topics) %>
         </dd>
       <% end %>
-      <% if @manual.organisations %>
+      <% if @manual.organisations.any? %>
         <dt>Published by</dt>
         <dd>
           <%= links_to_sentence(@manual.organisations) %>
@@ -25,7 +25,7 @@
   <div class='secondary'>
     <div class='secondary-inner'>
       <p>
-        Manual updated:<time datetime="2014-01-23T00:00:00+01:00">23 January 2014</time>
+        Manual updated: <%= marked_up_date(@manual.updated_at) %>
       </p>
     </div>
   </div>

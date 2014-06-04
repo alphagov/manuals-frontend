@@ -1,83 +1,64 @@
 class ManualPresenter
+  delegate :title, to: :manual
 
   def initialize(manual)
     @manual = manual
   end
 
-  def title
-    manual['title']
+  def updated_at
+    Date.parse(manual.updated_at)
   end
 
   def organisations
-    organisations = manual['details']['published_by']
-    if organisations
-      manual['details']['published_by'].map do | organisation|
-        OrganisationPresenter.new(organisation)
-      end
-    else
-      []
-    end
+    raw_organisations.map { |org| OrganisationPresenter.new(org) }
   end
 
   def topics
-    topics = manual['details']['topics']
-    if topics
-      topics.map do | topic|
-        TopicPresenter.new(topic)
-      end
-    end
+    raw_topics.map { |topic| TopicPresenter.new(topic) }
   end
-
 
   def hmrc?
     organisations.map(&:slug).include?('hm-revenue-customs')
   end
 
-  private 
-    attr_reader :manual
+private
+  attr_reader :manual
+
+  def raw_organisations
+    manual.details.published_by || []
+  end
+
+  def raw_topics
+    manual.details.topics || []
+  end
 
   class OrganisationPresenter
+    delegate :title, :slug, to: :organisation
 
     def initialize(organisation)
       @organisation = organisation
     end
 
-    def title
-      organisation['title']
-    end
-
-    def slug
-      organisation['slug']
-    end
-
     def path
-      '/government/organisations/' + slug
+      "/government/organisations/#{slug}"
     end
 
-    private
-      attr_reader :organisation
+  private
+    attr_reader :organisation
   end
 
   class TopicPresenter
+    delegate :title, :slug, to: :topic
 
     def initialize(topic)
       @topic = topic
     end
 
-    def title
-      topic['title']
-    end
-
     def path
-      '/government/topics/' + slug
+      "/government/topics/#{slug}"
     end
 
-    def slug
-      topic['slug']
-    end
-
-    private
-      attr_reader :topic
+  private
+    attr_reader :topic
   end
-
 end
