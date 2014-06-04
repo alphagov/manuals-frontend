@@ -16,7 +16,7 @@ private
     section_id ||= 'index'
     path = "public/#{manual_id}/#{section_id}.json"
 
-    OpenStruct.new(JSON.parse(File.open(path).read))
+    build_ostruct(JSON.parse(File.open(path).read))
   end
 
   def fetch_from_api(manual_id, section_id)
@@ -27,5 +27,18 @@ private
 
   def local_manual_exists?(manual_id)
     %w(immigration employment-income-manual).include?(manual_id)
+  end
+
+  def build_ostruct(value)
+    case value
+    when Hash
+      OpenStruct.new(value.map.with_object({}) { |(k, v), hash|
+        hash[k] = build_ostruct(v)
+      })
+    when Array
+      value.map { |v| build_ostruct(v) }
+    else
+      value
+    end
   end
 end
