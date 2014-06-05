@@ -25,14 +25,14 @@ class ManualPresenter
     manual.web_url
   end
 
-  def sections
+  def section_groups
     raw_sections.map { |group| SectionGroupPresenter.new(group) }
   end
 
 private
   attr_reader :manual
 
-  def raw_sections
+  def raw_section_groups
     manual.details.sections || []
   end
 

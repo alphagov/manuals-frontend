@@ -13,7 +13,7 @@ class ManualsController < ApplicationController
 
     error_not_found unless manual && document
     @manual = ManualPresenter.new(manual)
-    @document = DocumentPresenter.new(document)
+    @document = DocumentPresenter.new(document, @manual)
   end
 
   private
