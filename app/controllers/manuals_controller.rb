@@ -5,8 +5,6 @@ class ManualsController < ApplicationController
 
     error_not_found unless manual
     @manual = ManualPresenter.new(manual)
-    @document = DocumentPresenter.new(manual)
-    render :show
   end
 
   def show
