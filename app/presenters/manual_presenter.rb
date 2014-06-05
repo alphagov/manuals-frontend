@@ -21,8 +21,20 @@ class ManualPresenter
     organisations.map(&:slug).include?('hm-revenue-customs')
   end
 
+  def url
+    manual.web_url
+  end
+
+  def sections
+    raw_sections.map { |group| SectionGroupPresenter.new(group) }
+  end
+
 private
   attr_reader :manual
+
+  def raw_sections
+    manual.details.sections || []
+  end
 
   def raw_organisations
     manual.details.published_by || []
