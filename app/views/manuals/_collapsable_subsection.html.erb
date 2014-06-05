@@ -1,0 +1,10 @@
+<h2 class='<%= section.section_id ? "subsection-with-id" : '' %>'>
+  <% if section.section_id %>
+    <span class='subsection-id'><%= section.section_id %></span>
+  <% end %>
+  <span class='subsection-title-text'><%= section.title %></span>
+  <span class='subsection-summary'><%= section.summary %></span>
+</h2>
+<div class="js-no-collapse subsection-body">
+  <%= govspeak_to_html(section.body) %>
+</div>

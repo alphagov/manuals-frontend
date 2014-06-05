@@ -1,0 +1,9 @@
+<h2 class='<%= section.section_id ? "subsection-with-id" : '' %> linked-title'>
+  <%= link_to section.path, class: "#{section.section_id.present? ? 'subsection-with-id' : ''}" do
+    <% if section.section_id %>
+      <span class='subsection-id'><%= section.section_id %></span>
+    <% end %>
+    <span class='subsection-title-text'><%= section.title %></span>
+    <span class='subsection-summary'><%= section.summary %></span>
+  <% end %>
+</h2>
