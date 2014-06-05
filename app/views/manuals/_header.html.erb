@@ -31,8 +31,11 @@
   </div>
 </header>
 <ol class='breadcrumb-trail' role='breadcrumbs'>
-  <% @document.breadcrumbs.each do | crumb | %>
-    <li> <%= link_to crumb.label, crumb.link %></li>
+  <li><%= link_to 'Contents', @manual.url %></li>
+  <% if @document %>
+    <% @document.breadcrumbs.each do | crumb | %>
+      <li> <%= link_to crumb.label, crumb.link %></li>
+    <% end %>
+    <li class='last-child'><strong><%= @document.breadcrumb %></strong></li>
   <% end %>
-  <li class='last-child'><strong><%= @document.section_id %></strong></li>
 </ol>

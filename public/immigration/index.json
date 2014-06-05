@@ -1,6 +1,7 @@
 { "title":"Immigration Rules",
+  "updated_at": "2014-01-23T00:00:00+01:00",
+  "web_url": "/guidance/immigration",
   "details": {
-  "breadcrumbs":["index"],
   "sectors": [],
   "policies":[],
   "topics":[{"title":"Immigration Rules", "slug":"borders-and-immigration"}],
