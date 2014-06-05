@@ -18,8 +18,8 @@ class DocumentPresenter
     document['details']['body']
   end
 
-  def sections
-    raw_sections.map { |group| SectionGroupPresenter.new(group) }
+  def section_groups
+    raw_section_groups.map { |group| SectionGroupPresenter.new(group) }
   end
 
   def breadcrumbs
@@ -40,7 +40,7 @@ class DocumentPresenter
 private
   attr_reader :document, :manual
 
-  def raw_sections
+  def raw_section_groups
     document.sections || []
   end
 

@@ -26,7 +26,7 @@ class ManualPresenter
   end
 
   def section_groups
-    raw_sections.map { |group| SectionGroupPresenter.new(group) }
+    raw_section_groups.map { |group| SectionGroupPresenter.new(group) }
   end
 
 private
