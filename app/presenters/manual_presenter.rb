@@ -10,7 +10,7 @@ class ManualPresenter
   end
 
   def organisations
-    raw_organisations.map { |org| OrganisationPresenter.new(org) }
+    organisation_tags.map { |org| OrganisationPresenter.new(org) }
   end
 
   def topics
@@ -40,12 +40,16 @@ private
     manual.details.section_groups || []
   end
 
-  def raw_organisations
-    manual.details.published_by || []
-  end
-
   def raw_topics
     manual.details.topics || []
+  end
+
+  def tags
+    manual.tags || []
+  end
+
+  def organisation_tags
+    tags.select { |t| t.details.type == 'organisation' }
   end
 
   class OrganisationPresenter
