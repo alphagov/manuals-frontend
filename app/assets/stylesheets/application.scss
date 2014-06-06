@@ -135,6 +135,64 @@
     }
   }
 
+
+  .collapsable-subsections h2 {
+    @include core-19;
+    font-weight:bold;
+    border-top: 1px solid $border-colour;
+    padding: $gutter-one-third $gutter $gutter-one-third 0;
+    margin: $gutter 0;
+    text-decoration: none;
+    display: block;
+    position: relative;
+
+    /* linked-titles are stacked tighter */
+    &.linked-title {
+      margin: 0 0;
+      cursor: pointer;
+      &:hover {
+        background-color:$grey-4;
+      }
+    }
+
+    /* These styles are only for js-enabled
+    color: $link-colour;
+    cursor: pointer;
+    &:hover {
+      background-color:$grey-4;
+    }
+    */
+    .subsection-id {
+      color: $secondary-text-colour;
+      float:left;
+      font-weight:normal;
+    }
+
+    &.subsection-with-id .subsection-title-text {
+      margin-left: 100px;
+      display:block;
+      @include media(tablet) {
+        margin-left: 130px;
+      }
+    }
+
+    a {
+      text-decoration:none;
+      color: $link-colour;
+      cursor: pointer;
+    }
+  }
+
+
+  /* overwrite for h2s that occur in govspeak from hmrc manuals
+     which shouldn't be collapsable.
+  */
+  .collapsable-subsections .subsection-body .govspeak h2 {
+    border-top: none;
+    margin: 0;
+  }
+
+
   .manual-section {
     margin-top: $gutter-half;
 
@@ -312,9 +370,15 @@
 }
 
 /* Govspeak overrides */
-.section-content .govspeak,
-.subsection-body .govspeak {
+.section-content .govspeak > *,
+.subsection-body .govspeak > * {
   @include media(tablet) {
     width:$two-thirds;
+  }
+}
+/* h2s are styled to be collapsable controls so are full width */
+.section-content .govspeak > h2 {
+  @include media(tablet) {
+    width: inherit;
   }
 }
