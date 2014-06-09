@@ -10,7 +10,7 @@ class ManualPresenter
   end
 
   def organisations
-    organisation_tags.map { |org| OrganisationPresenter.new(org) }
+    tags.select { |t| t.details.type == 'organisation' }
   end
 
   def hmrc?
@@ -38,24 +38,5 @@ private
 
   def tags
     manual.tags || []
-  end
-
-  def organisation_tags
-    tags.select { |t| t.details.type == 'organisation' }
-  end
-
-  class OrganisationPresenter
-    delegate :title, :slug, to: :organisation
-
-    def initialize(organisation)
-      @organisation = organisation
-    end
-
-    def path
-      "/government/organisations/#{slug}"
-    end
-
-  private
-    attr_reader :organisation
   end
 end

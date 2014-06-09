@@ -5,9 +5,9 @@ module ApplicationHelper
     return content_tag(:div, doc.to_html.html_safe, class: 'govspeak')
   end
 
-  def links_to_sentence(links = {})
+  def links_to_sentence(links)
     links.map { |o|
-      link_to o.title, o.path
+      link_to(o.title, o.web_url)
     }.to_sentence
   end
 
