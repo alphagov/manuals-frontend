@@ -136,7 +136,7 @@
   }
 
 
-  .collapsable-subsections h2 {
+  .collapsible-subsections h2 {
     @include core-19;
     font-weight:bold;
     border-top: 1px solid $border-colour;
@@ -185,9 +185,9 @@
 
 
   /* overwrite for h2s that occur in govspeak from hmrc manuals
-     which shouldn't be collapsable.
+     which shouldn't be collapsible.
   */
-  .collapsable-subsections .subsection-body .govspeak h2 {
+  .collapsible-subsections .subsection-body .govspeak h2 {
     border-top: none;
     margin: 0;
   }
@@ -376,7 +376,7 @@
     width:$two-thirds;
   }
 }
-/* h2s are styled to be collapsable controls so are full width */
+/* h2s are styled to be collapsible controls so are full width */
 .section-content .govspeak > h2 {
   @include media(tablet) {
     width: inherit;

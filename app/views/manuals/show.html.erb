@@ -3,7 +3,7 @@
 <div class='manual-section'>
   <h2 class='section-title'><%= @document.section_id %> <span class='title'><%=@document.title %></span></h2>
   <div class='section-content'>
-    <div class='collapsable-subsections'>
+    <div class='collapsible-subsections'>
       <%= govspeak_to_html(@document.body) %>
     </div>
     <% @document.section_groups.each do | group | %>
@@ -11,12 +11,12 @@
       <div class='title-controls-wrap'>
         <h3 class='title'><%= group.title %></h3>
       </div>
-      <div class='collapsable-subsections'>
+      <div class='collapsible-subsections'>
         <% group.sections.each do | subsection | %>
-          <% if subsection.collapsable? %>
-            <%= render 'collapsable_subsection', :section => subsection %>
+          <% if subsection.collapsible? %>
+            <%= render 'collapsible_subsection', :section => subsection %>
           <% else %>
-            <%= render 'non_collapsable_subsection', :section => subsection %>
+            <%= render 'non_collapsible_subsection', :section => subsection %>
           <% end %>
         <% end %>
       </div>
