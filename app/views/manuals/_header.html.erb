@@ -5,14 +5,12 @@
     <% end %>
 
     <h1><%= @manual.title %></h1>
-    <dl>
-      <% if @manual.organisations.any? %>
-        <dt>Published by</dt>
-        <dd>
-          <%= links_to_sentence(@manual.organisations) %>
-        </dd>
-      <% end %>
-    </dl>
+    <% if @manual.organisations.any? %>
+      <dl>
+        <dt>From</dt>
+        <dd><%= links_to_sentence(@manual.organisations) %></dd>
+      </dl>
+    <% end %>
   </div>
   <div class='secondary'>
     <div class='secondary-inner'>
