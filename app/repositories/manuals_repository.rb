@@ -26,7 +26,7 @@ private
   end
 
   def local_manual_exists?(manual_id)
-    %w(immigration employment-income-manual).include?(manual_id)
+    manual_id == 'employment-income-manual'
   end
 
   def build_ostruct(value)
