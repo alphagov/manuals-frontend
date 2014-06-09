@@ -6,12 +6,6 @@
 
     <h1><%= @manual.title %></h1>
     <dl>
-      <% if @manual.topics.any? %>
-        <dt>Part of</dt>
-        <dd>
-          <%= links_to_sentence(@manual.topics) %>
-        </dd>
-      <% end %>
       <% if @manual.organisations.any? %>
         <dt>Published by</dt>
         <dd>

@@ -13,10 +13,6 @@ class ManualPresenter
     organisation_tags.map { |org| OrganisationPresenter.new(org) }
   end
 
-  def topics
-    raw_topics.map { |topic| TopicPresenter.new(topic) }
-  end
-
   def hmrc?
     organisations.map(&:slug).include?('hm-revenue-customs')
   end
@@ -40,10 +36,6 @@ private
     manual.details.section_groups || []
   end
 
-  def raw_topics
-    manual.details.topics || []
-  end
-
   def tags
     manual.tags || []
   end
@@ -65,20 +57,5 @@ private
 
   private
     attr_reader :organisation
-  end
-
-  class TopicPresenter
-    delegate :title, :slug, to: :topic
-
-    def initialize(topic)
-      @topic = topic
-    end
-
-    def path
-      "/government/topics/#{slug}"
-    end
-
-  private
-    attr_reader :topic
   end
 end
