@@ -9,6 +9,10 @@ class SectionPresenter
     section['manual-section-id']
   end
 
+  def path
+    "/#{section.slug}"
+  end
+
 private
   attr_reader :section
 

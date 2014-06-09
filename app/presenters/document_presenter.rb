@@ -41,7 +41,7 @@ private
   attr_reader :document, :manual
 
   def raw_section_groups
-    document.sections || []
+    document.details.section_groups || []
   end
 
 end
