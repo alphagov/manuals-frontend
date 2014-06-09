@@ -8,7 +8,7 @@ module ApplicationHelper
   def links_to_sentence(links = {})
     links.map { |o|
       link_to o.title, o.path
-     }.to_sentence
+    }.to_sentence
   end
 
   def marked_up_date(date, format = :long)
