@@ -12,7 +12,6 @@ namespace :router do
 
   task :register_routes => :router_environment do
     @router_api.add_route('/guidance/employment-income-manual', 'prefix', 'manuals-frontend')
-    @router_api.add_route('/guidance/immigration', 'prefix', 'manuals-frontend')
   end
 
   desc 'Register manuals-frontend application and routes with the router'
