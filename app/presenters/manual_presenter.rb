@@ -10,11 +10,7 @@ class ManualPresenter
   end
 
   def organisations
-    raw_organisations.map { |org| OrganisationPresenter.new(org) }
-  end
-
-  def topics
-    raw_topics.map { |topic| TopicPresenter.new(topic) }
+    tags.select { |t| t.details.type == 'organisation' }
   end
 
   def hmrc?
@@ -40,41 +36,7 @@ private
     manual.details.section_groups || []
   end
 
-  def raw_organisations
-    manual.details.published_by || []
-  end
-
-  def raw_topics
-    manual.details.topics || []
-  end
-
-  class OrganisationPresenter
-    delegate :title, :slug, to: :organisation
-
-    def initialize(organisation)
-      @organisation = organisation
-    end
-
-    def path
-      "/government/organisations/#{slug}"
-    end
-
-  private
-    attr_reader :organisation
-  end
-
-  class TopicPresenter
-    delegate :title, :slug, to: :topic
-
-    def initialize(topic)
-      @topic = topic
-    end
-
-    def path
-      "/government/topics/#{slug}"
-    end
-
-  private
-    attr_reader :topic
+  def tags
+    manual.tags || []
   end
 end
