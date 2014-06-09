@@ -1,12 +1,20 @@
 { "title":"Immigration Rules",
   "updated_at": "2014-01-23T00:00:00+01:00",
   "web_url": "/guidance/immigration",
+  "tags": [
+    {
+      "title": "UK Visas and Immigration",
+      "slug": "uk-visas-and-immigration",
+      "details": {
+        "type": "organisation"
+      }
+    }
+  ],
   "details": {
   "sectors": [],
   "policies":[],
   "topics":[{"title":"Immigration Rules", "slug":"borders-and-immigration"}],
   "collections":[{"url":"https://www.gov.uk/immigration-operational-guidance", "title":"Visas and immigration operational guidance"}],
-  "published_by":[{"title":"UK Visas and Immigration", "abbreviation":"UKVI", "slug":"uk-visas-and-immigration"}],
   "summary":"Implementation and transitional provisions, application and interpretation of the Immigration Rules and public funds clarification.",
   "section_groups": [
     { "title":"Contents",
