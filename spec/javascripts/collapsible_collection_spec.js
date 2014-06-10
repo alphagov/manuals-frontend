@@ -1,58 +1,115 @@
 describe('CollapsibleCollection', function(){
-  var collectionHTML, collection, collectionString;
+  var collectionsFromSectionsHTML, collectionsFromBlobHTML, collectionBlob, collectionHTML, collection, collectionString;
 
   beforeEach(function(){
-    collectionString =
+    collectionsFromBlobString =
       '<div class="js-collapsible-collection subsection-collection">'+
-        '<div class="title-controls-wrap"></div>'+
-        '<ol class="section-links">'+
-          '<li class="manual-subsection js-openable" data-section-id="EIM11205">'+
-            '<a href="#" class="subsection-title">'+
-              '<span class="subsection-id ">EIM11205</span>'+
-              '<span class="subsection-title-text">'+
-                'Tax liability on incentive awards'+
-              '</span>'+
-            '</a>'+
-            '<div class="subsection-body govspeak">'+
-              '<h5>General</h5>'+
-              '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct employee by entering into a PAYE settlement agreement (PSA), the award is not chargeable to tax on the employee. PSAs cannot be used to pay the tax on cash incentive awards. PSAs are covered at EIM11270.</p>'+
-            '</div>'+
-          '</li>'+
-          '<li class="manual-subsection js-openable" data-section-id="EIM11210">'+
-            '<a href="#" class="subsection-title">'+
-              '<span class="subsection-id ">EIM11210</span>'+
-              '<span class="subsection-title-text">Awards to an employees family or dependants</span>'+
-            '</a>'+
-            '<div class="subsection-body govspeak">'+
-              '<h5>Sections 74, 83, 91, 721(4) and 721(5) ITEPA 2003</h5>'+
-              '<p>Awards are treated as made to the employee if they are received by members of the employees family or household. There are different definitions of the family circle depending upon whether vouchers are used, or awards are obtained in some other way and are chargeable under the benefits code.</p>'+
-            '</div>'+
-          '</li>'+
-        '</ol>'+
+        '<div class="title-controls-wrap">'+
+        '</div>'+
+        '<div class="collapsible-subsections">'+
+          // Three collapsible subsections
+          '<h2>A section title!</h2>'+
+          '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+          '<h2>A second section title!</h2>'+
+          '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+          '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+          '<h2>A third section title!</h2>'+
+          '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+        '</div>'+
       '</div>';
 
-      collectionHTML = $(collectionString);
-      $('body').append(collectionHTML);
-      collection = new GOVUK.CollapsibleCollection({el:collectionHTML});
+    collectionsFromSectionsString =
+      '<div class="js-collapsible-collection subsection-collection">'+
+        '<div class="title-controls-wrap"><h3 class="title">Group Title</h3></div>'+
+        '<div class="collapsible-subsections">'+
+          // Three collapsible subsections
+          '<h2 class="subsection-with-id">'+
+            '<span class="subsection-id">EIM1234</span>'+
+            '<span class="subsection-title-text">Subsection title</span>'+
+            '<span class="subsection-summary">Here is a concise summary of the content</span>'+
+          '</h2>'+
+          '<div class="js-ignore-h2s subsection-body">'
+            '<h2>This h2 should be ignored by the section builder</h2>'+
+            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+          '</div>'+
+          '<h2 class="subsection-with-id">'+
+            '<span class="subsection-id">EIM1234</span>'+
+            '<span class="subsection-title-text">Subsection title</span>'+
+            '<span class="subsection-summary">Here is a concise summary of the content</span>'+
+          '</h2>'+
+          '<div class="js-ignore-h2s subsection-body">'
+            '<h2>This h2 should be ignored by the section builder</h2>'+
+            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+          '</div>'+
+          '<h2 class="subsection-with-id">'+
+            '<span class="subsection-id">EIM1234</span>'+
+            '<span class="subsection-title-text">Subsection title</span>'+
+            '<span class="subsection-summary">Here is a concise summary of the content</span>'+
+          '</h2>'+
+          '<div class="js-ignore-h2s subsection-body">'
+            '<h2>This h2 should be ignored by the section builder</h2>'+
+            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+          '</div>'+
+          // One subsection that isn't collapsible
+          '<h2 class="subsection-with-id linked-title">'+
+            '<a href="#">'+
+            '<span class="subsection-id">EIM1234</span>'+
+            '<span class="subsection-title-text">Subsection title</span>'+
+            '<span class="subsection-summary">Here is a concise summary of the content</span>'+
+            '</a>'+
+          '</h2>'+
+        '</div>'+
+      '</div>';
+
+      collectionsFromSectionsHTML = $(collectionsFromSectionsString);
+      collectionsFromBlobHTML = $(collectionsFromBlobString);
+
+      $('body').append(collectionsFromSectionsHTML);
+      collectionBlob = new GOVUK.CollapsibleCollection({el:collectionsFromSectionsHTML});
+
+      $('body').append(collectionsFromBlobHTML);
+      collectionSection = new GOVUK.CollapsibleCollection({el:collectionsFromBlobHTML});
+
+      // Past initialisation the source of the collection (a blob keyed by "body" or an
+      // array of sections) is irrelevant as markupSections() should normalise them)
+      // Creating a collection object for testing where the source is not relevant
+      collection = new GOVUK.CollapsibleCollection({el:collectionsFromBlobHTML});
   });
 
   afterEach(function(){
-    collectionHTML.remove();
+    collectionsFromSectionsHTML.remove();
+    collectionsFromBlobHTML.remove();
   });
 
 
   describe('initCollapsible', function(){
     it ('should add control links', function(){
-      secondCollectionHTML = $(collectionString);
-      expect(secondCollectionHTML.find('a.collection-control').length).toBe(0);
-      newCollection = new GOVUK.CollapsibleCollection({el:secondCollectionHTML});
+      // Blobs
+      var blobHTML = $(collectionsFromBlobString);
+      expect(blobHTML.find('a.collection-control').length).toBe(0);
+      var newCollection = new GOVUK.CollapsibleCollection({el:blobHTML});
+      expect(newCollection.$container.find('.collection-controls a').length).toBe(2);
+
+      // Sections
+      var sectionsHTML = $(collectionsFromSectionsString);
+      expect(sectionsHTML.find('a.collection-control').length).toBe(0);
+      newCollection = new GOVUK.CollapsibleCollection({el:sectionsHTML});
       expect(newCollection.$container.find('.collection-controls a').length).toBe(2);
     });
 
     it('should add a new object to collapsibles hash with the id from the section', function(){
-      var collectionSize = Object.keys(collection.collapsibles).length;
-      collection.initCollapsible(collection.$sections[0]);
-      expect(Object.keys(collection.collapsibles).length).toBe(collectionSize+1);
+      // Blobs
+      var collectionSize = Object.keys(collectionBlob.collapsibles).length;
+      collectionBlob.initCollapsible(collection.$sections[0]);
+      expect(Object.keys(collectionBlob.collapsibles).length).toBe(collectionSize+1);
+
+      // Sections
+      collectionSize = Object.keys(collectionSection.collapsibles).length;
+      collectionSection.initCollapsible(collectionSection.$sections[0]);
+      expect(Object.keys(collectionSection.collapsibles).length).toBe(collectionSize+1);
     });
   });
 
