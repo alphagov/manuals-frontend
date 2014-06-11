@@ -16,7 +16,9 @@ private
     section_id ||= 'index'
     path = "public/#{manual_id}/#{section_id}.json"
 
-    build_ostruct(JSON.parse(File.open(path).read))
+    if File.exists?(path)
+      build_ostruct(JSON.parse(File.open(path).read))
+    end
   end
 
   def fetch_from_api(manual_id, section_id)
