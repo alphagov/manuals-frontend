@@ -1,7 +1,9 @@
 describe('CollapsibleCollection', function(){
-  var collectionsFromSectionsHTML, collectionsFromBlobHTML, collectionBlob, collectionHTML, collection, collectionString;
+  var collectionsFromHRMCHTML, collectionsFromBlobHTML, collectionBlob, collectionHMRC, collection;
 
   beforeEach(function(){
+
+    // Content not from HMRC comes as a single blob of markdown from the GDSAPI in the "body" field.
     collectionsFromBlobString =
       '<div class="js-collapsible-collection subsection-collection">'+
         '<div class="title-controls-wrap">'+
@@ -18,7 +20,9 @@ describe('CollapsibleCollection', function(){
         '</div>'+
       '</div>';
 
-    collectionsFromSectionsString =
+    // Content from HMRC (currently in public/employment-income-manual/ comes as more structured data, broken down into sections.
+    // It contains some h2s that are not collapsible
+    collectionsFromHMRCString =
       '<div class="js-collapsible-collection subsection-collection">'+
         '<div class="title-controls-wrap"><h3 class="title">Group Title</h3></div>'+
         '<div class="collapsible-subsections">'+
@@ -28,7 +32,7 @@ describe('CollapsibleCollection', function(){
             '<span class="subsection-title-text">Subsection title</span>'+
             '<span class="subsection-summary">Here is a concise summary of the content</span>'+
           '</h2>'+
-          '<div class="js-ignore-h2s subsection-body">'
+          '<div class="js-ignore-h2s">'+
             '<h2>This h2 should be ignored by the section builder</h2>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
@@ -38,7 +42,7 @@ describe('CollapsibleCollection', function(){
             '<span class="subsection-title-text">Subsection title</span>'+
             '<span class="subsection-summary">Here is a concise summary of the content</span>'+
           '</h2>'+
-          '<div class="js-ignore-h2s subsection-body">'
+          '<div class="js-ignore-h2s">'+
             '<h2>This h2 should be ignored by the section builder</h2>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
@@ -48,7 +52,7 @@ describe('CollapsibleCollection', function(){
             '<span class="subsection-title-text">Subsection title</span>'+
             '<span class="subsection-summary">Here is a concise summary of the content</span>'+
           '</h2>'+
-          '<div class="js-ignore-h2s subsection-body">'
+          '<div class="js-ignore-h2s">'+
             '<h2>This h2 should be ignored by the section builder</h2>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
@@ -64,52 +68,94 @@ describe('CollapsibleCollection', function(){
         '</div>'+
       '</div>';
 
-      collectionsFromSectionsHTML = $(collectionsFromSectionsString);
+      collectionsFromHRMCHTML = $(collectionsFromHMRCString);
       collectionsFromBlobHTML = $(collectionsFromBlobString);
 
-      $('body').append(collectionsFromSectionsHTML);
-      collectionBlob = new GOVUK.CollapsibleCollection({el:collectionsFromSectionsHTML});
+      $('body').append(collectionsFromHRMCHTML);
+      collectionHMRC = new GOVUK.CollapsibleCollection({el:collectionsFromHRMCHTML});
 
       $('body').append(collectionsFromBlobHTML);
-      collectionSection = new GOVUK.CollapsibleCollection({el:collectionsFromBlobHTML});
-
-      // Past initialisation the source of the collection (a blob keyed by "body" or an
-      // array of sections) is irrelevant as markupSections() should normalise them)
-      // Creating a collection object for testing where the source is not relevant
       collection = new GOVUK.CollapsibleCollection({el:collectionsFromBlobHTML});
   });
 
   afterEach(function(){
-    collectionsFromSectionsHTML.remove();
+    collectionsFromHRMCHTML.remove();
     collectionsFromBlobHTML.remove();
   });
 
 
   describe('initCollapsible', function(){
-    it ('should add control links', function(){
-      // Blobs
-      var blobHTML = $(collectionsFromBlobString);
-      expect(blobHTML.find('a.collection-control').length).toBe(0);
-      var newCollection = new GOVUK.CollapsibleCollection({el:blobHTML});
-      expect(newCollection.$container.find('.collection-controls a').length).toBe(2);
-
-      // Sections
-      var sectionsHTML = $(collectionsFromSectionsString);
-      expect(sectionsHTML.find('a.collection-control').length).toBe(0);
-      newCollection = new GOVUK.CollapsibleCollection({el:sectionsHTML});
+    it ('should add control links to HTML generated from a blob', function(){
+      var html = $(collectionsFromBlobString);
+      expect(html.find('a.collection-control').length).toBe(0);
+      var newCollection = new GOVUK.CollapsibleCollection({el:html});
       expect(newCollection.$container.find('.collection-controls a').length).toBe(2);
     });
 
-    it('should add a new object to collapsibles hash with the id from the section', function(){
-      // Blobs
-      var collectionSize = Object.keys(collectionBlob.collapsibles).length;
-      collectionBlob.initCollapsible(collection.$sections[0]);
-      expect(Object.keys(collectionBlob.collapsibles).length).toBe(collectionSize+1);
+    it ('should add control links to HTML generated from a HMRC files', function(){
+      var html = $(collectionsFromHMRCString);
+      expect(html.find('a.collection-control').length).toBe(0);
+      var newCollection = new GOVUK.CollapsibleCollection({el:html});
+      expect(newCollection.$container.find('.collection-controls a').length).toBe(2);
+    });
 
-      // Sections
-      collectionSize = Object.keys(collectionSection.collapsibles).length;
-      collectionSection.initCollapsible(collectionSection.$sections[0]);
-      expect(Object.keys(collectionSection.collapsibles).length).toBe(collectionSize+1);
+    it('should add a new object to collapsibles hash with the id from the section for blobs', function(){
+      var collectionSize = Object.keys(collection.collapsibles).length;
+      collection.initCollapsible(collection.$sections[0]);
+      expect(Object.keys(collection.collapsibles).length).toBe(collectionSize+1);
+    });
+
+    it('should add a new object to collapsibles hash with the id from the section for HMRC HTML', function(){
+      var collectionSize = Object.keys(collectionHMRC.collapsibles).length;
+      collection.initCollapsible(collection.$sections[0]);
+      expect(Object.keys(collection.collapsibles).length).toBe(collectionSize+1);
+    });
+  });
+
+  describe('markupSections', function(){
+    it('should add the a subsection-title class to any h2s that are not excluded by js-exclude-h2s or have the link-out class for blobs', function(){
+      var html = $(collectionsFromBlobString);
+      var h2Count = html.find('h2').length;
+      var excludedH2Count = html.find('.js-ignore-h2s h2, h2.linked-title').length
+      var sectionHeaderCount = h2Count - excludedH2Count;
+
+      expect(html.find('h2.subsection-title').length).toBe(0);
+      var newCollection = new GOVUK.CollapsibleCollection({el:html});
+      expect(html.find('h2.subsection-title').length).toBe(sectionHeaderCount);
+    });
+
+    it('should add the a subsection-title class to any h2s that are not excluded by js-exclude-h2s or have the link-out class for HRMC', function(){
+      var html = $(collectionsFromHMRCString);
+      var h2Count = html.find('h2').length;
+      var excludedH2Count = html.find('.js-ignore-h2s h2, h2.linked-title').length
+      var sectionHeaderCount = h2Count - excludedH2Count;
+
+      expect(html.find('h2.subsection-title').length).toBe(0);
+      var newCollection = new GOVUK.CollapsibleCollection({el:html});
+      expect(html.find('h2.subsection-title').length).toBe(sectionHeaderCount);
+    });
+
+    it('should wrap h2 and section in a div with the classes js-openable and manual-subsection for blobs', function(){
+      collectionsFromBlobHTML.find('h2.subsection-title').each(function(index){
+        expect($(this).parents('.js-openable.manual-subsection').length).toBe(1);
+      });
+    });
+
+    it('should wrap h2 and section in a div with the classes js-openable and manual-subsection for HMRC', function(){
+      collectionsFromHRMCHTML.find('h2.subsection-title').each(function(index){
+        expect($(this).parents('.js-openable.manual-subsection').length).toBe(1);
+      })
+    });
+
+    it('should wrap all tags following a subsection-title h2 up to the next subsection-title h2 in a div with the class subsection-body', function(){
+
+      collectionsFromBlobHTML.find('h2.subsection-title').each(function(index){
+        expect($(this).next().hasClass('subsection-body')).toBe(true);
+      });
+
+      collectionsFromHRMCHTML.find('h2.subsection-title').each(function(index){
+        expect($(this).next().hasClass('subsection-body')).toBe(true);
+      });
     });
   });
 
