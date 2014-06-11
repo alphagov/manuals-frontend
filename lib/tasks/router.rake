@@ -12,6 +12,7 @@ namespace :router do
 
   task :register_routes => :router_environment do
     @router_api.add_route('/guidance/employment-income-manual', 'prefix', 'manuals-frontend')
+    @router_api.add_redirect_route('/guidance', 'exact', '/government/publications?publication_filter_option=guidance', 'temporary')
   end
 
   desc 'Register manuals-frontend application and routes with the router'
