@@ -184,9 +184,9 @@
     }
 
     .subsection-summary {
-        font-weight:normal;
-        display: block;
-        color: $black;
+      font-weight:normal;
+      display: block;
+      color: $black;
     }
 
     a {
@@ -200,7 +200,7 @@
      which shouldn't be collapsible. This styling is the fallback
      for when the js hasn't kicked in to style properly.
   */
-  .collapsible-subsections .subsection-body .js-ignore-h2s h2 {
+  .collapsible-subsections .js-subsection-body .js-ignore-h2s h2 {
     border-top: none;
     margin: 0;
   }
@@ -229,7 +229,7 @@
         }
       }
 
-      .collection-controls {
+      .js-collection-controls {
         display:block;
         margin-left: -5px;
         margin-bottom:$gutter-half;
@@ -263,7 +263,7 @@
       padding-bottom: $gutter*2;
     }
 
-    .subsection-title {
+    .js-subsection-title {
       cursor: pointer;
       margin: 0;
       color:$link-colour;
@@ -288,7 +288,7 @@
       }
     }
 
-    .subsection-body {
+    .js-subsection-body {
       margin-top:$gutter-half;
       @include media(tablet) {
         width:$two-thirds;
@@ -308,7 +308,7 @@
         }
       }
 
-      .subsection-body {
+      .js-subsection-body {
         position:absolute;
         left:-9999px;
         width:100px;

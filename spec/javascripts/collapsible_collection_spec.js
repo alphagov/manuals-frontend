@@ -89,14 +89,14 @@ describe('CollapsibleCollection', function(){
       var html = $(collectionsFromBlobString);
       expect(html.find('a.collection-control').length).toBe(0);
       var newCollection = new GOVUK.CollapsibleCollection({$el:html});
-      expect(newCollection.$container.find('.collection-controls a').length).toBe(2);
+      expect(newCollection.$container.find('.js-collection-controls a').length).toBe(2);
     });
 
     it ('should add control links to HTML generated from a HMRC files', function(){
       var html = $(collectionsFromHMRCString);
       expect(html.find('a.collection-control').length).toBe(0);
       var newCollection = new GOVUK.CollapsibleCollection({$el:html});
-      expect(newCollection.$container.find('.collection-controls a').length).toBe(2);
+      expect(newCollection.$container.find('.js-collection-controls a').length).toBe(2);
     });
 
     it('should add a new object to collapsibles hash with the id from the section for blobs', function(){
@@ -113,48 +113,48 @@ describe('CollapsibleCollection', function(){
   });
 
   describe('markupSections', function(){
-    it('should add the a subsection-title class to any h2s that are not excluded by js-exclude-h2s or have the link-out class for blobs', function(){
+    it('should add the a js-subsection-title class to any h2s that are not excluded by js-exclude-h2s or have the link-out class for blobs', function(){
       var html = $(collectionsFromBlobString);
       var h2Count = html.find('h2').length;
       var excludedH2Count = html.find('.js-ignore-h2s h2, h2.linked-title').length
       var sectionHeaderCount = h2Count - excludedH2Count;
 
-      expect(html.find('h2.subsection-title').length).toBe(0);
+      expect(html.find('h2.js-subsection-title').length).toBe(0);
       var newCollection = new GOVUK.CollapsibleCollection({$el:html});
-      expect(html.find('h2.subsection-title').length).toBe(sectionHeaderCount);
+      expect(html.find('h2.js-subsection-title').length).toBe(sectionHeaderCount);
     });
 
-    it('should add the a subsection-title class to any h2s that are not excluded by js-exclude-h2s or have the link-out class for HRMC', function(){
+    it('should add the a js-subsection-title class to any h2s that are not excluded by js-exclude-h2s or have the link-out class for HRMC', function(){
       var html = $(collectionsFromHMRCString);
       var h2Count = html.find('h2').length;
       var excludedH2Count = html.find('.js-ignore-h2s h2, h2.linked-title').length
       var sectionHeaderCount = h2Count - excludedH2Count;
 
-      expect(html.find('h2.subsection-title').length).toBe(0);
+      expect(html.find('h2.js-subsection-title').length).toBe(0);
       var newCollection = new GOVUK.CollapsibleCollection({$el:html});
-      expect(html.find('h2.subsection-title').length).toBe(sectionHeaderCount);
+      expect(html.find('h2.js-subsection-title').length).toBe(sectionHeaderCount);
     });
 
     it('should wrap h2 and section in a div with the classes js-openable and manual-subsection for blobs', function(){
-      collectionsFromBlobHTML.find('h2.subsection-title').each(function(index){
+      collectionsFromBlobHTML.find('h2.js-subsection-title').each(function(index){
         expect($(this).parents('.js-openable.manual-subsection').length).toBe(1);
       });
     });
 
     it('should wrap h2 and section in a div with the classes js-openable and manual-subsection for HMRC', function(){
-      collectionsFromHRMCHTML.find('h2.subsection-title').each(function(index){
+      collectionsFromHRMCHTML.find('h2.js-subsection-title').each(function(index){
         expect($(this).parents('.js-openable.manual-subsection').length).toBe(1);
       })
     });
 
-    it('should wrap all tags following a subsection-title h2 up to the next subsection-title h2 in a div with the class subsection-body', function(){
+    it('should wrap all tags following a js-subsection-title h2 up to the next js-subsection-title h2 in a div with the class js-subsection-body', function(){
 
-      collectionsFromBlobHTML.find('h2.subsection-title').each(function(index){
-        expect($(this).next().hasClass('subsection-body')).toBe(true);
+      collectionsFromBlobHTML.find('h2.js-subsection-title').each(function(index){
+        expect($(this).next().hasClass('js-subsection-body')).toBe(true);
       });
 
-      collectionsFromHRMCHTML.find('h2.subsection-title').each(function(index){
-        expect($(this).next().hasClass('subsection-body')).toBe(true);
+      collectionsFromHRMCHTML.find('h2.js-subsection-title').each(function(index){
+        expect($(this).next().hasClass('js-subsection-body')).toBe(true);
       });
     });
   });

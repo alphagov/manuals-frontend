@@ -25,7 +25,7 @@
   CollapsibleCollection.prototype.initCollapsible = function initCollapsible(sectionIndex){
     var $section = $(this.$sections[sectionIndex]);
     var collapsible = new GOVUK.Collapsible($section);
-    var sectionID = $section.find('h2.subsection-title').attr('data-section-id');
+    var sectionID = $section.find('h2.js-subsection-title').attr('data-section-id');
 
     if(typeof sectionID == "undefined"){
       sectionID = sectionIndex;
@@ -36,17 +36,17 @@
   }
 
   CollapsibleCollection.prototype.markupSections = function markupSections(){
-    // Pull out h2's and mark them up as subsection-title.
-    // Mark all following tags up to the next h2 as subsection-body.
+    // Pull out h2's and mark them up as js-subsection-title.
+    // Mark all following tags up to the next h2 as js-subsection-body.
     // Wrap newly discovered sections in a div with js-openable and manual-subsection classes
     // The DOM now contains poperly marked up sections to which collapsible functions can attach.
 
     var subsectionHeaders = this.$container.find('h2').not('.linked-title, .js-ignore-h2s h2');
-    subsectionHeaders.addClass('subsection-title');
+    subsectionHeaders.addClass('js-subsection-title');
     subsectionHeaders.each(function(index){
-      var subsectionBody = $(this).nextUntil('h2.subsection-title, h2.linked-title');
+      var subsectionBody = $(this).nextUntil('h2.js-subsection-title, h2.linked-title');
       subsectionBody.andSelf().wrapAll('<div class="manual-subsection js-openable"></div>');
-      subsectionBody.wrapAll('<div class="subsection-body"></div>');
+      subsectionBody.wrapAll('<div class="js-subsection-body"></div>');
     });
   }
 
@@ -77,9 +77,9 @@
   }
 
   CollapsibleCollection.prototype.addControls = function addControls(){
-    this.$container.find('.title-controls-wrap').append('<div class="collection-controls"></div>');
-    this.$container.find('.collection-controls').append(this.$openAll);
-    this.$container.find('.collection-controls').append(this.$closeAll);
+    this.$container.find('.title-controls-wrap').append('<div class="js-collection-controls"></div>');
+    this.$container.find('.js-collection-controls').append(this.$openAll);
+    this.$container.find('.js-collection-controls').append(this.$closeAll);
 
     this.$openAll.on('click', $.proxy(this.openAll, this));
     this.$closeAll.on('click', $.proxy(this.closeAll, this));
