@@ -24,3 +24,10 @@ group :development, :test do
   gem 'byebug'
   gem 'jasmine-rails'
 end
+
+group :test do
+  gem "cucumber-rails", "~> 1.4.0", require: false
+  # TODO: Check that rspec is fixed at 2 for a reason
+  gem "rspec-rails", "~> 2.14.0"
+  gem "launchy"
+end
