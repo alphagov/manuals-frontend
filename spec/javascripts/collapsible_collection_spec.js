@@ -27,7 +27,7 @@ describe('CollapsibleCollection', function(){
         '<div class="title-controls-wrap"><h3 class="title">Group Title</h3></div>'+
         '<div class="collapsible-subsections">'+
           // Three collapsible subsections
-          '<h2 class="subsection-with-id">'+
+          '<h2 class="subsection-with-id" data-section-id="1">'+
             '<span class="subsection-id">EIM1234</span>'+
             '<span class="subsection-title-text">Subsection title</span>'+
             '<span class="subsection-summary">Here is a concise summary of the content</span>'+
@@ -37,7 +37,7 @@ describe('CollapsibleCollection', function(){
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
           '</div>'+
-          '<h2 class="subsection-with-id">'+
+          '<h2 class="subsection-with-id" data-section-id="2">'+
             '<span class="subsection-id">EIM1234</span>'+
             '<span class="subsection-title-text">Subsection title</span>'+
             '<span class="subsection-summary">Here is a concise summary of the content</span>'+
@@ -47,7 +47,7 @@ describe('CollapsibleCollection', function(){
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
           '</div>'+
-          '<h2 class="subsection-with-id">'+
+          '<h2 class="subsection-with-id" data-section-id="3">'+
             '<span class="subsection-id">EIM1234</span>'+
             '<span class="subsection-title-text">Subsection title</span>'+
             '<span class="subsection-summary">Here is a concise summary of the content</span>'+
@@ -58,7 +58,7 @@ describe('CollapsibleCollection', function(){
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
           '</div>'+
           // One subsection that isn't collapsible
-          '<h2 class="subsection-with-id linked-title">'+
+          '<h2 class="subsection-with-id linked-title" data-section-id="4">'+
             '<a href="#">'+
             '<span class="subsection-id">EIM1234</span>'+
             '<span class="subsection-title-text">Subsection title</span>'+
