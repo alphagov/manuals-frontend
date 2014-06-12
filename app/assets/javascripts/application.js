@@ -5,7 +5,7 @@ jQuery(function($) {
   "use strict";
 
   $('.js-collapsible-collection').each(function(){
-    new GOVUK.CollapsibleCollection({el:$(this)});
+    new GOVUK.CollapsibleCollection({$el:$(this)});
   })
 
   $('.govspeak').on('click', 'a', function(event){

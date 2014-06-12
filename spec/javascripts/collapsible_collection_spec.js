@@ -72,10 +72,10 @@ describe('CollapsibleCollection', function(){
       collectionsFromBlobHTML = $(collectionsFromBlobString);
 
       $('body').append(collectionsFromHRMCHTML);
-      collectionHMRC = new GOVUK.CollapsibleCollection({el:collectionsFromHRMCHTML});
+      collectionHMRC = new GOVUK.CollapsibleCollection({$el:collectionsFromHRMCHTML});
 
       $('body').append(collectionsFromBlobHTML);
-      collection = new GOVUK.CollapsibleCollection({el:collectionsFromBlobHTML});
+      collection = new GOVUK.CollapsibleCollection({$el:collectionsFromBlobHTML});
   });
 
   afterEach(function(){
@@ -88,14 +88,14 @@ describe('CollapsibleCollection', function(){
     it ('should add control links to HTML generated from a blob', function(){
       var html = $(collectionsFromBlobString);
       expect(html.find('a.collection-control').length).toBe(0);
-      var newCollection = new GOVUK.CollapsibleCollection({el:html});
+      var newCollection = new GOVUK.CollapsibleCollection({$el:html});
       expect(newCollection.$container.find('.collection-controls a').length).toBe(2);
     });
 
     it ('should add control links to HTML generated from a HMRC files', function(){
       var html = $(collectionsFromHMRCString);
       expect(html.find('a.collection-control').length).toBe(0);
-      var newCollection = new GOVUK.CollapsibleCollection({el:html});
+      var newCollection = new GOVUK.CollapsibleCollection({$el:html});
       expect(newCollection.$container.find('.collection-controls a').length).toBe(2);
     });
 
@@ -120,7 +120,7 @@ describe('CollapsibleCollection', function(){
       var sectionHeaderCount = h2Count - excludedH2Count;
 
       expect(html.find('h2.subsection-title').length).toBe(0);
-      var newCollection = new GOVUK.CollapsibleCollection({el:html});
+      var newCollection = new GOVUK.CollapsibleCollection({$el:html});
       expect(html.find('h2.subsection-title').length).toBe(sectionHeaderCount);
     });
 
@@ -131,7 +131,7 @@ describe('CollapsibleCollection', function(){
       var sectionHeaderCount = h2Count - excludedH2Count;
 
       expect(html.find('h2.subsection-title').length).toBe(0);
-      var newCollection = new GOVUK.CollapsibleCollection({el:html});
+      var newCollection = new GOVUK.CollapsibleCollection({$el:html});
       expect(html.find('h2.subsection-title').length).toBe(sectionHeaderCount);
     });
 
