@@ -4,7 +4,7 @@ Feature: Browsing a local manual
 
   Scenario: Viewing an existing manual
     When I view the employment income manual
-    And I click on the "EIM00500" subsection
+    And I click on "EIM00500"
     Then I should see "EIM00500 - Employment income"
 
   Scenario: Visiting a nonexistent document
