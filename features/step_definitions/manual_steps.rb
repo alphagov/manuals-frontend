@@ -2,10 +2,8 @@ When(/^I view the employment income manual$/) do
   visit "/guidance/employment-income-manual"
 end
 
-When(/^I click on the "(.*?)" subsection$/) do |section|
-  within 'ol.section-links' do
-    click_on section
-  end
+When(/^I click on "(.*?)"$/) do |link_text|
+  click_on link_text
 end
 
 When(/^I visit a non\-existent employment income manual section$/) do
