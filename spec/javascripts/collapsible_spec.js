@@ -4,13 +4,13 @@ describe('Collapsible', function(){
 
   beforeEach(function(){
     var collapsibleString = '<section class="manual-subsection closed" data-section-id="EIM11210">'+
-      '<div class="subsection-title">'+
+      '<div class="js-subsection-title">'+
         '<span class="subsection-id ">EIM11210</span>'+
         '<h4 id="EIM11210">'+
           '<a href="#EIM11210">Awards to an employees family or dependants</a>'+
         '</h4>'+
       '</div>'+
-      '<div class="subsection-body govspeak">'+
+      '<div class="js-subsection-body govspeak">'+
         '<h5>Sections 74, 83, 91, 721(4) and 721(5) ITEPA 2003</h5>'+
         '<p>Awards are treated as made to the employee if they are received by members of the employees family or household. There are different definitions of the family circle depending upon whether vouchers are used, or awards are obtained in some other way and are chargeable under the benefits code.</p>'+
       '</div>'+

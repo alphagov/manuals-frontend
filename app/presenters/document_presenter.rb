@@ -14,8 +14,18 @@ class DocumentPresenter
     section_id || title
   end
 
-  def body
-    document['details']['body']
+  def summary
+    if document['details']['sections'].present?
+      document['details']['body']
+    elsif document['details']['summary'].present?
+      document['details']['summary']
+    end
+  end
+
+  def sections_as_blob
+    unless document['details']['sections'].present?
+      document['details']['body']
+    end
   end
 
   def section_groups

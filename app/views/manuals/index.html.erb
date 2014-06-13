@@ -9,11 +9,15 @@
       <div class='title-controls-wrap'>
         <h3 class='title'><%= group.title %></h3>
       </div>
-      <ol class='section-links'>
-        <% group.sections.each do | section | %>
-          <%= render 'section', :section => section %>
+      <div class='collapsible-subsections'>
+      <% group.sections.each do | section | %>
+        <% if section.collapsible? %>
+          <%= render 'collapsible_subsection', :section => section %>
+        <% else %>
+          <%= render 'non_collapsible_subsection', :section => section %>
         <% end %>
-      </ol>
+      <% end %>
+      </div>
     </div>
     <% end %>
   </div>

@@ -4,7 +4,7 @@
 
   function Collapsible(section){
     this.$section = section;
-    this.$clickTarget = this.$section.find('.subsection-title');
+    this.$clickTarget = this.$section.find('.js-subsection-title');
     this.$clickTarget.on('click', $.proxy(this.toggle, this));
     this.addToggle();
   }
