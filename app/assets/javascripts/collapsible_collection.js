@@ -25,7 +25,7 @@
   CollapsibleCollection.prototype.initCollapsible = function initCollapsible(sectionIndex){
     var $section = $(this.$sections[sectionIndex]);
     var collapsible = new GOVUK.Collapsible($section);
-    var sectionID = $section.find('h2.js-subsection-title').attr('data-section-id');
+    var sectionID = $section.find('h2.js-subsection-title').data('section-id');
 
     if(typeof sectionID == "undefined"){
       sectionID = sectionIndex;
@@ -77,13 +77,11 @@
   }
 
   CollapsibleCollection.prototype.addControls = function addControls(){
-    this.$container.find('.title-controls-wrap').append('<div class="js-collection-controls"></div>');
-    this.$container.find('.js-collection-controls').append(this.$openAll);
-    this.$container.find('.js-collection-controls').append(this.$closeAll);
-
+    var $collectionControls = $('<div class="js-collection-controls" />');
+    $collectionControls.append(this.$openAll, this.$closeAll);
+    this.$container.find('.title-controls-wrap').append($collectionControls);
     this.$openAll.on('click', $.proxy(this.openAll, this));
     this.$closeAll.on('click', $.proxy(this.closeAll, this));
-
   }
 
   CollapsibleCollection.prototype.updateControls = function updateControls(){
