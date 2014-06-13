@@ -16,6 +16,6 @@ Then(/^I should see "(.*?)"$/) do |text|
   expect(page).to have_content(text)
 end
 
-Then /^I should get a response with status (\d+)$/ do |status|
-  expect(page.status_code).to eq(status.to_i)
+Then /^I should get a page not found response$/ do
+  expect(page.status_code).to eq(404)
 end

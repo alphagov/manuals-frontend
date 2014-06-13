@@ -9,4 +9,4 @@ Feature: Browsing a local manual
 
   Scenario: Visiting a nonexistent document
     When I visit a non-existent employment income manual section
-    Then I should get a response with status 404
+    Then I should get a page not found response 
