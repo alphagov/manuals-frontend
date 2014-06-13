@@ -13,6 +13,10 @@ class SectionPresenter
     "/#{section.slug}"
   end
 
+  def collapsible?
+    self.body.present?
+  end
+
 private
   attr_reader :section
 
