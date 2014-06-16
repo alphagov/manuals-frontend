@@ -138,6 +138,13 @@
   .manual-section {
     margin-top: $gutter-half;
 
+    .section-title {
+      @include core-24;
+      .title {
+        font-weight: bold;
+      }
+    }
+
     @include media(tablet){
       margin-top: $gutter;
     }
@@ -193,6 +200,24 @@
       text-decoration:none;
       color: $link-colour;
       cursor: pointer;
+    }
+  }
+
+  .changed-document {
+    margin-bottom: $gutter-two-thirds;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .changed-document-title {
+    font-weight: bold;
+  }
+
+  .updates-hint {
+    margin-top: $gutter-one-third;
+    @include media(tablet){
+      margin-top: $gutter-two-thirds;
     }
   }
 
