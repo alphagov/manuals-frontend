@@ -8,19 +8,22 @@
     this.$container = options.$el;
     this.markupSections();
     this.$sections = this.$container.find('.js-openable');
-    this.$sections.each($.proxy(this.initCollapsible, this));
 
-    this.$openAll = $("<a href='#' aria-hidden=true>Open all</a>"),
-    this.$closeAll = $("<a href='#' aria-hidden=true>Close all</a>");
-    this.addControls();
+    if(this.$sections.length > 0) {
+      this.$sections.each($.proxy(this.initCollapsible, this));
+      this.$openAll = $("<a href='#' aria-hidden=true>Open all</a>"),
+      this.$closeAll = $("<a href='#' aria-hidden=true>Close all</a>");
+      this.addControls();
 
-    this.closeAll();
+      this.closeAll();
 
-    var openSectionID = window.location.hash.substr(1);
-    if(typeof(this.collapsibles[openSectionID]) != 'undefined') {
-      this.collapsibles[openSectionID].open();
+      var openSectionID = window.location.hash.substr(1);
+      if(typeof(this.collapsibles[openSectionID]) != 'undefined') {
+        this.collapsibles[openSectionID].open();
+      }
     }
   }
+
 
   CollapsibleCollection.prototype.initCollapsible = function initCollapsible(sectionIndex){
     var $section = $(this.$sections[sectionIndex]);
