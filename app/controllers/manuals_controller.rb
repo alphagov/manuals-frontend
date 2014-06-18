@@ -1,21 +1,18 @@
 class ManualsController < ApplicationController
 
-  def index
-    manual = ManualsRepository.new.fetch(params["manual_id"])
+  before_filter :set_manual
 
-    error_not_found unless manual
-    @manual = ManualPresenter.new(manual)
-
-  end
+  def index; end
 
   def show
-    manual = ManualsRepository.new.fetch(params["manual_id"])
     document = ManualsRepository.new.fetch(params["manual_id"], params["section_id"])
-
-    error_not_found unless manual && document
-    @manual = ManualPresenter.new(manual)
+    error_not_found unless document
     @document = DocumentPresenter.new(document, @manual)
+  end
 
+  def updates
+    change_notes = ManualsRepository.new.fetch(params['manual_id'], 'updates')
+    @change_notes = ChangeNotesPresenter.new(change_notes)
   end
 
   private
@@ -24,4 +21,9 @@ class ManualsController < ApplicationController
     render status: :not_found, text: "404 error not found"
   end
 
+  def set_manual
+    manual = ManualsRepository.new.fetch(params["manual_id"])
+    error_not_found unless manual
+    @manual = ManualPresenter.new(manual)
+  end
 end

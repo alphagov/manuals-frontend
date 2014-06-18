@@ -21,6 +21,10 @@ class ManualPresenter
     manual.web_url
   end
 
+  def updates_url
+    "#{url}/updates"
+  end
+
   def section_groups
     raw_section_groups.map { |group| SectionGroupPresenter.new(group) }
   end
