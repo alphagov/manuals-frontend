@@ -17,9 +17,11 @@
       <p>
         Manual updated: <%= marked_up_date(@manual.updated_at) %>
       </p>
-      <p>
-        <%= link_to 'See all updates', @manual.updates_url %>
-      </p>
+      <% unless @manual.hmrc? %>
+        <p>
+          <%= link_to 'See all updates', @manual.updates_url %>
+        </p>
+      <% end %>
     </div>
   </div>
 </header>
