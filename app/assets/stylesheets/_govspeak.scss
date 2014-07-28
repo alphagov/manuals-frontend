@@ -177,6 +177,12 @@
     }
   }
 
+  img {
+    width: auto;
+    height: auto;
+    max-width: $full-width;
+  }
+
   sup {
     font-size: 0.8em;
     line-height: 0.7em;
