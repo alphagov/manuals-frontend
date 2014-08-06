@@ -1,9 +1,10 @@
 <% content_for :title, @manual.title %>
 <%= render partial: "header" %>
 <div class='manual-section'>
-  <h2 class='section-title'><span class='title'><%=@manual.title %></span></h2>
   <div class='section-content'>
-    <%= govspeak_to_html(@manual.body) %>
+    <div class='section-summary'>
+      <%= govspeak_to_html(@manual.body) %>
+    </div>
     <% @manual.section_groups.each do | group | %>
     <div class='js-collapsible-collection subsection-collection'>
       <div class='title-controls-wrap'>
