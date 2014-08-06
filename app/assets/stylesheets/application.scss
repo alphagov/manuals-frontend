@@ -151,9 +151,13 @@
 
     .section-content {
       margin-top: $gutter-half;
-       @include media(tablet){
-         margin-top: $gutter;
-       }
+      @include media(tablet){
+        margin-top: $gutter;
+      }
+
+      .section-summary p {
+        @include core-24;
+      }
     }
   }
 
