@@ -158,6 +158,11 @@
         @include core-24;
       }
     }
+
+    .footnotes {
+      border-top: 0;
+      padding-top: 0;
+    }
   }
 
   .collapsible-subsections h2 {
