@@ -10,12 +10,12 @@ describe('CollapsibleCollection', function(){
         '</div>'+
         '<div class="collapsible-subsections">'+
           // Three collapsible subsections
-          '<h2>A section title!</h2>'+
+          '<h2 id="a-section-title">A section title!</h2>'+
           '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
-          '<h2>A second section title!</h2>'+
+          '<h2 id="a-second-section-title">A second section title!</h2>'+
           '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
           '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
-          '<h2>A third section title!</h2>'+
+          '<h2 id="a-third-section-title">A third section title!</h2>'+
           '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
         '</div>'+
       '</div>';
@@ -109,6 +109,49 @@ describe('CollapsibleCollection', function(){
       var collectionSize = Object.keys(collectionHMRC.collapsibles).length;
       collection.initCollapsible(collection.$sections[0]);
       expect(Object.keys(collection.collapsibles).length).toBe(collectionSize+1);
+    });
+
+    it('should close all sections by default', function(){
+      spyOn(GOVUK, 'getCurrentLocation').and.returnValue({
+        hash: ''
+      });
+
+      var collection = new GOVUK.CollapsibleCollection({
+        $el: collectionsFromBlobHTML
+      });
+
+      var sections = $.map(
+        collection.collapsibles,
+        function(section, index) { return section; }
+      );
+
+      var openSections = sections.filter(
+        function(section) { return !section.isClosed(); }
+      );
+
+      expect(openSections.length).toBe(0);
+    });
+
+    it('should open the section linked to by the anchor in the URL', function(){
+      spyOn(GOVUK, 'getCurrentLocation').and.returnValue({
+        hash: '#a-second-section-title'
+      });
+
+      var collection = new GOVUK.CollapsibleCollection({
+        $el: collectionsFromBlobHTML
+      });
+
+      var sections = $.map(
+        collection.collapsibles,
+        function(section, index) { return section; }
+      );
+
+      var openSections = sections.filter(
+        function(section) { return !section.isClosed(); }
+      );
+
+      expect(openSections.length).toBe(1);
+      expect(openSections[0]).toBe(collection.collapsibles['a-second-section-title']);
     });
   });
 
