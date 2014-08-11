@@ -6,6 +6,7 @@
     this.collapsibles = {};
 
     this.$container = options.$el;
+    this.markupHeaderlessSection();
     this.markupSections();
     this.$sections = this.$container.find('.js-openable');
 
@@ -62,6 +63,15 @@
       subsectionBody.andSelf().wrapAll('<div class="manual-subsection js-openable"></div>');
       subsectionBody.wrapAll('<div class="js-subsection-body"></div>');
     });
+  }
+
+  CollapsibleCollection.prototype.markupHeaderlessSection = function markupHeaderlessSection(){
+    // Starting from the first tag in .govspeak, find all the tags until a .manual-subsection
+    // Wrap them in a js-section-body
+    // These will now have a class with the proper width declaration
+
+    var headerlessContent = this.$container.find('.govspeak').children().first().nextUntil('h2').andSelf();
+    headerlessContent.wrapAll('<div class="js-section-body"></div>');
   }
 
   CollapsibleCollection.prototype.closeAll = function closeAll(event){
