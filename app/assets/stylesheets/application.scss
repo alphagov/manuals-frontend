@@ -165,6 +165,12 @@
     }
   }
 
+  .js-section-body {
+    @include media(tablet) {
+      width:$two-thirds;
+    }
+  }
+
   .collapsible-subsections h2 {
     @include core-19;
     font-weight:bold;
