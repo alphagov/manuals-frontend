@@ -17,7 +17,7 @@
 
       this.closeAll();
 
-      var openSectionID = window.location.hash.substr(1);
+      var openSectionID = GOVUK.getCurrentLocation().hash.substr(1);
       if(typeof(this.collapsibles[openSectionID]) != 'undefined') {
         this.collapsibles[openSectionID].open();
       }
@@ -53,9 +53,11 @@
     var subsectionHeaders = this.$container.find('h2').not('.linked-title, .js-ignore-h2s h2');
     subsectionHeaders.addClass('js-subsection-title');
     subsectionHeaders.each(function(index){
-      var $subsectionHeader = $(this);
-      if ($subsectionHeader.attr('id') == "footnotes") {
-        $subsectionHeader.data('section-id', 'footnotes');
+      var $subsectionHeader = $(this),
+          subsectionId = $subsectionHeader.attr('id');
+
+      if (subsectionId) {
+        $subsectionHeader.data('section-id', subsectionId);
       }
 
       var subsectionBody = $subsectionHeader.nextUntil('h2.js-subsection-title, h2.linked-title');
