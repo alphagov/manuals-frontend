@@ -21,6 +21,8 @@
       if(typeof(this.collapsibles[openSectionID]) != 'undefined') {
         this.collapsibles[openSectionID].open();
       }
+
+      this.$container.on('click', 'a[rel="footnote"]', $.proxy(this.expandFootnotes, this));
     }
   }
 
@@ -38,6 +40,10 @@
     this.collapsibles[sectionID] = collapsible;
   }
 
+  CollapsibleCollection.prototype.expandFootnotes = function expandFootnotes(){
+    this.collapsibles['footnotes'].open();
+  }
+
   CollapsibleCollection.prototype.markupSections = function markupSections(){
     // Pull out h2's and mark them up as js-subsection-title.
     // Mark all following tags up to the next h2 as js-subsection-body.
@@ -47,7 +53,12 @@
     var subsectionHeaders = this.$container.find('h2').not('.linked-title, .js-ignore-h2s h2');
     subsectionHeaders.addClass('js-subsection-title');
     subsectionHeaders.each(function(index){
-      var subsectionBody = $(this).nextUntil('h2.js-subsection-title, h2.linked-title');
+      var $subsectionHeader = $(this);
+      if ($subsectionHeader.attr('id') == "footnotes") {
+        $subsectionHeader.data('section-id', 'footnotes');
+      }
+
+      var subsectionBody = $subsectionHeader.nextUntil('h2.js-subsection-title, h2.linked-title');
       subsectionBody.andSelf().wrapAll('<div class="manual-subsection js-openable"></div>');
       subsectionBody.wrapAll('<div class="js-subsection-body"></div>');
     });
