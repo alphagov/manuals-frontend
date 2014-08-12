@@ -170,7 +170,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip (~> 1.0)
       websocket (~> 1.0.4)
-    slimmer (4.1.0)
+    slimmer (4.2.0)
       json
       lrucache (~> 0.1.3)
       nokogiri (~> 1.5.0)
@@ -230,7 +230,7 @@ DEPENDENCIES
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.2)
   selenium-webdriver (~> 2.42.0)
-  slimmer
+  slimmer (~> 4.2.0)
   uglifier (>= 1.3.0)
   unicorn (= 4.8.2)
   webmock (~> 1.17.4)
