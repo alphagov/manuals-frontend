@@ -12,7 +12,7 @@ gem 'unicorn', '4.8.2'
 gem 'govspeak', '1.5.2'
 
 gem 'plek', '1.7.0'
-gem 'gds-api-adapters', '10.11.0'
+gem 'gds-api-adapters', '14.1.0'
 
 group :development do
   gem 'better_errors'
