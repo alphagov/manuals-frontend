@@ -72,7 +72,7 @@
     // Wrap them in a js-section-body
     // These will now have a class with the proper width declaration
 
-    var headerlessContent = this.$container.find('.govspeak').children().first().nextUntil('h2').andSelf();
+    var headerlessContent = this.$container.find('.govspeak').children(':not(h2)').first().nextUntil('h2').andSelf();
     headerlessContent.wrapAll('<div class="js-section-body"></div>');
   }
 

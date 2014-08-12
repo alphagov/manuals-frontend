@@ -156,6 +156,9 @@
 
       .summary {
         @include core-24;
+        @include media(tablet) {
+          width:$two-thirds;
+        }
       }
     }
 
