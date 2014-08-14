@@ -68,12 +68,16 @@
   }
 
   CollapsibleCollection.prototype.markupHeaderlessSection = function markupHeaderlessSection(){
-    // Starting from the first tag in .govspeak, find all the tags until a .manual-subsection
-    // Wrap them in a js-section-body
-    // These will now have a class with the proper width declaration
+    // For a document that starts with content other than a h2
+    // starting at the first tag inside .govspeak of .collapsible-subsections
+    // find all tags that are children of .collapsible-subsections until the
+    // first h2 and wrap them in a js-section-body to make them the correct width
 
-    var headerlessContent = this.$container.find('.govspeak').children(':not(h2)').first().nextUntil('h2').andSelf();
-    headerlessContent.wrapAll('<div class="js-section-body"></div>');
+    var firstChild = this.$container.find('.collapsible-subsections > .govspeak').children().first();
+    if (!firstChild.is('h2')) {
+      var headerlessContent = firstChild.nextUntil('h2').andSelf();
+      headerlessContent.wrapAll('<div class="js-section-body"></div>');
+    };
   }
 
   CollapsibleCollection.prototype.closeAll = function closeAll(event){
