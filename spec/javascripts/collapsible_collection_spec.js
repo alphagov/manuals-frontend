@@ -9,14 +9,20 @@ describe('CollapsibleCollection', function(){
         '<div class="title-controls-wrap">'+
         '</div>'+
         '<div class="collapsible-subsections">'+
-          // Three collapsible subsections
-          '<h2 id="a-section-title">A section title!</h2>'+
-          '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
-          '<h2 id="a-second-section-title">A second section title!</h2>'+
-          '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
-          '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
-          '<h2 id="a-third-section-title">A third section title!</h2>'+
-          '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+          '<div class="govspeak">'+
+            // Some content not in a collapsible subsection
+            '<p>Where the tax gets paid to the man about the thing for the other thing</p>'+
+            '<p>Where the tax gets paid to the man about the thing for the other thing</p>'+
+            '<p>Where the tax gets paid to the man about the thing for the other thing</p>'+
+            // Three collapsible subsections
+            '<h2 id="a-section-title">A section title!</h2>'+
+            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+            '<h2 id="a-second-section-title">A second section title!</h2>'+
+            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+            '<h2 id="a-third-section-title">A third section title!</h2>'+
+            '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+          '</div>'+
         '</div>'+
       '</div>';
 
@@ -199,6 +205,12 @@ describe('CollapsibleCollection', function(){
       collectionsFromHRMCHTML.find('h2.js-subsection-title').each(function(index){
         expect($(this).next().hasClass('js-subsection-body')).toBe(true);
       });
+    });
+  });
+
+  describe('markupHeaderlessSection', function(){
+    it('should wrap a section that does not begin with a h2 with js-section-body', function() {
+      expect($('body .collapsible-subsections > .govspeak').find('.js-section-body').length).toBe(1);
     });
   });
 
