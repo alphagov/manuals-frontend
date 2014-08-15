@@ -27,7 +27,6 @@ end
 
 group :test do
   gem "cucumber-rails", "~> 1.4.0", require: false
-  gem "selenium-webdriver", "~> 2.42.0"
   gem "webmock", "~> 1.17.4"
   gem "poltergeist", "1.5.0"
   # TODO: Check that rspec is fixed at 2 for a reason
