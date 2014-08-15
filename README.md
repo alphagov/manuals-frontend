@@ -1,7 +1,7 @@
-HMRC Manuals Frontend
-=====================
+Manuals Frontend
+================
 
-This is the beta for the frontend of the first HMRC tax manual, Employment Income Manual (aka EIM).
+This is the frontend for rendering manuals on GOV.UK.
 
 ##Installation and running
 
