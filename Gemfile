@@ -29,7 +29,6 @@ group :test do
   gem "cucumber-rails", "~> 1.4.0", require: false
   gem "webmock", "~> 1.17.4"
   gem "poltergeist", "1.5.0"
-  # TODO: Check that rspec is fixed at 2 for a reason
-  gem "rspec-rails", "~> 2.14.0"
+  gem "rspec-rails", "3.0.2"
   gem "launchy"
 end
