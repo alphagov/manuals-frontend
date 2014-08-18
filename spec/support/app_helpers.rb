@@ -15,6 +15,10 @@ module AppHelpers
     click_on section_title
   end
 
+  def view_change_notes_for(label)
+    page.find(".js-subsection-title", text: label).click
+  end
+
   def expect_page_to_include_section(section_title, options = {})
     within('.subsection-collection') do
       if options[:href]
@@ -51,7 +55,13 @@ module AppHelpers
   def expect_page_to_be_affiliated_with_org(options)
     expect(page).to have_link(options[:title],
                               "https://www.gov.uk/government/organisations/#{options[:slug]}")
+  end
 
+  def expect_change_note(change_note, options)
+    within(".subsection-collection") do
+      expect(page).to have_link(options[:section_title], href: options[:section_href])
+      expect(page).to have_content(change_note)
+    end
   end
 end
 
