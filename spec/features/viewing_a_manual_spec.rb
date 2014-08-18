@@ -5,8 +5,8 @@ feature "Viewing a manual" do
   # I can view a manual and its sections
 
   scenario "viewing an existing manual" do
-    visit "/guidance/employment-income-manual"
-    click_on "EIM00500"
+    visit_manual("employment-income-manual")
+    select_section("EIM00500")
     expect(page).to have_content("EIM00500 - Employment income")
   end
 
