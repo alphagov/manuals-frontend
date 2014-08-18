@@ -14,4 +14,9 @@ feature "Viewing a manual" do
     visit "/guidance/employment-income-manual/nonexistent-manual-section"
     expect(page.status_code).to eq(404)
   end
+
+  scenario "providing a form for reporting problems" do
+    visit_manual("employment-income-manual")
+    expect(page).to have_selector("#test-report_a_problem")
+  end
 end
