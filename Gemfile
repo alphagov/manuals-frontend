@@ -23,12 +23,11 @@ group :development, :test do
   gem 'pry'
   gem 'byebug'
   gem 'jasmine-rails'
+  gem "rspec-rails", "3.0.2"
 end
 
 group :test do
-  gem "cucumber-rails", "~> 1.4.0", require: false
   gem "webmock", "~> 1.17.4"
   gem "poltergeist", "1.5.0"
-  gem "rspec-rails", "3.0.2"
   gem "launchy"
 end

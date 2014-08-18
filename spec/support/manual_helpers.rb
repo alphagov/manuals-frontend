@@ -96,5 +96,6 @@ module ManualHelpers
     }
     content_api_has_an_artefact("guidance/my-manual-about-burritos/updates", updates_json)
   end
-
 end
+
+RSpec.configuration.include ManualHelpers
