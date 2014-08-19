@@ -33,18 +33,14 @@ class ManualPresenter
     raw_section_groups.map { |group| SectionGroupPresenter.new(group) }
   end
 
-  def body
-    manual.details.summary
+  def summary
+    manual.description
   end
 
 private
   attr_reader :manual
 
   def raw_section_groups
-    manual.details.section_groups || []
-  end
-
-  def tags
-    manual.tags || []
+    manual.details.child_section_groups || []
   end
 end

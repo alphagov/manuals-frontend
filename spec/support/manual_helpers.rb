@@ -54,6 +54,95 @@ module ManualHelpers
 
     content_store_has_item("/guidance/my-manual-about-burritos", manual_json)
   end
+
+  def stub_hmrc_manual
+    manual_json = {
+      base_path: "/guidance/employment-income-manual",
+      title: "Employment Income Manual",
+      description: nil,
+      format: "manual",
+      public_updated_at: "2014-01-23T00:00:00+01:00",
+      details: {
+        child_section_groups: [
+          {
+            title: nil,
+            child_sections: [
+              {
+                section_id: "EIM00100",
+                base_path: "/guidance/employment-income-manual/eim00100",
+                title: "About this manual",
+              },
+              {
+                section_id: "EIM00500",
+                base_path: "/guidance/employment-income-manual/eim00500",
+                title: "Employment income",
+              },
+            ]
+          }
+        ],
+        organisations: [
+          {
+            abbreviation: "HMRC",
+            web_url: "http://www.gov.uk/government/organisations/hm-revenue-customs",
+            title: "HM Revenue & Customs",
+          }
+        ],
+        change_notes: [],
+      }
+    }
+
+    content_store_has_item("/guidance/employment-income-manual", manual_json)
+  end
+
+  def stub_hmrc_manual_section_with_subsections
+    section_json = {
+      base_path: "/guidance/employment-income-manual/eim00500",
+      title: "Employment income: table of contents",
+      description: nil,
+      format: "manual-section",
+      public_updated_at: "2014-01-23T00:00:00+01:00",
+      details: {
+        body: nil,
+        section_id: "eim00500",
+        child_section_groups: [
+          {
+            title: nil,
+            child_sections: [
+              {
+                section_id: "EIM00505",
+                base_path: "/guidance/employment-income-manual/eim00505",
+                title: "General",
+              },
+              {
+                section_id: "EIM01000",
+                base_path: "/guidance/employment-income-manual/eim01000",
+                title: "Particular items: A to P",
+              },
+            ]
+          }
+        ]
+      }
+    }
+
+    content_store_has_item("/guidance/employment-income-manual/eim00500", section_json)
+  end
+
+  def stub_hmrc_manual_section_with_body
+    section_json = {
+      base_path: "/guidance/employment-income-manual/eim15000",
+      title: "Employer-financed and non-approved retirement benefits schemes: table of contents",
+      description: nil,
+      format: "manual-section",
+      public_updated_at: "2014-01-23T00:00:00+01:00",
+      details: {
+        body: 'On this page:<br><br><a href="/guidance/employment-income-manual/EIM15000#EIM15010#IDAZR1YH">Sections 386-400 ITEPA 2003]</a><br>',
+        section_id: "eim15000",
+        child_section_groups: []
+      }
+    }
+
+    content_store_has_item("/guidance/employment-income-manual/eim15000", section_json)
+  end
 end
 
 RSpec.configuration.include ManualHelpers

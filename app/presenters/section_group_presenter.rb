@@ -6,7 +6,7 @@ class SectionGroupPresenter
   end
 
   def sections
-    group.sections.map do |section|
+    (group.child_sections || []).map do |section|
       SectionPresenter.new(section)
     end
   end
