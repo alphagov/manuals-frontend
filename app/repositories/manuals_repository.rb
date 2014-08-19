@@ -4,11 +4,11 @@ class ManualsRepository
   include GdsApi::Helpers
 
   def fetch(manual_id, section_id = nil)
-    if local_manual_exists?(manual_id)
-      fetch_from_file(manual_id, section_id)
-    else
-      fetch_from_api(manual_id, section_id)
-    end
+    # if local_manual_exists?(manual_id)
+      # fetch_from_file(manual_id, section_id)
+    # else
+    fetch_from_api(manual_id, section_id)
+    # end
   end
 
 private
@@ -22,9 +22,9 @@ private
   end
 
   def fetch_from_api(manual_id, section_id)
-    path = ['guidance', manual_id, section_id].compact.join('/')
+    path = ['/guidance', manual_id, section_id].compact.join('/')
 
-    content_api.artefact(path)
+    content_store.content_item!(path)
   end
 
   def local_manual_exists?(manual_id)

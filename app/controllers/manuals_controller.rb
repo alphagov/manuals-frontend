@@ -11,8 +11,6 @@ class ManualsController < ApplicationController
   end
 
   def updates
-    change_notes = ManualsRepository.new.fetch(params['manual_id'], 'updates')
-    @change_notes = ChangeNotesPresenter.new(change_notes)
   end
 
   private

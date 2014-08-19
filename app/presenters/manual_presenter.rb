@@ -6,23 +6,27 @@ class ManualPresenter
   end
 
   def updated_at
-    Date.parse(manual.updated_at)
+    Date.parse(manual.public_updated_at)
   end
 
   def organisations
-    tags.select { |t| t.details.type == 'organisation' }
+    @manual.details.organisations || []
   end
 
   def hmrc?
-    organisations.map(&:slug).include?('hm-revenue-customs')
+    organisations.map(&:title).include?('HM Revenue & Customs')
   end
 
   def url
-    manual.web_url
+    manual.base_path
   end
 
   def updates_url
     "#{url}/updates"
+  end
+
+  def change_notes
+    ChangeNotesPresenter.new(manual.details.change_notes || [])
   end
 
   def section_groups
