@@ -9,16 +9,23 @@ feature "Viewing updates for a manual" do
     stub_fake_manual_updates
   end
 
-  scenario "viewing updates for a manual" do
-    visit_manual("my-manual-about-burritos")
+  scenario "viewing change notes for a manual" do
+    visit_manual "my-manual-about-burritos"
     view_manual_change_notes
     expect(page).to have_content("Updates: My manual about Burritos")
   end
 
-  scenario "viewing a specific update", js: true do
-    visit_manual("my-manual-about-burritos")
+  scenario "viewing change notes for a specific date", js: true do
+    visit_manual "my-manual-about-burritos"
     view_manual_change_notes
-    page.find(".js-subsection-title", text: "20 June 2014").click
-    expect(page).to have_content("Added section on fillings")
+
+    view_change_notes_for("20 June 2014")
+
+    expect_change_note("Added section on fillings",
+                       section_title: "Fillings",
+                       section_href: "/guidance/my-manual-about-burritos/fillings")
+    expect_change_note("Added section on hot sauce",
+                       section_title: "This is the section on hot sauce",
+                       section_href: "/guidance/my-manual-about-burritos/this-is-the-section-on-hot-sauce")
   end
 end

@@ -1,1 +1,49 @@
-{"title":"EIM00500 - Employment income: table ofcontents","details":{"manual-section-id":"EIM00500","slug": "guidance/employment-income-manual/EIM00500","body":"","breadcrumbs":["EIMANUAL","EIM00500"],"section_groups":[{"title":null,"sections":[{"manual-section-id":"EIM00505","slug": "guidance/employment-income-manual/EIM00505","title":"General"},{"manual-section-id":"EIM01000","slug": "guidance/employment-income-manual/EIM01000","title":"Particular items: A to\nP"},{"manual-section-id":"EIM01650","slug": "guidance/employment-income-manual/EIM01650","title":"Particular items: New\nDeal, employment zones and particular exemptions"},{"manual-section-id":"EIM03100","slug": "guidance/employment-income-manual/EIM03100","title":"Particular items; removal\nor transfer costs"},{"manual-section-id":"EIM03600","slug": "guidance/employment-income-manual/EIM03600","title":"Particular items:\nrestrictive covenants"},{"manual-section-id":"EIM04700","slug": "guidance/employment-income-manual/EIM04700","title":"Particular items: R to\nZ"}]}]}}
+{
+  "title":"EIM00500 - Employment income: table of contents",
+  "details":{
+    "manual-section-id":"EIM00500",
+    "slug":"guidance/employment-income-manual/EIM00500",
+    "body":"",
+    "breadcrumbs":[
+      "EIMANUAL",
+      "EIM00500"
+    ],
+    "section_groups":[
+      {
+        "title":null,
+        "sections":[
+          {
+            "manual-section-id":"EIM00505",
+            "slug":"guidance/employment-income-manual/EIM00505",
+            "title":"General"
+          },
+          {
+            "manual-section-id":"EIM01000",
+            "slug":"guidance/employment-income-manual/EIM01000",
+            "title":"Particular items: A to\nP"
+          },
+          {
+            "manual-section-id":"EIM01650",
+            "slug":"guidance/employment-income-manual/EIM01650",
+            "title":"Particular items: New\nDeal, employment zones and particular exemptions"
+          },
+          {
+            "manual-section-id":"EIM03100",
+            "slug":"guidance/employment-income-manual/EIM03100",
+            "title":"Particular items; removal\nor transfer costs"
+          },
+          {
+            "manual-section-id":"EIM03600",
+            "slug":"guidance/employment-income-manual/EIM03600",
+            "title":"Particular items:\nrestrictive covenants"
+          },
+          {
+            "manual-section-id":"EIM04700",
+            "slug":"guidance/employment-income-manual/EIM04700",
+            "title":"Particular items: R to\nZ"
+          }
+        ]
+      }
+    ]
+  }
+}
