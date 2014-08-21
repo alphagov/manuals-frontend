@@ -36,7 +36,7 @@ module AppHelpers
 
   def expect_manual_update_date_to_be(date)
     within('header .secondary') do
-      expect(page).to have_content("Manual updated: #{date}")
+      expect(page).to have_content("Updated: #{date}")
     end
   end
 
