@@ -1,5 +1,5 @@
 class SectionPresenter
-  delegate :title, :body, :description, to: :section
+  delegate :title, :body, to: :section
 
   def initialize(section)
     @section = section
@@ -15,6 +15,10 @@ class SectionPresenter
 
   def collapsible?
     self.body.present?
+  end
+
+  def summary
+    section.description
   end
 
 private
