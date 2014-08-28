@@ -19,7 +19,7 @@ class DocumentPresenter
   end
 
   def body
-    document['details']['body']
+    document['details']['body'] && document['details']['body'].html_safe
   end
 
   def section_groups
