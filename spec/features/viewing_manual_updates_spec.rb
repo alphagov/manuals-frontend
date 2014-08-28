@@ -6,7 +6,6 @@ feature "Viewing updates for a manual" do
 
   before do
     stub_fake_manual
-    stub_fake_manual_updates
   end
 
   scenario "viewing change notes for a manual" do

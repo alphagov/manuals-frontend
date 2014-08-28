@@ -2,20 +2,22 @@
 <%= render partial: "header" %>
 <div class='manual-section'>
   <div class='section-content'>
-    <p class='summary'><%= @manual.body %></p>
+    <div class='summary'>
+      <%= @manual.summary %>
+    </div>
     <% @manual.section_groups.each do | group | %>
     <div class='js-collapsible-collection subsection-collection'>
       <div class='title-controls-wrap'>
         <h3 class='title'><%= group.title %></h3>
       </div>
       <div class='collapsible-subsections'>
-      <% group.sections.each do | section | %>
-        <% if section.collapsible? %>
-          <%= render 'collapsible_subsection', :section => section %>
-        <% else %>
-          <%= render 'non_collapsible_subsection', :section => section %>
+        <% group.sections.each do | section | %>
+          <% if section.collapsible? %>
+            <%= render 'collapsible_subsection', :section => section %>
+          <% else %>
+            <%= render 'non_collapsible_subsection', :section => section %>
+          <% end %>
         <% end %>
-      <% end %>
       </div>
     </div>
     <% end %>

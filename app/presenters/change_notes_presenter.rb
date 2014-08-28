@@ -1,17 +1,10 @@
 class ChangeNotesPresenter
-
-  delegate :title, :slug, to: :change_notes
-
   def initialize(change_notes)
     @change_notes = change_notes
   end
 
-  def manual
-    change_notes.manual_artefact
-  end
-
   def updates
-    change_notes.details.updates.map { |u|
+    change_notes.map { |u|
       UpdatePresenter.new(u)
     }
   end
@@ -36,13 +29,13 @@ private
   end
 
   def group_updates_by_document(updates)
-    updates.group_by(&:slug).map { |_, updates|
+    updates.group_by(&:base_path).map { |_, updates|
       DocumentUpdatesPresenter.new(updates)
     }
   end
 
   class UpdatePresenter
-    delegate :slug, :change_note, :title, to: :update
+    delegate :base_path, :change_note, :title, to: :update
 
     def initialize(update)
       @update = update
@@ -57,7 +50,7 @@ private
   end
 
   class DocumentUpdatesPresenter
-    delegate :slug, :title, to: :'updates.first'
+    delegate :base_path, :title, to: :'updates.first'
 
     def initialize(updates)
       @updates = updates
@@ -65,10 +58,6 @@ private
 
     def change_notes
       updates.map(&:change_note)
-    end
-
-    def path
-      "/#{slug}"
     end
 
   private

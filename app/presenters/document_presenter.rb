@@ -7,7 +7,7 @@ class DocumentPresenter
   end
 
   def section_id
-    document['details']['manual-section-id']
+    document['details']['section_id']
   end
 
   def breadcrumb
@@ -15,17 +15,11 @@ class DocumentPresenter
   end
 
   def summary
-    if document['details']['sections'].present?
-      document['details']['body']
-    elsif document['details']['summary'].present?
-      document['details']['summary']
-    end
+    document['description']
   end
 
-  def sections_as_blob
-    unless document['details']['sections'].present?
-      document['details']['body']
-    end
+  def body
+    document['details']['body'] && document['details']['body'].html_safe
   end
 
   def section_groups
@@ -44,14 +38,14 @@ class DocumentPresenter
   end
 
   def url
-    document['web_url']
+    document['base_path']
   end
 
 private
   attr_reader :document, :manual
 
   def raw_section_groups
-    document.details.section_groups || []
+    document.details.child_section_groups || []
   end
 
 end

@@ -1,29 +1,35 @@
+require 'gds_api/helpers'
+
 class ManualsController < ApplicationController
+  include GdsApi::Helpers
 
   before_filter :set_manual
 
   def index; end
 
   def show
-    document = ManualsRepository.new.fetch(params["manual_id"], params["section_id"])
+    document = fetch(params["manual_id"], params["section_id"])
     error_not_found unless document
     @document = DocumentPresenter.new(document, @manual)
   end
 
   def updates
-    change_notes = ManualsRepository.new.fetch(params['manual_id'], 'updates')
-    @change_notes = ChangeNotesPresenter.new(change_notes)
   end
 
-  private
+private
 
   def error_not_found
     render status: :not_found, text: "404 error not found"
   end
 
   def set_manual
-    manual = ManualsRepository.new.fetch(params["manual_id"])
+    manual = fetch(params["manual_id"])
     error_not_found unless manual
     @manual = ManualPresenter.new(manual)
+  end
+
+  def fetch(manual_id, section_id = nil)
+    path = ['/guidance', manual_id, section_id].compact.join('/')
+    content_store.content_item(path)
   end
 end
