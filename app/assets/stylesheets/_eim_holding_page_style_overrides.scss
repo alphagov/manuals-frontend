@@ -1,23 +1,32 @@
 #manuals-frontend #eim-holding-header {
   background: none;
-  color: black;
+  color: $black;
 
   @include media(tablet) {
-    margin-top: 30px;
+    margin-top: $gutter;
     padding-left: 0;
   }
 
-  div {
-    max-width: 38em;
+  h1 {
+    max-width: $full-width;
+    @include media(tablet) {
+      max-width: $two-thirds;
+    }
   }
 }
 
 #manuals-frontend #eim-holding-content {
   min-height: 10em;
-  max-width: 38em;
+  max-width: $full-width;
+
+  @include media(tablet) {
+    max-width: $two-thirds;
+
+  }
 
   p {
-    font-size: 19px;
+    @include core-19;
     word-wrap: break-word;
+
   }
 }
