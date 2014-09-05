@@ -12,6 +12,8 @@ gem 'unicorn', '4.8.2'
 gem 'plek', '1.7.0'
 gem 'gds-api-adapters', '14.1.0'
 
+gem 'airbrake', '4.0.0'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
