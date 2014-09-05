@@ -27,6 +27,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     addressable (2.3.6)
+    airbrake (4.0.0)
+      builder
+      multi_json
     arel (4.0.2)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -187,6 +190,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake (= 4.0.0)
   better_errors
   binding_of_caller
   byebug
