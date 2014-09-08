@@ -10,9 +10,9 @@ feature "Viewing manuals and sections" do
   scenario "viewing any manual" do
     stub_hmrc_manual
 
-    visit_manual "employment-income-manual"
+    visit_manual "inheritance-tax-manual"
 
-    expect_manual_title_to_be("Employment Income Manual")
+    expect_manual_title_to_be("Inheritance Tax Manual")
     expect_manual_update_date_to_be("23 January 2014")
 
     # This next expectation has been temporarily disabled until inline rendering of leaf
@@ -20,8 +20,8 @@ feature "Viewing manuals and sections" do
     # expect_page_to_include_section("About this manual",
     #   includes_text: "This manual is a guide to the Income Tax (Earnings and Pensions) Act")
 
-    expect_page_to_include_section("Employment income",
-                                   href: "/guidance/employment-income-manual/eim00500")
+    expect_page_to_include_section("Inheritance tax",
+                                   href: "/guidance/inheritance-tax-manual/eim00500")
 
     expect_page_to_be_affiliated_with_org(title: "HM Revenue & Customs",
                                           slug: "hm-revenue-customs")
@@ -31,18 +31,18 @@ feature "Viewing manuals and sections" do
     stub_hmrc_manual
     stub_hmrc_manual_section_with_subsections
 
-    visit_manual_section "employment-income-manual", "eim00500"
+    visit_manual_section "inheritance-tax-manual", "eim00500"
 
-    expect_section_title_to_be("Employment income: table of contents")
+    expect_section_title_to_be("Inheritance tax: table of contents")
 
     expect_page_to_include_section("General",
-                                   href: "/guidance/employment-income-manual/eim00505")
+                                   href: "/guidance/inheritance-tax-manual/eim00505")
     expect_page_to_include_section("Particular items: A to P",
-                                   href: "/guidance/employment-income-manual/eim01000")
+                                   href: "/guidance/inheritance-tax-manual/eim01000")
 
     # breadcrumb
     expect(page).to have_link("Contents",
-                              href: "/guidance/employment-income-manual")
+                              href: "/guidance/inheritance-tax-manual")
 
     expect_page_to_be_affiliated_with_org(title: "HM Revenue & Customs",
                                           slug: "hm-revenue-customs")
@@ -52,7 +52,7 @@ feature "Viewing manuals and sections" do
     stub_hmrc_manual
     stub_hmrc_manual_section_with_body
 
-    visit_manual_section "employment-income-manual", "eim15000"
+    visit_manual_section "inheritance-tax-manual", "eim15000"
 
     # HTML in the body
     expect(page).to have_link("Sections 386-400 ITEPA 2003")
@@ -60,30 +60,30 @@ feature "Viewing manuals and sections" do
 
   scenario "HMRC manual section IDs are displayed in the title" do
     stub_hmrc_manual
-    visit_manual "employment-income-manual"
+    visit_manual "inheritance-tax-manual"
 
     expect_page_to_include_section("EIM00100 About this manual")
-    expect_page_to_include_section("EIM00500 Employment income",
-                                   href: "/guidance/employment-income-manual/eim00500")
+    expect_page_to_include_section("EIM00500 Inheritance tax",
+                                   href: "/guidance/inheritance-tax-manual/eim00500")
   end
 
   scenario "navigating from the manual to a section" do
     stub_hmrc_manual
     stub_hmrc_manual_section_with_subsections
 
-    visit_manual "employment-income-manual"
+    visit_manual "inheritance-tax-manual"
 
-    select_section "Employment income"
+    select_section "Inheritance tax"
 
-    expect(current_path).to eq("/guidance/employment-income-manual/eim00500")
-    expect_section_title_to_be("Employment income")
+    expect(current_path).to eq("/guidance/inheritance-tax-manual/eim00500")
+    expect_section_title_to_be("Inheritance tax")
   end
 
   scenario "visiting a non-existent section" do
     stub_hmrc_manual
-    content_store_does_not_have_item('/guidance/employment-income-manual/nonexistent-manual-section')
+    content_store_does_not_have_item('/guidance/inheritance-tax-manual/nonexistent-manual-section')
 
-    visit_manual_section "employment-income-manual", "nonexistent-manual-section"
+    visit_manual_section "inheritance-tax-manual", "nonexistent-manual-section"
     expect(page.status_code).to eq(404)
   end
 end
