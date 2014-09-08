@@ -1,8 +1,8 @@
 ManualsFrontend::Application.routes.draw do
 
   # Holding page for /guidance/employment-income-manual
-  get 'guidance/employment-income-manual', to: 'static_pages#employment_income_manual'
-  get 'guidance/employment-income-manual/*', to: redirect('guidance/employment-income-manual')
+  get '/guidance/employment-income-manual', to: 'static_pages#employment_income_manual'
+  get '/guidance/employment-income-manual/*section', to: redirect('/guidance/employment-income-manual')
 
   get '/guidance/:manual_id', to: 'manuals#index'
   get '/guidance/:manual_id/updates', to: 'manuals#updates'
