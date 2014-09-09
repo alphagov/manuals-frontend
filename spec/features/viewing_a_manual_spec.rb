@@ -86,4 +86,21 @@ feature "Viewing manuals and sections" do
     visit_manual_section "inheritance-tax-manual", "nonexistent-manual-section"
     expect(page.status_code).to eq(404)
   end
+
+  scenario "visiting the obsolete prototype HMRC manual" do
+    content_store_does_not_have_item('/guidance/employment-income-manual')
+
+    visit_manual "employment-income-manual"
+    expect_manual_title_to_be("This prototype of the Employment Income Manual is no longer available")
+    expect(page.status_code).to eq(200)
+  end
+
+  scenario "visiting a section in the obsolete prototype HMRC manual" do
+    content_store_does_not_have_item('/guidance/employment-income-manual')
+    content_store_does_not_have_item('/guidance/employment-income-manual/abc123')
+
+    visit_manual_section "employment-income-manual", "abc123"
+    expect_manual_title_to_be("This prototype of the Employment Income Manual is no longer available")
+    expect(page.status_code).to eq(200)
+  end
 end
