@@ -24,7 +24,13 @@ private
 
   def set_manual
     manual = fetch(params["manual_id"])
-    error_not_found unless manual
+    unless manual
+      if params["manual_id"] == 'employment-income-manual'
+        render :employment_income_manual
+      else
+        error_not_found
+      end
+    end
     @manual = ManualPresenter.new(manual)
   end
 
