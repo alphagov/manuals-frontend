@@ -55,10 +55,10 @@ module ManualHelpers
     content_store_has_item("/guidance/my-manual-about-burritos", manual_json)
   end
 
-  def stub_hmrc_manual
+  def stub_hmrc_manual(manual_id="inheritance-tax-manual", title="Inheritance Tax Manual")
     manual_json = {
-      base_path: "/guidance/inheritance-tax-manual",
-      title: "Inheritance Tax Manual",
+      base_path: "/guidance/#{manual_id}",
+      title: title,
       description: nil,
       format: "manual",
       public_updated_at: "2014-01-23T00:00:00+01:00",
@@ -69,12 +69,12 @@ module ManualHelpers
             child_sections: [
               {
                 section_id: "EIM00100",
-                base_path: "/guidance/inheritance-tax-manual/eim00100",
+                base_path: "/guidance/#{manual_id}/eim00100",
                 title: "About this manual",
               },
               {
                 section_id: "EIM00500",
-                base_path: "/guidance/inheritance-tax-manual/eim00500",
+                base_path: "/guidance/#{manual_id}/eim00500",
                 title: "Inheritance tax",
               },
             ]
@@ -91,7 +91,7 @@ module ManualHelpers
       }
     }
 
-    content_store_has_item("/guidance/inheritance-tax-manual", manual_json)
+    content_store_has_item("/guidance/#{manual_id}", manual_json)
   end
 
   def stub_hmrc_manual_section_with_subsections
@@ -127,21 +127,22 @@ module ManualHelpers
     content_store_has_item("/guidance/inheritance-tax-manual/eim00500", section_json)
   end
 
-  def stub_hmrc_manual_section_with_body
+  def stub_hmrc_manual_section_with_body(manual_id="inheritance-tax-manual", section_id="eim15000",
+                                         title="Parent-financed and non-approved retirement benefits schemes: table of contents")
     section_json = {
-      base_path: "/guidance/inheritance-tax-manual/eim15000",
-      title: "Parent-financed and non-approved retirement benefits schemes: table of contents",
+      base_path: "/guidance/#{manual_id}/#{section_id}",
+      title: title,
       description: nil,
       format: "manual-section",
       public_updated_at: "2014-01-23T00:00:00+01:00",
       details: {
-        body: 'On this page:<br><br><a href="/guidance/inheritance-tax-manual/EIM15000#EIM15010#IDAZR1YH">Sections 386-400 ITEPA 2003]</a><br>',
-        section_id: "eim15000",
+        body: 'On this page:<br><br><a href="/guidance/#{manual_id}/#{section_id}#EIM15010#IDAZR1YH">Sections 386-400 ITEPA 2003]</a><br>',
+        section_id: "#{section_id}",
         child_section_groups: []
       }
     }
 
-    content_store_has_item("/guidance/inheritance-tax-manual/eim15000", section_json)
+    content_store_has_item("/guidance/#{manual_id}/#{section_id}", section_json)
   end
 end
 
