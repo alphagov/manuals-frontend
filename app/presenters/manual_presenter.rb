@@ -37,6 +37,10 @@ class ManualPresenter
     manual.description
   end
 
+  def body
+    manual.details.body.html_safe if manual.details.body.present?
+  end
+
 private
   attr_reader :manual
 
