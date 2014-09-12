@@ -156,13 +156,25 @@
       @include media(tablet){
         margin-top: $gutter;
       }
+    }
 
-      .summary {
-        @include core-24;
+    .introduction {
+      margin-bottom:$gutter;
+      @include media(tablet) {
+        width:$two-thirds;
+        margin-bottom: $gutter*2;
+      }
+
+      > div {
+        margin-bottom: $gutter-one-third;
         @include media(tablet) {
-          width:$two-thirds;
+          margin-bottom: $gutter;
         }
       }
+    }
+
+    .summary {
+      @include core-24;
     }
 
     .footnotes {
