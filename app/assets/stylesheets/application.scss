@@ -12,6 +12,10 @@
 // TODO: Delete this once the EIM holding page is removed
 @import "eim_holding_page_style_overrides";
 
+main {
+  display:block;
+}
+
 .outer-block {
   @include outer-block;
 }
