@@ -51,7 +51,7 @@
     // Wrap newly discovered sections in a div with js-openable and manual-subsection classes
     // The DOM now contains poperly marked up sections to which collapsible functions can attach.
 
-    var subsectionHeaders = this.$container.find('h2').not('.linked-title, .js-ignore-h2s h2');
+    var subsectionHeaders = this.$container.find('h2');
     subsectionHeaders.addClass('js-subsection-title');
     subsectionHeaders.each(function(index){
       var $subsectionHeader = $(this),
@@ -61,7 +61,7 @@
         $subsectionHeader.data('section-id', subsectionId);
       }
 
-      var subsectionBody = $subsectionHeader.nextUntil('h2.js-subsection-title, h2.linked-title');
+      var subsectionBody = $subsectionHeader.nextUntil('h2.js-subsection-title');
       subsectionBody.andSelf().wrapAll('<div class="manual-subsection js-openable"></div>');
       subsectionBody.wrapAll('<div class="js-subsection-body"></div>');
     });
