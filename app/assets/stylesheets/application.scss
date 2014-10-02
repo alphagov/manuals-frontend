@@ -155,13 +155,6 @@ main {
       margin-top: $gutter;
     }
 
-    .section-content {
-      margin-top: $gutter-half;
-      @include media(tablet){
-        margin-top: $gutter;
-      }
-    }
-
     .introduction {
       margin-bottom:$gutter;
       @include media(tablet) {
@@ -255,15 +248,6 @@ main {
     @include media(tablet){
       margin-top: $gutter-two-thirds;
     }
-  }
-
-  /* Overwrite for h2s that occur in govspeak from hmrc manuals
-     which shouldn't be collapsible. This styling is the fallback
-     for when the js hasn't kicked in to style properly.
-  */
-  .collapsible-subsections .js-subsection-body .js-ignore-h2s h2 {
-    border-top: none;
-    margin: 0;
   }
 
   .subsection-collection {
