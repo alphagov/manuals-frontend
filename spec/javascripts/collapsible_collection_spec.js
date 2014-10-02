@@ -122,12 +122,6 @@ describe('CollapsibleCollection', function(){
     });
   });
 
-  describe('markupHeaderlessSection', function(){
-    it('should wrap a section that does not begin with a h2 with js-section-body', function() {
-      expect($('body .collapsible-subsections > .govspeak').find('.js-section-body').length).toBe(1);
-    });
-  });
-
   describe('closeAll', function(){
     it('should close all collapsibles in this collection', function(){
       collection.openAll();
