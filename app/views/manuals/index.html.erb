@@ -1,32 +1,30 @@
 <% content_for :title, @manual.title %>
 <%= render partial: "header" %>
 <div class='manual-section'>
-  <div class='section-content'>
-    <div class='introduction'>
-      <div class='summary'>
-        <%= @manual.summary %>
-      </div>
-      <% unless @manual.body.blank? %>
-        <div class="govspeak">
-          <%= @manual.body %>
-        </div>
-      <% end %>
+  <div class='introduction'>
+    <div class='summary'>
+      <%= @manual.summary %>
     </div>
-    <% @manual.section_groups.each do | group | %>
-    <div class='js-collapsible-collection subsection-collection'>
-      <div class='title-controls-wrap'>
-        <h3 class='title'><%= group.title %></h3>
+    <% unless @manual.body.blank? %>
+      <div class="govspeak">
+        <%= @manual.body %>
       </div>
-      <div class='collapsible-subsections'>
-        <% group.sections.each do | section | %>
-          <% if section.collapsible? %>
-            <%= render 'collapsible_subsection', :section => section %>
-          <% else %>
-            <%= render 'non_collapsible_subsection', :section => section %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
     <% end %>
   </div>
+  <% @manual.section_groups.each do | group | %>
+    <% if @manual.hmrc?%>
+      <%= render 'hmrc_index', :group => group %>
+    <% else %>
+      <ul class='section-list'>
+      <% group.sections.each do | section | %>
+        <li>
+        <%= link_to section.path, class: "#{section.section_id.present? ? 'subsection-with-id' : ''}" do %>
+            <span class='subsection-title-text'><%= section.title %></span>
+            <span class='subsection-summary'><%= section.summary %></span>
+        <% end %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+  <% end %>
 </div>
