@@ -1,16 +1,12 @@
 <% content_for :title, @manual.title %>
 <%= render partial: "header" %>
-<div class='manual-section'>
-  <div class='introduction'>
-    <div class='summary'>
-      <%= @manual.summary %>
-    </div>
-    <% unless @manual.body.blank? %>
-      <div class="govspeak">
-        <%= @manual.body %>
-      </div>
-    <% end %>
+<div class='manual-body'>
+  <p class='summary'><%= @manual.summary %></p>
+  <% unless @manual.body.blank? %>
+  <div class="govspeak">
+    <%= @manual.body %>
   </div>
+  <% end %>
   <% @manual.section_groups.each do | group | %>
     <% if @manual.hmrc?%>
       <%= render 'hmrc_index', :group => group %>
