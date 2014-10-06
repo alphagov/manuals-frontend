@@ -9,7 +9,9 @@
   <% end %>
   <% @manual.section_groups.each do | group | %>
     <% if @manual.hmrc?%>
-      <%= render 'hmrc_index', :group => group %>
+    <div class='subsection-collection'>
+      <%= render 'hmrc_sections', :group => group %>
+    </div>
     <% else %>
       <ul class='section-list'>
       <% group.sections.each do | section | %>

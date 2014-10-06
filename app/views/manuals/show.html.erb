@@ -15,6 +15,13 @@
     </div>
   <% end %>
   <% if @manual.hmrc? %>
-    <%= render 'hmrc_sections', :document => @document %>
+    <div class='subsection-collection'>
+      <% @document.section_groups.each do | group | %>
+        <% if group.title %>
+          <%= group.title %>
+        <% end %>
+      <%= render 'hmrc_sections', :group => group %>
+    <% end %>
+    </div>
   <% end%>
 </div>
