@@ -152,7 +152,6 @@ main {
       list-style: none;
       cursor: pointer;
       border-top: 1px solid $border-colour;
-      padding: $gutter-one-third $gutter-one-third $gutter-one-third 0;
 
       &:hover {
         background-color:$grey-4;
@@ -164,9 +163,10 @@ main {
       a {
         text-decoration: none;
         display:block;
+        padding: $gutter-one-third $gutter-one-third $gutter-one-third 0;
 
         @include media(tablet){
-          max-width:$two-thirds;
+          padding-right:$one-third;
         }
 
         .subsection-title-text {
