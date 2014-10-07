@@ -246,14 +246,6 @@ main {
       margin-top: $gutter;
     }
 
-    .title {
-      margin-bottom:$gutter-half;
-      @include media(tablet) {
-        margin-bottom:$gutter;
-      }
-      @include bold-24;
-    }
-
     .title-controls-wrap {
       @extend %contain-floats;
 
