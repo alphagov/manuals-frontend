@@ -50,7 +50,7 @@ a {
       margin-top: 0;
       & + p {
         display: none;
-      }      
+      }
     }
 
     time {
@@ -64,22 +64,7 @@ a {
   width: 75%;
 }
 
-.linked-title {
-  @include core-16;
-  width: 75%;
-   .subsection-title-text {
-     font-weight: bold;
-   }
-  .subsection-summary {
-    display: block;
-    font-weight: normal;
-  }
-  a[href^="/"]:after {
-   @include core-14;
-  }
-}
-
-.manual-subsection {
+.js-openable {
   margin-bottom: 30px;
 
   h2 {
@@ -87,4 +72,3 @@ a {
     font-weight: bold;
   }
 }
-

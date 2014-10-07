@@ -107,9 +107,9 @@ describe('CollapsibleCollection', function(){
       expect(html.find('h2.js-subsection-title').length).toBe(sectionHeaderCount);
     });
 
-    it('should wrap h2 and section in a div with the classes js-openable and manual-subsection for blobs', function(){
+    it('should wrap h2 and section in a div with the classes js-openable for blobs', function(){
       collectionsFromBlobHTML.find('h2.js-subsection-title').each(function(index){
-        expect($(this).parents('.js-openable.manual-subsection').length).toBe(1);
+        expect($(this).parents('.js-openable').length).toBe(1);
       });
     });
 
