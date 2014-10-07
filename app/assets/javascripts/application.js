@@ -10,12 +10,20 @@ jQuery(function($) {
     new GOVUK.CollapsibleCollection({$el:$(this)});
   })
 
+  if (window.location.hash) {
+    openSectionContainingAnchor($(window.location.hash));
+  }
+
   $('.govspeak').on('click', 'a', function(event){
     if (window.location.pathname == event.target.pathname) {
-      var $section = $(event.target.hash);
-      if ($section.length != 0) {
-        new GOVUK.Collapsible($section).open();
-      }
+      openSectionContainingAnchor($(window.location.hash));
     }
   })
 });
+
+
+function openSectionContainingAnchor($anchor) {
+  if ($anchor.length != 0) {
+    new GOVUK.Collapsible($anchor.closest('.js-openable')).open();
+  }
+}
