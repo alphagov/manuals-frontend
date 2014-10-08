@@ -19,13 +19,13 @@ private
   def group_updates_by_year(updates)
     updates.group_by { |update| update.updated_at.year }.map { |year, updates|
       [year, group_updates_by_day(updates)]
-    }
+    }.reverse
   end
 
   def group_updates_by_day(updates)
     updates.group_by(&:updated_at).map { |day, updates|
       [day, group_updates_by_document(updates)]
-    }
+    }.reverse
   end
 
   def group_updates_by_document(updates)
