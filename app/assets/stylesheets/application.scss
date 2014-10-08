@@ -220,18 +220,6 @@ main {
     text-decoration: none;
     display: block;
     position: relative;
-
-    .subsection-summary {
-      font-weight:normal;
-      display: block;
-      color: $black;
-    }
-
-    a {
-      text-decoration:none;
-      color: $link-colour;
-      cursor: pointer;
-    }
   }
 
   .changed-document {
@@ -302,7 +290,7 @@ main {
     }
   }
 
-  .manual-subsection {
+  .js-openable {
     border-top: 1px solid $border-colour;
     padding-bottom: $gutter;
 

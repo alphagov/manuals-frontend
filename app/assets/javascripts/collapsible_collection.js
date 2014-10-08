@@ -61,7 +61,7 @@
       }
 
       var subsectionBody = $subsectionHeader.nextUntil('h2.js-subsection-title');
-      subsectionBody.andSelf().wrapAll('<div class="manual-subsection js-openable"></div>');
+      subsectionBody.andSelf().wrapAll('<div class="js-openable"></div>');
       subsectionBody.wrapAll('<div class="js-subsection-body"></div>');
     });
   }

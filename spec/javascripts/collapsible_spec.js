@@ -3,7 +3,7 @@ describe('Collapsible', function(){
   var collapsible, collapsibleHTML;
 
   beforeEach(function(){
-    var collapsibleString = '<section class="manual-subsection closed" data-section-id="EIM11210">'+
+    var collapsibleString = '<section class="closed" data-section-id="EIM11210">'+
       '<div class="js-subsection-title">'+
         '<span class="subsection-id ">EIM11210</span>'+
         '<h4 id="EIM11210">'+
