@@ -18,7 +18,7 @@
                 </span>
               </span>
             </h2>
-            <dl>
+            <dl class='updates-list'>
             <% updated_documents.each do |document| %>
               <dt><%= link_to document.title, document.base_path %></dt>
                 <% document.change_notes.each do |note| %>
