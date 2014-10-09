@@ -2,9 +2,6 @@
 <%= render partial: "header" %>
 <div class='manual-body'>
   <h1 class='section-title'><span class='title'>Updates: <%= @manual.title %></span></h1>
-  <div class="updates-hint govspeak">
-    <p>Select one of the dates below to see details of updates to this guidance.</p>
-  </div>
   <div class='section-content'>
     <% @manual.change_notes.by_year.each do |year, updates_by_year| %>
       <div class='js-collapsible-collection subsection-collection'>
@@ -21,18 +18,16 @@
                 </span>
               </span>
             </h2>
-            <div class="js-ignore-h2s">
-              <% updated_documents.each do |document| %>
-                <div class="changed-document govspeak">
-                  <h3>
-                    <%= link_to document.title, document.base_path %>
-                  </h3>
-                  <% document.change_notes.each do |note| %>
-                    <p><%= note %></p>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
+            <dl class='updates-list'>
+            <% updated_documents.each do |document| %>
+              <dt><%= link_to document.title, document.base_path %></dt>
+                <% document.change_notes.each do |note| %>
+                  <dd>
+                    <%= note %>
+                  </dd>
+                <% end %>
+            <% end %>
+            </dl>
           <% end %>
         </div>
       </div>

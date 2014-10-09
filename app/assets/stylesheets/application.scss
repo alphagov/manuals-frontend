@@ -205,6 +205,14 @@ main {
     }
   }
 
+  .updates-list {
+    @include core-19;
+    dd {
+      margin-bottom:1em;
+    }
+  }
+
+
   .collapsible-subsections p {
     @include media(tablet){
       margin-top: $gutter-two-thirds;
@@ -222,36 +230,10 @@ main {
     position: relative;
   }
 
-  .changed-document {
-    margin-bottom: $gutter-two-thirds;
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  .changed-document-title {
-    font-weight: bold;
-  }
-
-  .updates-hint {
-    margin-top: $gutter-one-third;
-    @include media(tablet){
-      margin-top: $gutter-two-thirds;
-    }
-  }
-
   .subsection-collection {
     margin-top: $gutter-half;
     @include media(tablet){
       margin-top: $gutter;
-    }
-
-    .title {
-      margin-bottom:$gutter-half;
-      @include media(tablet) {
-        margin-bottom:$gutter;
-      }
-      @include bold-24;
     }
 
     .title-controls-wrap {
