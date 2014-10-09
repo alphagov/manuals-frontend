@@ -212,7 +212,6 @@ main {
     }
   }
 
-
   .collapsible-subsections p {
     @include media(tablet){
       margin-top: $gutter-two-thirds;
@@ -240,6 +239,7 @@ main {
       @extend %contain-floats;
 
       .title {
+        @include heading-24;
         @include media(tablet) {
           float:left;
           width: $three-quarters;
