@@ -24,7 +24,12 @@
   </div>
 </header>
 <ol class='breadcrumb-trail' role='breadcrumbs'>
-  <li><%= link_to 'Contents', @manual.url %></li>
+  <% if request.path == @manual.url %>
+    <li class="no-separator">Contents</li>
+  <% else %>
+    <li><%= link_to 'Contents', @manual.url %></li>
+  <% end %>
+
   <% if @document %>
     <% @document.breadcrumbs.each do | crumb | %>
       <li> <%= link_to crumb.label, crumb.link %></li>
