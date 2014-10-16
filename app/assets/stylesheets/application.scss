@@ -138,6 +138,9 @@ main {
         background-image:none;
         color: $secondary-text-colour;
       }
+      &.no-separator {
+        background-image:none;
+      }
     }
   }
 
