@@ -115,16 +115,16 @@ main {
 
     li {
       background-image: image-url("separator.png");
-      background-position: 100% 10%;
+      background-position: 100% 20%;
       background-repeat: no-repeat;
       display: inline;
       list-style: none;
-      margin-left: 5px;
+      margin-left: 0;
       margin-right: 5px;
-      padding: 0 20px 0 0;
+      padding: 0 15px 0 0;
 
       @include media(tablet){
-        background-position: 100% 28%;
+        background-position: 100% 45%;
       }
 
       @include device-pixel-ratio() {
@@ -136,10 +136,13 @@ main {
       }
       &.last-child {
         background-image:none;
-        color: $secondary-text-colour;
+        color: $text-colour;
       }
       &.no-separator {
         background-image:none;
+      }
+      a {
+        color: $text-colour;
       }
     }
   }

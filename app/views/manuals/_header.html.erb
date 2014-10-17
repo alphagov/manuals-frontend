@@ -34,6 +34,6 @@
     <% @document.breadcrumbs.each do | crumb | %>
       <li> <%= link_to crumb.label, crumb.link %></li>
     <% end %>
-    <li class='last-child'><strong><%= @document.breadcrumb %></strong></li>
+    <li class='last-child'><%= @document.breadcrumb %></li>
   <% end %>
 </ol>
