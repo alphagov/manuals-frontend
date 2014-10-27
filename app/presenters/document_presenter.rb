@@ -41,6 +41,10 @@ class DocumentPresenter
     document['base_path']
   end
 
+  def collapse_depth
+    return 2
+  end
+
 private
   attr_reader :document, :manual
 
