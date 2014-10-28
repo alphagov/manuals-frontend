@@ -122,6 +122,13 @@ describe('CollapsibleCollection', function(){
     });
   });
 
+  describe('calculateSuperiorsSelector', function(){
+    it ('should return all the headings of that depth level or of greater priority', function(){
+     expect(collection.calculateSuperiorsSelector(1)).toBe('h2,h1');
+     expect(collection.calculateSuperiorsSelector(2)).toBe('h3,h2,h1');
+   });
+  });
+
   describe('closeAll', function(){
     it('should close all collapsibles in this collection', function(){
       collection.openAll();
