@@ -224,7 +224,7 @@ main {
     }
   }
 
-  .collapsible-subsections h2 {
+  .collapsible-subsections .js-subsection-title {
     @include core-19;
     font-weight:bold;
     border-top: 1px solid $border-colour;
