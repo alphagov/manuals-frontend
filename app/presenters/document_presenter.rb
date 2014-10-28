@@ -42,7 +42,11 @@ class DocumentPresenter
   end
 
   def collapse_depth
-    return 2
+    # Stub method for when the API is giving us the document headings
+    # We will always collapse the lowest given heading.
+    # If only one level of headings are given, this returns 1. 2 is returned for 2, etc.
+    # Only ever expecting this to return 1 or 2, but the codde that uses this method will work for higher integers too.
+    return 1
   end
 
 private

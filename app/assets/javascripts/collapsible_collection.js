@@ -11,7 +11,7 @@
       depth = 1;
     }
 
-    this.collapseSelector = this.convertDepthToSelector(depth);
+    this.collapseSelector = "h"+(depth+1);
     this.superiorsSelector = this.calculateSuperiorsSelector(depth);
     this.markupSections();
     this.$sections = this.$container.find('.js-openable');
@@ -46,11 +46,6 @@
     this.collapsibles[sectionID] = collapsible;
   }
 
-  CollapsibleCollection.prototype.convertDepthToSelector = function convertDepthToSelector(depth) {
-    // Convert depth into an selector to make collapsable.
-    return "h"+ (depth+1)
-  }
-
   CollapsibleCollection.prototype.expandFootnotes = function expandFootnotes(){
     this.collapsibles['footnotes'].open();
   }
@@ -80,6 +75,7 @@
 
   CollapsibleCollection.prototype.calculateSuperiorsSelector = function calculateSuperiorsSelector(depth){
     // Returns a string with this header and all the headers of higher priority, for example 'h2,h1' (depth is zero offset)
+
     var selector = '';
     var hValue = depth+1;
 
