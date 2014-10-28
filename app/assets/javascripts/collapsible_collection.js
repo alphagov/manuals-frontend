@@ -6,6 +6,13 @@
     this.collapsibles = {};
 
     this.$container = options.$el;
+    var depth = this.$container.data('collapse-depth');
+    if(typeof depth == 'undefined'){
+      depth = 1;
+    }
+
+    this.collapseSelector = "h"+(depth+1);
+    this.superiorsSelector = this.calculateSuperiorsSelector(depth);
     this.markupSections();
     this.$sections = this.$container.find('.js-openable');
 
@@ -26,11 +33,10 @@
     }
   }
 
-
   CollapsibleCollection.prototype.initCollapsible = function initCollapsible(sectionIndex){
     var $section = $(this.$sections[sectionIndex]);
     var collapsible = new GOVUK.Collapsible($section);
-    var sectionID = $section.find('h2.js-subsection-title').data('section-id');
+    var sectionID = $section.find('.js-subsection-title').data('section-id');
 
     if(typeof sectionID == "undefined"){
       sectionID = sectionIndex;
@@ -50,20 +56,35 @@
     // Wrap newly discovered sections in a div with js-openable and manual-subsection classes
     // The DOM now contains poperly marked up sections to which collapsible functions can attach.
 
-    var subsectionHeaders = this.$container.find('h2');
+    var subsectionHeaders = this.$container.find(this.collapseSelector);
     subsectionHeaders.addClass('js-subsection-title');
-    subsectionHeaders.each(function(index){
-      var $subsectionHeader = $(this),
+
+    subsectionHeaders.each($.proxy(function(index, el){
+      var $subsectionHeader = $(el),
           subsectionId = $subsectionHeader.attr('id');
 
       if (subsectionId) {
         $subsectionHeader.data('section-id', subsectionId);
       }
 
-      var subsectionBody = $subsectionHeader.nextUntil('h2.js-subsection-title');
+      var subsectionBody = $subsectionHeader.nextUntil(this.superiorsSelector);
       subsectionBody.andSelf().wrapAll('<div class="js-openable"></div>');
       subsectionBody.wrapAll('<div class="js-subsection-body"></div>');
-    });
+    }, this) );
+  }
+
+  CollapsibleCollection.prototype.calculateSuperiorsSelector = function calculateSuperiorsSelector(depth){
+    // Returns a string with this header and all the headers of higher priority, for example 'h2,h1' (depth is zero offset)
+
+    var selector = '';
+    var hValue = depth+1;
+
+    while(hValue > 0) {
+      selector += 'h'+hValue+',';
+      hValue=hValue-1;
+    }
+    selector = selector.slice(0,-1);
+    return selector;
   }
 
   CollapsibleCollection.prototype.closeAll = function closeAll(event){
