@@ -17,7 +17,7 @@
     this.$sections = this.$container.find('.js-openable');
 
     if(this.$sections.length > 0) {
-      this.$sections.each($.proxy(this.initCollapsible, this));
+      this.$sections.each(this.initCollapsible.bind(this));
       this.$openAll = $("<a href='#' aria-hidden=true>Open all</a>"),
       this.$closeAll = $("<a href='#' aria-hidden=true>Close all</a>");
       this.addControls();
@@ -29,7 +29,7 @@
         this.collapsibles[openSectionID].open();
       }
 
-      this.$container.on('click', 'a[rel="footnote"]', $.proxy(this.expandFootnotes, this));
+      this.$container.on('click', 'a[rel="footnote"]', this.expandFootnotes.bind(this));
     }
   }
 
@@ -42,7 +42,7 @@
       sectionID = sectionIndex;
     }
 
-    $section.on('click', $.proxy(this.updateControls, this));
+    $section.on('click', this.updateControls.bind(this));
     this.collapsibles[sectionID] = collapsible;
   }
 
@@ -59,7 +59,7 @@
     var subsectionHeaders = this.$container.find(this.collapseSelector);
     subsectionHeaders.addClass('js-subsection-title');
 
-    subsectionHeaders.each($.proxy(function(index, el){
+    subsectionHeaders.each(function(index, el){
       var $subsectionHeader = $(el),
           subsectionId = $subsectionHeader.attr('id');
 
@@ -70,7 +70,7 @@
       var subsectionBody = $subsectionHeader.nextUntil(this.superiorsSelector);
       subsectionBody.andSelf().wrapAll('<div class="js-openable"></div>');
       subsectionBody.wrapAll('<div class="js-subsection-body"></div>');
-    }, this) );
+    }.bind(this));
   }
 
   CollapsibleCollection.prototype.calculateSuperiorsSelector = function calculateSuperiorsSelector(depth){
@@ -117,8 +117,8 @@
     var $collectionControls = $('<div class="js-collection-controls" />');
     $collectionControls.append(this.$openAll, this.$closeAll);
     this.$container.find('.title-controls-wrap').append($collectionControls);
-    this.$openAll.on('click', $.proxy(this.openAll, this));
-    this.$closeAll.on('click', $.proxy(this.closeAll, this));
+    this.$openAll.on('click', this.openAll.bind(this));
+    this.$closeAll.on('click', this.closeAll.bind(this));
   }
 
   CollapsibleCollection.prototype.updateControls = function updateControls(){
