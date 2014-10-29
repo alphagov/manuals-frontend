@@ -106,7 +106,7 @@ module ManualHelpers
         section_id: "eim00500",
         child_section_groups: [
           {
-            title: nil,
+            title: "This is a dummy child_section_group title",
             child_sections: [
               {
                 section_id: "EIM00505",
