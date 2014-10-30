@@ -1,6 +1,6 @@
 module AppHelpers
   def view_manual_change_notes
-    click_on "See all updates"
+    click_on "see all updates"
   end
 
   def visit_manual(manual_slug)
@@ -35,8 +35,8 @@ module AppHelpers
   end
 
   def expect_manual_update_date_to_be(date)
-    within('header .secondary') do
-      expect(page).to have_content("Updated: #{date}")
+    within('header .primary') do
+      expect(page).to have_content("Updated #{date}")
     end
   end
 
