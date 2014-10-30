@@ -52,6 +52,12 @@ module AppHelpers
     end
   end
 
+  def expect_a_child_section_group_title_of(child_section_group_title)
+    within('.subsection-collection') do
+      expect(page).to have_content(child_section_group_title)
+    end
+  end
+
   def expect_page_to_be_affiliated_with_org(options)
     expect(page).to have_link(options[:title],
                               "https://www.gov.uk/government/organisations/#{options[:slug]}")

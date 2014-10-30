@@ -35,6 +35,8 @@ feature "Viewing manuals and sections" do
 
     expect_section_title_to_be("Inheritance tax: table of contents")
 
+    expect_a_child_section_group_title_of("This is a dummy child_section_group title")
+
     expect_page_to_include_section("General",
                                    href: "/guidance/inheritance-tax-manual/eim00505")
     expect_page_to_include_section("Particular items: A to P",

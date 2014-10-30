@@ -1,3 +1,6 @@
+<% if group.title %>
+  <%= group.title %>
+<% end %>
 <% group.sections.each do | section | %>
   <% if section.collapsible? %>
     <h2>
