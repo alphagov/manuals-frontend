@@ -50,6 +50,18 @@ feature "Viewing manuals and sections" do
                                           slug: "hm-revenue-customs")
   end
 
+  scenario "viewing a sub-sub section" do
+    stub_hmrc_manual
+    stub_hmrc_manual_sub_sub_section
+
+    visit_manual_section "inheritance-tax-manual", "eim00501"
+
+    expect(page).to have_link("Contents",
+                              href: "/guidance/inheritance-tax-manual")
+    expect(page).to have_link("EIM00500",
+                              href: "/guidance/inheritance-tax-manual/eim00500")
+  end
+
   scenario "visiting a manual section with a body" do
     stub_hmrc_manual
     stub_hmrc_manual_section_with_body

@@ -127,6 +127,28 @@ module ManualHelpers
     content_store_has_item("/guidance/inheritance-tax-manual/eim00500", section_json)
   end
 
+  def stub_hmrc_manual_sub_sub_section
+    section_json = {
+      base_path: "/guidance/inheritance-tax-manual/eim00501",
+      title: "Inheritance tax: table of contents",
+      description: nil,
+      format: "manual-section",
+      public_updated_at: "2014-01-23T00:00:00+01:00",
+      details: {
+        breadcrumbs: [
+          {
+            section_id: "EIM00500",
+            base_path: "/guidance/inheritance-tax-manual/eim00500"
+          }
+        ],
+        body: "Some body to love",
+        section_id: "eim00501"
+      }
+    }
+
+    content_store_has_item("/guidance/inheritance-tax-manual/eim00501", section_json)
+  end
+
   def stub_hmrc_manual_section_with_body(manual_id="inheritance-tax-manual", section_id="eim15000",
                                          title="Parent-financed and non-approved retirement benefits schemes: table of contents")
     section_json = {
