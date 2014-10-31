@@ -9,16 +9,15 @@
       <dl>
         <dt>From</dt>
         <dd><%= links_to_sentence(@manual.organisations) %></dd>
+        <dt>Updated</dt>
+        <dd><%= marked_up_date(@manual.updated_at) %>, <%= link_to 'see all updates', @manual.updates_url %></dd>
       </dl>
     <% end %>
   </div>
   <div class='secondary'>
     <div class='secondary-inner'>
       <p>
-        Updated: <%= marked_up_date(@manual.updated_at) %>
-      </p>
-      <p>
-        <%= link_to 'See all updates', @manual.updates_url %>
+        <%= link_to 'Give feedback about this page', 'https://www.gov.uk/contact/govuk' %>
       </p>
     </div>
   </div>

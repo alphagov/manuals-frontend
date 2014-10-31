@@ -74,16 +74,11 @@ main {
       color: white;
     }
 
-    time {
-      @include bold-19;
-      display: block;
-    }
-
     dl {
       margin-bottom: $gutter-half;
 
       @include media(tablet){
-        margin-bottom: $gutter;
+        margin-bottom: $gutter-half;
       }
     }
 
@@ -100,6 +95,10 @@ main {
       &:after {
         content: ':';
       }
+    }
+
+    dd, dt {
+      margin-bottom: 3px;
     }
   }
 
