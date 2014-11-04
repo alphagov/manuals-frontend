@@ -103,7 +103,7 @@ module ManualHelpers
       public_updated_at: "2014-01-23T00:00:00+01:00",
       details: {
         body: nil,
-        section_id: "eim00500",
+        section_id: "EIM00500",
         child_section_groups: [
           {
             title: "This is a dummy child_section_group title",
