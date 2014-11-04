@@ -40,6 +40,10 @@ module AppHelpers
     end
   end
 
+  def expect_title_tag_to_be(title)
+    expect(page).to have_title(title)
+  end
+
   def expect_manual_title_to_be(manual_title)
     within('header h1') do
       expect(page).to have_content(manual_title)
