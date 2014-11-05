@@ -15,7 +15,7 @@ class DocumentPresenter
   end
 
   def full_title
-    breadcrumb + ' - ' + @manual.title
+    breadcrumb + ' - ' + @manual.full_title
   end
 
   def summary

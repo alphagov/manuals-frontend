@@ -15,6 +15,14 @@ feature "Viewing updates for a manual" do
     expect(page).to have_content("Updates: My manual about Burritos")
   end
 
+  scenario "viewing change notes for an HMRC manual" do
+    stub_hmrc_manual
+
+    visit_hmrc_manual "inheritance-tax-manual"
+    view_manual_change_notes
+    expect_title_tag_to_be('Updates - Inheritance Tax Manual - HMRC Manuals - GOV.UK')
+  end
+
   scenario "viewing change notes for a specific date", js: true do
     visit_manual "my-manual-about-burritos"
     view_manual_change_notes
