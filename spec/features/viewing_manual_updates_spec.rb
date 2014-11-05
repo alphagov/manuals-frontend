@@ -11,7 +11,7 @@ feature "Viewing updates for a manual" do
   scenario "viewing change notes for a manual" do
     visit_manual "my-manual-about-burritos"
     view_manual_change_notes
-    expect_title_tag_to_be('Updates - My manual about Burritos - GOV.UK')
+    expect_title_tag_to_be('Updates - My manual about Burritos - Guidance - GOV.UK')
     expect(page).to have_content("Updates: My manual about Burritos")
   end
 

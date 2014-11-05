@@ -9,7 +9,7 @@ class ManualPresenter
     if hmrc?
       @manual.title + ' - HMRC Manuals'
     else
-      @manual.title
+      @manual.title + ' - Guidance'
     end
   end
 
