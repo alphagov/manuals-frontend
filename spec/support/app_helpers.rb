@@ -11,6 +11,14 @@ module AppHelpers
     visit "/guidance/#{manual_slug}/#{section_slug}"
   end
 
+  def visit_hmrc_manual(manual_slug)
+    visit "/hmrc-manuals/#{manual_slug}"
+  end
+
+  def visit_hmrc_manual_section(manual_slug, section_slug)
+    visit "/hmrc-manuals/#{manual_slug}/#{section_slug}"
+  end
+
   def select_section(section_title)
     click_on section_title
   end
