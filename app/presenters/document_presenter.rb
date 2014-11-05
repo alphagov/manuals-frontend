@@ -14,6 +14,10 @@ class DocumentPresenter
     section_id || title
   end
 
+  def full_title
+    breadcrumb + ' - ' + @manual.title
+  end
+
   def summary
     document['description']
   end
