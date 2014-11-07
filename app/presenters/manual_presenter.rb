@@ -5,6 +5,14 @@ class ManualPresenter
     @manual = manual
   end
 
+  def full_title
+    if hmrc?
+      @manual.title + ' - HMRC Manuals'
+    else
+      @manual.title + ' - Guidance'
+    end
+  end
+
   def updated_at
     Date.parse(manual.public_updated_at)
   end

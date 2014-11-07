@@ -1,7 +1,9 @@
 ManualsFrontend::Application.routes.draw do
-  get '/guidance/:manual_id', to: 'manuals#index'
-  get '/guidance/:manual_id/updates', to: 'manuals#updates'
-  get '/guidance/:manual_id/:section_id', to: 'manuals#show'
+  with_options(constraints: { prefix: /(guidance|hmrc-manuals)/ }) do |r|
+    r.get '/:prefix/:manual_id', to: 'manuals#index'
+    r.get '/:prefix/:manual_id/updates', to: 'manuals#updates'
+    r.get '/:prefix/:manual_id/:section_id', to: 'manuals#show'
+  end
 
   root to: proc { [404, {}, ['Not found']] }
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails::Engine)

@@ -35,7 +35,7 @@ private
   end
 
   def fetch(manual_id, section_id = nil)
-    path = ['/guidance', manual_id, section_id].compact.join('/')
+    path = '/' + [params[:prefix], manual_id, section_id].compact.join('/')
     content_store.content_item(path)
   end
 end
