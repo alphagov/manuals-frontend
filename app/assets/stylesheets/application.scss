@@ -334,6 +334,8 @@ main {
         position:absolute;
         left:-9999px;
         width:100px;
+        height: 1px;
+        overflow: hidden;
       }
     }
   }
