@@ -5,18 +5,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  include Slimmer::SharedTemplates
+
   before_filter :slimmer_headers
-  before_filter :set_beta_header
   before_filter :set_robots_headers
 
   private
 
   def slimmer_headers
     set_slimmer_headers(template: "header_footer_only")
-  end
-
-  def set_beta_header
-    response.headers[Slimmer::Headers::BETA_LABEL] = "before:#manuals-frontend header"
   end
 
   def set_robots_headers
