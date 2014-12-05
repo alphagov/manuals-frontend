@@ -2,24 +2,13 @@
   <%= group.title %>
 <% end %>
 <% group.sections.each do | section | %>
-  <% if section.collapsible? %>
-    <h2>
-      <% if section.section_id %>
-        <span class='subsection-id'><%= section.section_id %></span>
-      <% end %>
+  <h2>
+    <%= link_to section.path do %>
+    <% if section.section_id %>
+      <span class='subsection-id'><%= section.section_id %></span>
+    <% end %>
       <span class='subsection-title-text'><%= section.title %></span>
-    </h2>
-    <p class='summary'><%= section.summary %></p>
-    <%= section.body %>
-  <% else %>
-    <h2>
-      <%= link_to section.path do %>
-        <% if section.section_id %>
-          <span class='subsection-id'><%= section.section_id %></span>
-        <% end %>
-        <span class='subsection-title-text'><%= section.title %></span>
-      <% end %>
-    </h2>
-  <% end %>
+    <% end %>
+  </h2>
 <% end %>
 
