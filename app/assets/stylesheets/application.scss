@@ -339,4 +339,25 @@ main {
       }
     }
   }
+
+  .hmrc.section-list {
+    margin-top: $gutter;
+    padding-bottom: $gutter;
+    a {
+      padding-right: 0;
+    }
+
+    @include media(tablet){
+      div.title-wrap {
+        display: table-row;
+        div {
+          display: table-cell;
+          padding-right: $gutter;
+        }
+      }
+    }
+  }
+  .subsection-id {
+    color: $secondary-text-colour;
+  }
 }
