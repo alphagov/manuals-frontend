@@ -2,23 +2,32 @@
 <%= render partial: "header" %>
 <div class='manual-body'>
   <h2 class='section-title'><%= @document.title %></h2>
-  <p class='summary'><%= @document.summary %></p>
-  <% if @document.body.present? %>
-    <div class='js-collapsible-collection subsection-collection' data-collapse-depth=<%= @document.collapse_depth %>>
-      <div class='title-controls-wrap'>
-      </div>
-      <div class='collapsible-subsections'>
+  <% if @document.summary %><p class='summary'><%= @document.summary %></p><% end %>
+  <% if @manual.hmrc? %>
+    <% if @document.body.present? %>
+      <div class='body-content-wrapper'>
         <div class='govspeak'>
           <%= @document.body %>
         </div>
       </div>
-    </div>
-  <% end %>
-  <% if @manual.hmrc? %>
+    <% end %>
     <div class='subsection-collection'>
       <% @document.section_groups.each do | group | %>
       <%= render 'hmrc_sections', :group => group %>
     <% end %>
     </div>
-  <% end%>
+  <% else %>
+    <% if @document.body.present? %>
+      <div class='js-collapsible-collection subsection-collection' data-collapse-depth=<%= @document.collapse_depth %>>
+        <div class='title-controls-wrap'>
+        </div>
+        <div class='collapsible-subsections'>
+          <div class='govspeak'>
+            <%= @document.body %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
 </div>
