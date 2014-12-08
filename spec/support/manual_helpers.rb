@@ -57,7 +57,7 @@ module ManualHelpers
 
   def stub_hmrc_manual(manual_id="inheritance-tax-manual", title="Inheritance Tax Manual")
     manual_json = {
-      base_path: "/hmrc-manuals/#{manual_id}",
+      base_path: "/hmrc-internal-manuals/#{manual_id}",
       title: title,
       description: nil,
       format: "manual",
@@ -69,12 +69,12 @@ module ManualHelpers
             child_sections: [
               {
                 section_id: "EIM00100",
-                base_path: "/hmrc-manuals/#{manual_id}/eim00100",
+                base_path: "/hmrc-internal-manuals/#{manual_id}/eim00100",
                 title: "About this manual",
               },
               {
                 section_id: "EIM00500",
-                base_path: "/hmrc-manuals/#{manual_id}/eim00500",
+                base_path: "/hmrc-internal-manuals/#{manual_id}/eim00500",
                 title: "Inheritance tax",
               },
             ]
@@ -91,12 +91,12 @@ module ManualHelpers
       }
     }
 
-    content_store_has_item("/hmrc-manuals/#{manual_id}", manual_json)
+    content_store_has_item("/hmrc-internal-manuals/#{manual_id}", manual_json)
   end
 
   def stub_hmrc_manual_section_with_subsections
     section_json = {
-      base_path: "/hmrc-manuals/inheritance-tax-manual/eim00500",
+      base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500",
       title: "Inheritance tax: table of contents",
       description: nil,
       format: "manual-section",
@@ -110,12 +110,12 @@ module ManualHelpers
             child_sections: [
               {
                 section_id: "EIM00505",
-                base_path: "/hmrc-manuals/inheritance-tax-manual/eim00505",
+                base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00505",
                 title: "General",
               },
               {
                 section_id: "EIM01000",
-                base_path: "/hmrc-manuals/inheritance-tax-manual/eim01000",
+                base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim01000",
                 title: "Particular items: A to P",
               },
             ]
@@ -124,12 +124,12 @@ module ManualHelpers
       }
     }
 
-    content_store_has_item("/hmrc-manuals/inheritance-tax-manual/eim00500", section_json)
+    content_store_has_item("/hmrc-internal-manuals/inheritance-tax-manual/eim00500", section_json)
   end
 
   def stub_hmrc_manual_sub_sub_section
     section_json = {
-      base_path: "/hmrc-manuals/inheritance-tax-manual/eim00501",
+      base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00501",
       title: "Inheritance tax: table of contents",
       description: nil,
       format: "manual-section",
@@ -138,7 +138,7 @@ module ManualHelpers
         breadcrumbs: [
           {
             section_id: "EIM00500",
-            base_path: "/hmrc-manuals/inheritance-tax-manual/eim00500"
+            base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500"
           }
         ],
         body: "Some body to love",
@@ -146,25 +146,25 @@ module ManualHelpers
       }
     }
 
-    content_store_has_item("/hmrc-manuals/inheritance-tax-manual/eim00501", section_json)
+    content_store_has_item("/hmrc-internal-manuals/inheritance-tax-manual/eim00501", section_json)
   end
 
   def stub_hmrc_manual_section_with_body(manual_id="inheritance-tax-manual", section_id="eim15000",
                                          title="Parent-financed and non-approved retirement benefits schemes: table of contents")
     section_json = {
-      base_path: "/hmrc-manuals/#{manual_id}/#{section_id}",
+      base_path: "/hmrc-internal-manuals/#{manual_id}/#{section_id}",
       title: title,
       description: nil,
       format: "manual-section",
       public_updated_at: "2014-01-23T00:00:00+01:00",
       details: {
-        body: 'On this page:<br><br><a href="/hmrc-manuals/#{manual_id}/#{section_id}#EIM15010#IDAZR1YH">Sections 386-400 ITEPA 2003]</a><br>',
+        body: 'On this page:<br><br><a href="/hmrc-internal-manuals/#{manual_id}/#{section_id}#EIM15010#IDAZR1YH">Sections 386-400 ITEPA 2003]</a><br>',
         section_id: "#{section_id}",
         child_section_groups: []
       }
     }
 
-    content_store_has_item("/hmrc-manuals/#{manual_id}/#{section_id}", section_json)
+    content_store_has_item("/hmrc-internal-manuals/#{manual_id}/#{section_id}", section_json)
   end
 end
 

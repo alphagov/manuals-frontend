@@ -22,7 +22,7 @@ feature "Viewing manuals and sections" do
     #   includes_text: "This manual is a guide to the Income Tax (Earnings and Pensions) Act")
 
     expect_page_to_include_section("Inheritance tax",
-                                   href: "/hmrc-manuals/inheritance-tax-manual/eim00500")
+                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500")
 
     expect_page_to_be_affiliated_with_org(title: "HM Revenue & Customs",
                                           slug: "hm-revenue-customs")
@@ -40,13 +40,13 @@ feature "Viewing manuals and sections" do
     expect_a_child_section_group_title_of("This is a dummy child_section_group title")
 
     expect_page_to_include_section("General",
-                                   href: "/hmrc-manuals/inheritance-tax-manual/eim00505")
+                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00505")
     expect_page_to_include_section("Particular items: A to P",
-                                   href: "/hmrc-manuals/inheritance-tax-manual/eim01000")
+                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim01000")
 
     # breadcrumb
     expect(page).to have_link("Contents",
-                              href: "/hmrc-manuals/inheritance-tax-manual")
+                              href: "/hmrc-internal-manuals/inheritance-tax-manual")
 
     expect_page_to_be_affiliated_with_org(title: "HM Revenue & Customs",
                                           slug: "hm-revenue-customs")
@@ -59,9 +59,9 @@ feature "Viewing manuals and sections" do
     visit_hmrc_manual_section "inheritance-tax-manual", "eim00501"
 
     expect(page).to have_link("Contents",
-                              href: "/hmrc-manuals/inheritance-tax-manual")
+                              href: "/hmrc-internal-manuals/inheritance-tax-manual")
     expect(page).to have_link("EIM00500",
-                              href: "/hmrc-manuals/inheritance-tax-manual/eim00500")
+                              href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500")
   end
 
   scenario "visiting a manual section with a body" do
@@ -80,7 +80,7 @@ feature "Viewing manuals and sections" do
 
     expect_page_to_include_section("EIM00100 About this manual")
     expect_page_to_include_section("EIM00500 Inheritance tax",
-                                   href: "/hmrc-manuals/inheritance-tax-manual/eim00500")
+                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500")
   end
 
   scenario "navigating from the manual to a section" do
@@ -91,20 +91,20 @@ feature "Viewing manuals and sections" do
 
     select_section "Inheritance tax"
 
-    expect(current_path).to eq("/hmrc-manuals/inheritance-tax-manual/eim00500")
+    expect(current_path).to eq("/hmrc-internal-manuals/inheritance-tax-manual/eim00500")
     expect_section_title_to_be("Inheritance tax")
   end
 
   scenario "visiting a non-existent section" do
     stub_hmrc_manual
-    content_store_does_not_have_item('/hmrc-manuals/inheritance-tax-manual/nonexistent-manual-section')
+    content_store_does_not_have_item('/hmrc-internal-manuals/inheritance-tax-manual/nonexistent-manual-section')
 
     visit_hmrc_manual_section "inheritance-tax-manual", "nonexistent-manual-section"
     expect(page.status_code).to eq(404)
   end
 
   scenario "visiting the obsolete prototype HMRC manual" do
-    content_store_does_not_have_item('/hmrc-manuals/employment-income-manual')
+    content_store_does_not_have_item('/hmrc-internal-manuals/employment-income-manual')
 
     visit_hmrc_manual "employment-income-manual"
     expect_manual_title_to_be("This prototype of the Employment Income Manual is no longer available")
@@ -112,8 +112,8 @@ feature "Viewing manuals and sections" do
   end
 
   scenario "visiting a section in the obsolete prototype HMRC manual" do
-    content_store_does_not_have_item('/hmrc-manuals/employment-income-manual')
-    content_store_does_not_have_item('/hmrc-manuals/employment-income-manual/abc123')
+    content_store_does_not_have_item('/hmrc-internal-manuals/employment-income-manual')
+    content_store_does_not_have_item('/hmrc-internal-manuals/employment-income-manual/abc123')
 
     visit_hmrc_manual_section "employment-income-manual", "abc123"
     expect_manual_title_to_be("This prototype of the Employment Income Manual is no longer available")
