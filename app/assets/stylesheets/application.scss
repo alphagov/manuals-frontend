@@ -204,6 +204,11 @@ main {
         margin-bottom:$gutter;
       }
     }
+    .body-content-wrapper {
+      @include media(tablet) {
+        width: $two-thirds;
+      }
+    }
     .footnotes {
       border-top: 0;
       padding-top: 0;
@@ -313,7 +318,6 @@ main {
     .js-subsection-body {
       margin-top:$gutter-half;
       @include media(tablet) {
-        width:$two-thirds;
         margin-top:$gutter;
       }
     }
