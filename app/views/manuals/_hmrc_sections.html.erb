@@ -1,25 +1,18 @@
 <% if group.title %>
   <%= group.title %>
 <% end %>
+<ol class='section-list hmrc'>
 <% group.sections.each do | section | %>
-  <% if section.collapsible? %>
-    <h2>
+  <li>
+    <%= link_to section.path do %>
+    <div class='title-wrap'>
       <% if section.section_id %>
-        <span class='subsection-id'><%= section.section_id %></span>
+        <div class='subsection-id'><%= section.section_id %></div>
       <% end %>
-      <span class='subsection-title-text'><%= section.title %></span>
-    </h2>
-    <p class='summary'><%= section.summary %></p>
-    <%= section.body %>
-  <% else %>
-    <h2>
-      <%= link_to section.path do %>
-        <% if section.section_id %>
-          <span class='subsection-id'><%= section.section_id %></span>
-        <% end %>
-        <span class='subsection-title-text'><%= section.title %></span>
-      <% end %>
-    </h2>
-  <% end %>
+      <div class='subsection-title-text'><%= section.title %></div>
+      </div>
+    <% end %>
+  </li>
 <% end %>
+</ol>
 
