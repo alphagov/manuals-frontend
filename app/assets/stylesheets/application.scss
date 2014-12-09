@@ -27,6 +27,10 @@ main {
 #manuals-frontend {
   padding-bottom:$gutter*3;
 
+  .govuk-beta-label {
+    border-bottom: none;
+  }
+
   header {
     background: $govuk-blue;
     &.hmrc {
