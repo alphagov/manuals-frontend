@@ -20,7 +20,7 @@ feature "Viewing updates for a manual" do
 
     visit_hmrc_manual "inheritance-tax-manual"
     view_manual_change_notes
-    expect_title_tag_to_be('Updates - Inheritance Tax Manual - HMRC Manuals - GOV.UK')
+    expect_title_tag_to_be('Updates - Inheritance Tax Manual - HMRC internal manuals - GOV.UK')
   end
 
   scenario "viewing change notes for a specific date", js: true do
