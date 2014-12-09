@@ -12,4 +12,4 @@ run
 
 in a terminal.
 
-visit [http://localhost:3071/hmrc-manuals/employment-income-manual/EIMANUAL](http://localhost:3071/hmrc-manuals/employment-income-manual/EIMANUAL)
+visit [http://localhost:3071/hmrc-internal-manuals/employment-income-manual/EIMANUAL](http://localhost:3071/hmrc-internal-manuals/employment-income-manual/EIMANUAL)
