@@ -22,7 +22,7 @@ class ManualPresenter
 
   def full_title
     if hmrc?
-      @manual.title + ' - HMRC Manuals'
+      @manual.title + ' - HMRC internal manuals'
     else
       @manual.title + ' - Guidance'
     end
