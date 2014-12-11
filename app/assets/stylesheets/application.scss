@@ -356,12 +356,14 @@ main {
         display: table-row;
         div {
           display: table-cell;
-          padding-right: $gutter;
         }
       }
     }
   }
   .subsection-id {
+    min-width: 135px;
     color: $secondary-text-colour;
+    padding-right: $gutter-half;
+
   }
 }
