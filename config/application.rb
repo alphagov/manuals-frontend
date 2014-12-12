@@ -26,5 +26,10 @@ module ManualsFrontend
     # config.i18n.default_locale = :de
 
     config.assets.prefix = '/manuals-frontend'
+
+    # Override Rails 4 default which restricts framing to SAMEORIGIN.
+    config.action_dispatch.default_headers = {
+      'X-Frame-Options' => 'ALLOWALL'
+    }
   end
 end
