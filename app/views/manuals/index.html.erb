@@ -14,7 +14,7 @@
         <%= render 'hmrc_sections', :group => group %>
       </div>
       <% else %>
-        <ul class='section-list'>
+        <ol class='section-list'>
         <% group.sections.each do | section | %>
           <li>
           <%= link_to section.path, class: "#{section.section_id.present? ? 'subsection-with-id' : ''}" do %>
@@ -23,7 +23,7 @@
           <% end %>
           </li>
         <% end %>
-        </ul>
+        </ol>
       <% end %>
     <% end %>
   </div>
