@@ -2,31 +2,30 @@
 <article aria-labelledby="manual-title" id="content">
   <%= render partial: "header" %>
   <div class='manual-body'>
-
-  <% unless @manual.summary.blank? %><p class='summary'><%= @manual.summary %></p><% end %>
-  <% unless @manual.body.blank? %>
-  <div class="govspeak">
-    <%= @manual.body %>
-  </div>
-  <% end %>
-  <% @manual.section_groups.each do | group | %>
-    <% if @manual.hmrc?%>
-    <div class='subsection-collection'>
-      <%= render 'hmrc_sections', :group => group %>
+    <% unless @manual.summary.blank? %><p class='summary'><%= @manual.summary %></p><% end %>
+    <% unless @manual.body.blank? %>
+    <div class="govspeak">
+      <%= @manual.body %>
     </div>
-    <% else %>
-      <ul class='section-list'>
-      <% group.sections.each do | section | %>
-        <li>
-        <%= link_to section.path, class: "#{section.section_id.present? ? 'subsection-with-id' : ''}" do %>
-            <span class='subsection-title-text'><%= section.title %></span>
-            <span class='subsection-summary'><%= section.summary %></span>
-        <% end %>
-        </li>
-      <% end %>
-      </ul>
     <% end %>
-  <% end %>
-</div>
+    <% @manual.section_groups.each do | group | %>
+      <% if @manual.hmrc? %>
+      <div class='subsection-collection'>
+        <%= render 'hmrc_sections', :group => group %>
+      </div>
+      <% else %>
+        <ul class='section-list'>
+        <% group.sections.each do | section | %>
+          <li>
+          <%= link_to section.path, class: "#{section.section_id.present? ? 'subsection-with-id' : ''}" do %>
+              <span class='subsection-title-text'><%= section.title %></span>
+              <span class='subsection-summary'><%= section.summary %></span>
+          <% end %>
+          </li>
+        <% end %>
+        </ul>
+      <% end %>
+    <% end %>
+  </div>
 </article>
 
