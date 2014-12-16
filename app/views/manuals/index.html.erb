@@ -3,7 +3,7 @@
   <%= render partial: "header" %>
   <div class='manual-body'>
 
-  <p class='summary'><%= @manual.summary %></p>
+  <% unless @manual.summary.blank? %><p class='summary'><%= @manual.summary %></p><% end %>
   <% unless @manual.body.blank? %>
   <div class="govspeak">
     <%= @manual.body %>
