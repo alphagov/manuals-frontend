@@ -1,13 +1,13 @@
 <% if @manual.beta? %>
   <%= render partial: 'beta_label', locals: { manual: @manual } %>
 <% end %>
-<header class="<%= @manual.hmrc? ? 'hmrc' : nil %>">
+<header aria-labelledby="manual-title" class="<%= @manual.hmrc? ? 'hmrc' : nil %>">
   <div class='primary'>
     <% if @manual.hmrc? %>
       <span class='manual-type'>HMRC internal manuals</span>
     <% end %>
 
-    <h1><%= @manual.title %></h1>
+    <h1 id="manual-title"><%= @manual.title %></h1>
     <% if @manual.organisations.any? %>
       <dl>
         <dt>From</dt>
