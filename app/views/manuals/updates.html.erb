@@ -1,8 +1,9 @@
 <% content_for :title, 'Updates - ' + @manual.full_title %>
 <%= render partial: "header" %>
 <div class='manual-body' id="content">
-  <h1 class='section-title'><span class='title'>Updates: <%= @manual.title %></span></h1>
-  <div class='section-content'>
+  <article aria-labelledby="section-title">
+    <h1 id="section-title" class='section-title'><span class='title'>Updates: <%= @manual.title %></span></h1>
+    <div class='section-content'>
     <% @manual.change_notes.by_year.each do |year, updates_by_year| %>
       <div class='js-collapsible-collection subsection-collection'>
         <div class='title-controls-wrap'>
@@ -32,5 +33,6 @@
         </div>
       </div>
     <% end %>
-  </div>
+    </div>
+  </article>
 </div>

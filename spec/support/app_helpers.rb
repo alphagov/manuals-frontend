@@ -59,7 +59,7 @@ module AppHelpers
   end
 
   def expect_section_title_to_be(section_title)
-    within('h2.section-title') do
+    within('h1.section-title') do
       expect(page).to have_content(section_title)
     end
   end
