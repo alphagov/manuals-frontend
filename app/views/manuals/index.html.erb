@@ -1,6 +1,8 @@
 <% content_for :title, @manual.full_title %>
-<%= render partial: "header" %>
-<div class='manual-body' id="content">
+<article aria-labelledby="manual-title" id="content">
+  <%= render partial: "header" %>
+  <div class='manual-body'>
+
   <p class='summary'><%= @manual.summary %></p>
   <% unless @manual.body.blank? %>
   <div class="govspeak">
@@ -26,3 +28,5 @@
     <% end %>
   <% end %>
 </div>
+</article>
+
