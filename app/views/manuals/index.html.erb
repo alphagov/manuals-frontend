@@ -1,6 +1,6 @@
 <% content_for :title, @manual.full_title %>
 <%= render partial: "header" %>
-<div class='manual-body'>
+<div class='manual-body' id="content">
   <p class='summary'><%= @manual.summary %></p>
   <% unless @manual.body.blank? %>
   <div class="govspeak">

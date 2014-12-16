@@ -1,6 +1,6 @@
 <% content_for :title, @document.full_title %>
 <%= render partial: "header" %>
-<div class='manual-body'>
+<div class='manual-body' id="content">
   <h2 class='section-title'><%= @document.title %></h2>
   <% if @document.summary %><p class='summary'><%= @document.summary %></p><% end %>
   <% if @manual.hmrc? %>

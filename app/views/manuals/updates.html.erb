@@ -1,6 +1,6 @@
 <% content_for :title, 'Updates - ' + @manual.full_title %>
 <%= render partial: "header" %>
-<div class='manual-body'>
+<div class='manual-body' id="content">
   <h1 class='section-title'><span class='title'>Updates: <%= @manual.title %></span></h1>
   <div class='section-content'>
     <% @manual.change_notes.by_year.each do |year, updates_by_year| %>
