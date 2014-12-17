@@ -20,8 +20,6 @@
     <% else %>
       <% if @document.body.present? %>
         <div class='js-collapsible-collection subsection-collection' data-collapse-depth=<%= @document.collapse_depth %>>
-          <div class='title-controls-wrap'>
-          </div>
           <div class='collapsible-subsections'>
             <div class='govspeak'>
               <%= @document.body %>
