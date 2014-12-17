@@ -2,8 +2,8 @@
 <article aria-labelledby="manual-title" id="content">
   <%= render partial: "header" %>
   <div class='manual-body'>
-    <% unless @manual.summary.blank? %><p class='summary'><%= @manual.summary %></p><% end %>
-    <% unless @manual.body.blank? %>
+    <% if @manual.summary.present? %><p class='summary'><%= @manual.summary %></p><% end %>
+    <% if @manual.body.present? %>
     <div class="govspeak">
       <%= @manual.body %>
     </div>
