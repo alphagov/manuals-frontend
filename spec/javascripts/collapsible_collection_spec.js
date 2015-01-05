@@ -6,8 +6,6 @@ describe('CollapsibleCollection', function(){
     // Content comes as a single blob of markdown from the GDSAPI in the "body" field.
     collectionsFromBlobString =
       '<div class="js-collapsible-collection subsection-collection">'+
-        '<div class="title-controls-wrap">'+
-        '</div>'+
         '<div class="collapsible-subsections">'+
           '<div class="govspeak">'+
             // Some content not in a collapsible subsection

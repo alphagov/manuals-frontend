@@ -114,9 +114,18 @@
   }
 
   CollapsibleCollection.prototype.addControls = function addControls(){
+    var $collectionControlsWrap = $('<div class="js-title-controls-wrap"/>');
     var $collectionControls = $('<div class="js-collection-controls" />');
     $collectionControls.append(this.$openAll, this.$closeAll);
-    this.$container.find('.title-controls-wrap').append($collectionControls);
+    $collectionControlsWrap.append($collectionControls);
+
+    // The Updates pages have a title for each collapsible section (they're sorted by year), include this if it's there
+    var $title = this.$container.find($('.section-title'));
+    if ($title.length) {
+      $collectionControlsWrap.prepend($title);
+    }
+
+    this.$container.prepend($collectionControlsWrap);
     this.$openAll.on('click', this.openAll.bind(this));
     this.$closeAll.on('click', this.closeAll.bind(this));
   }

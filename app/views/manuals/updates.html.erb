@@ -6,9 +6,7 @@
     <div class='section-content'>
     <% @manual.change_notes.by_year.each do |year, updates_by_year| %>
       <div class='js-collapsible-collection subsection-collection'>
-        <div class='title-controls-wrap'>
-          <p class='title'><%= year %></p>
-        </div>
+        <p class='section-title'><%= year %></p>
         <div class='collapsible-subsections'>
           <% updates_by_year.each do |day, updated_documents| %>
             <h2>

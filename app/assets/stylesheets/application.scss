@@ -249,10 +249,10 @@ main {
       margin-top: $gutter;
     }
 
-    .title-controls-wrap {
+    .js-title-controls-wrap {
       @extend %contain-floats;
 
-      .title {
+      .section-title {
         @include heading-24;
         @include media(tablet) {
           float:left;
