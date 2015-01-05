@@ -121,7 +121,7 @@
 
     // The Updates pages have a title for each collapsible section (they're sorted by year), include this if it's there
     var $title = this.$container.find($('.section-title'));
-    if ($title == []) {
+    if ($title.length) {
       $collectionControlsWrap.prepend($title);
     }
 
