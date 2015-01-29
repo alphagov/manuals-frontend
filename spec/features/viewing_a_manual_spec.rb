@@ -12,7 +12,7 @@ feature "Viewing manuals and sections" do
 
     visit_hmrc_manual "inheritance-tax-manual"
 
-    expect_title_tag_to_be('Inheritance Tax Manual - HMRC internal manuals - GOV.UK')
+    expect_title_tag_to_be('Inheritance Tax Manual - HMRC internal manual - GOV.UK')
     expect_manual_title_to_be("Inheritance Tax Manual")
     expect_manual_update_date_to_be("23 January 2014")
 
@@ -34,7 +34,7 @@ feature "Viewing manuals and sections" do
 
     visit_hmrc_manual_section "inheritance-tax-manual", "eim00500"
 
-    expect_title_tag_to_be('EIM00500 - Inheritance Tax Manual - HMRC internal manuals - GOV.UK')
+    expect_title_tag_to_be('EIM00500 - Inheritance Tax Manual - HMRC internal manual - GOV.UK')
     expect_section_title_to_be("Inheritance tax: table of contents")
 
     expect_a_child_section_group_title_of("This is a dummy child_section_group title")
