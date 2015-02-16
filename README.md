@@ -1,15 +1,47 @@
 Manuals Frontend
 ================
 
-This is the frontend for rendering manuals on GOV.UK.
+## Purpose
+
+Front-end app for the manuals format on GOV.UK
+
+## Nomenclature
+
+- **Manuals** – documents published using [github.com/alphagov/specialist-publisher](https://github.com/alphagov/specialist-publisher).
+- **HMRC Manuals** – Manuals published by HMRC and populated via their API: [github.com/alphagov/hmrc-manuals-api](https://github.com/alphagov/hmrc-manuals-api).
+
+
+## Dependencies
+- [https://github.com/alphagov/static](https://github.com/alphagov/static) – Provides static assets (JS/CSS)
+- [https://github.com/alphagov/content-store](https://github.com/alphagov/content-store) – Provides content
+
 
 ##Installation and running
 
-run
+In a terminal, run:
+
 ```
 ./startup.sh
 ```
 
-in a terminal.
+or using bowler:
 
-visit [http://localhost:3071/hmrc-internal-manuals/employment-income-manual/EIMANUAL](http://localhost:3071/hmrc-internal-manuals/employment-income-manual/EIMANUAL)
+`bowl manuals-frontend`
+
+If you are using the GDS development virtual machine then the application will be available on the host at http://manuals-frontend.dev.gov.uk/
+
+## Running the tests
+
+jasmine tests are mounted at http://manuals-frontend.dev.gov.uk/specs
+
+All tests can be run using `bundle exec rake` as well.
+
+## Viewing a manual
+
+You can see the content design manual at http://manuals-frontend.dev.gov.uk/guidance/content-design
+
+
+## Publishing a manual on dev
+
+Manuals are published using `specialist-publisher` to publish a manual run `specialist-publisher` (instructions here: https://github.com/alphagov/specialist-publisher), publish a manual, and you should then be able to view it on `manuals-frontend`. If you have replicated from preview recently then you should be able to see currently published manuals at http://manuals-frontend.dev.gov.uk/[preview-slug] too.
+
