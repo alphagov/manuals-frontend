@@ -77,6 +77,11 @@ module ManualHelpers
                 base_path: "/hmrc-internal-manuals/#{manual_id}/eim00500",
                 title: "Inheritance tax",
               },
+              {
+                section_id: "EIM00900",
+                base_path: "/hmrc-internal-manuals/#{manual_id}/eim00900",
+                title: "Self assessment tax",
+              },
             ]
           }
         ],

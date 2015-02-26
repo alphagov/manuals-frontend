@@ -50,6 +50,13 @@ feature "Viewing manuals and sections" do
 
     expect_page_to_be_affiliated_with_org(title: "HM Revenue & Customs",
                                           slug: "hm-revenue-customs")
+
+    #previous page
+    expect(page).to have_link("About this manual",
+                              href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00100")
+    #next page
+    expect(page).to have_link("Self assessment tax",
+                              href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00900")
   end
 
   scenario "viewing a sub-sub section" do

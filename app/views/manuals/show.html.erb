@@ -16,6 +16,14 @@
         <% @document.section_groups.each do | group | %>
         <%= render 'hmrc_sections', :group => group %>
       <% end %>
+      <% if previous_sibling %>
+        <%= previous_sibling.title %>
+        <%= link_to previous_sibling.title, previous_sibling.path %>
+      <% end %>
+      <% if next_sibling %>
+        <%= next_sibling.title %>
+        <%= link_to next_sibling.title, next_sibling.path %>
+      <% end %>
       </div>
     <% else %>
       <% if @document.body.present? %>
