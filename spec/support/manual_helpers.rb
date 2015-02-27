@@ -114,14 +114,19 @@ module ManualHelpers
             title: "This is a dummy child_section_group title",
             child_sections: [
               {
-                section_id: "EIM00505",
-                base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00505",
-                title: "General",
+                section_id: "EIM00510",
+                base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00510",
+                title: "Introduction to particular items",
               },
               {
-                section_id: "EIM01000",
-                base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim01000",
+                section_id: "EIM00520",
+                base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00520",
                 title: "Particular items: A to P",
+              },
+              {
+                section_id: "EIM00530",
+                base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00530",
+                title: "Particular items: R to Z",
               },
             ]
           }
@@ -134,8 +139,8 @@ module ManualHelpers
 
   def stub_hmrc_manual_sub_sub_section
     section_json = {
-      base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00501",
-      title: "Inheritance tax: table of contents",
+      base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00520",
+      title: "Particular items: A to P",
       description: nil,
       format: "manual-section",
       public_updated_at: "2014-01-23T00:00:00+01:00",
@@ -147,11 +152,11 @@ module ManualHelpers
           }
         ],
         body: "Some body to love",
-        section_id: "eim00501"
+        section_id: "EIM00520"
       }
     }
 
-    content_store_has_item("/hmrc-internal-manuals/inheritance-tax-manual/eim00501", section_json)
+    content_store_has_item("/hmrc-internal-manuals/inheritance-tax-manual/eim00520", section_json)
   end
 
   def stub_hmrc_manual_section_with_body(manual_id="inheritance-tax-manual", section_id="eim15000",

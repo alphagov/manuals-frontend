@@ -64,18 +64,22 @@ private
   end
 
   def parent
-    if @document.section_id && @document.breadcrumbs.empty?
-      return @manual
+    if @document.section_id 
+      if @document.breadcrumbs.empty?
+        return manual
+      else
+        return content_store.content_item(@document.breadcrumbs.last.link)
+      end
     end
   end
 
   def previous_sibling
     if parent
-      parent.section_groups.each do |section_group|
-        section_group.sections.each_with_index do |section, index|
+      parent.details.child_section_groups.each do |section_group|
+        section_group.child_sections.each_with_index do |section, index|
           if section.section_id == @document.section_id
             if index != 0
-              return section_group.sections[index - 1]
+              return section_group.child_sections[index - 1]
             end
           end
         end
@@ -86,11 +90,11 @@ private
 
   def next_sibling
     if parent
-      parent.section_groups.each do |section_group|
-        section_group.sections.each_with_index do |section, index|
+      parent.details.child_section_groups.each do |section_group|
+        section_group.child_sections.each_with_index do |section, index|
           if section.section_id == @document.section_id
-            if index != section_group.sections.length - 1
-              return section_group.sections[index + 1]
+            if index != section_group.child_sections.length - 1 
+              return section_group.child_sections[index + 1]
             end
           end
         end

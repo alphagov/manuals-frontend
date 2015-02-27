@@ -17,12 +17,10 @@
         <%= render 'hmrc_sections', :group => group %>
       <% end %>
       <% if previous_sibling %>
-        <%= previous_sibling.title %>
-        <%= link_to previous_sibling.title, previous_sibling.path %>
+        <%= link_to previous_sibling.title, previous_sibling.base_path %>
       <% end %>
       <% if next_sibling %>
-        <%= next_sibling.title %>
-        <%= link_to next_sibling.title, next_sibling.path %>
+        <%= link_to next_sibling.title, next_sibling.base_path %>
       <% end %>
       </div>
     <% else %>
