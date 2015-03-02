@@ -6,7 +6,6 @@ class ManualsController < ApplicationController
   before_action :render_employment_income_manual
   before_action :ensure_manual_is_found
   before_action :ensure_document_is_found, only: :show
-  helper_method :previous_sibling, :next_sibling
 
   def index
     @manual = ManualPresenter.new(manual)
@@ -15,6 +14,7 @@ class ManualsController < ApplicationController
   def show
     @manual = ManualPresenter.new(manual)
     @document = DocumentPresenter.new(document, @manual)
+    @siblings = SiblingPresenter.new(@document.section_id, parent)
   end
 
   def updates
@@ -71,36 +71,6 @@ private
         return content_store.content_item(@document.breadcrumbs.last.link)
       end
     end
-  end
-
-  def previous_sibling
-    if parent
-      parent.details.child_section_groups.each do |section_group|
-        section_group.child_sections.each_with_index do |section, index|
-          if section.section_id == @document.section_id
-            if index != 0
-              return section_group.child_sections[index - 1]
-            end
-          end
-        end
-      end
-    end
-    return nil
-  end
-
-  def next_sibling
-    if parent
-      parent.details.child_section_groups.each do |section_group|
-        section_group.child_sections.each_with_index do |section, index|
-          if section.section_id == @document.section_id
-            if index != section_group.child_sections.length - 1 
-              return section_group.child_sections[index + 1]
-            end
-          end
-        end
-      end
-    end
-    return nil
   end
 
 end
