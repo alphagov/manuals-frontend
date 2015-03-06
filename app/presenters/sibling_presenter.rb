@@ -31,6 +31,37 @@ class SiblingPresenter
     return nil
   end
 
+  def prepare_for_navigation_component
+    if previous_sibling and next_sibling
+      { 
+        previous_page: {
+          "title" => "Previous page",
+          "url" =>  previous_sibling.base_path
+        },
+        next_page: {
+          "title" => "Next page",
+          "url" => next_sibling.base_path
+        }
+      } 
+    elsif previous_sibling
+      { 
+        previous_page: {
+          "title" => "Previous page",
+          "url" =>  previous_sibling.base_path
+        }
+      } 
+    elsif next_sibling
+      { 
+        next_page: {
+          "title" => "Next page",
+          "url" => next_sibling.base_path
+        }
+      } 
+    else 
+      {}
+    end
+  end
+
 private
 
   def section_groups

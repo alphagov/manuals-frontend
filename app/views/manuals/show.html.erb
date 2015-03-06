@@ -16,13 +16,10 @@
         <% @document.section_groups.each do | group | %>
         <%= render 'hmrc_sections', :group => group %>
       <% end %>
-      <% if previous_sibling %>
-        <%= link_to previous_sibling.title, previous_sibling.base_path %>
-      <% end %>
-      <% if next_sibling %>
-        <%= link_to next_sibling.title, next_sibling.base_path %>
-      <% end %>
       </div>
+
+      <%= render partial: 'govuk_component/previous_and_next_navigation', locals: @siblings.prepare_for_navigation_component %>
+
     <% else %>
       <% if @document.body.present? %>
         <div class='js-collapsible-collection subsection-collection' data-collapse-depth=<%= @document.collapse_depth %>>

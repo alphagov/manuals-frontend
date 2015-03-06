@@ -81,6 +81,11 @@ module AppHelpers
       expect(page).to have_content(change_note)
     end
   end
+
+  def expect_page_to_contain_navigation_link(title, url)
+    expect(page).to have_content(title)
+    expect(page).to have_content(url)
+  end
 end
 
 RSpec.configuration.include AppHelpers, type: :feature
