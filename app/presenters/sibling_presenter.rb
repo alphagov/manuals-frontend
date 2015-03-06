@@ -5,7 +5,7 @@ class SiblingPresenter
     @parent = parent
   end
 
-  def previous_sibling
+  def previous
     section_groups.each do |section_group|
       section_group.child_sections.each_with_index do |section, index|
         if section.section_id == @current_section_id
@@ -18,7 +18,7 @@ class SiblingPresenter
     return nil
   end
 
-  def next_sibling
+  def next
     section_groups.each do |section_group|
       section_group.child_sections.each_with_index do |section, index|
         if section.section_id == @current_section_id
@@ -29,37 +29,6 @@ class SiblingPresenter
       end
     end
     return nil
-  end
-
-  def prepare_for_navigation_component
-    if previous_sibling and next_sibling
-      { 
-        previous_page: {
-          "title" => "Previous page",
-          "url" =>  previous_sibling.base_path
-        },
-        next_page: {
-          "title" => "Next page",
-          "url" => next_sibling.base_path
-        }
-      } 
-    elsif previous_sibling
-      { 
-        previous_page: {
-          "title" => "Previous page",
-          "url" =>  previous_sibling.base_path
-        }
-      } 
-    elsif next_sibling
-      { 
-        next_page: {
-          "title" => "Next page",
-          "url" => next_sibling.base_path
-        }
-      } 
-    else 
-      {}
-    end
   end
 
 private

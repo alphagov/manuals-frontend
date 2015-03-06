@@ -1,9 +1,11 @@
 class DocumentPresenter
+  include GdsApi::Helpers
   delegate :title, to: :document
 
-  def initialize(document, manual)
+  def initialize(document, raw_manual, manual)
     @document = document
     @manual = manual
+    @raw_manual = raw_manual
   end
 
   def section_id
@@ -51,6 +53,20 @@ class DocumentPresenter
     # If only one level of headings are given, this returns 1. 2 is returned for 2, etc.
     # Only ever expecting this to return 1 or 2, but the codde that uses this method will work for higher integers too.
     return 1
+  end
+
+  def parent
+    if section_id 
+      if breadcrumbs.empty?
+        @raw_manual
+      else
+        content_store.content_item(breadcrumbs.last.link)
+      end
+    end
+  end
+
+  def siblings
+    SiblingPresenter.new(section_id, parent)
   end
 
 private

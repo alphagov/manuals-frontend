@@ -13,8 +13,7 @@ class ManualsController < ApplicationController
 
   def show
     @manual = ManualPresenter.new(manual)
-    @document = DocumentPresenter.new(document, @manual)
-    @siblings = SiblingPresenter.new(@document.section_id, parent)
+    @document = DocumentPresenter.new(document, manual, @manual)
   end
 
   def updates
@@ -61,16 +60,6 @@ private
   def fetch(manual_id, section_id = nil)
     path = '/' + [params[:prefix], manual_id, section_id].compact.join('/')
     content_store.content_item(path)
-  end
-
-  def parent
-    if @document.section_id 
-      if @document.breadcrumbs.empty?
-        return manual
-      else
-        return content_store.content_item(@document.breadcrumbs.last.link)
-      end
-    end
   end
 
 end

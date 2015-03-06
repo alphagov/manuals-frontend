@@ -11,8 +11,8 @@ describe SiblingPresenter do
     let(:presenter) { SiblingPresenter.new(nil, nil) }
 
     it "should not have siblings" do
-      expect(presenter.previous_sibling).to be_nil
-      expect(presenter.next_sibling).to be_nil
+      expect(presenter.previous).to be_nil
+      expect(presenter.next).to be_nil
     end
   end
 
@@ -38,8 +38,8 @@ describe SiblingPresenter do
       let(:presenter) { SiblingPresenter.new("EIM00510", parent) }
 
       it "should have next but not previous sibling" do
-        expect(presenter.previous_sibling).to be_nil
-        expect(presenter.next_sibling.section_id).to eq("EIM00520")
+        expect(presenter.previous).to be_nil
+        expect(presenter.next.section_id).to eq("EIM00520")
       end
     end
 
@@ -47,8 +47,8 @@ describe SiblingPresenter do
       let(:presenter) { SiblingPresenter.new("EIM00520", parent) }
 
       it "should have previous and next siblings" do
-        expect(presenter.previous_sibling.section_id).to eq("EIM00510")
-        expect(presenter.next_sibling.section_id).to eq("EIM00530")
+        expect(presenter.previous.section_id).to eq("EIM00510")
+        expect(presenter.next.section_id).to eq("EIM00530")
       end
     end
 
@@ -56,8 +56,8 @@ describe SiblingPresenter do
       let(:presenter) { SiblingPresenter.new("EIM00530", parent) }
 
       it "should have previous but not next sibling" do
-        expect(presenter.previous_sibling.section_id).to eq("EIM00520")
-        expect(presenter.next_sibling).to be_nil
+        expect(presenter.previous.section_id).to eq("EIM00520")
+        expect(presenter.next).to be_nil
       end
     end
 
@@ -65,8 +65,8 @@ describe SiblingPresenter do
       let(:presenter) { SiblingPresenter.new("EIM00600", parent) }
 
       it "should have no siblings" do
-        expect(presenter.previous_sibling).to be_nil
-        expect(presenter.next_sibling).to be_nil
+        expect(presenter.previous).to be_nil
+        expect(presenter.next).to be_nil
       end
     end
 
@@ -91,8 +91,8 @@ describe SiblingPresenter do
     let(:presenter) { SiblingPresenter.new("EIM00600", parent) }
 
     it "should have no siblings" do
-      expect(presenter.previous_sibling).to be_nil
-      expect(presenter.next_sibling).to be_nil
+      expect(presenter.previous).to be_nil
+      expect(presenter.next).to be_nil
     end
   end
 
@@ -122,8 +122,8 @@ describe SiblingPresenter do
     let(:presenter) { SiblingPresenter.new("EIM00800", parent) }
 
     it "should have previous and next siblings" do
-      expect(presenter.previous_sibling.section_id).to eq("EIM00700")
-      expect(presenter.next_sibling.section_id).to eq("EIM00900")
+      expect(presenter.previous.section_id).to eq("EIM00700")
+      expect(presenter.next.section_id).to eq("EIM00900")
     end
   end
 
