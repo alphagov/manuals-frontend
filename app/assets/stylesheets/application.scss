@@ -25,7 +25,7 @@ main {
 }
 
 #manuals-frontend {
-  padding-bottom:$gutter*3;
+  padding-bottom:$gutter;
 
   .govuk-beta-label {
     border-bottom: none;
@@ -192,7 +192,7 @@ main {
   }
 
   .manual-body {
-    margin-top: $gutter-half;
+    margin: $gutter-half 0 $gutter*3;
     @include media(tablet){
       margin-top: $gutter;
     }
@@ -370,4 +370,13 @@ main {
     padding-right: $gutter-half;
 
   }
+
+  .print-page {
+    display: none;
+
+    .js-enabled & {
+      display: block;
+    }
+  }
+
 }
