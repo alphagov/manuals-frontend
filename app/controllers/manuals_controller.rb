@@ -23,7 +23,7 @@ class ManualsController < ApplicationController
 private
 
   def render_employment_income_manual
-    if manual.nil? && params["manual_id"] == "employment-income-manual"
+    if manual.nil? && manual_id == "employment-income-manual"
       render :employment_income_manual
     end
   end
@@ -41,11 +41,19 @@ private
   end
 
   def manual
-    fetch(params["manual_id"])
+    fetch(manual_id)
   end
 
   def document
-    fetch(params["manual_id"], params["section_id"])
+    fetch(manual_id, document_id)
+  end
+
+  def manual_id
+    params["manual_id"]
+  end
+
+  def document_id
+    params["section_id"]
   end
 
   def fetch(manual_id, section_id = nil)
