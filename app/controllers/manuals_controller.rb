@@ -13,12 +13,13 @@ class ManualsController < ApplicationController
 
   def show
     @manual = ManualPresenter.new(manual)
-    @document = DocumentPresenter.new(document, @manual)
+    @document = DocumentPresenter.new(document, manual, @manual)
   end
 
   def updates
     @manual = ManualPresenter.new(manual)
   end
+
 
 private
 
@@ -41,23 +42,26 @@ private
   end
 
   def manual
-    fetch(manual_id)
+    content_store.content_item(manual_base_path)
   end
 
-  def document
-    fetch(manual_id, document_id)
+  def manual_base_path
+    "/#{params[:prefix]}/#{manual_id}"
   end
 
   def manual_id
     params["manual_id"]
   end
 
-  def document_id
-    params["section_id"]
+  def document
+    document_repository.fetch(document_base_path)
   end
 
-  def fetch(manual_id, section_id = nil)
-    path = '/' + [params[:prefix], manual_id, section_id].compact.join('/')
-    content_store.content_item(path)
+  def document_base_path
+    "/#{params[:prefix]}/#{manual_id}/#{document_id}"
+  end
+
+  def document_id
+    params["section_id"]
   end
 end
