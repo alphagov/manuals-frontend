@@ -3,35 +3,57 @@ require 'gds_api/helpers'
 class ManualsController < ApplicationController
   include GdsApi::Helpers
 
-  before_filter :set_manual
+  before_action :render_employment_income_manual
+  before_action :ensure_manual_is_found
+  before_action :ensure_document_is_found, only: :show
 
-  def index; end
+  def index
+    @manual = ManualPresenter.new(manual)
+  end
 
   def show
-    document = fetch(params["manual_id"], params["section_id"])
-    error_not_found unless document
+    @manual = ManualPresenter.new(manual)
     @document = DocumentPresenter.new(document, @manual)
   end
 
   def updates
+    @manual = ManualPresenter.new(manual)
   end
 
 private
+
+  def render_employment_income_manual
+    if manual.nil? && manual_id == "employment-income-manual"
+      render :employment_income_manual
+    end
+  end
+
+  def ensure_manual_is_found
+    error_not_found unless manual
+  end
+
+  def ensure_document_is_found
+    error_not_found unless document
+  end
 
   def error_not_found
     render status: :not_found, text: "404 error not found"
   end
 
-  def set_manual
-    manual = fetch(params["manual_id"])
-    unless manual
-      if params["manual_id"] == 'employment-income-manual'
-        render :employment_income_manual
-      else
-        error_not_found
-      end
-    end
-    @manual = ManualPresenter.new(manual)
+  def manual
+    fetch(manual_id)
+  end
+
+  def document
+    fetch(manual_id, document_id)
+  end
+
+  def manual_id
+    params["manual_id"]
+  end
+
+  def document_id
+    params["section_id"]
   end
 
   def fetch(manual_id, section_id = nil)
