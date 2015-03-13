@@ -5,15 +5,13 @@ class ManualsController < ApplicationController
 
   before_action :render_employment_income_manual
   before_action :ensure_manual_is_found
+  before_action :ensure_document_is_found, only: :show
 
   def index
     @manual = ManualPresenter.new(manual)
   end
 
   def show
-    document = fetch(params["manual_id"], params["section_id"])
-    error_not_found unless document
-
     @manual = ManualPresenter.new(manual)
     @document = DocumentPresenter.new(document, @manual)
   end
@@ -34,12 +32,20 @@ private
     error_not_found unless manual
   end
 
+  def ensure_document_is_found
+    error_not_found unless document
+  end
+
   def error_not_found
     render status: :not_found, text: "404 error not found"
   end
 
   def manual
     fetch(params["manual_id"])
+  end
+
+  def document
+    fetch(params["manual_id"], params["section_id"])
   end
 
   def fetch(manual_id, section_id = nil)
