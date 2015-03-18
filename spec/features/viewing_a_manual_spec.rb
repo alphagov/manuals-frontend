@@ -39,10 +39,12 @@ feature "Viewing manuals and sections" do
 
     expect_a_child_section_group_title_of("This is a dummy child_section_group title")
 
-    expect_page_to_include_section("General",
-                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00505")
+    expect_page_to_include_section("Introduction to particular items",
+                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00510")
     expect_page_to_include_section("Particular items: A to P",
-                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim01000")
+                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00520")
+    expect_page_to_include_section("Particular items: R to Z",
+                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00530")
 
     # breadcrumb
     expect(page).to have_link("Contents",
@@ -54,9 +56,10 @@ feature "Viewing manuals and sections" do
 
   scenario "viewing a sub-sub section" do
     stub_hmrc_manual
+    stub_hmrc_manual_section_with_subsections
     stub_hmrc_manual_sub_sub_section
 
-    visit_hmrc_manual_section "inheritance-tax-manual", "eim00501"
+    visit_hmrc_manual_section "inheritance-tax-manual", "eim00520"
 
     expect(page).to have_link("Contents",
                               href: "/hmrc-internal-manuals/inheritance-tax-manual")
