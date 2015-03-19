@@ -2,11 +2,17 @@ a {
   text-decoration: none;
 }
 
-// hide all the things
+// hide all the unecessary things
 .alpha-label,
-.breadcrumb-trail {
+.breadcrumb-trail,
+.js-title-controls-wrap,
+.print-page,
+.secondary {
   display: none;
 }
+
+// removing .secondary from print because this now only contains 'Give feedback about this page' which isn't useful on a printed page
+
 
 .primary {
   h1 {
@@ -36,10 +42,6 @@ a {
   }
 }
 
-.secondary {
-  display: none; // removing from print because this now only contains 'Give feedback about this page' which isn't useful on a printed page
-}
-
 .manual-body {
   clear: both;
   .subsection-title-text {
@@ -49,10 +51,6 @@ a {
 
 .govspeak {
   width: 75%;
-}
-
-.js-title-controls-wrap {
-  display: none;
 }
 
 .js-openable {
