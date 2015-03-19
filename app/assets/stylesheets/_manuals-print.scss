@@ -10,57 +10,49 @@ a {
 
 .primary {
   h1 {
-    margin-bottom: 5px;
+    margin: 0 0 10px;
+    padding: 0 0 10px;
+    font-weight: bold;
   }
 
   dl {
     float: left;
     margin-top: 0;
-    width: 25%;
-    dt,
-    dd {
-      display: block;
+    width: 100%;
+    dt {
+      min-width: 100px;
+      float: left;
+      &:after {
+        content: ":";
+      }
     }
     dd {
       font-weight: bold;
       margin-left: 0;
-      & a[href^="http://"]:after,
-      & a[href^="https://"]:after {
+      & a:after {
           content: "";
       }
-    }
-    dt:after {
-      content: ":";
     }
   }
 }
 
-#manuals-frontend header dt {
-  min-width: 0!important;
+.secondary {
+  display: none; // removing from print because this now only contains 'Give feedback about this page' which isn't useful on a printed page
 }
 
-.secondary {
-  float: left;
-  margin-bottom: 20px;
-  width: 75%;
-
-  .secondary-inner {
-    p {
-      margin-top: 0;
-      & + p {
-        display: none;
-      }
-    }
-
-    time {
-      font-weight: bold;
-      display: block;
-    }
+.manual-body {
+  clear: both;
+  .subsection-title-text {
+    font-weight: bold;
   }
 }
 
 .govspeak {
   width: 75%;
+}
+
+.js-title-controls-wrap {
+  display: none;
 }
 
 .js-openable {
