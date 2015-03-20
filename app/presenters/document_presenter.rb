@@ -1,5 +1,5 @@
 class DocumentPresenter
-  delegate :title, to: :document
+  delegate :title, :previous_sibling, :next_sibling, to: :document
 
   def initialize(document, manual)
     @document = document
