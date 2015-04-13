@@ -16,6 +16,14 @@
         <dd><%= marked_up_date(@manual.updated_at) %>, <%= link_to 'see all updates', @manual.updates_url %></dd>
       </dl>
     <% end %>
+    <div class="in-manual-search">
+      <form action="/search" >
+        <label for="search-box">Search this manual</label>
+        <input type='hidden' name="filter_manual[]" value="<%= @manual.slug_for_search %>">
+        <input id="search-box" type="text" name="q"/>
+        <button type="submit">search</button>
+      </form>
+    </div>
   </div>
   <div class='secondary'>
     <div class='secondary-inner'>
