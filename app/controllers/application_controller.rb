@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
 
   def slimmer_headers
     set_slimmer_headers(template: "header_footer_only")
+    set_slimmer_headers(remove_search: true)
   end
 
   def set_robots_headers

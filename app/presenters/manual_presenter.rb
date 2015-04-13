@@ -14,6 +14,10 @@ class ManualPresenter
     true
   end
 
+  def slug_for_search
+    url[1..-1]
+  end
+
   def beta_message
     if hmrc?
       "This part of GOV.UK is still being built – you can <a href='http://www.hmrc.gov.uk/thelibrary/manuals.htm'>access the manuals from HMRC</a> in the meantime"
