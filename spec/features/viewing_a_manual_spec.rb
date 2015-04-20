@@ -28,6 +28,18 @@ feature "Viewing manuals and sections" do
                                           slug: "hm-revenue-customs")
   end
 
+  scenario "viewing a non-HMRC manual" do
+    stub_fake_manual
+    visit_manual "my-manual-about-burritos"
+    expect(page.response_headers['X-Robots-Tag']).not_to eq("none")
+  end
+
+  scenario "viewing an HMRC manual" do
+    stub_hmrc_manual
+    visit_hmrc_manual "inheritance-tax-manual"
+    expect(page.response_headers['X-Robots-Tag']).to eq("none")
+  end
+
   scenario "viewing a manual section with subsections" do
     stub_hmrc_manual
     stub_hmrc_manual_section_with_subsections

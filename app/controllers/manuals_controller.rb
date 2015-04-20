@@ -6,18 +6,17 @@ class ManualsController < ApplicationController
   before_action :render_employment_income_manual
   before_action :ensure_manual_is_found
   before_action :ensure_document_is_found, only: :show
+  before_action :load_manual
+  before_action :prevent_robots_from_indexing_hmrc_manuals
 
   def index
-    @manual = ManualPresenter.new(manual)
   end
 
   def show
-    @manual = ManualPresenter.new(manual)
     @document = DocumentPresenter.new(document, @manual)
   end
 
   def updates
-    @manual = ManualPresenter.new(manual)
   end
 
 private
@@ -44,6 +43,10 @@ private
     content_store.content_item(manual_base_path)
   end
 
+  def load_manual
+    @manual = ManualPresenter.new(manual)
+  end
+
   def manual_base_path
     "/#{params[:prefix]}/#{manual_id}"
   end
@@ -66,5 +69,11 @@ private
 
   def document_repository
     DocumentRepository.new
+  end
+
+  def prevent_robots_from_indexing_hmrc_manuals
+    if @manual.hmrc?
+      response.headers["X-Robots-Tag"] = "none"
+    end
   end
 end
