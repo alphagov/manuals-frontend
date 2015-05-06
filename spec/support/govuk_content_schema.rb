@@ -4,3 +4,11 @@ GovukContentSchemaTestHelpers.configure do |config|
   config.schema_type = 'frontend'
   config.project_root = Rails.root
 end
+
+module GovukContentSchemaExamples
+  def examples_for_format(format)
+    GovukContentSchemaTestHelpers::Examples.new.get_all_for_format(format)
+  end
+end
+
+RSpec.configuration.include GovukContentSchemaExamples
