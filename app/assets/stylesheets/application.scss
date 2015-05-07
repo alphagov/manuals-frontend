@@ -7,7 +7,6 @@
 @import "grid_layout";
 
 @import "reset";
-@import "govspeak";
 
 // TODO: Delete this once the EIM holding page is removed
 @import "eim_holding_page_style_overrides";
@@ -264,9 +263,14 @@ main {
     }
   }
 
-  .collapsible-subsections p {
-    @include media(tablet){
-      margin-top: $gutter-two-thirds;
+  .collapsible-subsections {
+    @include media(tablet) {
+      p {
+        margin-top: $gutter-two-thirds;
+      }
+      .call-to-action p {
+        margin: 0;
+      }
     }
   }
 
