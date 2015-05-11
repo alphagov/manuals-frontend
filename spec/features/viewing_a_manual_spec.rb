@@ -1,5 +1,7 @@
 require 'rails_helper'
 require 'gds_api/test_helpers/content_store'
+require 'slimmer/test_helpers/shared_templates'
+include Slimmer::TestHelpers::SharedTemplates
 
 feature "Viewing manuals and sections" do
   # As a member of the public
@@ -92,7 +94,9 @@ feature "Viewing manuals and sections" do
     visit_hmrc_manual_section "inheritance-tax-manual", "eim15000"
 
     # HTML in the body
-    expect(page).to have_link("Sections 386-400 ITEPA 2003")
+    within(shared_component_selector('govspeak')) do
+      expect(page).to have_content("Sections 386-400 ITEPA 2003")
+    end
   end
 
   scenario "HMRC manual section IDs are displayed in the title" do
