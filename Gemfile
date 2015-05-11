@@ -30,4 +30,5 @@ group :test do
   gem "webmock", "~> 1.17.4"
   gem "poltergeist", "1.5.0"
   gem "launchy"
+  gem "govuk-content-schema-test-helpers", "1.3.0"
 end
