@@ -9,7 +9,7 @@ feature "Viewing manuals and sections examples from govuk-content-schemas" do
 
   describe "support for example manuals" do
     it 'should render a page including the manual title' do
-      GovukContentSchemaTestHelpers::Examples.new.get_all_for_format("manual").each do |example_json|
+      examples_for_formats(["manual", "hmrc_manual"]).each do |example_json|
         content_item = JSON.parse(example_json)
         content_store_has_item(content_item['base_path'], content_item)
 
