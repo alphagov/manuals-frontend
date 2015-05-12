@@ -6,8 +6,8 @@ GovukContentSchemaTestHelpers.configure do |config|
 end
 
 module GovukContentSchemaExamples
-  def examples_for_format(format)
-    GovukContentSchemaTestHelpers::Examples.new.get_all_for_format(format)
+  def examples_for_formats(formats)
+    GovukContentSchemaTestHelpers::Examples.new.get_all_for_formats(formats)
   end
 end
 
