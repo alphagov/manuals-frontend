@@ -16,8 +16,8 @@ module ApplicationHelper
     if document.previous_sibling
       siblings.merge!( 
         previous_page: {
-          "title" => "Previous page",
-          "url" => document.previous_sibling.base_path
+          title: "Previous page",
+          url: document.previous_sibling.base_path
         }
       )
     end
@@ -25,8 +25,8 @@ module ApplicationHelper
     if document.next_sibling
       siblings.merge!(
         next_page: {
-          "title" => "Next page",
-          "url" => document.next_sibling.base_path
+          title: "Next page",
+          url: document.next_sibling.base_path
         }
       )
     end
