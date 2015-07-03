@@ -10,7 +10,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unicorn', '4.8.2'
 
 gem 'plek', '1.7.0'
-gem 'gds-api-adapters', '14.1.0'
+gem 'gds-api-adapters', '20.1.1'
 
 gem 'airbrake', '4.0.0'
 
