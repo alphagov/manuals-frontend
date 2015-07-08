@@ -116,7 +116,7 @@ GEM
       mini_portile (~> 0.6.0)
     null_logger (0.0.1)
     phantomjs (1.9.7.0)
-    plek (1.7.0)
+    plek (1.11.0)
     poltergeist (1.5.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -237,7 +237,7 @@ DEPENDENCIES
   govuk_frontend_toolkit (= 1.2.0)
   jasmine-rails
   launchy
-  plek (= 1.7.0)
+  plek (= 1.11.0)
   poltergeist (= 1.5.0)
   pry
   rails (= 4.2.2)
