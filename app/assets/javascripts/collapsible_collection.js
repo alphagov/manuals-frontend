@@ -68,7 +68,7 @@
       }
 
       var subsectionBody = $subsectionHeader.nextUntil(this.superiorsSelector);
-      subsectionBody.andSelf().wrapAll('<div class="js-openable"></div>');
+      subsectionBody.addBack(el).wrapAll('<div class="js-openable"></div>');
       subsectionBody.wrapAll('<div class="js-subsection-body body-content-wrapper"></div>');
     }.bind(this));
   }
