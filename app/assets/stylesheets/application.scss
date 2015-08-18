@@ -37,7 +37,7 @@ main {
     }
     padding: $gutter;
     color: $white;
-    margin: 0 (-$gutter);
+    margin: 0 (-$gutter-half);
     @include core-16;
     @extend %contain-floats;
 
