@@ -1,3 +1,9 @@
+<% content_for :extra_headers do %>
+  <% if @manual.summary.present? %>
+    <meta name='description' content='<%= @manual.summary %>' />
+  <% end %>
+<% end %>
+
 <% content_for :title, @manual.full_title %>
 <article aria-labelledby="manual-title" id="content">
   <%= render partial: "header" %>
