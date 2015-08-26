@@ -40,7 +40,7 @@ private
   end
 
   def manual
-    content_store.content_item(manual_base_path)
+    content_store(disable_cache: true).content_item(manual_base_path)
   end
 
   def load_manual
