@@ -42,6 +42,12 @@ feature "Viewing manuals and sections" do
     expect(page.response_headers['X-Robots-Tag']).to eq("none")
   end
 
+  scenario "viewing a manual with a description" do
+    stub_fake_manual
+    visit_manual "my-manual-about-burritos"
+    expect(page).to have_selector('meta[name="description"][content="Burrito means little donkey"]', visible: false)
+  end
+
   scenario "viewing a manual section with subsections" do
     stub_hmrc_manual
     stub_hmrc_manual_section_with_subsections
