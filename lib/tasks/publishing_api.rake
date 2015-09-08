@@ -1,6 +1,5 @@
 require 'logger'
 require 'gds_api/publishing_api'
-require 'gds_api/publishing_api/special_route_publisher'
 
 class RedirectPublisher
   attr_reader :logger, :publishing_app
@@ -41,15 +40,25 @@ namespace :publishing_api do
   task :publish_special_routes do
     logger = Logger.new(STDOUT)
 
-    special_route_publisher = GdsApi::PublishingApi::SpecialRoutePublisher.new(logger: logger)
-    special_route_publisher.publish(
+    publishing_api ||= GdsApi::PublishingApi.new(Plek.find("publishing-api"))
+
+    base_path = "/guidance/employment-income-manual"
+
+    gone_content_item = {
+      format: "gone",
       content_id: "8a97dc8e-d48f-48ad-804e-862d327e1fc1",
-      title: "Prototype of the Employment Income Manual (defunct)",
-      base_path: "/guidance/employment-income-manual",
-      type: "prefix",
-      publishing_app: 'manuals-frontend',
-      rendering_app: 'manuals-frontend'
-    )
+      update_type: "major",
+      publishing_app: "manuals-frontend",
+      routes: [
+        {
+          path: base_path,
+          type: "prefix"
+        }
+      ]
+    }
+
+    publishing_api.put_content_item(base_path, gone_content_item)
+    logger.info("Registered gone route #{gone_content_item[:content_id]}: '#{base_path}'")
 
     redirect_publisher = RedirectPublisher.new(logger: logger, publishing_app: 'manuals-frontend')
     redirect_publisher.call('09346008-7c4f-4cc4-b8d5-19d1ebf8ef5f', '/guidance', 'exact', '/government/publications')

@@ -3,7 +3,6 @@ require 'gds_api/helpers'
 class ManualsController < ApplicationController
   include GdsApi::Helpers
 
-  before_action :render_employment_income_manual
   before_action :ensure_manual_is_found
   before_action :ensure_document_is_found, only: :show
   before_action :load_manual
@@ -20,12 +19,6 @@ class ManualsController < ApplicationController
   end
 
 private
-
-  def render_employment_income_manual
-    if manual.nil? && manual_id == "employment-income-manual"
-      render :employment_income_manual
-    end
-  end
 
   def ensure_manual_is_found
     error_not_found unless manual

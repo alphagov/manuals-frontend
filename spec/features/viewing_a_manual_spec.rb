@@ -133,40 +133,4 @@ feature "Viewing manuals and sections" do
     visit_hmrc_manual_section "inheritance-tax-manual", "nonexistent-manual-section"
     expect(page.status_code).to eq(404)
   end
-
-  scenario "visiting the obsolete prototype HMRC manual" do
-    content_store_does_not_have_item('/hmrc-internal-manuals/employment-income-manual')
-
-    visit_hmrc_manual "employment-income-manual"
-    expect_manual_title_to_be("This prototype of the Employment Income Manual is no longer available")
-    expect(page.status_code).to eq(200)
-  end
-
-  scenario "visiting a section in the obsolete prototype HMRC manual" do
-    content_store_does_not_have_item('/hmrc-internal-manuals/employment-income-manual')
-    content_store_does_not_have_item('/hmrc-internal-manuals/employment-income-manual/abc123')
-
-    visit_hmrc_manual_section "employment-income-manual", "abc123"
-    expect_manual_title_to_be("This prototype of the Employment Income Manual is no longer available")
-    expect(page.status_code).to eq(200)
-  end
-
-  context "prototype HMRC manual has now been published for real" do
-    scenario "visiting the manual" do
-      stub_hmrc_manual("employment-income-manual", "Employment Income Manual")
-
-      visit_hmrc_manual "employment-income-manual"
-      expect_manual_title_to_be("Employment Income Manual")
-      expect(page.status_code).to eq(200)
-    end
-
-    scenario "visiting one of the manual's sections" do
-      stub_hmrc_manual("employment-income-manual", "Employment Income Manual")
-      stub_hmrc_manual_section_with_body("employment-income-manual", "abc123", "Some section title or other")
-
-      visit_hmrc_manual_section "employment-income-manual", "abc123"
-      expect_section_title_to_be("Some section title or other")
-      expect(page.status_code).to eq(200)
-    end
-  end
 end
