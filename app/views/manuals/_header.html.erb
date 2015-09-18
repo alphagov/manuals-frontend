@@ -19,7 +19,7 @@
     <div class="in-manual-search">
       <form action="/search" >
         <label for="search-box">Search this manual</label>
-        <input type='hidden' name="filter_manual[]" value="<%= @manual.slug_for_search %>">
+        <input type='hidden' name="filter_manual[]" value="<%= @manual.url %>">
         <input id="search-box" type="text" name="q"/>
         <button type="submit">search</button>
       </form>
