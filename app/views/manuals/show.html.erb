@@ -25,7 +25,8 @@
         <div class='js-collapsible-collection subsection-collection' data-collapse-depth=<%= @document.collapse_depth %>>
           <div class='collapsible-subsections'>
             <%= render partial: 'govuk_component/govspeak', locals: {
-              content: @document.body
+              content: @document.body,
+              rich_govspeak: true,
             } %>
           </div>
         </div>
