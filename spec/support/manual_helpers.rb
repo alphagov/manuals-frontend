@@ -185,6 +185,17 @@ module ManualHelpers
 
     content_store_has_item("/hmrc-internal-manuals/#{manual_id}/#{section_id}", section_json)
   end
+
+  def stub_withdrawn_manual(base_path)
+
+    gone_json = {
+      base_path: base_path,
+      format: "gone",
+      phase: "live",
+    }
+
+    content_store_has_item(base_path, gone_json)
+  end
 end
 
 RSpec.configuration.include ManualHelpers

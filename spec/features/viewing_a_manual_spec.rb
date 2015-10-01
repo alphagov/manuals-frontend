@@ -133,4 +133,12 @@ feature "Viewing manuals and sections" do
     visit_hmrc_manual_section "inheritance-tax-manual", "nonexistent-manual-section"
     expect(page.status_code).to eq(404)
   end
+
+  scenario "visiting a withdrawn manual's updates" do
+    slug = "/guidance/a-withdrawn-manual"
+    stub_withdrawn_manual(slug)
+
+    visit "#{slug}/updates"
+    expect(page.status_code).to eq(410)
+  end
 end
