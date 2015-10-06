@@ -5,6 +5,11 @@ Manuals Frontend
 
 Front-end app for the manuals format on GOV.UK
 
+## Live examples
+
+- [gov.uk/guidance/content-design](https://www.gov.uk/guidance/content-design)
+- [gov.uk/hmrc-internal-manuals/vat-government-and-public-bodies](https://www.gov.uk/hmrc-internal-manuals/vat-government-and-public-bodies)
+
 ## Nomenclature
 
 - **Manuals** – documents published using [github.com/alphagov/specialist-publisher](https://github.com/alphagov/specialist-publisher).
