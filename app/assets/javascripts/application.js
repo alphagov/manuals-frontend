@@ -16,7 +16,7 @@ jQuery(function($) {
 
   $('.govspeak').on('click', 'a', function(event){
     if (window.location.pathname == event.target.pathname) {
-      openSectionContainingAnchor($(window.location.hash));
+      openSectionContainingAnchor($(event.currentTarget.hash));
     }
   })
 });
