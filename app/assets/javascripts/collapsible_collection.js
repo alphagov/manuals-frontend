@@ -29,7 +29,17 @@
         this.collapsibles[openSectionID].open();
       }
 
+      if (window.location.hash) {
+        this.openSectionContainingAnchor($(window.location.hash));
+      }
+
       this.$container.on('click', 'a[rel="footnote"]', this.expandFootnotes.bind(this));
+
+      this.$container.on('click', 'a', function(event){
+        if (window.location.pathname === event.target.pathname) {
+          this.openSectionContainingAnchor($(event.currentTarget.hash));
+        }
+      }.bind(this))
     }
   }
 
@@ -157,6 +167,12 @@
 
   CollapsibleCollection.prototype.enableControl = function enableControl(control){
     control.removeClass('disabled');
+  }
+
+  CollapsibleCollection.prototype.openSectionContainingAnchor = function openSectionContainingAnchor($anchor){
+    if ($anchor.length !== 0) {
+      new GOVUK.Collapsible($anchor.closest('.js-openable')).open();
+    }
   }
 
   GOVUK.CollapsibleCollection = CollapsibleCollection;
