@@ -36,6 +36,13 @@ describe('CollapsibleCollection', function(){
     collectionsFromBlobHTML.remove();
   });
 
+  var findOpenSections = function openSections(collapsibles) {
+    return $.map(
+      collapsibles,
+      function(section, index) { return section.isClosed() ? null : section; }
+    );
+  };
+
   var resetBody = function resetBody() {
     collectionsFromBlobHTML.remove();
     collectionsFromBlobHTML = $(collectionsFromBlobString);
@@ -54,14 +61,7 @@ describe('CollapsibleCollection', function(){
 
       var collection = new GOVUK.CollapsibleCollection({$el: collectionsFromBlobHTML});
 
-      var sections = $.map(
-        collection.collapsibles,
-        function(section, index) { return section; }
-      );
-
-      var openSections = sections.filter(
-        function(section) { return !section.isClosed(); }
-      );
+      var openSections = findOpenSections(collection.collapsibles);
 
       expect(openSections.length).toBe(0);
     });
@@ -73,32 +73,18 @@ describe('CollapsibleCollection', function(){
 
       var collection = new GOVUK.CollapsibleCollection({$el: collectionsFromBlobHTML});
 
-      var sections = $.map(
-        collection.collapsibles,
-        function(section, index) { return section; }
-      );
-
-      var openSections = sections.filter(
-        function(section) { return !section.isClosed(); }
-      );
+      var openSections = findOpenSections(collection.collapsibles);
 
       expect(openSections.length).toBe(1);
       expect(openSections[0]).toBe(collection.collapsibles['a-second-section-title']);
     });
 
-    it('should open the section linked to by the anchor on the same page', function(){
+    it('should open the closed section linked to by the anchor on the same page', function(){
       var collection = new GOVUK.CollapsibleCollection({$el: collectionsFromBlobHTML});
 
       $('#internal-link').click();
 
-      var sections = $.map(
-        collection.collapsibles,
-        function(section, index) { return section; }
-      );
-
-      var openSections = sections.filter(
-        function(section) { return !section.isClosed(); }
-      );
+      var openSections = findOpenSections(collection.collapsibles);
 
       expect(openSections.length).toBe(1);
       expect(openSections[0]).toBe(collection.collapsibles['a-section-title']);
