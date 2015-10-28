@@ -34,21 +34,7 @@ describe('CollapsibleCollection', function(){
     collectionsFromBlobHTML.remove();
   });
 
-
-  describe('initCollapsible', function(){
-    it ('should add control links to HTML generated from a blob', function(){
-      var html = $(collectionsFromBlobString);
-      expect(html.find('a.collection-control').length).toBe(0);
-      var newCollection = new GOVUK.CollapsibleCollection({$el:html});
-      expect(newCollection.$container.find('.js-collection-controls a').length).toBe(2);
-    });
-
-    it('should add a new object to collapsibles hash with the id from the section for blobs', function(){
-      var collectionSize = Object.keys(collection.collapsibles).length;
-      collection.initCollapsible(collection.$sections[0]);
-      expect(Object.keys(collection.collapsibles).length).toBe(collectionSize+1);
-    });
-
+  describe('CollapsibleCollection', function(){
     it('should close all sections by default', function(){
       spyOn(GOVUK, 'getCurrentLocation').and.returnValue({
         hash: ''
@@ -90,6 +76,24 @@ describe('CollapsibleCollection', function(){
 
       expect(openSections.length).toBe(1);
       expect(openSections[0]).toBe(collection.collapsibles['a-second-section-title']);
+    });
+  });
+
+  describe('initCollapsible', function(){
+    it ('should add control links to HTML generated from a blob', function(){
+      var html = $(collectionsFromBlobString);
+      expect(html.find('a.collection-control').length).toBe(0);
+      var newCollection = new GOVUK.CollapsibleCollection({$el:html});
+      expect(newCollection.$container.find('.js-collection-controls a').length).toBe(2);
+    });
+
+    it('should add a new object to collapsibles hash with the id from the section for blobs', function(){
+      var collection = new GOVUK.CollapsibleCollection({
+        $el: collectionsFromBlobHTML
+      });
+      var collectionSize = Object.keys(collection.collapsibles).length;
+      collection.initCollapsible(collection.$sections[0]);
+      expect(Object.keys(collection.collapsibles).length).toBe(collectionSize+1);
     });
   });
 
