@@ -14,12 +14,14 @@ describe('CollapsibleCollection', function(){
             '<p>Where the tax gets paid to the man about the thing for the other thing</p>'+
             // Three collapsible subsections
             '<h2 id="a-section-title">A section title!</h2>'+
+            '<h3 id="a-sub-section-title">A subsection title!</h3>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
             '<h2 id="a-second-section-title">A second section title!</h2>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
             '<h2 id="a-third-section-title">A third section title!</h2>'+
             '<p>Where an employer meets the tax payable on a non-cash incentive award given to a direct</p>'+
+            '<p>Follow this <a id="internal-link" href="#a-sub-section-title">Link to subsection in first section</a></p>'+
           '</div>'+
         '</div>'+
       '</div>';
@@ -82,6 +84,24 @@ describe('CollapsibleCollection', function(){
 
       expect(openSections.length).toBe(1);
       expect(openSections[0]).toBe(collection.collapsibles['a-second-section-title']);
+    });
+
+    it('should open the section linked to by the anchor on the same page', function(){
+      var collection = new GOVUK.CollapsibleCollection({$el: collectionsFromBlobHTML});
+
+      $('#internal-link').click();
+
+      var sections = $.map(
+        collection.collapsibles,
+        function(section, index) { return section; }
+      );
+
+      var openSections = sections.filter(
+        function(section) { return !section.isClosed(); }
+      );
+
+      expect(openSections.length).toBe(1);
+      expect(openSections[0]).toBe(collection.collapsibles['a-section-title']);
     });
   });
 
