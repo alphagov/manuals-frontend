@@ -27,22 +27,30 @@ describe('CollapsibleCollection', function(){
       collectionsFromBlobHTML = $(collectionsFromBlobString);
 
       $('body').append(collectionsFromBlobHTML);
-      collection = new GOVUK.CollapsibleCollection({$el:collectionsFromBlobHTML});
+      collection = new GOVUK.CollapsibleCollection({$el: collectionsFromBlobHTML});
   });
 
   afterEach(function(){
     collectionsFromBlobHTML.remove();
   });
 
+  var resetBody = function resetBody() {
+    collectionsFromBlobHTML.remove();
+    collectionsFromBlobHTML = $(collectionsFromBlobString);
+    $('body').append(collectionsFromBlobHTML);
+  };
+
   describe('CollapsibleCollection', function(){
+    beforeEach(function(){
+      resetBody();
+    });
+
     it('should close all sections by default', function(){
       spyOn(GOVUK, 'getCurrentLocation').and.returnValue({
         hash: ''
       });
 
-      var collection = new GOVUK.CollapsibleCollection({
-        $el: collectionsFromBlobHTML
-      });
+      var collection = new GOVUK.CollapsibleCollection({$el: collectionsFromBlobHTML});
 
       var sections = $.map(
         collection.collapsibles,
@@ -61,9 +69,7 @@ describe('CollapsibleCollection', function(){
         hash: '#a-second-section-title'
       });
 
-      var collection = new GOVUK.CollapsibleCollection({
-        $el: collectionsFromBlobHTML
-      });
+      var collection = new GOVUK.CollapsibleCollection({$el: collectionsFromBlobHTML});
 
       var sections = $.map(
         collection.collapsibles,
@@ -83,14 +89,11 @@ describe('CollapsibleCollection', function(){
     it ('should add control links to HTML generated from a blob', function(){
       var html = $(collectionsFromBlobString);
       expect(html.find('a.collection-control').length).toBe(0);
-      var newCollection = new GOVUK.CollapsibleCollection({$el:html});
-      expect(newCollection.$container.find('.js-collection-controls a').length).toBe(2);
+      var collection = new GOVUK.CollapsibleCollection({$el:html});
+      expect(collection.$container.find('.js-collection-controls a').length).toBe(2);
     });
 
     it('should add a new object to collapsibles hash with the id from the section for blobs', function(){
-      var collection = new GOVUK.CollapsibleCollection({
-        $el: collectionsFromBlobHTML
-      });
       var collectionSize = Object.keys(collection.collapsibles).length;
       collection.initCollapsible(collection.$sections[0]);
       expect(Object.keys(collection.collapsibles).length).toBe(collectionSize+1);
@@ -116,11 +119,9 @@ describe('CollapsibleCollection', function(){
     });
 
     it('should wrap all tags following a js-subsection-title h2 up to the next js-subsection-title h2 in a div with the class js-subsection-body', function(){
-
       collectionsFromBlobHTML.find('h2.js-subsection-title').each(function(index){
         expect($(this).next().hasClass('js-subsection-body')).toBe(true);
       });
-
     });
   });
 
@@ -221,7 +222,6 @@ describe('CollapsibleCollection', function(){
 
       expect(collection.disableControl).toHaveBeenCalledWith(collection.$openAll);
     });
-
   });
 });
 
