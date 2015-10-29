@@ -24,20 +24,16 @@
 
       this.closeAll();
 
-      var openSectionID = GOVUK.getCurrentLocation().hash.substr(1);
-      if(typeof(this.collapsibles[openSectionID]) != 'undefined') {
-        this.collapsibles[openSectionID].open();
-      }
-
-      if (window.location.hash) {
-        this.openSectionContainingAnchor($(window.location.hash));
+      var anchor = GOVUK.getCurrentLocation().hash;
+      if (anchor) {
+        this.openCollapsibleForAnchor(anchor);
       }
 
       this.$container.on('click', 'a[rel="footnote"]', this.expandFootnotes.bind(this));
 
       this.$container.on('click', 'a', function(event){
         if (window.location.pathname === event.target.pathname) {
-          this.openSectionContainingAnchor($(event.currentTarget.hash));
+          this.openCollapsibleForAnchor(event.currentTarget.hash);
         }
       }.bind(this))
     }
@@ -169,10 +165,35 @@
     control.removeClass('disabled');
   }
 
-  CollapsibleCollection.prototype.openSectionContainingAnchor = function openSectionContainingAnchor($anchor){
-    if ($anchor.length !== 0) {
-      new GOVUK.Collapsible($anchor.closest('.js-openable')).open();
+  CollapsibleCollection.prototype.openCollapsibleForAnchor = function openCollapsibleForAnchor(anchor){
+    var collapsible = this.getCollapsibleFromSection(anchor) || this.getCollapsibleFromAnchorInSection(anchor);
+    if (collapsible) {
+      collapsible.open();
     }
+  }
+
+  CollapsibleCollection.prototype.getCollapsibleFromSection = function getCollapsibleFromSection(anchor){
+    var collapsible = null;
+    $.each(this.collapsibles, function (key, _collapsible) {
+      if (key === anchor.substr(1)) {
+        collapsible = _collapsible;
+        return false;
+      }
+    })
+    return collapsible;
+  }
+
+  CollapsibleCollection.prototype.getCollapsibleFromAnchorInSection = function getCollapsibleFromAnchorInSection(anchor){
+    var section = $(anchor).closest('.js-openable')[0];
+
+    var collapsible = null;
+    $.each(this.collapsibles, function (key, _collapsible) {
+      if (_collapsible.$section[0] === section) {
+        collapsible = _collapsible;
+        return false;
+      }
+    })
+    return collapsible;
   }
 
   GOVUK.CollapsibleCollection = CollapsibleCollection;
