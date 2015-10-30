@@ -229,5 +229,51 @@ describe('CollapsibleCollection', function(){
       expect(collection.disableControl).toHaveBeenCalledWith(collection.$openAll);
     });
   });
-});
 
+  describe('openCollapsibleForAnchor', function(){
+    it ('should open the collapsible for the given section title', function(){
+      spyOn(collection, "getCollapsibleFromSection").and.returnValue(collection.collapsibles['a-third-section-title']);
+      collection.openCollapsibleForAnchor('#a-third-section-title');
+
+      var openSections = findOpenSections(collection.collapsibles);
+
+      expect(openSections.length).toBe(1);
+      expect(openSections[0]).toBe(collection.collapsibles['a-third-section-title']);
+    });
+
+    it ('should open the collapsible for the given anchor within a section', function(){
+      spyOn(collection, "getCollapsibleFromSection").and.returnValue(null);
+      spyOn(collection, "getCollapsibleFromAnchorInSection").and.returnValue(collection.collapsibles['a-section-title']);
+      collection.openCollapsibleForAnchor('#a-sub-section-title');
+
+      var openSections = findOpenSections(collection.collapsibles);
+
+      expect(openSections.length).toBe(1);
+      expect(openSections[0]).toBe(collection.collapsibles['a-section-title']);
+    });
+
+    it ('should not open any collapsible if collapsible cannot be found', function(){
+      spyOn(collection, "getCollapsibleFromSection").and.returnValue(null);
+      spyOn(collection, "getCollapsibleFromAnchorInSection").and.returnValue(null);
+      collection.openCollapsibleForAnchor('#some-non-existant-section-title');
+
+      var openSections = findOpenSections(collection.collapsibles);
+
+      expect(openSections.length).toBe(0);
+    });
+  });
+
+  describe('getCollapsibleFromSection', function(){
+    it ('should find the collapsible for the given section title', function(){
+      var collapsible = collection.getCollapsibleFromSection('#a-third-section-title');
+      expect(collapsible).toBe(collection.collapsibles['a-third-section-title']);
+    });
+  });
+
+  describe('getCollapsibleFromAnchorInSection', function(){
+    it ('should find the collapsible for the given anchor in a section', function(){
+      var collapsible = collection.getCollapsibleFromAnchorInSection('#a-sub-section-title');
+      expect(collapsible).toBe(collection.collapsibles['a-section-title']);
+    });
+  });
+});
