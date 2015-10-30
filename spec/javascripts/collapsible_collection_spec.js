@@ -110,7 +110,7 @@ describe('CollapsibleCollection', function(){
     it('should add the a js-subsection-title class to any h2s that are not excluded by js-exclude-h2s or have the link-out class for blobs', function(){
       var html = $(collectionsFromBlobString);
       var h2Count = html.find('h2').length;
-      var excludedH2Count = html.find('.js-ignore-h2s h2, h2.linked-title').length
+      var excludedH2Count = html.find('.js-ignore-h2s h2, h2.linked-title').length;
       var sectionHeaderCount = h2Count - excludedH2Count;
 
       expect(html.find('h2.js-subsection-title').length).toBe(0);
@@ -143,12 +143,12 @@ describe('CollapsibleCollection', function(){
       collection.openAll();
 
       for (var collapsible_id in this.collapsibles) {
-        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(false)
+        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(false);
       }
       collection.closeAll();
 
       for (var collapsible_id in this.collapsibles) {
-        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true)
+        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true);
       }
     });
 
@@ -170,12 +170,12 @@ describe('CollapsibleCollection', function(){
       collection.closeAll();
 
       for (var collapsible_id in this.collapsibles) {
-        expect($(this.collapsible[collapsible.id]).isOpen()).toBe(false)
+        expect($(this.collapsible[collapsible.id]).isOpen()).toBe(false);
       }
       collection.openAll();
 
       for (var collapsible_id in this.collapsibles) {
-        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true)
+        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true);
       }
     });
 

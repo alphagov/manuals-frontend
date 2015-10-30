@@ -10,26 +10,26 @@
   }
 
   Collapsible.prototype.addToggle = function addToggle(){
-    var $toggleHTML = $("<span class='js-toggle'></span>")
+    var $toggleHTML = $("<span class='js-toggle'></span>");
     this.$clickTarget.append($toggleHTML);
-  }
+  };
 
   Collapsible.prototype.toggle = function toggle(event){
     this.$section.toggleClass('closed');
     event.preventDefault();
-  }
+  };
 
   Collapsible.prototype.close = function close(){
     this.$section.addClass('closed');
-  }
+  };
 
   Collapsible.prototype.open = function open(){
     this.$section.removeClass('closed');
-  }
+  };
 
   Collapsible.prototype.isClosed = function(){
     return this.$section.hasClass('closed');
-  }
+  };
 
   GOVUK.Collapsible = Collapsible;
 }());
