@@ -110,7 +110,7 @@ describe('CollapsibleCollection', function(){
     it('should add the a js-subsection-title class to any h2s that are not excluded by js-exclude-h2s or have the link-out class for blobs', function(){
       var html = $(collectionsFromBlobString);
       var h2Count = html.find('h2').length;
-      var excludedH2Count = html.find('.js-ignore-h2s h2, h2.linked-title').length
+      var excludedH2Count = html.find('.js-ignore-h2s h2, h2.linked-title').length;
       var sectionHeaderCount = h2Count - excludedH2Count;
 
       expect(html.find('h2.js-subsection-title').length).toBe(0);
@@ -143,12 +143,12 @@ describe('CollapsibleCollection', function(){
       collection.openAll();
 
       for (var collapsible_id in this.collapsibles) {
-        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(false)
+        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(false);
       }
       collection.closeAll();
 
       for (var collapsible_id in this.collapsibles) {
-        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true)
+        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true);
       }
     });
 
@@ -170,12 +170,12 @@ describe('CollapsibleCollection', function(){
       collection.closeAll();
 
       for (var collapsible_id in this.collapsibles) {
-        expect($(this.collapsible[collapsible.id]).isOpen()).toBe(false)
+        expect($(this.collapsible[collapsible.id]).isOpen()).toBe(false);
       }
       collection.openAll();
 
       for (var collapsible_id in this.collapsibles) {
-        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true)
+        expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true);
       }
     });
 
@@ -229,5 +229,51 @@ describe('CollapsibleCollection', function(){
       expect(collection.disableControl).toHaveBeenCalledWith(collection.$openAll);
     });
   });
-});
 
+  describe('openCollapsibleForAnchor', function(){
+    it ('should open the collapsible for the given section title', function(){
+      spyOn(collection, "getCollapsibleFromSection").and.returnValue(collection.collapsibles['a-third-section-title']);
+      collection.openCollapsibleForAnchor('#a-third-section-title');
+
+      var openSections = findOpenSections(collection.collapsibles);
+
+      expect(openSections.length).toBe(1);
+      expect(openSections[0]).toBe(collection.collapsibles['a-third-section-title']);
+    });
+
+    it ('should open the collapsible for the given anchor within a section', function(){
+      spyOn(collection, "getCollapsibleFromSection").and.returnValue(null);
+      spyOn(collection, "getCollapsibleFromAnchorInSection").and.returnValue(collection.collapsibles['a-section-title']);
+      collection.openCollapsibleForAnchor('#a-sub-section-title');
+
+      var openSections = findOpenSections(collection.collapsibles);
+
+      expect(openSections.length).toBe(1);
+      expect(openSections[0]).toBe(collection.collapsibles['a-section-title']);
+    });
+
+    it ('should not open any collapsible if collapsible cannot be found', function(){
+      spyOn(collection, "getCollapsibleFromSection").and.returnValue(null);
+      spyOn(collection, "getCollapsibleFromAnchorInSection").and.returnValue(null);
+      collection.openCollapsibleForAnchor('#some-non-existant-section-title');
+
+      var openSections = findOpenSections(collection.collapsibles);
+
+      expect(openSections.length).toBe(0);
+    });
+  });
+
+  describe('getCollapsibleFromSection', function(){
+    it ('should find the collapsible for the given section title', function(){
+      var collapsible = collection.getCollapsibleFromSection('#a-third-section-title');
+      expect(collapsible).toBe(collection.collapsibles['a-third-section-title']);
+    });
+  });
+
+  describe('getCollapsibleFromAnchorInSection', function(){
+    it ('should find the collapsible for the given anchor in a section', function(){
+      var collapsible = collection.getCollapsibleFromAnchorInSection('#a-sub-section-title');
+      expect(collapsible).toBe(collection.collapsibles['a-section-title']);
+    });
+  });
+});

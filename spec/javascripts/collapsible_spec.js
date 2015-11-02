@@ -64,12 +64,12 @@ describe('Collapsible', function(){
   describe('isClosed', function(){
     it('should return true if the collapsible has the class "closed"', function(){
       collapsible.$section.addClass('closed');
-      expect(collapsible.isClosed()).toBe(true)
+      expect(collapsible.isClosed()).toBe(true);
     });
 
     it('should return false if the collapsible doesnt have the class "closed"', function(){
       collapsible.$section.removeClass('closed');
-      expect(collapsible.isClosed()).toBe(false)
+      expect(collapsible.isClosed()).toBe(false);
     });
 
   });
