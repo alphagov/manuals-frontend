@@ -1,7 +1,20 @@
 require 'gds_api/test_helpers/content_store'
+require 'govuk-content-schema-test-helpers'
 
 module ManualHelpers
   include GdsApi::TestHelpers::ContentStore
+
+  def hmrc_links
+    {
+      organisations: [
+        {
+          abbreviation: "HMRC",
+          web_url: "http://www.gov.uk/government/organisations/hm-revenue-customs",
+          title: "HM Revenue & Customs",
+        }
+      ]
+    }
+  end
 
   def stub_fake_manual
     manual_json = {
@@ -10,6 +23,15 @@ module ManualHelpers
       description: "Burrito means little donkey",
       format: "manual",
       public_updated_at: "2014-06-20T10:17:29+01:00",
+      links: {
+        organisations: [
+          {
+            abbreviation: "CO",
+            web_url: "http://www.gov.uk/government/organisations/cabinet-office",
+            title: "Cabinet Office",
+          }
+        ]
+      },
       details: {
         child_section_groups: [
           {
@@ -62,6 +84,7 @@ module ManualHelpers
       description: nil,
       format: "manual",
       public_updated_at: "2014-01-23T00:00:00+01:00",
+      links: hmrc_links,
       details: {
         child_section_groups: [
           {
@@ -106,6 +129,7 @@ module ManualHelpers
       description: nil,
       format: "manual-section",
       public_updated_at: "2014-01-23T00:00:00+01:00",
+      links: hmrc_links,
       details: {
         body: nil,
         section_id: "EIM00500",
@@ -147,6 +171,7 @@ module ManualHelpers
       description: nil,
       format: "manual-section",
       public_updated_at: "2014-01-23T00:00:00+01:00",
+      links: hmrc_links,
       details: {
         breadcrumbs: [
           {
@@ -173,6 +198,7 @@ module ManualHelpers
       description: nil,
       format: "manual-section",
       public_updated_at: "2014-01-23T00:00:00+01:00",
+      links: hmrc_links,
       details: {
         body: 'On this page:<br><br><a href="/hmrc-internal-manuals/#{manual_id}/#{section_id}#EIM15010#IDAZR1YH">Sections 386-400 ITEPA 2003]</a><br>',
         section_id: "#{section_id}",

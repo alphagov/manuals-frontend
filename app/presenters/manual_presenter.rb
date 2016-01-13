@@ -33,7 +33,7 @@ class ManualPresenter
   end
 
   def organisations
-    @manual.details.organisations || []
+    @manual.links.organisations || @manual.details.organisations || []
   end
 
   def hmrc?
