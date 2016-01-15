@@ -10,6 +10,12 @@ module ManualHelpers
     ).fetch("links")
   end
 
+  def example_links
+    JSON.parse(
+      GovukContentSchemaTestHelpers::Examples.new.get('manual', 'content-design')
+    ).fetch("links")
+  end
+
   def stub_fake_manual
     manual_json = {
       base_path: "/guidance/my-manual-about-burritos",
@@ -17,15 +23,7 @@ module ManualHelpers
       description: "Burrito means little donkey",
       format: "manual",
       public_updated_at: "2014-06-20T10:17:29+01:00",
-      links: {
-        organisations: [
-          {
-            abbreviation: "CO",
-            web_url: "http://www.gov.uk/government/organisations/cabinet-office",
-            title: "Cabinet Office",
-          }
-        ]
-      },
+      links: example_links,
       details: {
         child_section_groups: [
           {
