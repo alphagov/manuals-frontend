@@ -1,7 +1,20 @@
 require 'gds_api/test_helpers/content_store'
+require 'govuk-content-schema-test-helpers'
 
 module ManualHelpers
   include GdsApi::TestHelpers::ContentStore
+
+  def example_hmrc_links
+    JSON.parse(
+      GovukContentSchemaTestHelpers::Examples.new.get('hmrc_manual', 'vat-government-public-bodies')
+    ).fetch("links")
+  end
+
+  def example_links
+    JSON.parse(
+      GovukContentSchemaTestHelpers::Examples.new.get('manual', 'content-design')
+    ).fetch("links")
+  end
 
   def stub_fake_manual
     manual_json = {
@@ -10,6 +23,7 @@ module ManualHelpers
       description: "Burrito means little donkey",
       format: "manual",
       public_updated_at: "2014-06-20T10:17:29+01:00",
+      links: example_links,
       details: {
         child_section_groups: [
           {
@@ -62,6 +76,7 @@ module ManualHelpers
       description: nil,
       format: "manual",
       public_updated_at: "2014-01-23T00:00:00+01:00",
+      links: example_hmrc_links,
       details: {
         child_section_groups: [
           {
@@ -106,6 +121,7 @@ module ManualHelpers
       description: nil,
       format: "manual-section",
       public_updated_at: "2014-01-23T00:00:00+01:00",
+      links: example_hmrc_links,
       details: {
         body: nil,
         section_id: "EIM00500",
@@ -147,6 +163,7 @@ module ManualHelpers
       description: nil,
       format: "manual-section",
       public_updated_at: "2014-01-23T00:00:00+01:00",
+      links: example_hmrc_links,
       details: {
         breadcrumbs: [
           {
@@ -173,6 +190,7 @@ module ManualHelpers
       description: nil,
       format: "manual-section",
       public_updated_at: "2014-01-23T00:00:00+01:00",
+      links: example_hmrc_links,
       details: {
         body: 'On this page:<br><br><a href="/hmrc-internal-manuals/#{manual_id}/#{section_id}#EIM15010#IDAZR1YH">Sections 386-400 ITEPA 2003]</a><br>',
         section_id: "#{section_id}",
