@@ -8,7 +8,7 @@ Front-end app for the manuals format on GOV.UK
 ## Live examples
 
 - [gov.uk/guidance/content-design](https://www.gov.uk/guidance/content-design)
-- [gov.uk/hmrc-internal-manuals/vat-government-and-public-bodies](https://www.gov.uk/hmrc-internal-manuals/vat-government-and-public-bodies)
+- [gov.uk/hmrc-internal-manuals/pensions-tax-manual](https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual)
 
 ## Nomenclature
 
