@@ -111,7 +111,11 @@ module ManualHelpers
       }
     }
 
-    content_store_has_item("/hmrc-internal-manuals/#{manual_id}", manual_json)
+    content_store_has_item(
+      "/hmrc-internal-manuals/#{manual_id}",
+      manual_json,
+      { max_age: 15.minutes.to_i },
+    )
   end
 
   def stub_hmrc_manual_section_with_subsections
@@ -153,7 +157,11 @@ module ManualHelpers
       }
     }
 
-    content_store_has_item("/hmrc-internal-manuals/inheritance-tax-manual/eim00500", section_json)
+    content_store_has_item(
+      "/hmrc-internal-manuals/inheritance-tax-manual/eim00500",
+      section_json,
+      { max_age: 20.minutes.to_i, private: true },
+    )
   end
 
   def stub_hmrc_manual_sub_sub_section
