@@ -9,9 +9,11 @@ class ManualsController < ApplicationController
   before_action :prevent_robots_from_indexing_hmrc_manuals
 
   def index
+    set_expiry(manual)
   end
 
   def show
+    set_expiry(document)
     @document = DocumentPresenter.new(document, @manual)
   end
 
@@ -41,7 +43,7 @@ private
   end
 
   def manual
-    content_store.content_item(manual_base_path)
+    @_manual ||= content_store.content_item(manual_base_path)
   end
 
   def load_manual
@@ -57,7 +59,7 @@ private
   end
 
   def document
-    document_repository.fetch(document_base_path)
+    @_document ||= document_repository.fetch(document_base_path)
   end
 
   def document_base_path
@@ -76,5 +78,11 @@ private
     if @manual.hmrc?
       response.headers["X-Robots-Tag"] = "none"
     end
+  end
+
+  def set_expiry(content_item)
+    max_age = content_item.cache_control.max_age
+    cache_private = content_item.cache_control.private?
+    expires_in(max_age, public: !cache_private)
   end
 end

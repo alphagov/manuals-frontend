@@ -17,6 +17,7 @@ feature "Viewing manuals and sections" do
     expect_title_tag_to_be('Inheritance Tax Manual - HMRC internal manual - GOV.UK')
     expect_manual_title_to_be("Inheritance Tax Manual")
     expect_manual_update_date_to_be("23 January 2014")
+    expect(page.response_headers["Cache-Control"]).to eq("max-age=900, public")
 
     # This next expectation has been temporarily disabled until inline rendering of leaf
     # sections is implemented
@@ -65,6 +66,8 @@ feature "Viewing manuals and sections" do
                                    href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00520")
     expect_page_to_include_section("Particular items: R to Z",
                                    href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00530")
+
+    expect(page.response_headers["Cache-Control"]).to eq("max-age=1200, private")
 
     # breadcrumb
     expect(page).to have_link("Contents",
