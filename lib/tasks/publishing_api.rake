@@ -48,6 +48,3 @@ namespace :publishing_api do
     redirect_publisher.call('09346008-7c4f-4cc4-b8d5-19d1ebf8ef5f', '/guidance', 'exact', '/government/publications')
   end
 end
-
-desc "Temporary alias of publishing_api:publish_special_routes for backward compatibility"
-task "router:register" => "publishing_api:publish_special_routes"
