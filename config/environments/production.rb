@@ -82,4 +82,11 @@ ManualsFrontend::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Logstasher config
+  $real_stdout = $stdout.clone
+  $stdout.reopen($stderr)
+  config.logstasher.enabled = true
+  config.logstasher.logger = Logger.new($real_stdout)
+  config.logstasher.suppress_app_log = true
 end
