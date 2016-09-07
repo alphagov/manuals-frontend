@@ -13,6 +13,7 @@ gem 'plek', '1.11.0'
 gem 'gds-api-adapters', '26.7.0'
 
 gem 'airbrake', '4.0.0'
+gem 'logstasher', '0.6.2'
 
 group :development do
   gem 'better_errors'
