@@ -88,5 +88,6 @@ ManualsFrontend::Application.configure do
   $stdout.reopen($stderr)
   config.logstasher.enabled = true
   config.logstasher.logger = Logger.new($real_stdout)
+  config.logstasher.view_enabled = false
   config.logstasher.suppress_app_log = true
 end
