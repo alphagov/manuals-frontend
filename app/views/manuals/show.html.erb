@@ -1,3 +1,9 @@
+<% content_for :extra_headers do %>
+  <% if @manual.summary.present? %>
+    <meta name='description' content='<%= @manual.summary %>' />
+  <% end %>
+<% end %>
+
 <% content_for :title, @document.full_title %>
 <%= render partial: "header" %>
 <div class='manual-body' id="content">
