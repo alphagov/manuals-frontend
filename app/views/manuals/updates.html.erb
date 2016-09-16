@@ -1,3 +1,7 @@
+<% content_for :extra_headers do %>
+  <meta name='description' content="List of updates to '<%= @manual.full_title %>'." />
+<% end %>
+
 <% content_for :title, 'Updates - ' + @manual.full_title %>
 <%= render partial: "header" %>
 <div class='manual-body' id="content">
