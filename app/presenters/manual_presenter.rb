@@ -6,12 +6,8 @@ class ManualPresenter
   end
 
   def beta?
-    # At some point some of the manuals will be in beta and some won't and we'll need to
-    # check that here and return true/fase accordingly. Punting that work into the future
-    # for now as I don't have time to do it before the Show The Thing deadline in two day's
-    # time.
-
-    true
+    # HMRC manuals are still in beta, others are not
+    hmrc?
   end
 
   def full_title

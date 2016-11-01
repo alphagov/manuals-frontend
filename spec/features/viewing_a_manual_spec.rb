@@ -35,12 +35,14 @@ feature "Viewing manuals and sections" do
     stub_fake_manual
     visit_manual "my-manual-about-burritos"
     expect(page.response_headers['X-Robots-Tag']).not_to eq("none")
+    expect(page).not_to have_selector('test-govuk-component[data-template="govuk_component-beta_label"]')
   end
 
   scenario "viewing an HMRC manual" do
     stub_hmrc_manual
     visit_hmrc_manual "inheritance-tax-manual"
     expect(page.response_headers['X-Robots-Tag']).to eq("none")
+    expect(page).to have_selector('test-govuk-component[data-template="govuk_component-beta_label"]')
   end
 
   scenario "viewing a manual with a description" do
