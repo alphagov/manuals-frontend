@@ -31,7 +31,7 @@
 
       this.$container.on('click', 'a[rel="footnote"]', this.expandFootnotes.bind(this));
 
-      this.$container.on('click', 'a', function(event){
+      this.$container.on('click', '.body-content-wrapper a', function(event){
         if (window.location.pathname === event.target.pathname) {
           this.openCollapsibleForAnchor(event.currentTarget.hash);
         }
@@ -63,7 +63,10 @@
     // The DOM now contains poperly marked up sections to which collapsible functions can attach.
 
     var subsectionHeaders = this.$container.find(this.collapseSelector);
-    subsectionHeaders.addClass('js-subsection-title');
+    subsectionHeaders.each(function() {
+      var $header = $(this);
+      $header.addClass('js-subsection-title').wrapInner('<a role="button" href="#' + $header.attr('id') + '"></a>');
+    });
 
     subsectionHeaders.each(function(index, el){
       var $subsectionHeader = $(el),

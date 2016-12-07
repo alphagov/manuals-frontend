@@ -272,14 +272,16 @@ main {
   }
 
   .collapsible-subsections .js-subsection-title {
-    @include core-19;
-    font-weight:bold;
+    @include bold-19;
+    display: block;
     border-top: 1px solid $border-colour;
     padding: $gutter-one-third $gutter $gutter-one-third 0;
     margin: $gutter 0;
-    text-decoration: none;
-    display: block;
     position: relative;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   .subsection-collection {
@@ -336,10 +338,9 @@ main {
     .js-subsection-title {
       cursor: pointer;
       margin: 0;
-      color:$link-colour;
-      border:none;
+      border: none;
       @include ie-lte(7){
-        zoom:1;
+        zoom: 1;
       }
 
       .js-toggle {
