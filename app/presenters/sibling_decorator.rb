@@ -21,9 +21,11 @@ private
   end
 
   def siblings
-    parent.details.child_section_groups.map(&:child_sections).find { |section|
-      section.map(&:section_id).include?(current_section_id)
-    }
+    if parent
+      parent.details.child_section_groups.map(&:child_sections).find { |section|
+        section.map(&:section_id).include?(current_section_id)
+      }
+    end
   end
 
   def adjacent_siblings
