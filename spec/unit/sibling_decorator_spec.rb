@@ -268,4 +268,19 @@ describe SiblingDecorator do
     end
   end
 
+  context "for a section whose parent doesn't exist" do
+    let(:parent) { nil }
+
+    describe "#previous_sibling" do
+      it "should be nil" do
+        expect(decorator.previous_sibling).to be_nil
+      end
+    end
+
+    describe "#next_sibling" do
+      it "should be nil" do
+        expect(decorator.next_sibling).to be_nil
+      end
+    end
+  end
 end
