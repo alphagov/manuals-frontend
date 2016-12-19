@@ -15,7 +15,8 @@ class RedirectPublisher
     redirect = {
       "content_id" => content_id,
       "base_path" => base_path,
-      "format" => "redirect",
+      "schema_name" => "redirect",
+      "document_type" => "redirect",
       "publishing_app" => publishing_app,
       "redirects" => [
         {
