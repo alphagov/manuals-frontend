@@ -7,14 +7,14 @@ module ApplicationHelper
   end
 
   def marked_up_date(date, format = :long)
-    content_tag(:time, localize(date, format: format), datetime: date.iso8601)
+    content_tag(:time, localize(date, format: format), datetime: date.iso8601) if date.present?
   end
 
   def previous_and_next_links(document)
     siblings = {}
 
     if document.previous_sibling
-      siblings.merge!( 
+      siblings.merge!(
         previous_page: {
           title: "Previous page",
           url: document.previous_sibling.base_path

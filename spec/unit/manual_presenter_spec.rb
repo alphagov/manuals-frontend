@@ -34,4 +34,27 @@ RSpec.describe ManualPresenter do
       expect(subject.beta?).to eq true
     end
   end
+
+  context '#updated_at' do
+    let(:manual) do
+      stub_fake_manual(public_updated_at: public_updated_at)
+      content_store.content_item "/guidance/my-manual-about-burritos"
+    end
+
+    context 'when the public_updated_at of the content item is populated' do
+      let(:public_updated_at) { "2014-06-20T10:17:29+01:00" }
+
+      it "parses the public_updated_at to return a Date object" do
+        expect(subject.updated_at).to eq Date.new(2014,06,20)
+      end
+    end
+
+    context 'when the public_updated_at of the content item is missing' do
+      let(:public_updated_at) { nil }
+
+      it "returns nil" do
+        expect(subject.updated_at).to be_nil
+      end
+    end
+  end
 end

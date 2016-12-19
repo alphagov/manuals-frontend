@@ -19,7 +19,7 @@ class ManualPresenter
   end
 
   def updated_at
-    Date.parse(manual.public_updated_at)
+    Date.parse(manual.public_updated_at) if manual.public_updated_at.present?
   end
 
   def organisations
