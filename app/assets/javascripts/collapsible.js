@@ -7,7 +7,15 @@
     this.$clickTarget = this.$section.find('.js-subsection-title');
     this.$clickTarget.on('click', this.toggle.bind(this));
     this.addToggle();
+
+    this.$section.on('focus', '.js-subsection-body a', this.showSectionWhenLinkFocused.bind(this));
   }
+
+  Collapsible.prototype.showSectionWhenLinkFocused = function() {
+    if (this.$section.is('.closed')) {
+      this.$section.toggleClass('closed');
+    }
+  };
 
   Collapsible.prototype.addToggle = function addToggle(){
     var $toggleHTML = $("<span class='js-toggle'></span>");
