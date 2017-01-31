@@ -12,7 +12,7 @@ Front-end app for the manuals format on GOV.UK
 
 ## Nomenclature
 
-- **Manuals** – documents published using [github.com/alphagov/specialist-publisher](https://github.com/alphagov/specialist-publisher).
+- **Manuals** – documents published using [github.com/alphagov/manuals-publisher](https://github.com/alphagov/manuals-publisher).
 - **HMRC Manuals** – Manuals published by HMRC and populated via their API: [github.com/alphagov/hmrc-manuals-api](https://github.com/alphagov/hmrc-manuals-api).
 
 
@@ -50,5 +50,4 @@ You can see the content design manual at http://manuals-frontend.dev.gov.uk/guid
 
 ## Publishing a manual on dev
 
-Manuals are published using `specialist-publisher` to publish a manual run `specialist-publisher` (instructions here: https://github.com/alphagov/specialist-publisher), publish a manual, and you should then be able to view it on `manuals-frontend`. If you have replicated from preview recently then you should be able to see currently published manuals at http://manuals-frontend.dev.gov.uk/[preview-slug] too.
-
+Manuals are published using `manuals-publisher` to publish a manual run `manuals-publisher` (instructions here: https://github.com/alphagov/manuals-publisher), publish a manual, and you should then be able to view it on `manuals-frontend`. If you have replicated from preview recently then you should be able to see currently published manuals at http://manuals-frontend.dev.gov.uk/[preview-slug] too.
