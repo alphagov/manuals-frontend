@@ -22,6 +22,10 @@ class ManualPresenter
     Date.parse(manual.public_updated_at) if manual.public_updated_at.present?
   end
 
+  def first_published_at
+    Date.parse(manual.first_published_at) if manual.first_published_at.present?
+  end
+
   def organisations
     @manual.links.organisations || @manual.details.organisations || []
   end

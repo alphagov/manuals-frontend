@@ -57,4 +57,27 @@ RSpec.describe ManualPresenter do
       end
     end
   end
+
+  context '#first_published_at' do
+    let(:manual) do
+      stub_fake_manual(first_published_at: first_published_at)
+      content_store.content_item "/guidance/my-manual-about-burritos"
+    end
+
+    context 'when the first_published_at of the content item is populated' do
+      let(:first_published_at) { "2014-06-20T10:17:29+01:00" }
+
+      it "parses the first_published_at to return a Date object" do
+        expect(subject.first_published_at).to eq Date.new(2014, 06, 20)
+      end
+    end
+
+    context 'when the first_published_at of the content item is missing' do
+      let(:first_published_at) { nil }
+
+      it "returns nil" do
+        expect(subject.first_published_at).to be_nil
+      end
+    end
+  end
 end
