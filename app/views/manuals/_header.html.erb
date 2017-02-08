@@ -8,14 +8,16 @@
     <% end %>
 
     <h1 id="manual-title"><%= @manual.title %></h1>
-    <% if @manual.organisations.any? %>
-      <dl>
-        <dt>From</dt>
-        <dd><%= links_to_sentence(@manual.organisations) %></dd>
-        <dt>Updated</dt>
-        <dd><%= marked_up_date(@manual.updated_at) %>, <%= link_to 'see all updates', @manual.updates_url %></dd>
-      </dl>
-    <% end %>
+    <%= render partial: 'govuk_component/metadata', locals: {
+      from: @manual.organisations.map { |org|
+        link_to(org.title, org.web_url)
+      },
+      first_published: marked_up_date(@manual.first_published_at),
+      other: {
+        "Updated" => "#{marked_up_date(@manual.updated_at)}, #{link_to 'see all updates', @manual.updates_url}",
+      }
+    } %>
+
     <div class="in-manual-search">
       <form action="/search" >
         <label for="search-box">Search this manual</label>

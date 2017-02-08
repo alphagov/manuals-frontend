@@ -83,34 +83,6 @@ main {
       color: $white;
     }
 
-    dl {
-      margin-bottom: $gutter-half;
-
-      @include media(tablet) {
-        margin-bottom: $gutter-half;
-      }
-    }
-
-    dt {
-      float: left;
-      clear: left;
-      width: auto;
-      min-width: 100px;
-
-      @include media(tablet) {
-        min-width: 120px;
-      }
-
-      &:after {
-        content: ':';
-      }
-    }
-
-    dd,
-    dt {
-      margin-bottom: 3px;
-    }
-
     .in-manual-search {
       position: relative;
       margin: $gutter 0 $gutter-half;

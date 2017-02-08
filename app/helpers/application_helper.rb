@@ -1,10 +1,4 @@
 module ApplicationHelper
-  def links_to_sentence(links)
-    links.map { |o|
-      link_to(o.title, o.web_url)
-    }.to_sentence
-  end
-
   def marked_up_date(date, format = :long)
     content_tag(:time, localize(date, format: format), datetime: date.iso8601) if date.present?
   end
