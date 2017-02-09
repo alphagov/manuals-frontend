@@ -69,7 +69,7 @@ module ManualHelpers
     content_store_has_item("/guidance/my-manual-about-burritos", manual_json)
   end
 
-  def stub_hmrc_manual(manual_id="inheritance-tax-manual", title="Inheritance Tax Manual")
+  def stub_hmrc_manual(manual_id = "inheritance-tax-manual", title = "Inheritance Tax Manual")
     manual_json = {
       base_path: "/hmrc-internal-manuals/#{manual_id}",
       title: title,
@@ -114,7 +114,7 @@ module ManualHelpers
     content_store_has_item(
       "/hmrc-internal-manuals/#{manual_id}",
       manual_json,
-      { max_age: 15.minutes.to_i },
+      max_age: 15.minutes.to_i,
     )
   end
 
@@ -160,7 +160,8 @@ module ManualHelpers
     content_store_has_item(
       "/hmrc-internal-manuals/inheritance-tax-manual/eim00500",
       section_json,
-      { max_age: 20.minutes.to_i, private: true },
+      max_age: 20.minutes.to_i,
+      private: true,
     )
   end
 
@@ -190,8 +191,8 @@ module ManualHelpers
     content_store_has_item("/hmrc-internal-manuals/inheritance-tax-manual/eim00520", section_json)
   end
 
-  def stub_hmrc_manual_section_with_body(manual_id="inheritance-tax-manual", section_id="eim15000",
-                                         title="Parent-financed and non-approved retirement benefits schemes: table of contents")
+  def stub_hmrc_manual_section_with_body(manual_id = "inheritance-tax-manual", section_id = "eim15000",
+                                         title = "Parent-financed and non-approved retirement benefits schemes: table of contents")
     section_json = {
       base_path: "/hmrc-internal-manuals/#{manual_id}/#{section_id}",
       title: title,
@@ -201,7 +202,7 @@ module ManualHelpers
       links: example_hmrc_links,
       details: {
         body: 'On this page:<br><br><a href="/hmrc-internal-manuals/#{manual_id}/#{section_id}#EIM15010#IDAZR1YH">Sections 386-400 ITEPA 2003]</a><br>',
-        section_id: "#{section_id}",
+        section_id: section_id,
         child_section_groups: [],
         manual: {
           base_path: "/hmrc-internal-manuals/#{manual_id}",
@@ -213,7 +214,6 @@ module ManualHelpers
   end
 
   def stub_withdrawn_manual(base_path)
-
     gone_json = {
       base_path: base_path,
       format: "gone",

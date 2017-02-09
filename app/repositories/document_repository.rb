@@ -15,6 +15,7 @@ class DocumentRepository
   end
 
 private
+
   def fetch_content_item(base_path)
     content_store.content_item(base_path)
   end

@@ -75,9 +75,7 @@ private
   end
 
   def prevent_robots_from_indexing_hmrc_manuals
-    if @manual.hmrc?
-      response.headers["X-Robots-Tag"] = "none"
-    end
+    response.headers["X-Robots-Tag"] = "none" if @manual.hmrc?
   end
 
   def set_expiry(content_item)

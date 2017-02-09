@@ -12,6 +12,4 @@ require 'rspec/rails'
 # option on the command line or in ~/.rspec, .rspec or `.rspec-local`.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-RSpec.configure do |config|
-  config.infer_spec_type_from_file_location!
-end
+RSpec.configure(&:infer_spec_type_from_file_location!)

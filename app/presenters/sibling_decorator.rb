@@ -14,6 +14,7 @@ class SiblingDecorator < SimpleDelegator
   end
 
 private
+
   attr_reader :parent
 
   def current_section_id
@@ -45,5 +46,4 @@ private
       ]
     end
   end
-
 end

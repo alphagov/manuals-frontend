@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def links_to_sentence(links)
     links.map { |o|
       link_to(o.title, o.web_url)
@@ -14,24 +13,19 @@ module ApplicationHelper
     siblings = {}
 
     if document.previous_sibling
-      siblings.merge!(
-        previous_page: {
-          title: "Previous page",
-          url: document.previous_sibling.base_path
-        }
-      )
+      siblings[:previous_page] = {
+        title: "Previous page",
+        url: document.previous_sibling.base_path
+      }
     end
 
     if document.next_sibling
-      siblings.merge!(
-        next_page: {
-          title: "Next page",
-          url: document.next_sibling.base_path
-        }
-      )
+      siblings[:next_page] = {
+        title: "Next page",
+        url: document.next_sibling.base_path
+      }
     end
 
     siblings
   end
-
 end

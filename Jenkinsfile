@@ -18,6 +18,14 @@ node {
       govuk.bundleApp()
     }
 
+    stage("rubylinter") {
+      govuk.rubyLinter('Gemfile app config lib spec')
+    }
+
+    stage("sasslinter") {
+      govuk.sassLinter()
+    }
+
     stage('Tests') {
       govuk.runRakeTask("default")
     }

@@ -12,6 +12,6 @@ class SectionGroupPresenter
   end
 
 private
-  attr_reader :group
 
+  attr_reader :group
 end

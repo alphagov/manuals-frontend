@@ -1,6 +1,8 @@
-// flatten all browser defaults and styles inherited from gov.uk header
-
-/* Borrowed from http://meyerweb.com/eric/tools/css/reset/ */
+// Flatten all browser defaults and styles inherited from gov.uk header
+// Borrowed from http://meyerweb.com/eric/tools/css/reset/
+// Disable scss-lint complaints about having selectors on their own lines
+// otherwise the file would look silly
+// scss-lint:disable SingleLinePerSelector
 div, span,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,

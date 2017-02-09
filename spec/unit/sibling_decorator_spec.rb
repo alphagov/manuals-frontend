@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe SiblingDecorator do
-
   let(:document_base_path) {
     "/guidance/a-manual/child-section"
   }
@@ -226,7 +225,7 @@ describe SiblingDecorator do
 
   context "for a section that is the first child and has a cousin" do
     let(:child_section_groups) {
-      [ 
+      [
         double(
           child_sections: [
             double(

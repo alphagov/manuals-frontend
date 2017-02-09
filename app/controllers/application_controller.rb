@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :slimmer_headers
 
-  private
+private
 
   def slimmer_headers
     slimmer_template "header_footer_only"

@@ -45,7 +45,7 @@ RSpec.describe ManualPresenter do
       let(:public_updated_at) { "2014-06-20T10:17:29+01:00" }
 
       it "parses the public_updated_at to return a Date object" do
-        expect(subject.updated_at).to eq Date.new(2014,06,20)
+        expect(subject.updated_at).to eq Date.new(2014, 06, 20)
       end
     end
 
