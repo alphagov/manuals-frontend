@@ -23,18 +23,22 @@ a {
     float: left;
     margin-top: 0;
     width: 100%;
+
     dt {
       min-width: 100px;
       float: left;
+
       &:after {
         content: ":";
       }
     }
+
     dd {
       font-weight: bold;
       margin-left: 0;
-      & a:after {
-          content: "";
+
+      a:after {
+        content: "";
       }
     }
   }
@@ -42,6 +46,7 @@ a {
 
 .manual-body {
   clear: both;
+
   .subsection-title-text {
     font-weight: bold;
   }

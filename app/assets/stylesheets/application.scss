@@ -8,8 +8,12 @@
 
 @import "reset";
 
+// some colours used below
+$manual-search-button-colour: #0b0c0c;
+$manual-search-button-border-colour: #222;
+
 main {
-  display:block;
+  display: block;
 }
 
 .outer-block {
@@ -20,8 +24,8 @@ main {
   @include inner-block;
 }
 
-#manuals-frontend {
-  padding-bottom:$gutter;
+.manuals-frontend-body {
+  padding-bottom: $gutter;
 
   .govuk-beta-label {
     border-bottom: none;
@@ -29,24 +33,29 @@ main {
 
   header {
     background: $govuk-blue;
+
     &.hmrc {
       background: $hm-revenue-customs;
     }
+
     padding: $gutter;
     color: $white;
     margin: 0 (-$gutter-half);
     @include core-16;
     @extend %contain-floats;
 
-    @include media(tablet){
+    @include media(tablet) {
       margin: 0;
 
-      .primary, .secondary {
+      .primary,
+      .secondary {
         float: left;
       }
+
       .primary {
         width: $two-thirds;
       }
+
       .secondary {
         width: $one-third;
 
@@ -62,22 +71,22 @@ main {
 
     h1 {
       @include core-36;
-      font-weight:bold;
+      font-weight: bold;
       padding: 0 0 $gutter-half 0;
 
-      @include media(tablet){
+      @include media(tablet) {
         padding: 0 0 $gutter 0;
       }
     }
 
     a {
-      color: white;
+      color: $white;
     }
 
     dl {
       margin-bottom: $gutter-half;
 
-      @include media(tablet){
+      @include media(tablet) {
         margin-bottom: $gutter-half;
       }
     }
@@ -88,7 +97,7 @@ main {
       width: auto;
       min-width: 100px;
 
-      @include media(tablet){
+      @include media(tablet) {
         min-width: 120px;
       }
 
@@ -97,7 +106,8 @@ main {
       }
     }
 
-    dd, dt {
+    dd,
+    dt {
       margin-bottom: 3px;
     }
 
@@ -110,9 +120,13 @@ main {
         display: inline-block;
       }
 
-      #search-box {
+      .in-manual-search-box {
+        // Disable scss-lint complaining about declaring width twice since
+        // this is for browsers that don't understand calc
+        // scss-lint:disable DuplicateProperty
         width: 86%;
         width: calc(100% - 47px);
+        // scss-lint:enable DuplicateProperty
         border: none;
         padding: 6px;
       }
@@ -120,14 +134,14 @@ main {
       button {
         width: 33px;
         height: 33px;
-        border: 1px solid #0b0c0c;
+        border: 1px solid $manual-search-button-colour;
         border-width: 0 0 0 1px;
-        border-left-color: #222;
+        border-left-color: $manual-search-button-border-colour;
         overflow: hidden;
         text-indent: -5000px;
         cursor: pointer;
-        color: #fff;
-        background: #0b0c0c image-url("search-button.png") no-repeat 0 50%;
+        color: $white;
+        background: $manual-search-button-colour image-url("search-button.png") no-repeat 0 50%;
         position: absolute;
 
         @include border-radius(0);
@@ -142,12 +156,12 @@ main {
 
   .breadcrumb-trail {
     @include core-16;
-    margin:10px 0 0 0;
-    padding:0 0 10px;
+    margin: 10px 0 0 0;
+    padding: 0 0 10px;
     border-bottom: 1px solid $border-colour;
 
     strong {
-      font-weight:bold;
+      font-weight: bold;
     }
 
     li {
@@ -160,7 +174,7 @@ main {
       margin-right: 5px;
       padding: 0 15px 0 0;
 
-      @include media(tablet){
+      @include media(tablet) {
         background-position: 100% 45%;
       }
 
@@ -168,16 +182,20 @@ main {
         background-image: image-url("separator-2x.png");
         background-size: 6px 11px;
       }
+
       &:first-child {
-        margin-left:0;
+        margin-left: 0;
       }
+
       &.last-child {
-        background-image:none;
+        background-image: none;
         color: $text-colour;
       }
+
       &.no-separator {
-        background-image:none;
+        background-image: none;
       }
+
       a {
         color: $text-colour;
       }
@@ -185,9 +203,10 @@ main {
   }
 
   .section-list {
-    margin-top:$gutter;
-    @include media(tablet){
-      margin-top:$gutter*2;
+    margin-top: $gutter;
+
+    @include media(tablet) {
+      margin-top: $gutter * 2;
     }
 
     li {
@@ -197,19 +216,20 @@ main {
       border-top: 1px solid $border-colour;
 
       &:hover {
-        background-color:$grey-4;
+        background-color: $grey-4;
       }
+
       &:last-child {
         border-bottom: 1px solid $border-colour;
       }
 
       a {
         text-decoration: none;
-        display:block;
+        display: block;
         padding: $gutter-one-third $gutter-one-third $gutter-one-third 0;
 
-        @include media(tablet){
-          padding-right:$one-third;
+        @include media(tablet) {
+          padding-right: $one-third;
         }
 
         .subsection-title-text {
@@ -217,6 +237,7 @@ main {
           font-weight: bold;
           display: block;
         }
+
         .subsection-summary {
           color: $text-colour;
           display: block;
@@ -226,27 +247,33 @@ main {
   }
 
   .manual-body {
-    margin: $gutter-half 0 $gutter*3;
-    @include media(tablet){
+    margin: $gutter-half 0 $gutter * 3;
+
+    @include media(tablet) {
       margin-top: $gutter;
     }
+
     .section-title {
       @include heading-24;
       font-weight: bold;
     }
-    p.summary {
+
+    .summary {
       @include core-24;
-      margin-bottom:$gutter-half;
+      margin-bottom: $gutter-half;
+
       @include media(tablet) {
-        max-width:$two-thirds;
-        margin-bottom:$gutter;
+        max-width: $two-thirds;
+        margin-bottom: $gutter;
       }
     }
+
     .body-content-wrapper {
       @include media(tablet) {
         width: $two-thirds;
       }
     }
+
     .footnotes {
       border-top: 0;
       padding-top: 0;
@@ -256,7 +283,7 @@ main {
   .updates-list {
     @include core-19;
     dd {
-      margin-bottom:1em;
+      margin-bottom: 1em;
     }
   }
 
@@ -265,6 +292,7 @@ main {
       p {
         margin-top: $gutter-two-thirds;
       }
+
       .call-to-action p {
         margin: 0;
       }
@@ -286,7 +314,8 @@ main {
 
   .subsection-collection {
     margin-top: $gutter-half;
-    @include media(tablet){
+
+    @include media(tablet) {
       margin-top: $gutter;
     }
 
@@ -296,32 +325,35 @@ main {
       .section-title {
         @include heading-24;
         @include media(tablet) {
-          float:left;
+          float: left;
           width: $three-quarters;
         }
       }
 
       .js-collection-controls {
-        display:block;
+        display: block;
         margin-left: -5px;
-        margin-bottom:$gutter-half;
+        margin-bottom: $gutter-half;
 
         @include media(tablet) {
           margin: 0 0 $gutter -5px;
-          float:right;
-          display:inline-block;
+          float: right;
+          display: inline-block;
         }
 
         a {
           @include core-16;
           padding: 0  5px 0 5px;
-          display:inline-block;
+          display: inline-block;
 
+          // We're nesting quite deep here...
+          // scss-lint:disable NestingDepth
           &.disabled {
-            color:$secondary-text-colour;
-            text-decoration:none;
-            cursor:default;
+            color: $secondary-text-colour;
+            text-decoration: none;
+            cursor: default;
           }
+          // scss-lint:enable NestingDepth
         }
       }
     }
@@ -332,25 +364,26 @@ main {
     padding-bottom: $gutter;
 
     @include media(tablet) {
-      padding-bottom: $gutter*2;
+      padding-bottom: $gutter * 2;
     }
 
     .js-subsection-title {
       cursor: pointer;
       margin: 0;
       border: none;
-      @include ie-lte(7){
+
+      @include ie-lte(7) {
         zoom: 1;
       }
 
       .js-toggle {
         height: 25px;
         width: 25px;
-        display:block;
+        display: block;
         background: image-url("arrows_sprite.png") no-repeat;
-        position:absolute;
+        position: absolute;
         right: 0;
-        top:$gutter-one-third;
+        top: $gutter-one-third;
 
         @include device-pixel-ratio() {
           background-image: image-url("arrows_sprite-2x.png");
@@ -360,14 +393,15 @@ main {
     }
 
     .js-subsection-body {
-      margin-top:$gutter-half;
+      margin-top: $gutter-half;
+
       @include media(tablet) {
-        margin-top:$gutter;
+        margin-top: $gutter;
       }
     }
 
     .js-enabled &.closed {
-      padding:0;
+      padding: 0;
 
       .js-toggle {
         background: image-url("arrows_sprite.png") no-repeat 0 -32px;
@@ -379,9 +413,9 @@ main {
       }
 
       .js-subsection-body {
-        position:absolute;
-        left:-9999px;
-        width:100px;
+        position: absolute;
+        left: -9999px;
+        width: 100px;
         height: 1px;
         overflow: hidden;
       }
@@ -391,24 +425,26 @@ main {
   .hmrc.section-list {
     margin-top: $gutter;
     padding-bottom: $gutter;
+
     a {
       padding-right: 0;
     }
 
-    @include media(tablet){
-      div.title-wrap {
+    @include media(tablet) {
+      .title-wrap {
         display: table-row;
+
         div {
           display: table-cell;
         }
       }
     }
   }
+
   .subsection-id {
     min-width: 135px;
     color: $secondary-text-colour;
     padding-right: $gutter-half;
-
   }
 
   .print-page {
