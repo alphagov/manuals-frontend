@@ -22,6 +22,6 @@ class SectionPresenter
   end
 
 private
-  attr_reader :section
 
+  attr_reader :section
 end

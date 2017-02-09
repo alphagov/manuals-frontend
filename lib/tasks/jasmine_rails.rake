@@ -1,1 +1,1 @@
-task :default => 'spec:javascript'
+task default: 'spec:javascript'

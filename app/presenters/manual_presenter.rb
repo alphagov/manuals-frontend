@@ -55,6 +55,7 @@ class ManualPresenter
   end
 
 private
+
   attr_reader :manual
 
   def raw_section_groups

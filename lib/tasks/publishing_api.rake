@@ -32,6 +32,7 @@ class RedirectPublisher
   end
 
 private
+
   def publishing_api
     @publishing_api ||= GdsApi::PublishingApiV2.new(
       Plek.new.find('publishing-api'),

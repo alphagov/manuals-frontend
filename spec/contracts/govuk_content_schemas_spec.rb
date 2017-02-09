@@ -4,12 +4,11 @@ require 'slimmer/test_helpers/shared_templates'
 include Slimmer::TestHelpers::SharedTemplates
 
 feature "Viewing manuals and sections examples from govuk-content-schemas" do
-
   include GdsApi::TestHelpers::ContentStore
 
   describe "support for example manuals" do
     it 'should render a page including the manual title' do
-      examples_for_formats(["manual", "hmrc_manual"]).each do |example_json|
+      examples_for_formats(%w(manual hmrc_manual)).each do |example_json|
         content_item = JSON.parse(example_json)
         content_store_has_item(content_item['base_path'], content_item)
 
@@ -24,12 +23,12 @@ feature "Viewing manuals and sections examples from govuk-content-schemas" do
   describe "support for example manual sections" do
     it 'should render a page including the section title' do
       # Assumption that there is an example manual relating to every example section
-      examples_for_formats(["manual", "hmrc_manual"]).each do |example_json|
+      examples_for_formats(%w(manual hmrc_manual)).each do |example_json|
         content_item = JSON.parse(example_json)
         content_store_has_item(content_item['base_path'], content_item)
       end
 
-      examples_for_formats(["manual_section", "hmrc_manual_section"]).each do |example_json|
+      examples_for_formats(%w(manual_section hmrc_manual_section)).each do |example_json|
         content_item = JSON.parse(example_json)
         content_store_has_item(content_item['base_path'], content_item)
 
