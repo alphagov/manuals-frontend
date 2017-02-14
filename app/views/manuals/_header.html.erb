@@ -1,27 +1,19 @@
-<% if @manual.beta? %>
+<% if manual.beta? %>
   <%= render partial: 'govuk_component/beta_label' %>
 <% end %>
-<header aria-labelledby="manual-title" class="<%= @manual.hmrc? ? 'hmrc' : nil %>">
+<header aria-labelledby="manual-title" class="<%= manual.hmrc? ? 'hmrc' : nil %>">
   <div class='primary'>
-    <% if @manual.hmrc? %>
+    <% if manual.hmrc? %>
       <span class='manual-type'>HMRC internal manual</span>
     <% end %>
 
     <h1 id="manual-title"><%= @manual.title %></h1>
-    <%= render partial: 'govuk_component/metadata', locals: {
-      from: @manual.organisations.map { |org|
-        link_to(org.title, org.web_url)
-      },
-      first_published: marked_up_date(@manual.first_published_at),
-      other: {
-        "Updated" => "#{marked_up_date(@manual.updated_at)}, #{link_to 'see all updates', @manual.updates_url}",
-      }
-    } %>
+    <%= render partial: 'govuk_component/metadata', locals: manual.metadata %>
 
     <div class="in-manual-search">
       <form action="/search" >
         <label for="search-box">Search this manual</label>
-        <input type='hidden' name="filter_manual[]" value="<%= @manual.url %>">
+        <input type='hidden' name="filter_manual[]" value="<%= manual.url %>">
         <input id="search-box" class="in-manual-search-box" type="text" name="q"/>
         <button type="submit">search</button>
       </form>
@@ -36,10 +28,10 @@
   </div>
 </header>
 <ol class='breadcrumb-trail'>
-  <% if request.path == @manual.url %>
+  <% if request.path == manual.url %>
     <li class="no-separator">Contents</li>
   <% else %>
-    <li><%= link_to 'Contents', @manual.url %></li>
+    <li><%= link_to 'Contents', manual.url %></li>
   <% end %>
 
   <% if @document %>

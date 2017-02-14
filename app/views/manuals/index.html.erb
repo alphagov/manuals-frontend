@@ -1,23 +1,24 @@
+<% manual = ManualPresenter.new(manual: @manual, view_context: self) %>
 <% content_for :extra_headers do %>
-  <% if @manual.summary.present? %>
-    <meta name='description' content='<%= @manual.summary %>' />
+  <% if manual.summary.present? %>
+    <meta name='description' content='<%= manual.summary %>' />
   <% end %>
 <% end %>
 
-<% content_for :title, @manual.full_title %>
+<% content_for :title, manual.full_title %>
 <article aria-labelledby="manual-title" id="content">
-  <%= render partial: "header" %>
+  <%= render partial: "header", locals: { manual: manual } %>
   <div class='manual-body'>
-    <% if @manual.summary.present? %><p class='summary'><%= @manual.summary %></p><% end %>
-    <% if @manual.body.present? %>
+    <% if manual.summary.present? %><p class='summary'><%= manual.summary %></p><% end %>
+    <% if manual.body.present? %>
       <%= render partial: 'govuk_component/govspeak', locals: {
-        content: @manual.body
+        content: manual.body
       } %>
     <% end %>
-    <% @manual.section_groups.each do | group | %>
-      <% if @manual.hmrc? %>
+    <% manual.section_groups.each do | group | %>
+      <% if manual.hmrc? %>
       <div class='subsection-collection'>
-        <%= render 'hmrc_sections', :group => group %>
+        <%= render 'hmrc_sections', group: group %>
       </div>
       <% else %>
         <ol class='section-list'>

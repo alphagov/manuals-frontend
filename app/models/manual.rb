@@ -38,10 +38,6 @@ class Manual
     manual.base_path
   end
 
-  def updates_url
-    "#{url}/updates"
-  end
-
   def change_notes
     ChangeNotes.new(manual.details.change_notes || [])
   end
