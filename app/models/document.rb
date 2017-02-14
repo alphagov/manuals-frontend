@@ -33,10 +33,18 @@ class Document
   def breadcrumbs
     if document['details']['breadcrumbs'].present?
       document['details']['breadcrumbs'].map do |breadcrumb|
-        OpenStruct.new(link: breadcrumb['base_path'], label: breadcrumb['section_id'])
+        Breadcrumb.new(link: breadcrumb['base_path'], label: breadcrumb['section_id'])
       end
     else
       []
+    end
+  end
+
+  class Breadcrumb
+    attr_reader :link, :label
+    def initialize(link:, label:)
+      @link = link
+      @label = label
     end
   end
 
