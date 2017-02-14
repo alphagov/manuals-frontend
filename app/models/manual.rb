@@ -1,4 +1,4 @@
-class ManualPresenter
+class Manual
   delegate :title, to: :manual
 
   def initialize(manual)
@@ -43,11 +43,11 @@ class ManualPresenter
   end
 
   def change_notes
-    ChangeNotesPresenter.new(manual.details.change_notes || [])
+    ChangeNotes.new(manual.details.change_notes || [])
   end
 
   def section_groups
-    raw_section_groups.map { |group| SectionGroupPresenter.new(group) }
+    raw_section_groups.map { |group| SectionGroup.new(group) }
   end
 
   def summary

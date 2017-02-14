@@ -1,4 +1,4 @@
-class DocumentPresenter
+class Document
   delegate :title, :previous_sibling, :next_sibling, to: :document
 
   def initialize(document, manual)
@@ -27,7 +27,7 @@ class DocumentPresenter
   end
 
   def section_groups
-    raw_section_groups.map { |group| SectionGroupPresenter.new(group) }
+    raw_section_groups.map { |group| SectionGroup.new(group) }
   end
 
   def breadcrumbs

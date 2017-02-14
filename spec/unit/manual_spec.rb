@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'gds_api/content_store'
 
-RSpec.describe ManualPresenter do
+RSpec.describe Manual do
   subject { described_class.new(manual) }
   let(:content_store) { GdsApi::ContentStore.new(Plek.new.find('content-store')) }
 

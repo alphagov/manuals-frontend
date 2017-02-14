@@ -1,4 +1,4 @@
-class SectionGroupPresenter
+class SectionGroup
   delegate :title, to: :group
 
   def initialize(section_group)
@@ -7,7 +7,7 @@ class SectionGroupPresenter
 
   def sections
     (group.child_sections || []).map do |section|
-      SectionPresenter.new(section)
+      Section.new(section)
     end
   end
 

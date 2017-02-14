@@ -14,7 +14,7 @@ class ManualsController < ApplicationController
 
   def show
     set_expiry(document)
-    @document = DocumentPresenter.new(document, @manual)
+    @document = Document.new(document, @manual)
   end
 
   def updates
@@ -47,7 +47,7 @@ private
   end
 
   def load_manual
-    @manual = ManualPresenter.new(manual)
+    @manual = Manual.new(manual)
   end
 
   def manual_base_path
