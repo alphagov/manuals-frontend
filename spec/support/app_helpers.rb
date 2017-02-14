@@ -1,4 +1,8 @@
+require 'slimmer/test_helpers/shared_templates'
+
 module AppHelpers
+  include Slimmer::TestHelpers::SharedTemplates
+
   def view_manual_change_notes
     click_on "see all updates"
   end
@@ -88,6 +92,23 @@ module AppHelpers
   def expect_page_to_contain_navigation_link(title, url)
     expect(page).to have_content(title)
     expect(page).to have_content(url)
+  end
+
+  def expect_component(component_type, in_scope: nil)
+    component_selector = shared_component_selector(component_type)
+    component_selector = "#{in_scope} #{component_selector}" if in_scope.present?
+    if block_given?
+      within(component_selector) do
+        component_details = JSON.parse(page.text)
+        yield component_details
+      end
+    else
+      expect(page).to have_selector(component_selector)
+    end
+  end
+
+  def expect_no_component(component_type)
+    expect(page).not_to have_selector(shared_component_selector(component_type))
   end
 end
 
