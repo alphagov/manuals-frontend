@@ -16,12 +16,13 @@ module ManualHelpers
     ).fetch("links")
   end
 
-  def stub_fake_manual(public_updated_at: "2014-06-20T10:17:29+01:00")
+  def stub_fake_manual(public_updated_at: "2014-06-20T10:17:29+01:00", first_published_at: "2009-02-20T15:31:09+00:00")
     manual_json = {
       base_path: "/guidance/my-manual-about-burritos",
       title: "My manual about Burritos",
       description: "Burrito means little donkey",
       format: "manual",
+      first_published_at: first_published_at,
       public_updated_at: public_updated_at,
       links: example_links,
       details: {

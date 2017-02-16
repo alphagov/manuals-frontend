@@ -1,16 +1,17 @@
+<% manual = ManualPresenter.new(manual: @manual, view_context: self) %>
 <% content_for :extra_headers do %>
-  <% if @manual.summary.present? %>
-    <meta name='description' content='<%= @manual.summary %>' />
+  <% if manual.summary.present? %>
+    <meta name='description' content='<%= manual.summary %>' />
   <% end %>
 <% end %>
 
 <% content_for :title, @document.full_title %>
-<%= render partial: "header" %>
+<%= render partial: "header", locals: { manual: manual } %>
 <div class='manual-body' id="content">
   <article aria-labelledby="section-title">
     <h1 id="section-title" class='section-title'><%= @document.title %></h1>
     <% if @document.summary %><p class='summary'><%= @document.summary %></p><% end %>
-    <% if @manual.hmrc? %>
+    <% if manual.hmrc? %>
       <% if @document.body.present? %>
         <div class='body-content-wrapper'>
           <%= render partial: 'govuk_component/govspeak', locals: {

@@ -1,4 +1,4 @@
-class DocumentPresenter
+class Document
   delegate :title, :previous_sibling, :next_sibling, to: :document
 
   def initialize(document, manual)
@@ -27,16 +27,24 @@ class DocumentPresenter
   end
 
   def section_groups
-    raw_section_groups.map { |group| SectionGroupPresenter.new(group) }
+    raw_section_groups.map { |group| SectionGroup.new(group) }
   end
 
   def breadcrumbs
     if document['details']['breadcrumbs'].present?
       document['details']['breadcrumbs'].map do |breadcrumb|
-        OpenStruct.new(link: breadcrumb['base_path'], label: breadcrumb['section_id'])
+        Breadcrumb.new(link: breadcrumb['base_path'], label: breadcrumb['section_id'])
       end
     else
       []
+    end
+  end
+
+  class Breadcrumb
+    attr_reader :link, :label
+    def initialize(link:, label:)
+      @link = link
+      @label = label
     end
   end
 

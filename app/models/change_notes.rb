@@ -1,11 +1,11 @@
-class ChangeNotesPresenter
+class ChangeNotes
   def initialize(change_notes)
     @change_notes = change_notes
   end
 
   def updates
     change_notes.map { |u|
-      UpdatePresenter.new(u)
+      Update.new(u)
     }
   end
 
@@ -31,11 +31,11 @@ private
 
   def group_updates_by_document(updates)
     updates.group_by(&:base_path).map { |_, grouped_updates|
-      DocumentUpdatesPresenter.new(grouped_updates)
+      DocumentUpdates.new(grouped_updates)
     }
   end
 
-  class UpdatePresenter
+  class Update
     delegate :base_path, :change_note, :title, to: :update
 
     def initialize(update)
@@ -51,7 +51,7 @@ private
     attr_reader :update
   end
 
-  class DocumentUpdatesPresenter
+  class DocumentUpdates
     delegate :base_path, :title, to: :'updates.first'
 
     def initialize(updates)

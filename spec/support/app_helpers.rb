@@ -1,6 +1,17 @@
+require 'slimmer/test_helpers/shared_templates'
+
 module AppHelpers
+  include Slimmer::TestHelpers::SharedTemplates
+
   def view_manual_change_notes
-    click_on "see all updates"
+    updates_path = "#{current_path}/updates"
+    expect_component("metadata", in_scope: 'header') do |metadata|
+      expect(metadata).to have_key("other")
+      expect(metadata["other"]).to have_key("Updated")
+      updated_metadata = metadata.fetch("other").fetch("Updated")
+      expect(updated_metadata).to have_link("see all updates", href: updates_path)
+    end
+    visit updates_path
   end
 
   def visit_manual(manual_slug)
@@ -43,8 +54,11 @@ module AppHelpers
   end
 
   def expect_manual_update_date_to_be(date)
-    within('header .primary') do
-      expect(page).to have_content("Updated #{date}")
+    expect_component("metadata", in_scope: 'header') do |metadata|
+      expect(metadata).to have_key("other")
+      expect(metadata["other"]).to have_key("Updated")
+      updated_metadata = metadata.fetch("other").fetch("Updated")
+      expect(updated_metadata).to have_selector('time', text: date)
     end
   end
 
@@ -74,8 +88,11 @@ module AppHelpers
   end
 
   def expect_page_to_be_affiliated_with_org(options)
-    expect(page).to have_link(options[:title],
-                              "https://www.gov.uk/government/organisations/#{options[:slug]}")
+    expect_component("metadata", in_scope: "header") do |metadata|
+      expect(metadata).to have_key("from")
+      expect(metadata["from"].length).to eq(1)
+      expect(metadata["from"].first).to have_link(options[:title], href: "https://www.gov.uk/government/organisations/#{options[:slug]}")
+    end
   end
 
   def expect_change_note(change_note, options)
@@ -88,6 +105,23 @@ module AppHelpers
   def expect_page_to_contain_navigation_link(title, url)
     expect(page).to have_content(title)
     expect(page).to have_content(url)
+  end
+
+  def expect_component(component_type, in_scope: nil)
+    component_selector = shared_component_selector(component_type)
+    component_selector = "#{in_scope} #{component_selector}" if in_scope.present?
+    if block_given?
+      within(component_selector) do
+        component_details = JSON.parse(page.text)
+        yield component_details
+      end
+    else
+      expect(page).to have_selector(component_selector)
+    end
+  end
+
+  def expect_no_component(component_type)
+    expect(page).not_to have_selector(shared_component_selector(component_type))
   end
 end
 

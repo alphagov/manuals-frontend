@@ -1,7 +1,5 @@
 require 'rails_helper'
 require 'gds_api/test_helpers/content_store'
-require 'slimmer/test_helpers/shared_templates'
-include Slimmer::TestHelpers::SharedTemplates
 
 feature "Viewing manuals and sections" do
   # As a member of the public
@@ -35,14 +33,14 @@ feature "Viewing manuals and sections" do
     stub_fake_manual
     visit_manual "my-manual-about-burritos"
     expect(page.response_headers['X-Robots-Tag']).not_to eq("none")
-    expect(page).not_to have_selector('test-govuk-component[data-template="govuk_component-beta_label"]')
+    expect_no_component('beta_label')
   end
 
   scenario "viewing an HMRC manual" do
     stub_hmrc_manual
     visit_hmrc_manual "inheritance-tax-manual"
     expect(page.response_headers['X-Robots-Tag']).to eq("none")
-    expect(page).to have_selector('test-govuk-component[data-template="govuk_component-beta_label"]')
+    expect_component('beta_label')
   end
 
   scenario "viewing a manual with a description" do
@@ -105,8 +103,8 @@ feature "Viewing manuals and sections" do
     visit_hmrc_manual_section "inheritance-tax-manual", "eim15000"
 
     # HTML in the body
-    within(shared_component_selector('govspeak')) do
-      expect(page).to have_content("Sections 386-400 ITEPA 2003")
+    expect_component('govspeak') do |govspeak|
+      expect(govspeak).to have_content("Sections 386-400 ITEPA 2003")
     end
   end
 

@@ -1,4 +1,4 @@
-class SectionPresenter
+class Section
   delegate :title, :body, to: :section
 
   def initialize(section)
