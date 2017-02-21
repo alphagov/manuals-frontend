@@ -1,0 +1,7 @@
+<% content_for :extra_headers do %>
+  <% if presented_manual.summary.present? %>
+    <meta name='description' content='<%= presented_manual.summary %>' />
+  <% end %>
+<% end %>
+
+<% content_for :title, title %>

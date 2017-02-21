@@ -1,0 +1,34 @@
+<div class='manual-body' id="content">
+  <article aria-labelledby="section-title">
+    <h1 id="section-title" class='section-title'><%= document.title %></h1>
+    <% if document.summary %><p class='summary'><%= document.summary %></p><% end %>
+    <% if presented_manual.hmrc? %>
+      <% if document.body.present? %>
+        <div class='body-content-wrapper'>
+          <%= render partial: 'govuk_component/govspeak', locals: {
+            content: document.body
+          } %>
+        </div>
+      <% end %>
+      <div class='subsection-collection'>
+        <% document.section_groups.each do | group | %>
+        <%= render 'hmrc_sections', :group => group %>
+      <% end %>
+      </div>
+
+      <%= render partial: 'govuk_component/previous_and_next_navigation', locals: previous_and_next_links(document) %>
+
+    <% else %>
+      <% if document.body.present? %>
+        <div class='js-collapsible-collection subsection-collection' data-collapse-depth=<%= document.collapse_depth %>>
+          <div class='collapsible-subsections'>
+            <%= render partial: 'govuk_component/govspeak', locals: {
+              content: document.body,
+              rich_govspeak: true,
+            } %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </article>
+</div>

@@ -1,36 +1,13 @@
-<% content_for :extra_headers do %>
-  <% if presented_manual.summary.present? %>
-    <meta name='description' content='<%= presented_manual.summary %>' />
-  <% end %>
+<%=
+  render(
+    'content_for_manual',
+    presented_manual: presented_manual,
+    title: presented_manual.full_title
+  )
+%>
+<% if presented_manual.beta? %>
+  <%= render partial: 'govuk_component/beta_label' %>
 <% end %>
-
-<% content_for :title, presented_manual.full_title %>
-<article aria-labelledby="manual-title" id="content">
-  <%= render partial: "header", locals: { presented_manual: presented_manual } %>
-  <div class='manual-body'>
-    <% if presented_manual.summary.present? %><p class='summary'><%= presented_manual.summary %></p><% end %>
-    <% if presented_manual.body.present? %>
-      <%= render partial: 'govuk_component/govspeak', locals: {
-        content: presented_manual.body
-      } %>
-    <% end %>
-    <% presented_manual.section_groups.each do | group | %>
-      <% if presented_manual.hmrc? %>
-      <div class='subsection-collection'>
-        <%= render 'hmrc_sections', group: group %>
-      </div>
-      <% else %>
-        <ol class='section-list'>
-        <% group.sections.each do | section | %>
-          <li>
-          <%= link_to section.path, class: "#{section.section_id.present? ? 'subsection-with-id' : ''}" do %>
-              <span class='subsection-title-text'><%= section.title %></span>
-              <span class='subsection-summary'><%= section.summary %></span>
-          <% end %>
-          </li>
-        <% end %>
-        </ol>
-      <% end %>
-    <% end %>
-  </div>
-</article>
+<%= render 'header', presented_manual: presented_manual %>
+<%= render 'manual_breadcrumbs', presented_manual: presented_manual %>
+<%= render 'manual', presented_manual: presented_manual %>
