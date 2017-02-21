@@ -1,15 +1,14 @@
-<% manual = ManualPresenter.new(manual: @manual, view_context: self) %>
 <% content_for :extra_headers do %>
-  <meta name='description' content="List of updates to '<%= manual.full_title %>'." />
+  <meta name='description' content="List of updates to '<%= presented_manual.full_title %>'." />
 <% end %>
 
-<% content_for :title, 'Updates - ' + manual.full_title %>
-<%= render partial: "header", locals: { manual: manual } %>
+<% content_for :title, 'Updates - ' + presented_manual.full_title %>
+<%= render partial: "header", locals: { presented_manual: presented_manual } %>
 <div class='manual-body' id="content">
   <article aria-labelledby="section-title">
-    <h1 id="section-title" class='section-title'><span class='title'>Updates: <%= manual.title %></span></h1>
+    <h1 id="section-title" class='section-title'><span class='title'>Updates: <%= presented_manual.title %></span></h1>
     <div class='section-content'>
-    <% manual.change_notes.by_year.each do |year, updates_by_year| %>
+    <% presented_manual.change_notes.by_year.each do |year, updates_by_year| %>
       <div class='js-collapsible-collection subsection-collection'>
         <p class='section-title'><%= year %></p>
         <div class='collapsible-subsections'>
