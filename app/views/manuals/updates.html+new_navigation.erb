@@ -1,9 +1,13 @@
-<% content_for :extra_head_content do %>
-  <meta name='description' content="List of updates to '<%= presented_manual.full_title %>'." />
+<%=
+  render(
+    'content_for_head_tag',
+    description: "List of updates to '#{presented_manual.full_title}'.",
+    title: 'Updates - ' + presented_manual.full_title
+  )
+%>
+<%= content_for :extra_head_content do %>
   <%= ab_test.requested_variant.analytics_meta_tag.html_safe %>
 <% end %>
-<% content_for :title, 'Updates - ' + presented_manual.full_title %>
-
 <%= render 'govuk_component/beta_label' %>
 <%= render 'govuk_component/breadcrumbs',
   breadcrumbs: presented_manual.taxonomy_breadcrumbs %>
