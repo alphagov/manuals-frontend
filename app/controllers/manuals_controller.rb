@@ -6,32 +6,49 @@ class ManualsController < ApplicationController
   before_action :ensure_manual_is_found
   before_action :ensure_document_is_found, only: :show
   before_action :prevent_robots_from_indexing_hmrc_manuals
+  before_action :set_up_education_navigation_ab_testing
 
   def index
     set_expiry(content_store_manual)
 
     render :index, locals: {
-      presented_manual: presented_manual
+      presented_manual: presented_manual,
+      ab_test: ab_test
     }
   end
 
   def show
     set_expiry(document_from_repository)
     document = Document.new(document_from_repository, manual)
+    presented_document = DocumentPresenter.new(document: document)
 
     render :show, locals: {
       presented_manual: presented_manual,
-      document: document
+      presented_document: presented_document,
+      ab_test: ab_test
     }
   end
 
   def updates
     render :updates, locals: {
-      presented_manual: presented_manual
+      presented_manual: presented_manual,
+      ab_test: ab_test
     }
   end
 
 private
+
+  def ab_test
+    @ab_test ||= EducationNavigationAbTestRequest.new(request)
+  end
+
+  def set_up_education_navigation_ab_testing
+    ab_test.set_response_vary_header(response)
+
+    if ab_test.should_present_new_navigation_view?(content_store_manual)
+      request.variant = :new_navigation
+    end
+  end
 
   def presented_manual
     @presented_manual ||=

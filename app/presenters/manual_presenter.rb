@@ -28,4 +28,13 @@ class ManualPresenter < SimpleDelegator
       }
     }
   end
+
+  def taxonomy_breadcrumbs
+    @taxonomy_breadcrumbs ||= nav_helper.taxon_breadcrumbs[:breadcrumbs]
+  end
+
+  def nav_helper
+    @nav_helper ||=
+      GovukNavigationHelpers::NavigationHelper.new(@manual.content_store_manual.to_h)
+  end
 end

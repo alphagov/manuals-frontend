@@ -5,10 +5,10 @@
     <li><%= link_to 'Contents', presented_manual.url %></li>
   <% end %>
 
-  <% if defined?(document) %>
-    <% document.breadcrumbs.each do | crumb | %>
+  <% if defined?(presented_document) %>
+    <% presented_document.breadcrumbs.each do | crumb | %>
       <li> <%= link_to crumb.label, crumb.link %></li>
     <% end %>
-    <li class='last-child'><%= document.breadcrumb %></li>
+    <li class='last-child'><%= presented_document.breadcrumb %></li>
   <% end %>
 </ol>

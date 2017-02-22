@@ -1,4 +1,5 @@
 class Manual
+  attr_reader :content_store_manual
   delegate :title, to: :content_store_manual
 
   def initialize(content_store_manual)
@@ -31,6 +32,10 @@ class Manual
       content_store_manual.details.organisations || []
   end
 
+  def taxons
+    content_store_manual.links.taxons
+  end
+
   def hmrc?
     organisations.map(&:title).include?('HM Revenue & Customs')
   end
@@ -56,8 +61,6 @@ class Manual
   end
 
 private
-
-  attr_reader :content_store_manual
 
   def raw_section_groups
     content_store_manual.details.child_section_groups || []
