@@ -1,0 +1,7 @@
+<% content_for :extra_head_content do %>
+  <% if description.present? %>
+    <meta name='description' content='<%= description %>' />
+  <% end %>
+<% end %>
+
+<% content_for :title, title %>

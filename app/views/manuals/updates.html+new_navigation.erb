@@ -8,14 +8,8 @@
 <%= content_for :extra_head_content do %>
   <%= ab_test.requested_variant.analytics_meta_tag.html_safe %>
 <% end %>
-<% if presented_manual.beta? %>
-  <%= render partial: 'govuk_component/beta_label' %>
-<% end %>
+<%= render 'govuk_component/beta_label' %>
+<%= render 'govuk_component/breadcrumbs',
+  breadcrumbs: presented_manual.taxonomy_breadcrumbs %>
 <%= render 'header', presented_manual: presented_manual %>
-<%=
-  render(
-    'manual_breadcrumbs',
-    presented_manual: presented_manual
-  )
-%>
 <%= render 'manual_updates', presented_manual: presented_manual %>

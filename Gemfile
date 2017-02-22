@@ -15,6 +15,9 @@ gem 'gds-api-adapters', '26.7.0'
 gem 'airbrake', '4.0.0'
 gem 'logstasher', '0.6.2'
 
+gem 'govuk_navigation_helpers', '2.3.1'
+gem 'govuk_ab_testing', '0.1.5'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -33,4 +36,5 @@ group :test do
   gem "poltergeist", "1.5.0"
   gem "launchy"
   gem "govuk-content-schema-test-helpers", "1.3.0"
+  gem 'climate_control', '~> 0.1.0', require: false
 end

@@ -1,0 +1,36 @@
+<div class='manual-body' id="content">
+  <article aria-labelledby="section-title">
+    <h1 id="section-title" class='section-title'>
+      <span class='title'>Updates: <%= presented_manual.title %></span>
+    </h1>
+    <div class='section-content'>
+    <% presented_manual.change_notes.by_year.each do |year, updates_by_year| %>
+      <div class='js-collapsible-collection subsection-collection'>
+        <p class='section-title'><%= year %></p>
+        <div class='collapsible-subsections'>
+          <% updates_by_year.each do |day, updated_documents| %>
+            <h2>
+              <span class='subsection-title-text'>
+                <%= marked_up_date(day) %>
+                <span class="visuallyhidden">
+                  published amendments
+                </span>
+              </span>
+            </h2>
+            <dl class='updates-list'>
+            <% updated_documents.each do |document| %>
+              <dt><%= link_to document.title, document.base_path %></dt>
+                <% document.change_notes.each do |note| %>
+                  <dd>
+                    <%= note %>
+                  </dd>
+                <% end %>
+            <% end %>
+            </dl>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </article>
+</div>

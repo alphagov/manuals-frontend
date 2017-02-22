@@ -1,5 +1,7 @@
 class Document
   delegate :title, :previous_sibling, :next_sibling, to: :document
+  delegate :taxons, to: :manual
+  attr_reader :document, :manual
 
   def initialize(document, manual)
     @document = document
@@ -61,8 +63,6 @@ class Document
   end
 
 private
-
-  attr_reader :document, :manual
 
   def raw_section_groups
     document.details.child_section_groups || []

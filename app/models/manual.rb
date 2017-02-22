@@ -1,8 +1,9 @@
 class Manual
-  delegate :title, to: :manual
+  attr_reader :content_store_manual
+  delegate :title, to: :content_store_manual
 
-  def initialize(manual)
-    @manual = manual
+  def initialize(content_store_manual)
+    @content_store_manual = content_store_manual
   end
 
   def beta?
@@ -12,22 +13,27 @@ class Manual
 
   def full_title
     if hmrc?
-      @manual.title + ' - HMRC internal manual'
+      content_store_manual.title + ' - HMRC internal manual'
     else
-      @manual.title + ' - Guidance'
+      content_store_manual.title + ' - Guidance'
     end
   end
 
   def updated_at
-    Date.parse(manual.public_updated_at) if manual.public_updated_at.present?
+    Date.parse(content_store_manual.public_updated_at) if content_store_manual.public_updated_at.present?
   end
 
   def first_published_at
-    Date.parse(manual.first_published_at) if manual.first_published_at.present?
+    Date.parse(content_store_manual.first_published_at) if content_store_manual.first_published_at.present?
   end
 
   def organisations
-    @manual.links.organisations || @manual.details.organisations || []
+    content_store_manual.links.organisations ||
+      content_store_manual.details.organisations || []
+  end
+
+  def taxons
+    content_store_manual.links.taxons
   end
 
   def hmrc?
@@ -35,11 +41,11 @@ class Manual
   end
 
   def url
-    manual.base_path
+    content_store_manual.base_path
   end
 
   def change_notes
-    ChangeNotes.new(manual.details.change_notes || [])
+    ChangeNotes.new(content_store_manual.details.change_notes || [])
   end
 
   def section_groups
@@ -47,18 +53,16 @@ class Manual
   end
 
   def summary
-    manual.description
+    content_store_manual.description
   end
 
   def body
-    manual.details.body.html_safe if manual.details.body.present?
+    content_store_manual.details.body.html_safe if content_store_manual.details.body.present?
   end
 
 private
 
-  attr_reader :manual
-
   def raw_section_groups
-    manual.details.child_section_groups || []
+    content_store_manual.details.child_section_groups || []
   end
 end
