@@ -16,14 +16,6 @@ main {
   display: block;
 }
 
-.outer-block {
-  @include outer-block;
-}
-
-.inner-block {
-  @include inner-block;
-}
-
 .manuals-frontend-body {
   padding-bottom: $gutter;
 

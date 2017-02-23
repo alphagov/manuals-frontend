@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 private
 
   def slimmer_headers
-    slimmer_template "header_footer_only"
+    slimmer_template 'core_layout'
     set_slimmer_headers(remove_search: true)
   end
 end
