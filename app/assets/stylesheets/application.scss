@@ -27,8 +27,10 @@ main {
 .manuals-frontend-body {
   padding-bottom: $gutter;
 
-  .govuk-beta-label {
-    border-bottom: none;
+  .manual-in-beta {
+    .govuk-beta-label {
+      border-bottom: none;
+    }
   }
 
   header {
