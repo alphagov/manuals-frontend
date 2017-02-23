@@ -11,11 +11,19 @@
 <%= render 'govuk_component/beta_label' %>
 <%= render 'govuk_component/breadcrumbs',
   breadcrumbs: presented_document.taxonomy_breadcrumbs %>
-<%= render 'header', presented_manual: presented_manual %>
-<%=
-  render(
-    'manual_section',
-    presented_manual: presented_manual,
-    presented_document: presented_document
-  )
-%>
+
+<div class='grid-row'>
+  <div class='column-two-thirds'>
+    <%= render 'header', presented_manual: presented_manual %>
+    <%=
+      render(
+        'manual_section',
+        presented_manual: presented_manual,
+        presented_document: presented_document
+      )
+    %>
+  </div>
+  <div class='column-one-third'>
+    <%# Placeholder for new side navigation %>
+  </div>
+</div>
