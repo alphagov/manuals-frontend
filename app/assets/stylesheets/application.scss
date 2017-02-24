@@ -412,6 +412,14 @@ main {
     }
   }
 
+  .new-navigation {
+    .section-list {
+      a {
+        padding-right: 0;
+      }
+    }
+  }
+
   .hmrc.section-list {
     margin-top: $gutter;
     padding-bottom: $gutter;
