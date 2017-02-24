@@ -237,6 +237,12 @@ main {
           max-width: 100%;
         }
       }
+
+      .body-content-wrapper {
+        @include media(tablet) {
+          width: 100%;
+        }
+      }
     }
 
     @include media(tablet) {
