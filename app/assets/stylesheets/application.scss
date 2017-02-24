@@ -54,6 +54,10 @@ main {
     @include core-16;
     @extend %contain-floats;
 
+    @include media(mobile) {
+      padding: $gutter $gutter-half;
+    }
+
     @include media(tablet) {
       margin: 0;
 
