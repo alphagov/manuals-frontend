@@ -1,5 +1,8 @@
-<header aria-labelledby="manual-title" class="<%= presented_manual.hmrc? ? 'hmrc' : nil %>">
-  <div class='primary'>
+<header
+  aria-labelledby="manual-title"
+  class="<%= presented_manual.hmrc? ? 'hmrc' : nil %> <%= local_assigns.has_key?(:new_navigation) ? 'new-navigation' : ''%>">
+
+  <div class="primary">
     <% if presented_manual.hmrc? %>
       <span class='manual-type'>HMRC internal manual</span>
     <% end %>
@@ -16,7 +19,7 @@
       </form>
     </div>
   </div>
-  <div class='secondary'>
+  <div class="secondary">
     <div class='secondary-inner'>
       <p>
         <%= link_to 'Give feedback about this page', 'https://www.gov.uk/contact/govuk', :class=> "feedback" %>

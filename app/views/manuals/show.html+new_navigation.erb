@@ -14,7 +14,13 @@
 
 <div class='grid-row'>
   <div class='column-two-thirds'>
-    <%= render 'header', presented_manual: presented_manual %>
+    <%=
+      render(
+        'header',
+        presented_manual: presented_manual,
+        new_navigation: true
+      )
+    %>
     <%=
       render(
         'manual_section',
