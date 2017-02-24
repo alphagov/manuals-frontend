@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'climate_control'
 
 feature "Viewing manuals and sections" do
-  include GovukAbTesting::MinitestHelpers
+  include GovukAbTesting::RspecCapybaraHelpers
 
   around(:each) do |example|
     ClimateControl.modify(ENABLE_NEW_NAVIGATION: 'yes') do
@@ -13,7 +13,7 @@ feature "Viewing manuals and sections" do
   scenario "viewing a manual with the new navigation" do
     stub_education_manual
 
-    with_b_variant do
+    with_variant EducationNavigation: 'B' do
       visit_manual "buying-for-schools"
 
       expect_component('beta_label')
@@ -39,7 +39,7 @@ feature "Viewing manuals and sections" do
     stub_education_manual
     stub_education_manual_section
 
-    with_b_variant do
+    with_variant EducationNavigation: 'B' do
       visit_manual "buying-for-schools"
       select_section "1. Plan your procurement process"
 
@@ -68,7 +68,7 @@ feature "Viewing manuals and sections" do
   scenario "viewing change notes for a manual with the new navigation" do
     stub_education_manual
 
-    with_b_variant do
+    with_variant EducationNavigation: 'B' do
       visit_manual "buying-for-schools"
       view_manual_change_notes
 
@@ -89,23 +89,5 @@ feature "Viewing manuals and sections" do
         expect(breadcrumbs.last['is_current_page']).to be_truthy
       end
     end
-  end
-
-private
-
-  # TODO: port this behaviour to govuk_ab_testing
-  def with_b_variant
-    ab_test = GovukAbTesting::AbTest.new('EducationNavigation', dimension: nil)
-    page.driver.header(ab_test.response_header, 'B')
-
-    yield
-
-    expect(ab_test.response_header).to eq(page.response_headers['Vary'])
-
-    content = [ab_test.meta_tag_name, 'B'].join(':')
-    ab_test_metatag = page.find("meta[name='govuk:ab-test']", visible: false)
-
-    expect(ab_test_metatag['content']).to eq(content)
-    expect(ab_test_metatag['data-analytics-dimension']).to eq("41")
   end
 end

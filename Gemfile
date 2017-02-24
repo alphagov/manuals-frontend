@@ -16,7 +16,7 @@ gem 'airbrake', '4.0.0'
 gem 'logstasher', '0.6.2'
 
 gem 'govuk_navigation_helpers', '2.3.1'
-gem 'govuk_ab_testing', '0.1.5'
+gem 'govuk_ab_testing', '0.2.0'
 
 group :development do
   gem 'better_errors'
