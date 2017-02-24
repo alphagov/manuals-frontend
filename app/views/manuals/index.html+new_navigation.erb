@@ -21,7 +21,13 @@
         new_navigation: true
       )
     %>
-    <%= render 'manual', presented_manual: presented_manual %>
+    <%=
+      render(
+        'manual',
+        presented_manual: presented_manual,
+        new_navigation: true
+      )
+    %>
   </div>
   <div class='column-one-third'>
     <%# Placeholder for new side navigation %>

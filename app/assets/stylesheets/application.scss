@@ -231,6 +231,14 @@ main {
   .manual-body {
     margin: $gutter-half 0 $gutter * 3;
 
+    &.new-navigation {
+      .summary {
+        @include media(tablet) {
+          max-width: 100%;
+        }
+      }
+    }
+
     @include media(tablet) {
       margin-top: $gutter;
     }
