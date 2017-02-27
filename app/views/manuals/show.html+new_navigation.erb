@@ -12,21 +12,14 @@
 <%= render 'govuk_component/breadcrumbs',
   breadcrumbs: presented_document.taxonomy_breadcrumbs %>
 
-<div class='grid-row'>
+<div class='grid-row new-navigation'>
   <div class='column-two-thirds'>
-    <%=
-      render(
-        'header',
-        presented_manual: presented_manual,
-        new_navigation: true
-      )
-    %>
+    <%= render('header', presented_manual: presented_manual) %>
     <%=
       render(
         'manual_section',
         presented_manual: presented_manual,
-        presented_document: presented_document,
-        new_navigation: true
+        presented_document: presented_document
       )
     %>
   </div>

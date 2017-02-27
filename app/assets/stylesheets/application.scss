@@ -25,14 +25,8 @@ main {
     }
   }
 
-  header {
-    background: $govuk-blue;
-
-    &.hmrc {
-      background: $hm-revenue-customs;
-    }
-
-    &.new-navigation {
+  .new-navigation {
+    header {
       @include media(tablet) {
         .primary {
           width: 100%;
@@ -46,6 +40,34 @@ main {
           }
         }
       }
+    }
+
+    .manual-body {
+      .summary {
+        @include media(tablet) {
+          max-width: 100%;
+        }
+      }
+
+      .body-content-wrapper {
+        @include media(tablet) {
+          width: 100%;
+        }
+      }
+    }
+
+    .section-list {
+      a {
+        padding-right: 0;
+      }
+    }
+  }
+
+  header {
+    background: $govuk-blue;
+
+    &.hmrc {
+      background: $hm-revenue-customs;
     }
 
     padding: $gutter;
@@ -235,20 +257,6 @@ main {
   .manual-body {
     margin: $gutter-half 0 $gutter * 3;
 
-    &.new-navigation {
-      .summary {
-        @include media(tablet) {
-          max-width: 100%;
-        }
-      }
-
-      .body-content-wrapper {
-        @include media(tablet) {
-          width: 100%;
-        }
-      }
-    }
-
     @include media(tablet) {
       margin-top: $gutter;
     }
@@ -418,14 +426,6 @@ main {
         width: 100px;
         height: 1px;
         overflow: hidden;
-      }
-    }
-  }
-
-  .new-navigation {
-    .section-list {
-      a {
-        padding-right: 0;
       }
     }
   }

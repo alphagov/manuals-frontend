@@ -1,5 +1,5 @@
 <article aria-labelledby="manual-title" id="content">
-  <div class="manual-body <%= local_assigns.has_key?(:new_navigation) ? 'new-navigation' : ''%>">
+  <div class='manual-body'>
     <% if presented_manual.summary.present? %><p class='summary'><%= presented_manual.summary %></p><% end %>
     <% if presented_manual.body.present? %>
       <%= render partial: 'govuk_component/govspeak', locals: {
