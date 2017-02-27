@@ -25,6 +25,44 @@ main {
     }
   }
 
+  .new-navigation {
+    header {
+      @include media(tablet) {
+        .primary {
+          width: 100%;
+        }
+
+        .secondary {
+          width: 100%;
+
+          .secondary-inner {
+            padding-left: 0;
+          }
+        }
+      }
+    }
+
+    .manual-body {
+      .summary {
+        @include media(tablet) {
+          max-width: 100%;
+        }
+      }
+
+      .body-content-wrapper {
+        @include media(tablet) {
+          width: 100%;
+        }
+      }
+    }
+
+    .section-list {
+      a {
+        padding-right: 0;
+      }
+    }
+  }
+
   header {
     background: $govuk-blue;
 
@@ -37,6 +75,10 @@ main {
     margin: 0 (-$gutter-half);
     @include core-16;
     @extend %contain-floats;
+
+    @include media(mobile) {
+      padding: $gutter $gutter-half;
+    }
 
     @include media(tablet) {
       margin: 0;
