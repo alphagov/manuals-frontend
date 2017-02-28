@@ -10,6 +10,16 @@ feature "Viewing manuals and sections" do
     end
   end
 
+  scenario "viewing a manual with the old navigation" do
+    stub_education_manual
+
+    with_variant EducationNavigation: 'A' do
+      visit_manual "buying-for-schools"
+
+      expect_no_component('beta_label')
+    end
+  end
+
   scenario "viewing a manual with the new navigation" do
     stub_education_manual
 

@@ -5,9 +5,6 @@
     title: 'Updates - ' + presented_manual.full_title
   )
 %>
-<%= content_for :extra_head_content do %>
-  <%= ab_test.requested_variant.analytics_meta_tag.html_safe %>
-<% end %>
 <%= render 'govuk_component/beta_label' %>
 <%= render 'govuk_component/breadcrumbs',
   breadcrumbs: presented_manual.taxonomy_breadcrumbs %>
