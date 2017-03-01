@@ -1,9 +1,16 @@
 class Manual
   attr_reader :content_store_manual
-  delegate :title, to: :content_store_manual
 
   def initialize(content_store_manual)
     @content_store_manual = content_store_manual
+  end
+
+  def title
+    content_store_manual['title']
+  end
+
+  def details
+    content_store_manual['details']
   end
 
   def beta?
@@ -13,39 +20,44 @@ class Manual
 
   def full_title
     if hmrc?
-      content_store_manual.title + ' - HMRC internal manual'
+      content_store_manual['title'] + ' - HMRC internal manual'
     else
-      content_store_manual.title + ' - Guidance'
+      content_store_manual['title'] + ' - Guidance'
     end
   end
 
   def updated_at
-    Date.parse(content_store_manual.public_updated_at) if content_store_manual.public_updated_at.present?
+    if content_store_manual['public_updated_at'].present?
+      Date.parse(content_store_manual['public_updated_at'])
+    end
   end
 
   def first_published_at
-    Date.parse(content_store_manual.first_published_at) if content_store_manual.first_published_at.present?
+    if content_store_manual['first_published_at'].present?
+      Date.parse(content_store_manual['first_published_at'])
+    end
   end
 
   def organisations
-    content_store_manual.links.organisations ||
-      content_store_manual.details.organisations || []
+    content_store_manual.dig('links', 'organisations') ||
+      details['organisations'] ||
+      []
   end
 
   def taxons
-    content_store_manual.links.taxons
+    content_store_manual.dig('links', 'taxons')
   end
 
   def hmrc?
-    organisations.map(&:title).include?('HM Revenue & Customs')
+    organisations.map { |org| org['title'] }.include?('HM Revenue & Customs')
   end
 
   def url
-    content_store_manual.base_path
+    content_store_manual['base_path']
   end
 
   def change_notes
-    ChangeNotes.new(content_store_manual.details.change_notes || [])
+    ChangeNotes.new(details['change_notes'] || [])
   end
 
   def section_groups
@@ -53,16 +65,18 @@ class Manual
   end
 
   def summary
-    content_store_manual.description
+    content_store_manual['description']
   end
 
   def body
-    content_store_manual.details.body.html_safe if content_store_manual.details.body.present?
+    if details['body'].present?
+      details['body'].html_safe
+    end
   end
 
 private
 
   def raw_section_groups
-    content_store_manual.details.child_section_groups || []
+    content_store_manual.dig('details', 'child_section_groups') || []
   end
 end

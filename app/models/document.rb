@@ -1,15 +1,26 @@
 class Document
-  delegate :title, :previous_sibling, :next_sibling, to: :document
-  delegate :taxons, to: :manual
   attr_reader :document, :manual
+  delegate :previous_sibling, :next_sibling, to: :document
 
   def initialize(document, manual)
     @document = document
     @manual = manual
   end
 
+  def title
+    document['title']
+  end
+
+  def taxons
+    manual['taxons']
+  end
+
+  def details
+    document['details']
+  end
+
   def section_id
-    document['details']['section_id']
+    details['section_id']
   end
 
   def breadcrumb
@@ -25,7 +36,7 @@ class Document
   end
 
   def body
-    document['details']['body'] && document['details']['body'].html_safe
+    details['body'] && details['body'].html_safe
   end
 
   def section_groups
@@ -33,8 +44,8 @@ class Document
   end
 
   def breadcrumbs
-    if document['details']['breadcrumbs'].present?
-      document['details']['breadcrumbs'].map do |breadcrumb|
+    if details['breadcrumbs'].present?
+      details['breadcrumbs'].map do |breadcrumb|
         Breadcrumb.new(link: breadcrumb['base_path'], label: breadcrumb['section_id'])
       end
     else
@@ -65,6 +76,6 @@ class Document
 private
 
   def raw_section_groups
-    document.details.child_section_groups || []
+    details['child_section_groups'] || []
   end
 end

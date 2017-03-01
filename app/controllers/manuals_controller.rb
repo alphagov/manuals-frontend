@@ -54,7 +54,7 @@ private
   def ensure_manual_is_found
     if content_store_manual.nil?
       error_not_found
-    elsif content_store_manual.format == "gone"
+    elsif content_store_manual["format"] == "gone"
       error_gone
     end
   end

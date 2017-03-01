@@ -1,12 +1,14 @@
 class SectionGroup
-  delegate :title, to: :group
-
   def initialize(section_group)
     @group = section_group
   end
 
+  def title
+    group["title"]
+  end
+
   def sections
-    (group.child_sections || []).map do |section|
+    group.fetch("child_sections", []).map do |section|
       Section.new(section)
     end
   end

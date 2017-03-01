@@ -9,14 +9,14 @@ module ApplicationHelper
     if document.previous_sibling
       siblings[:previous_page] = {
         title: "Previous page",
-        url: document.previous_sibling.base_path
+        url: document.previous_sibling['base_path']
       }
     end
 
     if document.next_sibling
       siblings[:next_page] = {
         title: "Next page",
-        url: document.next_sibling.base_path
+        url: document.next_sibling['base_path']
       }
     end
 

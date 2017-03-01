@@ -25,10 +25,10 @@ private
   end
 
   def extract_parent_base_path_from_document(document)
-    if document.details.breadcrumbs.present?
-      document.details.breadcrumbs.last.base_path
+    if document.dig("details", "breadcrumbs").present?
+      document.dig("details", "breadcrumbs").last["base_path"]
     else
-      document.details.manual.base_path
+      document.dig("details", "manual", "base_path")
     end
   end
 
