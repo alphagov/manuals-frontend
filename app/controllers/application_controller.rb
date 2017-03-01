@@ -10,10 +10,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :slimmer_headers
 
+  helper_method :ab_test
+
 private
 
   def slimmer_headers
     slimmer_template 'core_layout'
     set_slimmer_headers(remove_search: true)
+  end
+
+  def ab_test
+    @ab_test ||= EducationNavigationAbTestRequest.new(request)
   end
 end

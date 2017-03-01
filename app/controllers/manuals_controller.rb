@@ -38,10 +38,6 @@ class ManualsController < ApplicationController
 
 private
 
-  def ab_test
-    @ab_test ||= EducationNavigationAbTestRequest.new(request)
-  end
-
   def set_up_education_navigation_ab_testing
     ab_test.set_response_vary_header(response)
 
