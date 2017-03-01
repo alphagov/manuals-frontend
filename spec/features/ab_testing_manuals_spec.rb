@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'climate_control'
 
 feature "Viewing manuals and sections" do
-  include GovukAbTesting::RspecCapybaraHelpers
+  include GovukAbTesting::RspecHelpers
 
   around(:each) do |example|
     ClimateControl.modify(ENABLE_NEW_NAVIGATION: 'yes') do
