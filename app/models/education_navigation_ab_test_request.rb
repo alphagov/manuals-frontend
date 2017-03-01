@@ -9,7 +9,7 @@ class EducationNavigationAbTestRequest
       "EducationNavigation",
       dimension: dimension
     )
-    @requested_variant = ab_test.requested_variant(request)
+    @requested_variant = ab_test.requested_variant(request.headers)
   end
 
   def should_present_new_navigation_view?(content_item)
