@@ -14,6 +14,10 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure(&:infer_spec_type_from_file_location!)
 
+RSpec.configure do |c|
+  c.example_status_persistence_file_path = "spec/failures"
+end
+
 GovukAbTesting.configure do |config|
   config.acceptance_test_framework = :capybara
 end
