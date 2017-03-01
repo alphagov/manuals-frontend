@@ -24,8 +24,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'pry'
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'govuk-lint'
   gem 'jasmine-rails'
   gem "rspec-rails", "~> 3.0"
