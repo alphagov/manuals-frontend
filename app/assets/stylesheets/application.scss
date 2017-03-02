@@ -27,17 +27,13 @@ main {
 
   .new-navigation {
     header {
+      .secondary {
+        display: none;
+      }
+
       @include media(tablet) {
         .primary {
           width: 100%;
-        }
-
-        .secondary {
-          width: 100%;
-
-          .secondary-inner {
-            padding-left: 0;
-          }
         }
       }
     }
