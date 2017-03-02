@@ -15,7 +15,7 @@ gem 'gds-api-adapters', '40.1.0'
 gem 'airbrake', '4.0.0'
 gem 'logstasher', '0.6.2'
 
-gem 'govuk_navigation_helpers', '2.4.0'
+gem 'govuk_navigation_helpers', '~> 3.0'
 gem 'govuk_ab_testing', '1.0.0'
 
 group :development do

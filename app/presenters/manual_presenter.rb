@@ -34,7 +34,7 @@ class ManualPresenter < SimpleDelegator
   end
 
   def taxonomy_sidebar
-    @taxonomy_sidebar ||= nav_helper.taxonomy_sidebar[:sections]
+    @taxonomy_sidebar ||= nav_helper.taxonomy_sidebar[:items]
   end
 
   def nav_helper

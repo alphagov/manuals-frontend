@@ -109,16 +109,13 @@ feature "Viewing manuals and sections" do
 
   def expect_taxonomy_sidebar
     expect_component('taxonomy_sidebar') do |sidebar_data|
-      sidebar = sidebar_data['sections']
+      sidebar = sidebar_data['items']
+
       expect(sidebar).to include(
-        "title" => "More about",
-        "items" => [
-          {
-            "title" => "Education, training and skills",
-            "url" => "/education",
-            "description" => "Education, training and skills I guess",
-          }
-        ]
+        "title" => "Education, training and skills",
+        "url" => "/education",
+        "description" => "Education, training and skills I guess",
+        "related_content" => []
       )
     end
   end
