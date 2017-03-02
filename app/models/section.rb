@@ -1,8 +1,14 @@
 class Section
-  delegate :title, :body, to: :section
-
   def initialize(section)
     @section = section
+  end
+
+  def title
+    section['title']
+  end
+
+  def body
+    section['body']
   end
 
   def section_id
@@ -10,7 +16,7 @@ class Section
   end
 
   def path
-    section.base_path
+    section['base_path']
   end
 
   def collapsible?
@@ -18,7 +24,7 @@ class Section
   end
 
   def summary
-    section.description
+    section['description']
   end
 
 private

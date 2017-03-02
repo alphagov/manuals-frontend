@@ -36,19 +36,18 @@ private
   end
 
   class Update
-    delegate :base_path, :change_note, :title, to: :update
-
     def initialize(update)
       @update = update
+      @title = update['title']
+      @base_path = update['base_path']
+      @change_note = update['change_note']
     end
 
     def updated_at
-      @updated_at ||= Time.parse(update.published_at).to_date
+      @updated_at ||= Time.parse(update['published_at']).to_date
     end
 
-  private
-
-    attr_reader :update
+    attr_reader :update, :title, :base_path, :change_note
   end
 
   class DocumentUpdates

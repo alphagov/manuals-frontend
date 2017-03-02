@@ -10,7 +10,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unicorn', '4.8.2'
 
 gem 'plek', '1.11.0'
-gem 'gds-api-adapters', '26.7.0'
+gem 'gds-api-adapters', '40.1.0'
 
 gem 'airbrake', '4.0.0'
 gem 'logstasher', '0.6.2'
@@ -24,11 +24,10 @@ group :development do
 end
 
 group :development, :test do
-  gem 'pry'
-  gem 'byebug'
+  gem 'pry-byebug'
   gem 'govuk-lint'
   gem 'jasmine-rails'
-  gem "rspec-rails", "3.0.2"
+  gem "rspec-rails", "~> 3.0"
 end
 
 group :test do
