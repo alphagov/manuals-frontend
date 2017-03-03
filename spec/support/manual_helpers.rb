@@ -27,7 +27,8 @@ module ManualHelpers
       links: {
         taxons: [{
           title: 'Education, training and skills',
-          base_path: '/education'
+          base_path: '/education',
+          description: 'Education, training and skills I guess',
         }]
       },
       details: {

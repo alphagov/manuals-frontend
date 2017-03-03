@@ -33,6 +33,10 @@ class ManualPresenter < SimpleDelegator
     @taxonomy_breadcrumbs ||= nav_helper.taxon_breadcrumbs[:breadcrumbs]
   end
 
+  def taxonomy_sidebar
+    @taxonomy_sidebar ||= nav_helper.taxonomy_sidebar[:items]
+  end
+
   def nav_helper
     @nav_helper ||=
       GovukNavigationHelpers::NavigationHelper.new(@manual.content_store_manual.to_h)

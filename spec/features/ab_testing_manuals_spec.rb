@@ -42,6 +42,8 @@ feature "Viewing manuals and sections" do
         )
         expect(breadcrumbs.last['is_current_page']).to be_truthy
       end
+
+      expect_taxonomy_sidebar
     end
   end
 
@@ -72,6 +74,8 @@ feature "Viewing manuals and sections" do
         )
         expect(breadcrumbs.last['is_current_page']).to be_truthy
       end
+
+      expect_taxonomy_sidebar
     end
   end
 
@@ -98,6 +102,21 @@ feature "Viewing manuals and sections" do
         )
         expect(breadcrumbs.last['is_current_page']).to be_truthy
       end
+
+      expect_taxonomy_sidebar
+    end
+  end
+
+  def expect_taxonomy_sidebar
+    expect_component('taxonomy_sidebar') do |sidebar_data|
+      sidebar = sidebar_data['items']
+
+      expect(sidebar).to include(
+        "title" => "Education, training and skills",
+        "url" => "/education",
+        "description" => "Education, training and skills I guess",
+        "related_content" => []
+      )
     end
   end
 end
