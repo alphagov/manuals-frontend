@@ -1,14 +1,7 @@
 require 'rails_helper'
-require 'climate_control'
 
 feature "Viewing manuals and sections" do
   include GovukAbTesting::RspecHelpers
-
-  around(:each) do |example|
-    ClimateControl.modify(ENABLE_NEW_NAVIGATION: 'yes') do
-      example.run
-    end
-  end
 
   scenario "viewing a manual with the old navigation" do
     stub_education_manual
