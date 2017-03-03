@@ -15,7 +15,6 @@ class EducationNavigationAbTestRequest
   def should_present_new_navigation_view?(content_item)
     [
       requested_variant.variant_b?,
-      new_navigation_enabled?,
       content_is_tagged_to_a_taxon?(content_item)
     ].all?
   end
@@ -25,10 +24,6 @@ class EducationNavigationAbTestRequest
   end
 
 private
-
-  def new_navigation_enabled?
-    ENV['ENABLE_NEW_NAVIGATION'] == 'yes'
-  end
 
   def content_is_tagged_to_a_taxon?(content_item)
     content_item.dig("links", "taxons").present?
