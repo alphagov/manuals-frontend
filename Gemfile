@@ -17,6 +17,7 @@ gem 'logstasher', '0.6.2'
 
 gem 'govuk_navigation_helpers', '~> 3.0'
 gem 'govuk_ab_testing', '1.0.4'
+gem 'statsd-ruby', '1.3.0', require: 'statsd'
 
 group :development do
   gem 'better_errors'
