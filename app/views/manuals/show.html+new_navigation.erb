@@ -2,7 +2,8 @@
   render(
     'content_for_head_tag',
     description: presented_manual.summary,
-    title: presented_document.full_title
+    title: presented_document.full_title,
+    add_ab_meta_tag: true
   )
 %>
 <%= render 'govuk_component/beta_label' %>

@@ -9,7 +9,6 @@
   <%= stylesheet_link_tag "print", media: "print" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= ab_test.requested_variant.analytics_meta_tag.html_safe %>
   <%= yield :extra_head_content %>
 </head>
 <body>

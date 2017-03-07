@@ -13,6 +13,18 @@ feature "Viewing manuals and sections" do
     end
   end
 
+  %w(A B).each do |variant|
+    scenario "viewing a manual outside the A/B test with variant #{variant}" do
+      stub_fake_manual
+
+      setup_ab_variant("EducationNavigation", variant)
+
+      visit_manual "my-manual-about-burritos"
+
+      assert_response_not_modified_for_ab_test
+    end
+  end
+
   scenario "viewing a manual with the new navigation" do
     stub_education_manual
 

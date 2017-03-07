@@ -15,8 +15,12 @@ class EducationNavigationAbTestRequest
   def should_present_new_navigation_view?(content_item)
     [
       requested_variant.variant_b?,
-      content_is_tagged_to_a_taxon?(content_item)
+      page_is_under_ab_test?(content_item)
     ].all?
+  end
+
+  def page_is_under_ab_test?(content_item)
+    content_is_tagged_to_a_taxon?(content_item)
   end
 
   def set_response_vary_header(response)

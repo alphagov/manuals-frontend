@@ -2,6 +2,7 @@
   <% if description.present? %>
     <meta name='description' content='<%= description %>' />
   <% end %>
+  <%= ab_test.requested_variant.analytics_meta_tag.html_safe if add_ab_meta_tag %>
 <% end %>
 
 <% content_for :title, title %>

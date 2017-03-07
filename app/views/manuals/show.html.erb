@@ -2,7 +2,8 @@
   render(
     'content_for_head_tag',
     description: presented_manual.summary,
-    title: presented_document.full_title
+    title: presented_document.full_title,
+    add_ab_meta_tag: ab_test.page_is_under_ab_test?(presented_manual.content_store_manual)
   )
 %>
 <% if presented_manual.beta? %>
