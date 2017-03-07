@@ -39,7 +39,9 @@ class ManualsController < ApplicationController
 private
 
   def set_up_education_navigation_ab_testing
-    ab_test.set_response_vary_header(response)
+    if ab_test.page_is_under_ab_test?(content_store_manual)
+      ab_test.set_response_vary_header(response)
+    end
 
     if ab_test.should_present_new_navigation_view?(content_store_manual)
       request.variant = :new_navigation

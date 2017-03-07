@@ -2,12 +2,10 @@
   render(
     'content_for_head_tag',
     description: "List of updates to '#{presented_manual.full_title}'.",
-    title: 'Updates - ' + presented_manual.full_title
+    title: 'Updates - ' + presented_manual.full_title,
+    add_ab_meta_tag: ab_test.page_is_under_ab_test?(presented_manual.content_store_manual)
   )
 %>
-<%= content_for :extra_head_content do %>
-  <%= ab_test.requested_variant.analytics_meta_tag.html_safe %>
-<% end %>
 <% if presented_manual.beta? %>
   <div class='manual-in-beta'>
     <%= render partial: 'govuk_component/beta_label' %>
