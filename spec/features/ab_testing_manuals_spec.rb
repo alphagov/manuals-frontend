@@ -37,11 +37,11 @@ feature "Viewing manuals and sections" do
         breadcrumbs = breadcrumb_data['breadcrumbs']
 
         expect(breadcrumbs.count).to eq(3)
-        expect(breadcrumbs).to include("title" => "Home", "url" => "/")
-        expect(breadcrumbs).to include(
+        expect(breadcrumbs).to include(a_hash_including("title" => "Home", "url" => "/"))
+        expect(breadcrumbs).to include(a_hash_including(
           "title" => "Education, training and skills",
           "url" => "/education"
-        )
+        ))
         expect(breadcrumbs.last['title']).to match(
           /buying for schools/i
         )
@@ -65,15 +65,15 @@ feature "Viewing manuals and sections" do
       expect_component('breadcrumbs') do |breadcrumb_data|
         breadcrumbs = breadcrumb_data['breadcrumbs']
         expect(breadcrumbs.count).to eq(4)
-        expect(breadcrumbs).to include("title" => "Home", "url" => "/")
-        expect(breadcrumbs).to include(
+        expect(breadcrumbs).to include(a_hash_including("title" => "Home", "url" => "/"))
+        expect(breadcrumbs).to include(a_hash_including(
           "title" => "Education, training and skills",
           "url" => "/education"
-        )
-        expect(breadcrumbs).to include(
+        ))
+        expect(breadcrumbs).to include(a_hash_including(
           "title" => "Buying for schools",
           "url" => "/guidance/buying-for-schools"
-        )
+        ))
         expect(breadcrumbs.last['title']).to match(
           /1\. plan your procurement process/i
         )
@@ -97,11 +97,11 @@ feature "Viewing manuals and sections" do
         breadcrumbs = breadcrumb_data['breadcrumbs']
 
         expect(breadcrumbs.count).to eq(3)
-        expect(breadcrumbs).to include("title" => "Home", "url" => "/")
-        expect(breadcrumbs).to include(
+        expect(breadcrumbs).to include(a_hash_including("title" => "Home", "url" => "/"))
+        expect(breadcrumbs).to include(a_hash_including(
           "title" => "Education, training and skills",
           "url" => "/education"
-        )
+        ))
         expect(breadcrumbs.last['title']).to match(
           /buying for schools/i
         )
