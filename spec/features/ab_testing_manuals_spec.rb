@@ -21,7 +21,7 @@ feature "Viewing manuals and sections" do
 
       visit_manual "my-manual-about-burritos"
 
-      assert_response_not_modified_for_ab_test
+      assert_response_not_modified_for_ab_test('EducationNavigation')
     end
   end
 
