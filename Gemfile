@@ -16,7 +16,7 @@ gem 'airbrake', '4.0.0'
 gem 'logstasher', '0.6.2'
 
 gem 'govuk_navigation_helpers', '~> 4.0'
-gem 'govuk_ab_testing', '1.0.4'
+gem 'govuk_ab_testing', '~> 2.1'
 gem 'statsd-ruby', '1.3.0', require: 'statsd'
 
 group :development do

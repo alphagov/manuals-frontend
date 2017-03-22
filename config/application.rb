@@ -30,6 +30,11 @@ module ManualsFrontend
 
     config.assets.prefix = '/manuals-frontend'
 
+    # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
+    config.assets.precompile += %w(
+      mouseflow.js
+    )
+
     # Override Rails 4 default which restricts framing to SAMEORIGIN.
     config.action_dispatch.default_headers = {
       'X-Frame-Options' => 'ALLOWALL'
@@ -38,5 +43,8 @@ module ManualsFrontend
     # Google Analytics dimension assigned to the education navigation A/B
     # test
     config.navigation_ab_test_dimension = 41
+
+    # Google Analytics dimension assigned to the benchmarking A/B test
+    config.benchmarking_ab_test_dimension = 49
   end
 end
