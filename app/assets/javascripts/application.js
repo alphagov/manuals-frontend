@@ -1,5 +1,5 @@
 //= require govuk_toolkit
-//= require_tree .
+//= require_tree ./modules
 
 jQuery(function($) {
 
