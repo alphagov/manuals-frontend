@@ -8,7 +8,6 @@
   <!--[if IE 8]><%= stylesheet_link_tag "application-ie8" %><script>var ieVersion = 8;</script><![endif]-->
   <%= stylesheet_link_tag "print", media: "print" %>
   <%= javascript_include_tag "application" %>
-  <%= benchmarking_ab_test.requested_variant.analytics_meta_tag.html_safe %>
   <%= csrf_meta_tags %>
   <%= yield :extra_head_content %>
 </head>
@@ -24,8 +23,5 @@
       </div>
     </main>
   </div>
-  <% if should_track_mouse_movements? %>
-    <%= javascript_include_tag 'mouseflow' %>
-  <% end %>
 </body>
 </html>
