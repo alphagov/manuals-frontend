@@ -10,12 +10,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unicorn', '4.8.2'
 
 gem 'plek', '1.11.0'
-gem 'gds-api-adapters', '40.1.0'
+gem 'gds-api-adapters', '~> 41.0'
 
 gem 'airbrake', '4.0.0'
 gem 'logstasher', '0.6.2'
 
-gem 'govuk_navigation_helpers', '~> 4.0'
+gem 'govuk_navigation_helpers', '~> 5.1'
 gem 'govuk_ab_testing', '~> 2.1'
 gem 'statsd-ruby', '1.3.0', require: 'statsd'
 
