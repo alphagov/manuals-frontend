@@ -64,3 +64,17 @@ a {
     font-weight: bold;
   }
 }
+
+// TODO:
+// legislative lists are being published with hardcoded item numbers
+// when printing this results in doubled up numbering.
+// These styles hide browser numbering on these lists.
+// Ideally this would be a global solution not just in manuals-frontend
+.govuk-govspeak .legislative-list {
+  padding-left: 0;
+
+  &,
+  ol {
+    list-style: none;
+  }
+}
