@@ -1,7 +1,5 @@
 require 'rails_helper'
 require 'gds_api/test_helpers/content_store'
-require 'slimmer/test_helpers/shared_templates'
-include Slimmer::TestHelpers::SharedTemplates
 
 feature "Viewing manuals and sections examples from govuk-content-schemas" do
   include GdsApi::TestHelpers::ContentStore

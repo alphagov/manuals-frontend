@@ -1,8 +1,4 @@
-require 'slimmer/test_helpers/shared_templates'
-
 module AppHelpers
-  include Slimmer::TestHelpers::SharedTemplates
-
   def view_manual_change_notes
     updates_path = "#{current_path}/updates"
     expect_component("metadata", in_scope: 'header') do |metadata|
