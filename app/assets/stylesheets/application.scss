@@ -133,9 +133,17 @@ main {
         // scss-lint:enable DuplicateProperty
         border: none;
         padding: 7px;
+        height: 20px;
 
-        @include media(mobile){
+        &.focus,
+        &:focus {
+          position: relative;
+          z-index: 1;
+        }
+
+        @include media(mobile) {
           padding: 9px 7px;
+          height: 16px;
         }
       }
 
