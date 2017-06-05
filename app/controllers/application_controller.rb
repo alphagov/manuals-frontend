@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   include Slimmer::GovukComponents
 
-  before_filter :slimmer_headers
+  before_action :slimmer_headers
 
   helper_method :ab_test
 
