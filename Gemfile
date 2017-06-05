@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.7.1'
+gem 'rails', '~> 5.0.2'
 gem 'slimmer', '~> 10.1.3'
 
 gem 'govuk_frontend_toolkit', '1.2.0'
@@ -12,7 +12,7 @@ gem 'unicorn', '4.8.2'
 gem 'plek', '1.11.0'
 gem 'gds-api-adapters', '~> 42.0.0'
 
-gem 'airbrake', '4.0.0'
+gem 'airbrake', github: 'alphagov/airbrake', branch: 'silence-dep-warnings-for-rails-5'
 gem 'logstasher', '0.6.2'
 
 gem 'govuk_navigation_helpers', '6.0.1'
@@ -32,8 +32,8 @@ group :development, :test do
 end
 
 group :test do
-  gem "webmock", "~> 2.1.0"
-  gem "poltergeist", "1.5.0"
+  gem "webmock", "~> 3.0.0"
+  gem "poltergeist", "1.15.0"
   gem "launchy"
   gem "govuk-content-schema-test-helpers", "1.3.0"
 end
