@@ -132,12 +132,24 @@ main {
         width: calc(100% - 47px);
         // scss-lint:enable DuplicateProperty
         border: none;
-        padding: 6px;
+        padding: 7px;
+        height: 20px;
+
+        &.focus,
+        &:focus {
+          position: relative;
+          z-index: 1;
+        }
+
+        @include media(mobile) {
+          padding: 9px 7px;
+          height: 16px;
+        }
       }
 
       button {
-        width: 33px;
-        height: 33px;
+        width: 34px;
+        height: 34px;
         border: 1px solid $manual-search-button-colour;
         border-width: 0 0 0 1px;
         border-left-color: $manual-search-button-border-colour;
@@ -151,7 +163,7 @@ main {
         @include border-radius(0);
         @include device-pixel-ratio() {
           background-size: 52.5px 35px;
-          background-position: 115% 50%;
+          background-position: 100% 50%;
         }
       }
     }
