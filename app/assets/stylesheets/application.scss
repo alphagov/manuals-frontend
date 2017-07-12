@@ -68,7 +68,7 @@ main {
 
     padding: $gutter;
     color: $white;
-    margin: 0 (-$gutter-half);
+    margin: 0;
     @include core-16;
     @extend %contain-floats;
 
@@ -77,8 +77,6 @@ main {
     }
 
     @include media(tablet) {
-      margin: 0;
-
       .primary,
       .secondary {
         float: left;
