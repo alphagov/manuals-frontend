@@ -303,10 +303,6 @@ main {
 
   .collapsible-subsections {
     @include media(tablet) {
-      p {
-        margin-top: $gutter-two-thirds;
-      }
-
       .call-to-action p {
         margin: 0;
       }
