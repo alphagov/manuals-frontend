@@ -5,7 +5,6 @@ class ManualsController < ApplicationController
 
   before_action :ensure_manual_is_found
   before_action :ensure_document_is_found, only: :show
-  before_action :prevent_robots_from_indexing_hmrc_manuals
   before_action :set_up_education_navigation_ab_testing
 
   def index
@@ -104,10 +103,6 @@ private
 
   def document_id
     params["section_id"]
-  end
-
-  def prevent_robots_from_indexing_hmrc_manuals
-    response.headers["X-Robots-Tag"] = "none" if manual.hmrc?
   end
 
   def set_expiry(content_item)

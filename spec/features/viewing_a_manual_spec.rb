@@ -32,14 +32,12 @@ feature "Viewing manuals and sections" do
   scenario "viewing a non-HMRC manual" do
     stub_fake_manual
     visit_manual "my-manual-about-burritos"
-    expect(page.response_headers['X-Robots-Tag']).not_to eq("none")
     expect_no_component('beta_label')
   end
 
   scenario "viewing an HMRC manual" do
     stub_hmrc_manual
     visit_hmrc_manual "inheritance-tax-manual"
-    expect(page.response_headers['X-Robots-Tag']).to eq("none")
     expect_component('beta_label')
   end
 
