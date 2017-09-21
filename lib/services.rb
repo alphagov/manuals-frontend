@@ -1,6 +1,5 @@
 require 'gds_api/content_store'
 require 'gds_api/publishing_api_v2'
-require 'statsd'
 
 module Services
   def self.content_store
@@ -12,14 +11,5 @@ module Services
       Plek.new.find('publishing-api'),
       bearer_token: ENV['PUBLISHING_API_BEARER_TOKEN'] || 'example'
     )
-  end
-
-
-  def self.statsd
-    @statsd ||= begin
-      statsd_client = Statsd.new("localhost")
-      statsd_client.namespace = ENV['GOVUK_STATSD_PREFIX'].to_s
-      statsd_client
-    end
   end
 end
