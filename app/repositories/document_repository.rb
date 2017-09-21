@@ -1,5 +1,3 @@
-require "gds_api/content_store"
-
 class DocumentRepository
   def fetch(base_path)
     document = fetch_content_item(base_path)
@@ -18,14 +16,10 @@ private
 
   def fetch_content_item(base_path)
     begin
-      content_store.content_item(base_path)
+      Services.content_store.content_item(base_path)
     rescue GdsApi::ContentStore::ItemNotFound
       nil
     end
-  end
-
-  def content_store
-    GdsApi::ContentStore.new(Plek.new.find("content-store"))
   end
 
   def extract_parent_base_path_from_document(document)
