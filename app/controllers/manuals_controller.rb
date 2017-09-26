@@ -1,8 +1,4 @@
-require 'gds_api/helpers'
-
 class ManualsController < ApplicationController
-  include GdsApi::Helpers
-
   before_action :ensure_manual_is_found
   before_action :ensure_document_is_found, only: :show
   before_action :set_up_education_navigation_ab_testing
@@ -74,7 +70,7 @@ private
 
   def content_store_manual
     @content_store_manual ||= begin
-      content_store.content_item(manual_base_path)
+      Services.content_store.content_item(manual_base_path)
     rescue GdsApi::ContentStore::ItemNotFound
       nil
     end
