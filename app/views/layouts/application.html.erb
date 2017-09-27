@@ -22,6 +22,52 @@
         </div>
       </div>
     </main>
+
+    <script>
+			function sendMessage(message) {
+				return new Promise(function(resolve, reject) {
+					var messageChannel = new MessageChannel();
+					messageChannel.port1.onmessage = function(event) {
+						if (event.data.error) {
+							reject(event.data.error);
+						} else {
+							resolve(event.data);
+						}
+					};
+
+					navigator.serviceWorker.controller.postMessage(message,
+						[messageChannel.port2]);
+				});
+			}
+
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.addEventListener('message', function(event) {
+					console.log('message received in browser' + event.data);
+				});
+
+				navigator.serviceWorker.register('/sw.js')
+					.then(function() {
+						return navigator.serviceWorker.ready;
+					})
+					.then(() => {
+						if (window.location.href !== "http://localhost:3072/guidance/style-guide") {
+							return;
+            }
+
+						var button = $("<button class='save-offline'>Save for offline use</button>");
+						$(".primary").append(button);
+
+						button.click(function () {
+							sendMessage('save-for-offline-use');
+							button.addClass("saved");
+							button.text("Saved!");
+						});
+					})
+					.catch(function(error) { console.log(error) });
+			} else {
+				console.log("service workers unsupported");
+			}
+    </script>
   </div>
 </body>
 </html>

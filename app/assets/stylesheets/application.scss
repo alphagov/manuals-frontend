@@ -466,3 +466,19 @@ main {
   }
 
 }
+
+.save-offline {
+  background: yellow;
+  border: 1px solid black;
+  font-size: 1.5em;
+  padding: 0.2em 0.5em;
+  cursor: pointer;
+}
+
+.save-offline:focus {
+  outline: 0;
+}
+
+.save-offline.saved {
+  background: lime;
+}

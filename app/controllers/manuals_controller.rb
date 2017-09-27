@@ -109,5 +109,6 @@ private
     max_age = content_item.cache_control.max_age
     cache_private = content_item.cache_control.private?
     expires_in(max_age, public: !cache_private)
+    expires_in(0, public: false)
   end
 end
