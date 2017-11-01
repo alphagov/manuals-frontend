@@ -34,9 +34,5 @@ module ManualsFrontend
     config.action_dispatch.default_headers = {
       'X-Frame-Options' => 'ALLOWALL'
     }
-
-    # Google Analytics dimension assigned to the education navigation A/B
-    # test
-    config.navigation_ab_test_dimension = 41
   end
 end

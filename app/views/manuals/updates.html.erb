@@ -3,7 +3,6 @@
     'content_for_head_tag',
     description: "List of updates to '#{presented_manual.full_title}'.",
     title: 'Updates - ' + presented_manual.full_title,
-    add_ab_meta_tag: ab_test.page_is_under_ab_test?(presented_manual.content_store_manual)
   )
 %>
 <% if presented_manual.beta? %>
