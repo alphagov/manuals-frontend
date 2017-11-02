@@ -6,10 +6,4 @@ class DocumentPresenter < SimpleDelegator
     @document = document
     super(document)
   end
-
-  def nav_helper
-    @nav_helper ||= GovukNavigationHelpers::NavigationHelper.new(
-      manual.content_store_manual
-    )
-  end
 end

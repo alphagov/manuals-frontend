@@ -28,9 +28,4 @@ class ManualPresenter < SimpleDelegator
       }
     }
   end
-
-  def nav_helper
-    @nav_helper ||=
-      GovukNavigationHelpers::NavigationHelper.new(@manual.content_store_manual.to_h)
-  end
 end
