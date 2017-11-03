@@ -1,14 +1,12 @@
 class ManualsController < ApplicationController
   before_action :ensure_manual_is_found
   before_action :ensure_document_is_found, only: :show
-  before_action :set_up_education_navigation_ab_testing
 
   def index
     set_expiry(content_store_manual)
 
     render :index, locals: {
       presented_manual: presented_manual,
-      ab_test: ab_test
     }
   end
 
@@ -20,28 +18,16 @@ class ManualsController < ApplicationController
     render :show, locals: {
       presented_manual: presented_manual,
       presented_document: presented_document,
-      ab_test: ab_test
     }
   end
 
   def updates
     render :updates, locals: {
       presented_manual: presented_manual,
-      ab_test: ab_test
     }
   end
 
 private
-
-  def set_up_education_navigation_ab_testing
-    if ab_test.page_is_under_ab_test?(content_store_manual)
-      ab_test.set_response_vary_header(response)
-    end
-
-    if ab_test.should_present_new_navigation_view?(content_store_manual)
-      request.variant = :new_navigation
-    end
-  end
 
   def presented_manual
     @presented_manual ||=
