@@ -1,4 +1,6 @@
 class ManualsController < ApplicationController
+  include TasklistHeaderABTestable
+
   before_action :ensure_manual_is_found
   before_action :ensure_document_is_found, only: :show
 

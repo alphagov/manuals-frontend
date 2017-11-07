@@ -6,6 +6,29 @@ feature "Viewing manuals and sections" do
   # I can view a manual and its sections
 
   include GdsApi::TestHelpers::ContentStore
+  include GovukAbTesting::RspecHelpers
+
+  context "when under TaskListHeader A/B testing" do
+    scenario "viewing The Highway Code manual under A variant" do
+      stub_fake_manual(base_path: '/guidance/the-highway-code')
+
+      with_variant TaskListHeader: "A" do
+        visit_manual('the-highway-code')
+
+        expect(page).to_not have_text('Learn to drive a car: step by step')
+      end
+    end
+
+    scenario "viewing The Highway Code manual under B variant" do
+      stub_fake_manual(base_path: '/guidance/the-highway-code')
+
+      with_variant TaskListHeader: "B" do
+        visit_manual('the-highway-code')
+
+        expect(page).to have_text('Learn to drive a car: step by step')
+      end
+    end
+  end
 
   scenario "viewing any manual" do
     stub_hmrc_manual
