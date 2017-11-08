@@ -5,7 +5,15 @@
     title: presented_manual.full_title,
   )
 %>
-<% if presented_manual.beta? %>
+
+<% if show_tasklist_header? %>
+  <%= render "govuk_component/task_list_header", {
+    title: "Learn to drive a car: step by step",
+    path: "/learn-to-drive-a-car"
+  } %>
+<% end %>
+
+<% if presented_manual.beta? && !show_tasklist_header? %>
   <div class='manual-in-beta'>
     <%= render partial: 'govuk_component/beta_label' %>
   </div>

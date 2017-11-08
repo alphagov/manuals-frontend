@@ -16,9 +16,9 @@ module ManualHelpers
     ).fetch("links")
   end
 
-  def stub_fake_manual(public_updated_at: "2014-06-20T10:17:29+01:00", first_published_at: "2009-02-20T15:31:09+00:00")
+  def stub_fake_manual(base_path: "/guidance/my-manual-about-burritos", public_updated_at: "2014-06-20T10:17:29+01:00", first_published_at: "2009-02-20T15:31:09+00:00")
     manual_json = {
-      base_path: "/guidance/my-manual-about-burritos",
+      base_path: base_path,
       title: "My manual about Burritos",
       description: "Burrito means little donkey",
       format: "manual",
@@ -33,12 +33,12 @@ module ManualHelpers
               {
                 title: "Fillings",
                 description: "This section details the fillings.",
-                base_path: "/guidance/my-manual-about-burritos/fillings",
+                base_path: "#{base_path}/fillings",
               },
               {
                 title: "This is the section on hot sauce",
                 description: "Hot sauces are good",
-                base_path: "/guidance/my-manual-about-burritos/this-is-the-section-on-hot-sauce",
+                base_path: "#{base_path}/this-is-the-section-on-hot-sauce",
               }
             ]
           }
@@ -52,13 +52,13 @@ module ManualHelpers
         ],
         change_notes: [
           {
-            base_path: "/guidance/my-manual-about-burritos/fillings",
+            base_path: "#{base_path}/fillings",
             title: "Fillings",
             change_note: "Added section on fillings",
             published_at: "2014-06-20T09:17:27Z"
           },
           {
-            base_path: "/guidance/my-manual-about-burritos/this-is-the-section-on-hot-sauce",
+            base_path: "#{base_path}/this-is-the-section-on-hot-sauce",
             title: "This is the section on hot sauce",
             change_note: "Added section on hot sauce",
             published_at: "2014-06-20T09:17:27Z"
@@ -67,7 +67,7 @@ module ManualHelpers
       }
     }
 
-    content_store_has_item("/guidance/my-manual-about-burritos", manual_json)
+    content_store_has_item(base_path, manual_json)
   end
 
   def stub_hmrc_manual(manual_id = "inheritance-tax-manual", title = "Inheritance Tax Manual")

@@ -10,6 +10,10 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield :extra_head_content %>
+
+  <% if tasklist_header_ab_test_applies? %>
+    <%= tasklist_header_variant.analytics_meta_tag.html_safe %>
+  <% end %>
 </head>
 <body>
   <div id="global-breadcrumb" class="header-context"></div>

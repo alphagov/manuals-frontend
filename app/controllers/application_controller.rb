@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :slimmer_headers
 
+  def show_tasklist_header?
+    if defined?(should_show_tasklist_header?)
+      should_show_tasklist_header?
+    end
+  end
+  helper_method :show_tasklist_header?
+
 private
 
   def slimmer_headers
