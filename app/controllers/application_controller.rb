@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   include Slimmer::GovukComponents
 
-  before_filter :slimmer_headers
+  before_action :slimmer_headers
 
   def show_tasklist_header?
     if defined?(should_show_tasklist_header?)
