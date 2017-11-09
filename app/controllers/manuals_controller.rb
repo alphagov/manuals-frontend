@@ -49,11 +49,11 @@ private
   end
 
   def error_not_found
-    render status: :not_found, text: "404 error not found"
+    head :not_found
   end
 
   def error_gone
-    render status: :gone, text: "410 gone"
+    head :gone
   end
 
   def content_store_manual

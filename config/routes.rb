@@ -1,4 +1,4 @@
-ManualsFrontend::Application.routes.draw do
+Rails.application.routes.draw do
   scope constraints: { prefix: /(guidance|hmrc-internal-manuals)/, format: 'html' } do
     get '/:prefix/:manual_id', to: 'manuals#index'
     get '/:prefix/:manual_id/updates', to: 'manuals#updates'
