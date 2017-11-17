@@ -11,7 +11,7 @@ module ManualsFrontend
 
     config.load_defaults 5.1
 
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.eager_load_paths << "#{config.root}/lib"
 
     config.assets.prefix = '/manuals-frontend'
 
