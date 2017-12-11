@@ -12,7 +12,7 @@ gem 'unicorn', '4.8.2'
 gem 'plek', '1.11.0'
 gem 'gds-api-adapters', '~> 49.0'
 
-gem 'logstasher', '0.6.2'
+gem 'logstasher', '1.2.2'
 
 gem 'govuk_navigation_helpers', '6.3.0'
 gem 'govuk_app_config', '~> 0.3.0'
