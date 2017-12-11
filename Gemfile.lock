@@ -114,9 +114,10 @@ GEM
     launchy (2.4.3)
       addressable (~> 2.3)
     link_header (0.0.8)
-    logstash-event (1.1.5)
-    logstasher (0.6.2)
-      logstash-event (~> 1.1.0)
+    logstash-event (1.2.02)
+    logstasher (1.2.2)
+      activesupport (>= 4.0)
+      logstash-event (~> 1.2.0)
       request_store
     loofah (2.1.1)
       crass (~> 1.0.2)
@@ -296,7 +297,7 @@ DEPENDENCIES
   govuk_navigation_helpers (= 6.3.0)
   jasmine-rails
   launchy
-  logstasher (= 0.6.2)
+  logstasher (= 1.2.2)
   plek (= 1.11.0)
   poltergeist (= 1.5.0)
   pry-byebug
