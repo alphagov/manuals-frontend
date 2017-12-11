@@ -32,7 +32,7 @@ end
 
 group :test do
   gem "webmock", "~> 2.3.0"
-  gem "poltergeist", "1.5.0"
+  gem "poltergeist", "1.16.0"
   gem "launchy"
   gem "govuk-content-schema-test-helpers", "~> 1.5"
 end
