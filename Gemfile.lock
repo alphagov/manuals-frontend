@@ -91,8 +91,8 @@ GEM
     govuk_app_config (0.3.0)
       sentry-raven (~> 2.6.3)
       statsd-ruby (~> 1.4.0)
-    govuk_frontend_toolkit (1.2.0)
-      rails (>= 3.1.0)
+    govuk_frontend_toolkit (7.2.0)
+      railties (>= 3.1.0)
       sass (>= 3.2.0)
     govuk_navigation_helpers (6.3.0)
       gds-api-adapters (>= 43.0)
@@ -291,7 +291,7 @@ DEPENDENCIES
   govuk-lint
   govuk_ab_testing
   govuk_app_config (~> 0.3.0)
-  govuk_frontend_toolkit (= 1.2.0)
+  govuk_frontend_toolkit (= 7.2.0)
   govuk_navigation_helpers (= 6.3.0)
   jasmine-rails
   launchy
