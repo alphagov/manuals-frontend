@@ -14,7 +14,7 @@ gem 'gds-api-adapters', '~> 49.0'
 
 gem 'logstasher', '0.6.2'
 
-gem 'govuk_navigation_helpers', '7.4.0'
+gem 'govuk_navigation_helpers', '7.5.1'
 gem 'govuk_app_config', '~> 0.3.0'
 gem 'govuk_ab_testing'
 
