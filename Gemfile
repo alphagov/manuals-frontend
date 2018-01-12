@@ -10,7 +10,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unicorn', '5.4.0'
 
 gem 'plek', '2.0.0'
-gem 'gds-api-adapters', '~> 50.8'
+gem 'gds-api-adapters', '~> 50.9'
 
 gem 'logstasher', '0.6.2'
 
