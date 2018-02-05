@@ -8,7 +8,7 @@ gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 
 gem 'plek', '2.0.0'
-gem 'gds-api-adapters', '~> 51.1'
+gem 'gds-api-adapters', '~> 51.2'
 
 gem 'govuk_publishing_components', '~> 4.1.0'
 gem 'govuk_navigation_helpers', '8.2.0'
