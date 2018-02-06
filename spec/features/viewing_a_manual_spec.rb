@@ -158,6 +158,13 @@ feature "Viewing manuals and sections" do
     expect(page.status_code).to eq(404)
   end
 
+  scenario "visiting a withdrawn section" do
+    stub_fake_manual base_path: "/guidance/my-manual-about-burritos"
+    stub_redirected_section "my-manual-about-burritos", "rolls-are-better"
+    visit_manual_section "my-manual-about-burritos", "rolls-are-better"
+    expect(current_url).to eq("http://www.dev.gov.uk/guidance/my-manual-about-burritos")
+  end
+
   scenario "visiting a withdrawn manual's updates" do
     slug = "/guidance/a-withdrawn-manual"
     stub_withdrawn_manual(slug)

@@ -214,6 +214,44 @@ module ManualHelpers
     content_store_has_item("/hmrc-internal-manuals/#{manual_id}/#{section_id}", section_json)
   end
 
+  def stub_redirected_section(manual_id, section_id)
+    document = {
+      analytics_identifier: nil,
+      base_path: "/guidance/#{manual_id}/#{section_id}",
+      content_id: nil,
+      content_purpose_document_supertype: "",
+      document_type: "redirect",
+      email_document_supertype: "",
+      first_published_at: nil,
+      government_document_supertype: "",
+      locale: "en",
+      navigation_document_supertype: "",
+      need_ids: [],
+      phase: "live",
+      public_updated_at: "2018-02-06T08:46:36.000+00:00",
+      publishing_app: "manuals-publisher",
+      rendering_app: nil,
+      schema_name: "redirect",
+      search_user_need_document_supertype: "",
+      title: nil,
+      updated_at: "2018-02-06T08:46:37.819Z",
+      user_journey_document_supertype: "",
+      withdrawn_notice: {},
+      publishing_request_id: nil,
+      links: {},
+      description: nil,
+      details: {},
+      redirects: [
+        {
+          path: "/guidance/#{manual_id}/#{section_id}",
+          type: "exact",
+          destination: "/guidance/#{manual_id}"
+        }
+      ]
+    }
+    content_store_has_item("/guidance/#{manual_id}/#{section_id}", document)
+  end
+
   def stub_withdrawn_manual(base_path)
     gone_json = {
       base_path: base_path,
