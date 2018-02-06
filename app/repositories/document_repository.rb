@@ -31,8 +31,7 @@ private
   end
 
   def fetch_parent_for_document(document)
-    fetch_content_item(
-      extract_parent_base_path_from_document(document)
-    )
+    parent = extract_parent_base_path_from_document(document)
+    fetch_content_item(parent) if parent
   end
 end

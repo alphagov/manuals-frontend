@@ -45,7 +45,18 @@ private
   end
 
   def ensure_document_is_found
-    error_not_found unless document_from_repository.present?
+    if document_from_repository.blank?
+      error_not_found
+    elsif document_from_repository["document_type"] == "redirect"
+      error_redirect
+    end
+  end
+
+  def error_redirect
+    destination, status_code = GdsApi::ContentStore.redirect_for_path(
+      document_from_repository, request.path, request.query_string
+    )
+    redirect_to destination, status: status_code
   end
 
   def error_not_found
