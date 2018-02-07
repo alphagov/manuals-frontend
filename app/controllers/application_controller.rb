@@ -10,12 +10,15 @@ class ApplicationController < ActionController::Base
 
   before_action :slimmer_headers
 
-  def show_tasklist_header?
-    if defined?(should_show_tasklist_header?)
-      should_show_tasklist_header?
-    end
+  def current_step_nav
+    @step_nav ||= GovukNavigationHelpers::StepNavContent.current_step_nav(request.path)
   end
-  helper_method :show_tasklist_header?
+  helper_method :current_step_nav
+
+  def show_step_nav?
+    current_step_nav && current_step_nav.show_step_nav?
+  end
+  helper_method :show_step_nav?
 
 private
 

@@ -8,25 +8,21 @@ feature "Viewing manuals and sections" do
   include GdsApi::TestHelpers::ContentStore
   include GovukAbTesting::RspecHelpers
 
-  context "when under TaskListHeader A/B testing" do
-    scenario "viewing The Highway Code manual under A variant" do
-      stub_fake_manual(base_path: '/guidance/the-highway-code')
+  context "step by step navigation" do
+    scenario "viewing something not in the step by step navigation" do
+      stub_fake_manual(base_path: '/guidance/the-green-cross-code')
 
-      with_variant TaskListHeader: "A" do
-        visit_manual('the-highway-code')
+      visit_manual('the-green-cross-code')
 
-        expect(page).to_not have_text('Learn to drive a car: step by step')
-      end
+      expect(page).to_not have_text('Learn to drive a car: step by step')
     end
 
-    scenario "viewing The Highway Code manual under B variant" do
+    scenario "viewing The Highway Code manual (as it's in the step navigation)" do
       stub_fake_manual(base_path: '/guidance/the-highway-code')
 
-      with_variant TaskListHeader: "B" do
-        visit_manual('the-highway-code')
+      visit_manual('the-highway-code')
 
-        expect(page).to have_text('Learn to drive a car: step by step')
-      end
+      expect(page).to have_text('Learn to drive a car: step by step')
     end
   end
 
