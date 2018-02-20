@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1.4'
-gem 'slimmer', '~> 11.1.1'
+gem 'slimmer', '~> 12.0.0'
 
 gem 'govuk_frontend_toolkit', '7.4.1'
 gem 'sass-rails', '~> 5.0.6'
@@ -10,7 +10,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'plek', '2.1.1'
 gem 'gds-api-adapters', '~> 51.2'
 
-gem 'govuk_publishing_components', '~> 5.0'
+gem 'govuk_publishing_components', '~> 5.1.2'
 gem 'govuk_navigation_helpers', '9.0'
 gem 'govuk_app_config', '~> 1.3.0'
 gem 'govuk_ab_testing'
