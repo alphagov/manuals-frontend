@@ -12,7 +12,7 @@ gem 'gds-api-adapters', '~> 51.3'
 
 gem 'govuk_publishing_components', '~> 5.2.2'
 gem 'govuk_navigation_helpers', '9.0'
-gem 'govuk_app_config', '~> 1.3.1'
+gem 'govuk_app_config', '~> 1.3.2'
 gem 'govuk_ab_testing'
 
 group :development do
