@@ -6,14 +6,11 @@
   )
 %>
 
-<% if show_step_nav? %>
-  <%= render "govuk_publishing_components/components/step_by_step_nav_header", {
-    title: current_step_nav.title,
-    path: current_step_nav.base_path
-  } %>
+<% if step_nav_helper.show_header? %>
+  <%= render "govuk_publishing_components/components/step_by_step_nav_header", step_nav_helper.header %>
 <% end %>
 
-<% if presented_manual.beta? && !show_step_nav? %>
+<% if presented_manual.beta? %>
   <div class='manual-in-beta'>
     <%= render partial: 'govuk_component/beta_label' %>
   </div>
