@@ -10,7 +10,7 @@ feature "Viewing manuals and sections" do
 
   context "step by step navigation" do
     scenario "viewing something not in the step by step navigation" do
-      stub_fake_manual(base_path: '/guidance/the-green-cross-code')
+      stub_fake_manual(base_path: '/guidance/the-green-cross-code', include_step_nav: false)
 
       visit_manual('the-green-cross-code')
 
@@ -18,7 +18,7 @@ feature "Viewing manuals and sections" do
     end
 
     scenario "viewing The Highway Code manual (as it's in the step navigation)" do
-      stub_fake_manual(base_path: '/guidance/the-highway-code')
+      stub_fake_manual(base_path: '/guidance/the-highway-code', include_step_nav: true)
 
       visit_manual('the-highway-code')
 
