@@ -10,12 +10,6 @@ class ApplicationController < ActionController::Base
 
   before_action :slimmer_headers
 
-  def step_nav_helper
-    @step_nav_helper ||= GovukPublishingComponents::StepNavHelper.new(content_store_manual,
-      request.path)
-  end
-  helper_method :step_nav_helper
-
 private
 
   def slimmer_headers

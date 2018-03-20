@@ -6,10 +6,6 @@
   )
 %>
 
-<% if step_nav_helper.show_header? %>
-  <%= render "govuk_publishing_components/components/step_by_step_nav_header", step_nav_helper.header %>
-<% end %>
-
 <% if presented_manual.beta? %>
   <div class='manual-in-beta'>
     <%= render partial: 'govuk_component/beta_label' %>
