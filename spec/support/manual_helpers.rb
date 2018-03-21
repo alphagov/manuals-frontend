@@ -16,13 +16,7 @@ module ManualHelpers
     ).fetch("links")
   end
 
-  def example_step_nav_links
-    JSON.parse(
-      GovukContentSchemaTestHelpers::Examples.new.get('manual', 'manual-with-step-navs')
-    ).fetch("links")
-  end
-
-  def stub_fake_manual(base_path: "/guidance/my-manual-about-burritos", include_step_nav: false, public_updated_at: "2014-06-20T10:17:29+01:00", first_published_at: "2009-02-20T15:31:09+00:00")
+  def stub_fake_manual(base_path: "/guidance/my-manual-about-burritos", public_updated_at: "2014-06-20T10:17:29+01:00", first_published_at: "2009-02-20T15:31:09+00:00")
     manual_json = {
       base_path: base_path,
       title: "My manual about Burritos",
@@ -30,7 +24,7 @@ module ManualHelpers
       format: "manual",
       first_published_at: first_published_at,
       public_updated_at: public_updated_at,
-      links: include_step_nav ? example_step_nav_links : example_links,
+      links: example_links,
       details: {
         child_section_groups: [
           {
