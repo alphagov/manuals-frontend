@@ -334,7 +334,7 @@ DEPENDENCIES
   plek (= 2.1.1)
   poltergeist (= 1.17.0)
   pry-byebug
-  rails (~> 5.1.4)
+  rails (~> 5.1.6)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0.6)
   slimmer (~> 12.0.0)
