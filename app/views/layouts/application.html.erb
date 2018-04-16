@@ -9,6 +9,7 @@
   <%= stylesheet_link_tag "print", media: "print" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= render partial: 'govuk_component/analytics_meta_tags', locals: { content_item: @content_store_manual } %>
   <%= yield :extra_head_content %>
 </head>
 <body>
@@ -22,7 +23,7 @@
         </div>
       </div>
     </main>
-    <%= render 'govuk_publishing_components/components/feedback' %> 
+    <%= render 'govuk_publishing_components/components/feedback' %>
   </div>
 </body>
 </html>
