@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.0'
 gem 'slimmer', '~> 12.0.0'
 
 gem 'govuk_frontend_toolkit', '7.4.2'
