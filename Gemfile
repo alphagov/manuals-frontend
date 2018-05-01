@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.2.0'
 gem 'slimmer', '~> 12.1.0'
 
-gem 'govuk_frontend_toolkit', '7.4.2'
+gem 'govuk_frontend_toolkit', '7.5.0'
 gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 
