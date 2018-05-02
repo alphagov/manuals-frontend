@@ -27,7 +27,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "webmock", "~> 3.4.0"
+  gem "webmock", "~> 3.4.1"
   gem "poltergeist", "1.17.0"
   gem "launchy"
   gem "govuk-content-schema-test-helpers", "~> 1.6"
