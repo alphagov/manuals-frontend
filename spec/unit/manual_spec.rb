@@ -18,6 +18,10 @@ RSpec.describe Manual do
     it 'does not think it is a beta manual' do
       expect(subject.beta?).to eq false
     end
+
+    it 'suffixes the full title' do
+      expect(subject.full_title).to eq('My manual about Burritos - Guidance')
+    end
   end
 
   context 'for an HMRC manual' do
@@ -32,6 +36,12 @@ RSpec.describe Manual do
 
     it 'knows it is a beta manual' do
       expect(subject.beta?).to eq true
+    end
+
+    context '#full_title' do
+      it 'uses the correct suffix' do
+        expect(subject.full_title).to eq('Inheritance Tax Manual - HMRC internal manual')
+      end
     end
   end
 

@@ -19,10 +19,13 @@ class Manual
   end
 
   def full_title
+    title = content_store_manual['title'] || ''
+    title += ' - ' unless title.blank?
+
     if hmrc?
-      content_store_manual['title'] + ' - HMRC internal manual'
+      title + 'HMRC internal manual'
     else
-      content_store_manual['title'] + ' - Guidance'
+      title + 'Guidance'
     end
   end
 
