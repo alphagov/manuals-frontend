@@ -1,7 +1,5 @@
 class DocumentRepository
-  def fetch(base_path)
-    document = fetch_content_item(base_path)
-
+  def fetch(document)
     if document
       parent = fetch_parent_for_document(document)
 
