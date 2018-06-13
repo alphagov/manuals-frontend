@@ -73,6 +73,14 @@ private
     end
   end
 
+  def content_store_section
+    @content_store_section ||= begin
+      Services.content_store.content_item(document_base_path)
+    rescue GdsApi::ContentStore::ItemNotFound
+      nil
+    end
+  end
+
   def manual
     @manual = Manual.new(content_store_manual)
   end
@@ -87,7 +95,7 @@ private
 
   def document_from_repository
     @document_from_repository ||=
-      DocumentRepository.new.fetch(document_base_path)
+      DocumentRepository.new.fetch(content_store_section)
   end
 
   def document_base_path
