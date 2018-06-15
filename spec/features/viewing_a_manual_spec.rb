@@ -102,9 +102,7 @@ feature "Viewing manuals and sections" do
     visit_hmrc_manual_section "inheritance-tax-manual", "eim15000"
 
     # HTML in the body
-    expect_component('govspeak') do |govspeak|
-      expect(govspeak).to have_content("Sections 386-400 ITEPA 2003")
-    end
+    expect(page).to have_content("Sections 386-400 ITEPA 2003")
   end
 
   scenario "HMRC manual section IDs are displayed in the title" do
