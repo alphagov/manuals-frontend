@@ -8,7 +8,7 @@ class Section
   end
 
   def body
-    section['body']
+    section['body'].html_safe
   end
 
   def section_id

@@ -2,9 +2,7 @@
   <div class='manual-body'>
     <% if presented_manual.summary.present? %><p class='summary'><%= presented_manual.summary %></p><% end %>
     <% if presented_manual.body.present? %>
-      <%= render partial: 'govuk_component/govspeak', locals: {
-        content: presented_manual.body
-      } %>
+      <%= render 'govuk_publishing_components/components/govspeak', content: presented_manual.body %>
     <% end %>
     <% presented_manual.section_groups.each do | group | %>
       <% if presented_manual.hmrc? %>
