@@ -98,11 +98,6 @@ module AppHelpers
     end
   end
 
-  def expect_page_to_contain_navigation_link(title, url)
-    expect(page).to have_content(title)
-    expect(page).to have_content(url)
-  end
-
   def expect_component(component_type, in_scope: nil)
     component_selector = shared_component_selector(component_type)
     component_selector = "#{in_scope} #{component_selector}" if in_scope.present?
