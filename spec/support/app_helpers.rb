@@ -1,11 +1,8 @@
 module AppHelpers
   def view_manual_change_notes
     updates_path = "#{current_path}/updates"
-    expect_component("metadata", in_scope: 'header') do |metadata|
-      expect(metadata).to have_key("other")
-      expect(metadata["other"]).to have_key("Updated")
-      updated_metadata = metadata.fetch("other").fetch("Updated")
-      expect(updated_metadata).to have_link("see all updates", href: updates_path)
+    within '.gem-c-metadata' do
+      expect(page).to have_link("see all updates", href: updates_path)
     end
     visit updates_path
   end
@@ -50,11 +47,8 @@ module AppHelpers
   end
 
   def expect_manual_update_date_to_be(date)
-    expect_component("metadata", in_scope: 'header') do |metadata|
-      expect(metadata).to have_key("other")
-      expect(metadata["other"]).to have_key("Updated")
-      updated_metadata = metadata.fetch("other").fetch("Updated")
-      expect(updated_metadata).to have_selector('time', text: date)
+    within '.gem-c-metadata' do
+      expect(page).to have_selector('time', text: date)
     end
   end
 
@@ -84,10 +78,8 @@ module AppHelpers
   end
 
   def expect_page_to_be_affiliated_with_org(options)
-    expect_component("metadata", in_scope: "header") do |metadata|
-      expect(metadata).to have_key("from")
-      expect(metadata["from"].length).to eq(1)
-      expect(metadata["from"].first).to have_link(options[:title], href: "https://www.gov.uk/government/organisations/#{options[:slug]}")
+    within '.gem-c-metadata' do
+      expect(page).to have_link(options[:title], href: "https://www.gov.uk/government/organisations/#{options[:slug]}")
     end
   end
 

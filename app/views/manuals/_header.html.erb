@@ -8,7 +8,7 @@
     <% end %>
 
     <h1 id="manual-title"><%= presented_manual.title %></h1>
-    <%= render partial: 'govuk_component/metadata', locals: presented_manual.metadata %>
+    <%= render 'govuk_publishing_components/components/metadata', presented_manual.metadata %>
 
     <div class="in-manual-search">
       <form action="/search" >
