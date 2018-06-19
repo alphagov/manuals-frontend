@@ -15,7 +15,7 @@
       <% end %>
       </div>
 
-      <%= render partial: 'govuk_component/previous_and_next_navigation', locals: previous_and_next_links(presented_document) %>
+      <%= render 'govuk_publishing_components/components/previous_and_next_navigation', previous_and_next_links(presented_document) %>
 
     <% else %>
       <% if presented_document.body.present? %>

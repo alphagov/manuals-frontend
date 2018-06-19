@@ -75,8 +75,8 @@ feature "Viewing manuals and sections" do
     expect_page_to_be_affiliated_with_org(title: "HM Revenue & Customs",
                                           slug: "hm-revenue-customs")
 
-    expect_page_to_contain_navigation_link("Previous page", "/hmrc-internal-manuals/inheritance-tax-manual/eim00100")
-    expect_page_to_contain_navigation_link("Next page", "/hmrc-internal-manuals/inheritance-tax-manual/eim00900")
+    expect(page).to have_link("Previous page", href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00100")
+    expect(page).to have_link("Next page", href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00900")
   end
 
   scenario "viewing a sub-sub section" do
@@ -91,8 +91,8 @@ feature "Viewing manuals and sections" do
     expect(page).to have_link("EIM00500",
                               href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500")
 
-    expect_page_to_contain_navigation_link("Previous page", "/hmrc-internal-manuals/inheritance-tax-manual/eim00510")
-    expect_page_to_contain_navigation_link("Next page", "/hmrc-internal-manuals/inheritance-tax-manual/eim00530")
+    expect(page).to have_link("Previous page", href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00510")
+    expect(page).to have_link("Next page", href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00530")
   end
 
   scenario "visiting a manual section with a body" do
