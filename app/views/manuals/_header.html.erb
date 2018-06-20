@@ -1,7 +1,5 @@
 <% if presented_manual.beta? %>
-  <div class='manual-in-beta'>
-    <%= render 'govuk_publishing_components/components/phase_banner', phase: "beta" %>
-  </div>
+  <%= render 'govuk_publishing_components/components/phase_banner', phase: "beta" %>
 <% end %>
 
 <%= render 'govuk_publishing_components/components/contextual_breadcrumbs', content_item: @content_store_manual %>
