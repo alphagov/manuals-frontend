@@ -1,3 +1,7 @@
+<% if presented_manual.beta? %>
+  <%= render 'govuk_publishing_components/components/phase_banner', phase: "beta" %>
+<% end %>
+
 <%= render 'govuk_publishing_components/components/contextual_breadcrumbs', content_item: @content_store_manual %>
 
 <header aria-labelledby="manual-title" class="<%= presented_manual.hmrc? ? 'hmrc' : nil %>">

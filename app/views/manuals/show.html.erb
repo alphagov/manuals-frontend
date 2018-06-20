@@ -5,11 +5,6 @@
     title: presented_document.full_title,
   )
 %>
-<% if presented_manual.beta? %>
-  <div class='manual-in-beta'>
-    <%= render partial: 'govuk_component/beta_label' %>
-  </div>
-<% end %>
 <%= render 'header', presented_manual: presented_manual %>
 <%=
   render(
