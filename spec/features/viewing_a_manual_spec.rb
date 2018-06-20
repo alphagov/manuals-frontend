@@ -33,13 +33,13 @@ feature "Viewing manuals and sections" do
   scenario "viewing a non-HMRC manual" do
     stub_fake_manual
     visit_manual "my-manual-about-burritos"
-    expect_no_component('beta_label')
+    expect(page).not_to have_selector('.gem-c-phase-banner')
   end
 
   scenario "viewing an HMRC manual" do
     stub_hmrc_manual
     visit_hmrc_manual "inheritance-tax-manual"
-    expect_component('beta_label')
+    expect(page).to have_selector('.gem-c-phase-banner')
   end
 
   scenario "viewing a manual with a description" do
