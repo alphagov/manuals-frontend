@@ -21,9 +21,7 @@
       <% if presented_document.body.present? %>
         <div class='js-collapsible-collection subsection-collection' data-collapse-depth=<%= presented_document.collapse_depth %>>
           <div class='collapsible-subsections'>
-            <%= render 'govuk_publishing_components/components/govspeak',
-              content: presented_document.body,
-              rich_govspeak: true %>
+            <%= render 'govuk_publishing_components/components/govspeak', content: presented_document.body %>
           </div>
         </div>
       <% end %>
