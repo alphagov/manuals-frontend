@@ -23,7 +23,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'govuk-lint'
   gem 'jasmine'
-  gem "rspec-rails", "~> 3.0"
+  gem "rspec-rails", "~> 3.8"
 end
 
 group :test do
