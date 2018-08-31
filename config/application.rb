@@ -8,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module ManualsFrontend
   class Application < Rails::Application
-
     config.load_defaults 5.1
 
     config.eager_load_paths << "#{config.root}/lib"
