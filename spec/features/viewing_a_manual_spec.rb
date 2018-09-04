@@ -109,7 +109,7 @@ feature "Viewing manuals and sections" do
     stub_hmrc_manual
     visit_hmrc_manual "inheritance-tax-manual"
 
-    expect_page_to_include_section("EIM00100 About this manual")
+    expect_page_to_include_section(/EIM00100\WAbout this manual/)
     expect_page_to_include_section("EIM00500 Inheritance tax",
                                    href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500")
   end
