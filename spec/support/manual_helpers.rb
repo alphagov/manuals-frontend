@@ -202,7 +202,7 @@ module ManualHelpers
       public_updated_at: "2014-01-23T00:00:00+01:00",
       links: example_hmrc_links,
       details: {
-        body: 'On this page:<br><br><a href="/hmrc-internal-manuals/#{manual_id}/#{section_id}#EIM15010#IDAZR1YH">Sections 386-400 ITEPA 2003]</a><br>',
+        body: "On this page:<br><br><a href=\"/hmrc-internal-manuals/#{manual_id}/#{section_id}#EIM15010#IDAZR1YH\">Sections 386-400 ITEPA 2003]</a><br>",
         section_id: section_id,
         child_section_groups: [],
         manual: {

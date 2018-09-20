@@ -55,7 +55,7 @@ RSpec.describe Manual do
       let(:public_updated_at) { "2014-06-20T10:17:29+01:00" }
 
       it "parses the public_updated_at to return a Date object" do
-        expect(subject.updated_at).to eq Date.new(2014, 06, 20)
+        expect(subject.updated_at).to eq Date.new(2014, 6, 20)
       end
     end
 
@@ -78,7 +78,7 @@ RSpec.describe Manual do
       let(:first_published_at) { "2014-06-20T10:17:29+01:00" }
 
       it "parses the first_published_at to return a Date object" do
-        expect(subject.first_published_at).to eq Date.new(2014, 06, 20)
+        expect(subject.first_published_at).to eq Date.new(2014, 6, 20)
       end
     end
 
