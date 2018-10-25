@@ -86,7 +86,7 @@ GEM
     faraday (0.15.3)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
-    gds-api-adapters (53.1.0)
+    gds-api-adapters (53.2.0)
       addressable
       link_header
       null_logger
@@ -343,7 +343,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  gds-api-adapters (~> 53.1)
+  gds-api-adapters (~> 53.2)
   govuk-content-schema-test-helpers (~> 1.6)
   govuk-lint
   govuk_ab_testing
