@@ -17,27 +17,11 @@ main {
   display: block;
 }
 
-header .gem-c-metadata {
-  color: $white;
-}
-
 .manuals-frontend-body {
   padding-bottom: $gutter;
 
   header {
     background: $govuk-blue;
-
-    // FIXME this is to fix link colours in the metadata component on a
-    // blue background. This can be removed once the component has been
-    // updated to accommodate such a situation
-    .gem-c-metadata a,
-    .gem-c-metadata a:link,
-    .gem-c-metadata a:hover,
-    .gem-c-metadata a:active,
-    .gem-c-metadata a:visited {
-      color: govuk-colour('white');
-    }
-
 
     &.hmrc {
       background: $hm-revenue-customs;

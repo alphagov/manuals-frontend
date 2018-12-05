@@ -25,7 +25,8 @@ class ManualPresenter < SimpleDelegator
       first_published: @view_context.marked_up_date(first_published_at),
       other: {
         "Updated" => "#{updated_at}, #{@view_context.link_to 'see all updates', updates_url}",
-      }
+      },
+      inverse: true
     }
   end
 end
