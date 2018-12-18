@@ -2,3 +2,9 @@ AllCops:
   TargetRubyVersion: 2.5
   Exclude:
     - 'lib/tasks/cucumber.rake' # Automatically generated
+
+# This doesn't quite work with rescue in begin blocks, resulting in
+# odd indentation, so disable it for now.
+Layout/RescueEnsureAlignment:
+  Exclude:
+    - 'app/controllers/manuals_controller.rb'
