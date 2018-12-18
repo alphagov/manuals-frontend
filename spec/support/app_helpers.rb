@@ -58,6 +58,7 @@ module AppHelpers
 
   def expect_manual_title_to_be(manual_title)
     raise ArgumentError, "You probably didn't mean to check for a blank manual title" if manual_title.blank?
+
     within('header h1') do
       expect(page).to have_content(manual_title)
     end
@@ -65,6 +66,7 @@ module AppHelpers
 
   def expect_section_title_to_be(section_title)
     raise ArgumentError, "You probably didn't mean to check for a blank section title" if section_title.blank?
+
     within('h1.section-title') do
       expect(page).to have_content(section_title)
     end
@@ -72,6 +74,7 @@ module AppHelpers
 
   def expect_a_child_section_group_title_of(child_section_group_title)
     raise ArgumentError, "You probably didn't mean to check for a blank child section group title" if child_section_group_title.blank?
+
     within('.subsection-collection') do
       expect(page).to have_content(child_section_group_title)
     end
