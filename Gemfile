@@ -12,7 +12,7 @@ gem 'plek', '2.1.1'
 
 gem 'govuk_ab_testing'
 gem 'govuk_app_config', '~> 1.11.2'
-gem 'govuk_publishing_components', '~> 13.6.1'
+gem 'govuk_publishing_components', '~> 13.7.0'
 
 group :development do
   gem 'better_errors'
