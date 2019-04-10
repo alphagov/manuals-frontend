@@ -15,7 +15,7 @@
     <%= render 'govuk_publishing_components/components/metadata', presented_manual.metadata %>
 
     <div class="in-manual-search">
-      <form action="/search" >
+      <form action="/search/all" >
         <label for="search-box">Search this manual</label>
         <input type='hidden' name="filter_manual[]" value="<%= presented_manual.url %>">
         <input id="search-box" class="in-manual-search-box" type="text" name="q"/>
