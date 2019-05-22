@@ -96,7 +96,7 @@ describe('CollapsibleCollection', function(){
       var html = $(collectionsFromBlobString);
       expect(html.find('a.collection-control').length).toBe(0);
       var collection = new GOVUK.CollapsibleCollection({$el:html});
-      expect(collection.$container.find('.js-collection-controls a').length).toBe(2);
+      expect(collection.$container.find('.js-collection-controls button').length).toBe(2);
     });
 
     it('should add a new object to collapsibles hash with the id from the section for blobs', function(){
