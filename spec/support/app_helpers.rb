@@ -92,6 +92,17 @@ module AppHelpers
       expect(page).to have_content(change_note)
     end
   end
+
+  def expect_page_to_have_machine_readable_metadata(title)
+    schema_sections = page.find_all("script[type='application/ld+json']", visible: false)
+    schemas = schema_sections.map { |section| JSON.parse(section.text(:all)) }
+
+    org_schema = schemas.detect { |schema| schema["@type"] == "Article" }
+    expect(org_schema["headline"]).to eq title
+
+    tag = "link[rel='canonical']"
+    expect(page).to have_css(tag, visible: false)
+  end
 end
 
 RSpec.configuration.include AppHelpers, type: :feature
