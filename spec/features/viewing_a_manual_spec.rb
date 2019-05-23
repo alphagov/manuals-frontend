@@ -28,6 +28,8 @@ feature "Viewing manuals and sections" do
 
     expect_page_to_be_affiliated_with_org(title: "HM Revenue & Customs",
                                           slug: "hm-revenue-customs")
+
+    expect_page_to_have_machine_readable_metadata("Inheritance Tax Manual")
   end
 
   scenario "viewing a non-HMRC manual" do

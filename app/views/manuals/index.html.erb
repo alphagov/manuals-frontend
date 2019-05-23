@@ -6,6 +6,10 @@
   )
 %>
 
+<%= render 'govuk_publishing_components/components/machine_readable_metadata',
+           schema: :article,
+           content_item: content_item %>
+
 <%= render 'header', presented_manual: presented_manual %>
 <%= render 'manual_breadcrumbs', presented_manual: presented_manual %>
 <%= render 'manual', presented_manual: presented_manual %>
