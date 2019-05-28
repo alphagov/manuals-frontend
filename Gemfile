@@ -11,7 +11,7 @@ gem 'gds-api-adapters', '~> 59.4'
 gem 'plek', '2.1.1'
 
 gem 'govuk_ab_testing'
-gem 'govuk_app_config', '~> 1.16.1'
+gem 'govuk_app_config', '~> 1.16.3'
 gem 'govuk_publishing_components', '~> 16.26.0'
 
 group :development do
