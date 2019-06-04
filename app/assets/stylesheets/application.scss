@@ -13,6 +13,16 @@
 $manual-search-button-colour: #0b0c0c;
 $manual-search-button-border-colour: #222;
 
+%common-button-styles {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 100%;
+  border-width: 0;
+  color: $govuk-blue;
+  background: none;
+  cursor: pointer;
+}
+
 main {
   display: block;
 }
@@ -278,8 +288,15 @@ main {
     margin: $gutter 0;
     position: relative;
 
-    a {
-      text-decoration: none;
+    button {
+      @extend %common-button-styles;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 0;
+      padding-bottom: 0;
+      padding-left: 0;
+      text-align: left;
     }
   }
 
@@ -312,8 +329,9 @@ main {
           display: inline-block;
         }
 
-        a {
+        button {
           @include core-16;
+          @extend %common-button-styles;
           padding: 0  5px 0 5px;
           display: inline-block;
 

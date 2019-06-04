@@ -18,8 +18,8 @@
 
     if(this.$sections.length > 0) {
       this.$sections.each(this.initCollapsible.bind(this));
-      this.$openAll = $("<a href='#' aria-hidden=true>Open all</a>");
-      this.$closeAll = $("<a href='#' aria-hidden=true>Close all</a>");
+      this.$openAll = $("<button>Open all</button>");
+      this.$closeAll = $("<button>Close all</button>");
       this.addControls();
 
       this.closeAll();
@@ -65,7 +65,7 @@
     var subsectionHeaders = this.$container.find(this.collapseSelector);
     subsectionHeaders.each(function() {
       var $header = $(this);
-      $header.addClass('js-subsection-title').wrapInner('<a role="button" href="#' + $header.attr('id') + '"></a>');
+      $header.addClass('js-subsection-title').wrapInner('<button class="js-section-button" aria-expanded="false"></button>');
     });
 
     subsectionHeaders.each(function(index, el){
@@ -96,30 +96,24 @@
     return selector;
   };
 
-  CollapsibleCollection.prototype.closeAll = function closeAll(event){
+  CollapsibleCollection.prototype.closeAll = function closeAll(){
     for (var section in this.collapsibles) {
       this.collapsibles[section].close();
+      this.collapsibles[section].updateAriaAttribute(this.collapsibles[section].$button, 'false');
     }
 
     this.disableControl(this.$closeAll);
     this.enableControl(this.$openAll);
-
-    if (typeof event != 'undefined'){
-      event.preventDefault();
-    }
   };
 
-  CollapsibleCollection.prototype.openAll = function openAll(event){
+  CollapsibleCollection.prototype.openAll = function openAll(){
     for (var section in this.collapsibles) {
       this.collapsibles[section].open();
+      this.collapsibles[section].updateAriaAttribute(this.collapsibles[section].$button, 'true');
     }
 
     this.disableControl(this.$openAll);
     this.enableControl(this.$closeAll);
-
-    if (typeof event != 'undefined'){
-      event.preventDefault();
-    }
   };
 
   CollapsibleCollection.prototype.addControls = function addControls(){
@@ -161,11 +155,11 @@
   };
 
   CollapsibleCollection.prototype.disableControl = function disableControl(control){
-    control.addClass('disabled');
+    control.addClass('disabled').attr('disabled', 'disabled');
   };
 
   CollapsibleCollection.prototype.enableControl = function enableControl(control){
-    control.removeClass('disabled');
+    control.removeClass('disabled').removeAttr('disabled');
   };
 
   CollapsibleCollection.prototype.openCollapsibleForAnchor = function openCollapsibleForAnchor(anchor){
