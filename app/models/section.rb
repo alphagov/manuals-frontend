@@ -8,7 +8,7 @@ class Section
   end
 
   def body
-    section['body'].html_safe
+    section['body'].html_safe # rubocop:disable Rails/OutputSafety
   end
 
   def section_id
