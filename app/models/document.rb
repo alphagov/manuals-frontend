@@ -36,7 +36,7 @@ class Document
   end
 
   def body
-    details['body'] && details['body'].html_safe
+    details['body'] && details['body'].html_safe # rubocop:disable Rails/OutputSafety
   end
 
   def section_groups

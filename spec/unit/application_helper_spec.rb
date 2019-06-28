@@ -8,7 +8,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     it 'returns a time element when the supplied date is present' do
-      expect(helper.marked_up_date(Date.today)).to match(%r{^<time.*</time>})
+      expect(helper.marked_up_date(Time.zone.today)).to match(%r{^<time.*</time>})
     end
   end
 

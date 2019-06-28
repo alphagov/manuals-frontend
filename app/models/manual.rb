@@ -20,7 +20,7 @@ class Manual
 
   def full_title
     title = content_store_manual['title'] || ''
-    title += ' - ' unless title.blank?
+    title += ' - ' if title.present?
 
     if hmrc?
       title + 'HMRC internal manual'
@@ -73,7 +73,7 @@ class Manual
 
   def body
     if details['body'].present?
-      details['body'].html_safe
+      details['body'].html_safe # rubocop:disable Rails/OutputSafety
     end
   end
 
