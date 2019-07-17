@@ -73,7 +73,7 @@ class Manual
 
   def body
     if details['body'].present?
-      details['body'].html_safe # rubocop:disable Rails/OutputSafety
+      details['body'].html_safe
     end
   end
 
