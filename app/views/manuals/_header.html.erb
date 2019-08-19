@@ -4,9 +4,8 @@
 
 <%= render 'govuk_publishing_components/components/contextual_breadcrumbs', content_item: @content_store_manual %>
 
-<header aria-labelledby="manual-title" class="<%= presented_manual.hmrc? ? 'hmrc' : nil %>">
-
-  <div class='primary'>
+<header aria-labelledby="manual-title" class="<%= presented_manual.hmrc? ? 'hmrc' : nil %> govuk-grid-row">
+  <div class='govuk-grid-column-two-thirds'>
     <% if presented_manual.hmrc? %>
       <span class='manual-type'>HMRC internal manual</span>
     <% end %>
@@ -23,7 +22,7 @@
       </form>
     </div>
   </div>
-  <div class='secondary'>
+  <div class='govuk-grid-column-one-third'>
     <div class='secondary-inner'>
       <p>
         <%= link_to 'Give feedback about this page', 'https://www.gov.uk/contact/govuk', :class=> "feedback" %>

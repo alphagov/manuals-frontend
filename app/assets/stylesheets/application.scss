@@ -1,16 +1,7 @@
-// govuk_frontend_toolkit helpers
-@import "typography";
-@import "measurements";
-@import "colours";
-@import "shims";
-@import "css3";
-@import "grid_layout";
-
-@import "reset";
+$govuk-compatibility-govuktemplate: true;
 @import 'govuk_publishing_components/all_components';
 
 // some colours used below
-$manual-search-button-colour: #0b0c0c;
 $manual-search-button-border-colour: #222;
 
 %common-button-styles {
@@ -18,9 +9,13 @@ $manual-search-button-border-colour: #222;
   -moz-osx-font-smoothing: grayscale;
   font-size: 100%;
   border-width: 0;
-  color: $govuk-blue;
+  color: $govuk-link-colour;
   background: none;
   cursor: pointer;
+
+  &:focus {
+    @include govuk-focused-text;
+  }
 }
 
 main {
@@ -28,68 +23,53 @@ main {
 }
 
 .manuals-frontend-body {
-  padding-bottom: $gutter;
+  padding-bottom: govuk-spacing(6);
 
   header {
-    background: $govuk-blue;
+    background: $govuk-brand-colour;
 
     &.hmrc {
-      background: $hm-revenue-customs;
+      background: govuk-organisation-colour("hm-revenue-customs", $websafe: false);
     }
 
-    padding: $gutter;
-    color: $white;
+    padding-top: govuk-spacing(6);
+    padding-bottom: govuk-spacing(6);
+    color: govuk-colour("white");
     margin: 0;
-    @include core-16;
-    @extend %contain-floats;
+    @include govuk-font(16);
+    @include govuk-clearfix;
 
-    @include media(mobile) {
-      padding: $gutter $gutter-half;
-    }
-
-    @include media(tablet) {
-      .primary,
-      .secondary {
-        float: left;
-      }
-
-      .primary {
-        width: $two-thirds;
-      }
-
-      .secondary {
-        width: $one-third;
-
-        .secondary-inner {
-          padding-left: $gutter;
-        }
-      }
+    @include govuk-media-query($from: tablet) {
+      padding: govuk-spacing(6) govuk-spacing(3);
     }
 
     .manual-type {
-      @include heading-24;
+      @include govuk-font(24);
     }
 
     h1 {
-      @include core-36;
-      font-weight: bold;
-      padding: 0 0 $gutter-half 0;
+      @include govuk-font(36, $weight: bold);
+      padding: 0 0 govuk-spacing(3) 0;
 
-      @include media(tablet) {
-        padding: 0 0 $gutter 0;
+      @include govuk-media-query($from: tablet) {
+        padding: 0 0 govuk-spacing(6) 0;
       }
     }
 
     a {
-      color: $white;
+      color: govuk-colour("white");
+
+      &:focus {
+        @include govuk-focused-text;
+      }
     }
 
     .in-manual-search {
       position: relative;
-      margin: $gutter 0 $gutter-half;
+      margin: govuk-spacing(6) 0 govuk-spacing(3);
 
       label {
-        padding-bottom: 5px;
+        padding-bottom: govuk-spacing(1);
         display: inline-block;
       }
 
@@ -101,8 +81,8 @@ main {
         width: calc(100% - 47px);
         // scss-lint:enable DuplicateProperty
         border: none;
-        padding: 7px;
-        height: 20px;
+        padding: 9px 7px;
+        height: 16px;
 
         &.focus,
         &:focus {
@@ -110,27 +90,28 @@ main {
           z-index: 1;
         }
 
-        @include media(mobile) {
-          padding: 9px 7px;
-          height: 16px;
+        @include govuk-media-query($from: tablet) {
+          padding: 7px;
+          height: 20px;
         }
       }
 
       button {
         width: 34px;
         height: 34px;
-        border: 1px solid $manual-search-button-colour;
+        border: 1px solid govuk-colour("black");
         border-width: 0 0 0 1px;
         border-left-color: $manual-search-button-border-colour;
         overflow: hidden;
         text-indent: -5000px;
         cursor: pointer;
-        color: $white;
-        background: $manual-search-button-colour image-url("search-button.png") no-repeat 0 50%;
+        color: govuk-colour("white");
+        background: govuk-colour("black") image-url("search-button.png") no-repeat 0 50%;
         position: absolute;
 
-        @include border-radius(0);
-        @include device-pixel-ratio() {
+        border-radius: 0;
+
+        @include govuk-device-pixel-ratio() {
           background-size: 52.5px 35px;
           background-position: 100% 50%;
         }
@@ -140,13 +121,13 @@ main {
   }
 
   .breadcrumb-trail {
-    @include core-16;
-    margin: 10px 0 0 0;
-    padding: 0 0 10px;
-    border-bottom: 1px solid $border-colour;
+    @include govuk-font(16);
+    margin: govuk-spacing(2) 0 0 0;
+    padding: 0 0 govuk-spacing(2);
+    border-bottom: 1px solid $govuk-border-colour;
 
     strong {
-      font-weight: bold;
+      @include govuk-typography-weight-bold;
     }
 
     li {
@@ -156,14 +137,14 @@ main {
       display: inline;
       list-style: none;
       margin-left: 0;
-      margin-right: 5px;
-      padding: 0 15px 0 0;
+      margin-right: govuk-spacing(1);
+      padding: 0 govuk-spacing(3) 0 0;
 
-      @include media(tablet) {
+      @include govuk-media-query($from: tablet) {
         background-position: 100% 45%;
       }
 
-      @include device-pixel-ratio() {
+      @include govuk-device-pixel-ratio() {
         background-image: image-url("separator-2x.png");
         background-size: 6px 11px;
       }
@@ -174,7 +155,7 @@ main {
 
       &.last-child {
         background-image: none;
-        color: $text-colour;
+        color: $govuk-text-colour;
       }
 
       &.no-separator {
@@ -182,49 +163,57 @@ main {
       }
 
       a {
-        color: $text-colour;
+        color: $govuk-text-colour;
+
+        &:focus {
+          @include govuk-focused-text;
+        }
       }
     }
   }
 
   .section-list {
-    margin-top: $gutter;
+    margin-top: govuk-spacing(6);
 
-    @include media(tablet) {
-      margin-top: $gutter * 2;
+    @include govuk-media-query($from: tablet) {
+      margin-top: govuk-spacing(9);
     }
 
     li {
-      @include core-19;
+      @include govuk-font(19);
       list-style: none;
       cursor: pointer;
-      border-top: 1px solid $border-colour;
+      border-top: 1px solid $govuk-border-colour;
 
       &:hover {
-        background-color: $grey-4;
+        background-color: govuk-colour("light-grey", $legacy: "grey-4");
       }
 
       &:last-child {
-        border-bottom: 1px solid $border-colour;
+        border-bottom: 1px solid $govuk-border-colour;
       }
 
       a {
         text-decoration: none;
         display: block;
-        padding: $gutter-one-third $gutter-one-third $gutter-one-third 0;
+        padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) 0;
 
-        @include media(tablet) {
-          padding-right: $one-third;
+        &:focus {
+          @include govuk-focused-text;
+        }
+
+        @include govuk-media-query($from: tablet) {
+          padding-right: 33.3333%;
         }
 
         .subsection-title-text {
-          color: $link-colour;
-          font-weight: bold;
+          @include govuk-typography-weight-bold;
+          color: $govuk-link-colour;
           display: block;
         }
 
         .subsection-summary {
-          color: $text-colour;
+          color: $govuk-text-colour;
           display: block;
         }
       }
@@ -232,30 +221,29 @@ main {
   }
 
   .manual-body {
-    margin: $gutter-half 0 $gutter * 3;
+    margin: govuk-spacing(3) 0 90px;
 
-    @include media(tablet) {
-      margin-top: $gutter;
+    @include govuk-media-query($from: tablet) {
+      margin-top: govuk-spacing(6);
     }
 
     .section-title {
-      @include heading-24;
-      font-weight: bold;
+      @extend %govuk-heading-m;
     }
 
     .summary {
-      @include core-24;
-      margin-bottom: $gutter-half;
+      @include govuk-font(24);
+      margin-bottom: govuk-spacing(3);
 
-      @include media(tablet) {
-        max-width: $two-thirds;
-        margin-bottom: $gutter;
+      @include govuk-media-query($from: tablet) {
+        max-width: 66.6666%;
+        margin-bottom: govuk-spacing(6);
       }
     }
 
     .body-content-wrapper {
-      @include media(tablet) {
-        width: $two-thirds;
+      @include govuk-media-query($from: tablet) {
+        width: 66.6666%;
       }
     }
 
@@ -266,14 +254,14 @@ main {
   }
 
   .updates-list {
-    @include core-19;
+    @include govuk-font(19);
     dd {
       margin-bottom: 1em;
     }
   }
 
   .collapsible-subsections {
-    @include media(tablet) {
+    @include govuk-media-query($from: tablet) {
       .call-to-action p {
         margin: 0;
       }
@@ -281,16 +269,16 @@ main {
   }
 
   .collapsible-subsections .js-subsection-title {
-    @include bold-19;
+    @include govuk-font(19, $weight: bold);
     display: block;
-    border-top: 1px solid $border-colour;
-    padding: $gutter-one-third $gutter $gutter-one-third 0;
-    margin: $gutter 0;
+    border-top: 1px solid $govuk-border-colour;
+    padding: govuk-spacing(2) govuk-spacing(6) govuk-spacing(2) 0;
+    margin: govuk-spacing(6) 0;
     position: relative;
 
     button {
       @extend %common-button-styles;
-      font-weight: 700;
+      @include govuk-typography-weight-bold;
       margin-top: 0;
       margin-bottom: 0;
       margin-left: 0;
@@ -301,44 +289,45 @@ main {
   }
 
   .subsection-collection {
-    margin-top: $gutter-half;
+    margin-top: govuk-spacing(3);
 
-    @include media(tablet) {
-      margin-top: $gutter;
+    @include govuk-media-query($from: tablet) {
+      margin-top: govuk-spacing(6);
     }
 
     .js-title-controls-wrap {
-      @extend %contain-floats;
+      @include govuk-clearfix;
 
       .section-title {
-        @include heading-24;
-        @include media(tablet) {
+        @extend %govuk-heading-m;
+
+        @include govuk-media-query($from: tablet) {
           float: left;
-          width: $three-quarters;
+          width: 75%;
         }
       }
 
       .js-collection-controls {
         display: block;
-        margin-left: -5px;
-        margin-bottom: $gutter-half;
+        margin-left: (- govuk-spacing(1));
+        margin-bottom: govuk-spacing(3);
 
-        @include media(tablet) {
-          margin: 0 0 $gutter -5px;
+        @include govuk-media-query($from: tablet) {
+          margin: 0 0 govuk-spacing(6) (- govuk-spacing(1));
           float: right;
           display: inline-block;
         }
 
         button {
-          @include core-16;
+          @include govuk-font(16);
           @extend %common-button-styles;
-          padding: 0  5px 0 5px;
+          padding: 0 govuk-spacing(1) 0 govuk-spacing(1);
           display: inline-block;
 
           // We're nesting quite deep here...
           // scss-lint:disable NestingDepth
           &.disabled {
-            color: $secondary-text-colour;
+            color: $govuk-secondary-text-colour;
             text-decoration: none;
             cursor: default;
           }
@@ -349,21 +338,17 @@ main {
   }
 
   .js-openable {
-    border-top: 1px solid $border-colour;
-    padding-bottom: $gutter;
+    border-top: 1px solid $govuk-border-colour;
+    padding-bottom: govuk-spacing(6);
 
-    @include media(tablet) {
-      padding-bottom: $gutter * 2;
+    @include govuk-media-query($from: tablet) {
+      padding-bottom: govuk-spacing(9);
     }
 
     .js-subsection-title {
       cursor: pointer;
       margin: 0;
       border: none;
-
-      @include ie-lte(7) {
-        zoom: 1;
-      }
 
       .js-toggle {
         height: 25px;
@@ -372,9 +357,9 @@ main {
         background: image-url("arrows_sprite.png") no-repeat;
         position: absolute;
         right: 0;
-        top: $gutter-one-third;
+        top: govuk-spacing(2);
 
-        @include device-pixel-ratio() {
+        @include govuk-device-pixel-ratio() {
           background-image: image-url("arrows_sprite-2x.png");
           background-size: 32px 50px;
         }
@@ -382,10 +367,10 @@ main {
     }
 
     .js-subsection-body {
-      margin-top: $gutter-half;
+      margin-top: govuk-spacing(3);
 
-      @include media(tablet) {
-        margin-top: $gutter;
+      @include govuk-media-query($from: tablet) {
+        margin-top: govuk-spacing(6);
       }
     }
 
@@ -395,7 +380,7 @@ main {
       .js-toggle {
         background: image-url("arrows_sprite.png") no-repeat 0 -32px;
 
-        @include device-pixel-ratio() {
+        @include govuk-device-pixel-ratio() {
           background-image: image-url("arrows_sprite-2x.png");
           background-size: 32px 50px;
         }
@@ -412,14 +397,14 @@ main {
   }
 
   .hmrc.section-list {
-    margin-top: $gutter;
-    padding-bottom: $gutter;
+    margin-top: govuk-spacing(6);
+    padding-bottom: govuk-spacing(6);
 
     a {
       padding-right: 0;
     }
 
-    @include media(tablet) {
+    @include govuk-media-query($from: tablet) {
       .title-wrap {
         display: table-row;
 
@@ -432,8 +417,8 @@ main {
 
   .subsection-id {
     min-width: 135px;
-    color: $secondary-text-colour;
-    padding-right: $gutter-half;
+    color: $govuk-secondary-text-colour;
+    padding-right: govuk-spacing(3);
   }
 
   .print-page {
