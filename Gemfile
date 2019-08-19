@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.2.3'
 gem 'slimmer', '~> 13.1.0'
 
-gem 'govuk_frontend_toolkit', '8.2.0'
 gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 
@@ -12,7 +11,7 @@ gem 'plek', '3.0.0'
 
 gem 'govuk_ab_testing'
 gem 'govuk_app_config', '~> 2.0.0'
-gem 'govuk_publishing_components', '~> 17.21.0'
+gem 'govuk_publishing_components', '~> 20.0.0'
 
 group :development do
   gem 'better_errors'
