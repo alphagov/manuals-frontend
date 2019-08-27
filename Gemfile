@@ -7,7 +7,7 @@ gem 'govuk_frontend_toolkit', '8.2.0'
 gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 
-gem 'gds-api-adapters', '~> 59.6'
+gem 'gds-api-adapters', '~> 60.0'
 gem 'plek', '3.0.0'
 
 gem 'govuk_ab_testing'

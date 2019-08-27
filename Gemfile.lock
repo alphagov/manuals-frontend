@@ -80,7 +80,7 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
-    gds-api-adapters (59.6.0)
+    gds-api-adapters (60.0.0)
       addressable
       link_header
       null_logger
@@ -122,6 +122,7 @@ GEM
       selenium-webdriver (>= 3.142)
       webdrivers
     hashdiff (1.0.0)
+    http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.6.0)
@@ -219,7 +220,8 @@ GEM
     regexp_parser (1.5.1)
     request_store (1.4.1)
       rack (>= 1.4)
-    rest-client (2.0.2)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
@@ -334,7 +336,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  gds-api-adapters (~> 59.6)
+  gds-api-adapters (~> 60.0)
   govuk-content-schema-test-helpers (~> 1.6)
   govuk-lint
   govuk_ab_testing
