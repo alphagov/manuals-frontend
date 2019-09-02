@@ -30,5 +30,5 @@ group :test do
   gem "govuk-content-schema-test-helpers", "~> 1.6"
   gem "govuk_test"
   gem "launchy"
-  gem "webmock", "~> 3.6.2"
+  gem "webmock", "~> 3.7.1"
 end
