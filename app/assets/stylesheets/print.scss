@@ -6,13 +6,6 @@
 
 $is-print: true;
 
-// From the https://github.com/alphagov/govuk_frontend_toolkit
-@import "colours";
-@import "conditionals";
-@import "css3";
-@import "typography";
-@import "measurements";
-
 @import "manuals-print";
 
 @import "govuk_publishing_components/all_components_print";
