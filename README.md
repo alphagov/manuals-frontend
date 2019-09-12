@@ -21,7 +21,7 @@ Front-end app for the manuals format on GOV.UK
 - [https://github.com/alphagov/content-store](https://github.com/alphagov/content-store) – Provides content
 
 
-##Installation and running
+## Installation and running
 
 In a terminal, run:
 
