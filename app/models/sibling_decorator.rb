@@ -18,14 +18,14 @@ private
   attr_reader :parent
 
   def current_section_id
-    self['details']['section_id']
+    self["details"]["section_id"]
   end
 
   def siblings
     if parent
-      child_section_groups = Array(parent.dig('details', 'child_section_groups'))
-      child_section_groups.map { |groups| groups['child_sections'] }.find do |section|
-        section.map { |section_payload| section_payload['section_id'] }.include?(current_section_id)
+      child_section_groups = Array(parent.dig("details", "child_section_groups"))
+      child_section_groups.map { |groups| groups["child_sections"] }.find do |section|
+        section.map { |section_payload| section_payload["section_id"] }.include?(current_section_id)
       end
     end
   end
@@ -33,7 +33,7 @@ private
   def adjacent_siblings
     if siblings
       before, after = siblings.split do |section|
-        section['section_id'] == current_section_id
+        section["section_id"] == current_section_id
       end
 
       [

@@ -7,7 +7,7 @@ class ManualsController < ApplicationController
 
     render :index, locals: {
       presented_manual: presented_manual,
-      content_item: content_store_manual
+      content_item: content_store_manual,
     }
   end
 

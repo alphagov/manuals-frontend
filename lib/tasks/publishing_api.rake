@@ -1,5 +1,5 @@
-require 'logger'
-require 'services'
+require "logger"
+require "services"
 
 class RedirectPublisher
   attr_reader :logger, :publishing_app
@@ -22,8 +22,8 @@ class RedirectPublisher
         {
           "path" => base_path,
           "type" => type,
-          "destination" => destination_path
-        }
+          "destination" => destination_path,
+        },
       ],
       "update_type" => "major",
     }
@@ -34,11 +34,11 @@ class RedirectPublisher
 end
 
 namespace :publishing_api do
-  desc 'Publish special routes via publishing api'
+  desc "Publish special routes via publishing api"
   task :publish_special_routes do
     logger = Logger.new(STDOUT)
 
-    redirect_publisher = RedirectPublisher.new(logger: logger, publishing_app: 'manuals-frontend')
-    redirect_publisher.call('09346008-7c4f-4cc4-b8d5-19d1ebf8ef5f', '/guidance', 'exact', '/government/publications')
+    redirect_publisher = RedirectPublisher.new(logger: logger, publishing_app: "manuals-frontend")
+    redirect_publisher.call("09346008-7c4f-4cc4-b8d5-19d1ebf8ef5f", "/guidance", "exact", "/government/publications")
   end
 end

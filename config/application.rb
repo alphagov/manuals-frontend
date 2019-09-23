@@ -1,4 +1,4 @@
-require File.expand_path('boot', __dir__)
+require File.expand_path("boot", __dir__)
 
 require "action_controller/railtie"
 require "action_mailer/railtie"
@@ -12,11 +12,11 @@ module ManualsFrontend
 
     config.eager_load_paths << "#{config.root}/lib"
 
-    config.assets.prefix = '/manuals-frontend'
+    config.assets.prefix = "/manuals-frontend"
 
     # Override Rails 4 default which restricts framing to SAMEORIGIN.
     config.action_dispatch.default_headers = {
-      'X-Frame-Options' => 'ALLOWALL'
+      "X-Frame-Options" => "ALLOWALL",
     }
   end
 end

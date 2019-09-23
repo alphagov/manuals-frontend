@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe SiblingDecorator do
   let(:document_base_path) {
@@ -67,8 +67,8 @@ describe SiblingDecorator do
               base_path: document_base_path,
               title: "Child section title",
             },
-          ]
-        }.deep_stringify_keys
+          ],
+        }.deep_stringify_keys,
       ]
     }
 
@@ -100,7 +100,7 @@ describe SiblingDecorator do
               base_path: "/guidance/a-manual/next-sibling",
               title: "Next sibling title",
             },
-          ]
+          ],
         }.deep_stringify_keys,
       ]
     }
@@ -135,7 +135,7 @@ describe SiblingDecorator do
               base_path: document_base_path,
               title: "Child section title",
             },
-          ]
+          ],
         }.deep_stringify_keys,
       ]
     }
@@ -175,7 +175,7 @@ describe SiblingDecorator do
               base_path: "/guidance/a-manual/next-sibling",
               title: "Next sibling title",
             },
-          ]
+          ],
         }.deep_stringify_keys,
       ]
     }
@@ -200,7 +200,7 @@ describe SiblingDecorator do
       let(:child_section_groups) {
         [
           {
-            child_sections: []
+            child_sections: [],
           }.deep_stringify_keys,
         ]
       }
@@ -229,7 +229,7 @@ describe SiblingDecorator do
               base_path: "/guidance/a-manual/cousin-section",
               title: "Cousin section title",
             },
-          ]
+          ],
         }.deep_stringify_keys,
         {
           child_sections: [
@@ -243,7 +243,7 @@ describe SiblingDecorator do
               base_path: "/guidance/a-manual/next-sibling",
               title: "Next sibling title",
             },
-          ]
+          ],
         }.deep_stringify_keys,
       ]
     }

@@ -1,5 +1,5 @@
-require 'rails_helper'
-require 'gds_api/test_helpers/content_store'
+require "rails_helper"
+require "gds_api/test_helpers/content_store"
 
 feature "Viewing manuals and sections" do
   # As a member of the public
@@ -13,7 +13,7 @@ feature "Viewing manuals and sections" do
 
     visit_hmrc_manual "inheritance-tax-manual"
 
-    expect_title_tag_to_be('Inheritance Tax Manual - HMRC internal manual - GOV.UK')
+    expect_title_tag_to_be("Inheritance Tax Manual - HMRC internal manual - GOV.UK")
     expect_manual_title_to_be("Inheritance Tax Manual")
     expect_manual_update_date_to_be("23 January 2014")
     expect(page.response_headers["Cache-Control"]).to eq("max-age=900, public")
@@ -35,13 +35,13 @@ feature "Viewing manuals and sections" do
   scenario "viewing a non-HMRC manual" do
     stub_fake_manual
     visit_manual "my-manual-about-burritos"
-    expect(page).not_to have_selector('.gem-c-phase-banner')
+    expect(page).not_to have_selector(".gem-c-phase-banner")
   end
 
   scenario "viewing an HMRC manual" do
     stub_hmrc_manual
     visit_hmrc_manual "inheritance-tax-manual"
-    expect(page).to have_selector('.gem-c-phase-banner')
+    expect(page).to have_selector(".gem-c-phase-banner")
   end
 
   scenario "viewing a manual with a description" do
@@ -56,7 +56,7 @@ feature "Viewing manuals and sections" do
 
     visit_hmrc_manual_section "inheritance-tax-manual", "eim00500"
 
-    expect_title_tag_to_be('EIM00500 - Inheritance Tax Manual - HMRC internal manual - GOV.UK')
+    expect_title_tag_to_be("EIM00500 - Inheritance Tax Manual - HMRC internal manual - GOV.UK")
     expect_section_title_to_be("Inheritance tax: table of contents")
 
     expect_a_child_section_group_title_of("This is a dummy child_section_group title")
@@ -130,7 +130,7 @@ feature "Viewing manuals and sections" do
 
   scenario "visiting a non-existent section" do
     stub_hmrc_manual
-    content_store_does_not_have_item('/hmrc-internal-manuals/inheritance-tax-manual/nonexistent-manual-section')
+    content_store_does_not_have_item("/hmrc-internal-manuals/inheritance-tax-manual/nonexistent-manual-section")
 
     visit_hmrc_manual_section "inheritance-tax-manual", "nonexistent-manual-section"
     expect(page.status_code).to eq(404)
