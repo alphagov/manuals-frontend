@@ -11,14 +11,14 @@ class ApplicationController < ActionController::Base
   if ENV["BASIC_AUTH_USERNAME"]
     http_basic_authenticate_with(
       name: ENV.fetch("BASIC_AUTH_USERNAME"),
-      password: ENV.fetch("BASIC_AUTH_PASSWORD")
+      password: ENV.fetch("BASIC_AUTH_PASSWORD"),
     )
   end
 
 private
 
   def slimmer_headers
-    slimmer_template 'core_layout'
+    slimmer_template "core_layout"
     set_slimmer_headers(remove_search: true)
   end
 end

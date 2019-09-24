@@ -8,19 +8,19 @@ class Document
   end
 
   def title
-    document['title']
+    document["title"]
   end
 
   def taxons
-    manual['taxons']
+    manual["taxons"]
   end
 
   def details
-    document['details']
+    document["details"]
   end
 
   def section_id
-    details['section_id']
+    details["section_id"]
   end
 
   def breadcrumb
@@ -28,15 +28,15 @@ class Document
   end
 
   def full_title
-    breadcrumb + ' - ' + @manual.full_title
+    breadcrumb + " - " + @manual.full_title
   end
 
   def summary
-    document['description']
+    document["description"]
   end
 
   def body
-    details['body'] && details['body'].html_safe
+    details["body"] && details["body"].html_safe
   end
 
   def section_groups
@@ -44,9 +44,9 @@ class Document
   end
 
   def breadcrumbs
-    if details['breadcrumbs'].present?
-      details['breadcrumbs'].map do |breadcrumb|
-        Breadcrumb.new(link: breadcrumb['base_path'], label: breadcrumb['section_id'])
+    if details["breadcrumbs"].present?
+      details["breadcrumbs"].map do |breadcrumb|
+        Breadcrumb.new(link: breadcrumb["base_path"], label: breadcrumb["section_id"])
       end
     else
       []
@@ -62,7 +62,7 @@ class Document
   end
 
   def url
-    document['base_path']
+    document["base_path"]
   end
 
   def collapse_depth
@@ -76,6 +76,6 @@ class Document
 private
 
   def raw_section_groups
-    details['child_section_groups'] || []
+    details["child_section_groups"] || []
   end
 end

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 feature "Viewing updates for a manual" do
   # As a member of the public
@@ -11,7 +11,7 @@ feature "Viewing updates for a manual" do
   scenario "viewing change notes for a manual" do
     visit_manual "my-manual-about-burritos"
     view_manual_change_notes
-    expect_title_tag_to_be('Updates - My manual about Burritos - Guidance - GOV.UK')
+    expect_title_tag_to_be("Updates - My manual about Burritos - Guidance - GOV.UK")
     expect(page).to have_content("Updates: My manual about Burritos")
   end
 
@@ -20,7 +20,7 @@ feature "Viewing updates for a manual" do
 
     visit_hmrc_manual "inheritance-tax-manual"
     view_manual_change_notes
-    expect_title_tag_to_be('Updates - Inheritance Tax Manual - HMRC internal manual - GOV.UK')
+    expect_title_tag_to_be("Updates - Inheritance Tax Manual - HMRC internal manual - GOV.UK")
   end
 
   scenario "viewing change notes for a specific date", js: true do

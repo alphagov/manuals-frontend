@@ -1,18 +1,18 @@
-require 'gds_api/test_helpers/content_store'
-require 'govuk-content-schema-test-helpers'
+require "gds_api/test_helpers/content_store"
+require "govuk-content-schema-test-helpers"
 
 module ManualHelpers
   include GdsApi::TestHelpers::ContentStore
 
   def example_hmrc_links
     JSON.parse(
-      GovukContentSchemaTestHelpers::Examples.new.get('hmrc_manual', 'vat-government-public-bodies')
+      GovukContentSchemaTestHelpers::Examples.new.get("hmrc_manual", "vat-government-public-bodies"),
     ).fetch("links")
   end
 
   def example_links
     JSON.parse(
-      GovukContentSchemaTestHelpers::Examples.new.get('manual', 'content-design')
+      GovukContentSchemaTestHelpers::Examples.new.get("manual", "content-design"),
     ).fetch("links")
   end
 
@@ -39,32 +39,32 @@ module ManualHelpers
                 title: "This is the section on hot sauce",
                 description: "Hot sauces are good",
                 base_path: "#{base_path}/this-is-the-section-on-hot-sauce",
-              }
-            ]
-          }
+              },
+            ],
+          },
         ],
         organisations: [
           {
             abbreviation: "CO",
             web_url: "http://www.gov.uk/government/organisations/cabinet-office",
             title: "Cabinet Office",
-          }
+          },
         ],
         change_notes: [
           {
             base_path: "#{base_path}/fillings",
             title: "Fillings",
             change_note: "Added section on fillings",
-            published_at: "2014-06-20T09:17:27Z"
+            published_at: "2014-06-20T09:17:27Z",
           },
           {
             base_path: "#{base_path}/this-is-the-section-on-hot-sauce",
             title: "This is the section on hot sauce",
             change_note: "Added section on hot sauce",
-            published_at: "2014-06-20T09:17:27Z"
-          }
+            published_at: "2014-06-20T09:17:27Z",
+          },
         ],
-      }
+      },
     }
 
     content_store_has_item(base_path, manual_json)
@@ -98,18 +98,18 @@ module ManualHelpers
                 base_path: "/hmrc-internal-manuals/#{manual_id}/eim00900",
                 title: "Self assessment tax",
               },
-            ]
-          }
+            ],
+          },
         ],
         organisations: [
           {
             abbreviation: "HMRC",
             web_url: "http://www.gov.uk/government/organisations/hm-revenue-customs",
             title: "HM Revenue & Customs",
-          }
+          },
         ],
         change_notes: [],
-      }
+      },
     }
 
     content_store_has_item(
@@ -149,13 +149,13 @@ module ManualHelpers
                 base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00530",
                 title: "Particular items: R to Z",
               },
-            ]
-          }
+            ],
+          },
         ],
         manual: {
           base_path: "/hmrc-internal-manuals/inheritance-tax-manual",
         },
-      }
+      },
     }
 
     content_store_has_item(
@@ -178,15 +178,15 @@ module ManualHelpers
         breadcrumbs: [
           {
             section_id: "EIM00500",
-            base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500"
-          }
+            base_path: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500",
+          },
         ],
         body: "Some body to love",
         section_id: "EIM00520",
         manual: {
           base_path: "/hmrc-internal-manuals/inheritance-tax-manual",
         },
-      }
+      },
     }
 
     content_store_has_item("/hmrc-internal-manuals/inheritance-tax-manual/eim00520", section_json)
@@ -208,7 +208,7 @@ module ManualHelpers
         manual: {
           base_path: "/hmrc-internal-manuals/#{manual_id}",
         },
-      }
+      },
     }
 
     content_store_has_item("/hmrc-internal-manuals/#{manual_id}/#{section_id}", section_json)
@@ -245,9 +245,9 @@ module ManualHelpers
         {
           path: "/guidance/#{manual_id}/#{section_id}",
           type: "exact",
-          destination: "/guidance/#{manual_id}"
-        }
-      ]
+          destination: "/guidance/#{manual_id}",
+        },
+      ],
     }
     content_store_has_item("/guidance/#{manual_id}/#{section_id}", document)
   end

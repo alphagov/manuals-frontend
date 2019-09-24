@@ -11,7 +11,7 @@ class ManualPresenter < SimpleDelegator
 
   def organisations
     super.map do |organisation|
-      @view_context.link_to(organisation['title'], organisation['web_url'])
+      @view_context.link_to(organisation["title"], organisation["web_url"])
     end
   end
 
@@ -26,7 +26,7 @@ class ManualPresenter < SimpleDelegator
       other: {
         "Updated" => "#{updated_at}, #{@view_context.link_to 'see all updates', updates_url}",
       },
-      inverse: true
+      inverse: true,
     }
   end
 end

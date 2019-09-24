@@ -1,7 +1,7 @@
 module AppHelpers
   def view_manual_change_notes
     updates_path = "#{current_path}/updates"
-    within '.gem-c-metadata' do
+    within ".gem-c-metadata" do
       expect(page).to have_link("see all updates", href: updates_path)
     end
     visit updates_path
@@ -32,7 +32,7 @@ module AppHelpers
   end
 
   def expect_page_to_include_section(section_title, options = {})
-    within('.subsection-collection') do
+    within(".subsection-collection") do
       if options[:href]
         expect(page).to have_link(section_title, href: options[:href])
       else
@@ -47,8 +47,8 @@ module AppHelpers
   end
 
   def expect_manual_update_date_to_be(date)
-    within '.gem-c-metadata' do
-      expect(page).to have_selector('time', text: date)
+    within ".gem-c-metadata" do
+      expect(page).to have_selector("time", text: date)
     end
   end
 
@@ -59,7 +59,7 @@ module AppHelpers
   def expect_manual_title_to_be(manual_title)
     raise ArgumentError, "You probably didn't mean to check for a blank manual title" if manual_title.blank?
 
-    within('header h1') do
+    within("header h1") do
       expect(page).to have_content(manual_title)
     end
   end
@@ -67,7 +67,7 @@ module AppHelpers
   def expect_section_title_to_be(section_title)
     raise ArgumentError, "You probably didn't mean to check for a blank section title" if section_title.blank?
 
-    within('h1.section-title') do
+    within("h1.section-title") do
       expect(page).to have_content(section_title)
     end
   end
@@ -75,13 +75,13 @@ module AppHelpers
   def expect_a_child_section_group_title_of(child_section_group_title)
     raise ArgumentError, "You probably didn't mean to check for a blank child section group title" if child_section_group_title.blank?
 
-    within('.subsection-collection') do
+    within(".subsection-collection") do
       expect(page).to have_content(child_section_group_title)
     end
   end
 
   def expect_page_to_be_affiliated_with_org(options)
-    within '.gem-c-metadata' do
+    within ".gem-c-metadata" do
       expect(page).to have_link(options[:title], href: "https://www.gov.uk/government/organisations/#{options[:slug]}")
     end
   end

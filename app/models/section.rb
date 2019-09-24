@@ -4,19 +4,19 @@ class Section
   end
 
   def title
-    section['title']
+    section["title"]
   end
 
   def body
-    section['body'].html_safe
+    section["body"].html_safe
   end
 
   def section_id
-    section['section_id']
+    section["section_id"]
   end
 
   def path
-    section['base_path']
+    section["base_path"]
   end
 
   def collapsible?
@@ -24,7 +24,7 @@ class Section
   end
 
   def summary
-    section['description']
+    section["description"]
   end
 
 private
