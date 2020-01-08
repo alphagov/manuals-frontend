@@ -6,7 +6,7 @@ gem 'slimmer', '~> 13.2.0'
 gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '>= 1.3.0'
 
-gem 'gds-api-adapters', '~> 63.1'
+gem 'gds-api-adapters', '~> 63.2'
 gem 'plek', '3.0.0'
 
 gem 'govuk_ab_testing'
