@@ -220,6 +220,12 @@ main {
     }
   }
 
+  .section-content {
+    a:focus {
+      @include govuk-focused-text;
+    }
+  }
+
   .manual-body {
     margin: govuk-spacing(3) 0 90px;
 
