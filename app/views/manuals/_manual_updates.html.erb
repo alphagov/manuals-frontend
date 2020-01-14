@@ -22,7 +22,7 @@
               <dt><%= link_to document.title, document.base_path %></dt>
                 <% document.change_notes.each do |note| %>
                   <dd>
-                    <%= note %>
+                    <%= note.strip %>
                   </dd>
                 <% end %>
             <% end %>
