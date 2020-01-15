@@ -36,4 +36,13 @@ feature "Viewing updates for a manual" do
                        section_title: "This is the section on hot sauce",
                        section_href: "/guidance/my-manual-about-burritos/this-is-the-section-on-hot-sauce")
   end
+
+  scenario "viewing a multi-line change note with surrounding white space" do
+    visit_manual "my-manual-about-burritos"
+    view_manual_change_notes
+
+    expect_change_note("Update fillings With a two liner",
+                       section_title: "Fillings",
+                       section_href: "/guidance/my-manual-about-burritos/fillings")
+  end
 end

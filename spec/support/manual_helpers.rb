@@ -58,6 +58,12 @@ module ManualHelpers
             published_at: "2014-06-20T09:17:27Z",
           },
           {
+            base_path: "#{base_path}/fillings",
+            title: "Fillings",
+            change_note: "   Update fillings \n With a two liner   ",
+            published_at: "2014-06-20T09:17:27Z",
+          },
+          {
             base_path: "#{base_path}/this-is-the-section-on-hot-sauce",
             title: "This is the section on hot sauce",
             change_note: "Added section on hot sauce",
