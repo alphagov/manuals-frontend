@@ -95,7 +95,7 @@ GEM
       rubocop-rspec (~> 1.28)
       scss_lint
     govuk_ab_testing (2.4.1)
-    govuk_app_config (2.0.2)
+    govuk_app_config (2.0.3)
       logstasher (>= 1.2.2, < 1.4.0)
       sentry-raven (>= 2.7.1, < 2.14.0)
       statsd-ruby (~> 1.4.0)
@@ -333,7 +333,7 @@ DEPENDENCIES
   govuk-content-schema-test-helpers (~> 1.6)
   govuk-lint
   govuk_ab_testing
-  govuk_app_config (~> 2.0.2)
+  govuk_app_config (~> 2.0.3)
   govuk_publishing_components (~> 21.22.0)
   govuk_test
   jasmine
