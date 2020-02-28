@@ -1,5 +1,9 @@
+inherit_gem:
+  rubocop-govuk:
+    - config/default.yml
+    - config/rails.yml
+
 AllCops:
-  TargetRubyVersion: 2.5
   Exclude:
     - 'lib/tasks/cucumber.rake' # Automatically generated
 

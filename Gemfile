@@ -19,7 +19,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'govuk-lint'
+  gem 'rubocop-govuk'
   gem 'jasmine'
   gem 'pry-byebug'
   gem "rspec-rails", "~> 3.9"
