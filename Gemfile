@@ -1,28 +1,28 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'rails', '~> 5.2.3'
-gem 'slimmer', '~> 13.2.0'
+gem "rails", "~> 5.2.3"
+gem "slimmer", "~> 13.2.0"
 
-gem 'sass-rails', '~> 5.0.6'
-gem 'uglifier', '>= 1.3.0'
+gem "sass-rails", "~> 5.0.6"
+gem "uglifier", ">= 1.3.0"
 
-gem 'gds-api-adapters', '~> 63.5'
-gem 'plek', '3.0.0'
+gem "gds-api-adapters", "~> 63.5"
+gem "plek", "3.0.0"
 
-gem 'govuk_ab_testing'
-gem 'govuk_app_config', '~> 2.0.3'
-gem 'govuk_publishing_components', '~> 21.27.1'
+gem "govuk_ab_testing"
+gem "govuk_app_config", "~> 2.0.3"
+gem "govuk_publishing_components", "~> 21.27.1"
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development, :test do
-  gem 'jasmine'
-  gem 'pry-byebug'
+  gem "jasmine"
+  gem "pry-byebug"
   gem "rspec-rails", "~> 3.9"
-  gem 'rubocop-govuk'
+  gem "rubocop-govuk"
 end
 
 group :test do
