@@ -98,7 +98,7 @@ module AppHelpers
     schemas = schema_sections.map { |section| JSON.parse(section.text(:all)) }
 
     org_schema = schemas.detect { |schema| schema["@type"] == "Article" }
-    expect(org_schema["headline"]).to eq title
+    expect(org_schema["name"]).to eq title
 
     tag = "link[rel='canonical']"
     expect(page).to have_css(tag, visible: false)
