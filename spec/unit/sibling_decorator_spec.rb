@@ -22,8 +22,8 @@ describe SiblingDecorator do
             section_id: parent_id,
             base_path: parent_base_path,
           },
-      ],
-      section_id: document_id,
+        ],
+        section_id: document_id,
       },
     }.deep_stringify_keys
   }

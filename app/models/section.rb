@@ -20,7 +20,7 @@ class Section
   end
 
   def collapsible?
-    self.body.present?
+    body.present?
   end
 
   def summary
