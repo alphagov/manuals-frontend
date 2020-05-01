@@ -153,8 +153,8 @@ feature "Viewing manuals and sections" do
 
   scenario "visiting access limited manual returns 403 forbidden" do
     slug = "guidance/an-access-limited-manual"
-    stub_request(:get, "#{Plek.find('content-store')}/content/#{slug}").
-      to_return(status: 403, headers: {})
+    stub_request(:get, "#{Plek.find('content-store')}/content/#{slug}")
+      .to_return(status: 403, headers: {})
 
     visit "/#{slug}/updates"
     expect(page.status_code).to eq(403)
