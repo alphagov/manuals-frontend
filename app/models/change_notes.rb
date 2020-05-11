@@ -4,9 +4,9 @@ class ChangeNotes
   end
 
   def updates
-    change_notes.map { |u|
+    change_notes.map do |u|
       Update.new(u)
-    }
+    end
   end
 
   def by_year
@@ -30,9 +30,9 @@ private
   end
 
   def group_updates_by_document(updates)
-    updates.group_by(&:base_path).map { |_, grouped_updates|
+    updates.group_by(&:base_path).map do |_, grouped_updates|
       DocumentUpdates.new(grouped_updates)
-    }
+    end
   end
 
   class Update

@@ -1,19 +1,19 @@
 require "rails_helper"
 
 describe SiblingDecorator do
-  let(:document_base_path) {
+  let(:document_base_path) do
     "/guidance/a-manual/child-section"
-  }
+  end
 
-  let(:manual_base_path) {
+  let(:manual_base_path) do
     "/guidance/a-manual"
-  }
+  end
 
-  let(:document_id) {
+  let(:document_id) do
     "child-section"
-  }
+  end
 
-  let(:document) {
+  let(:document) do
     {
       base_path: document_base_path,
       details: {
@@ -26,17 +26,17 @@ describe SiblingDecorator do
         section_id: document_id,
       },
     }.deep_stringify_keys
-  }
+  end
 
-  let(:parent_base_path) {
+  let(:parent_base_path) do
     "/guidance/a-manual/parent-section"
-  }
+  end
 
-  let(:parent_id) {
+  let(:parent_id) do
     "parent-section"
-  }
+  end
 
-  let(:parent) {
+  let(:parent) do
     {
       base_path: parent_base_path,
       details: {
@@ -44,21 +44,21 @@ describe SiblingDecorator do
         child_section_groups: child_section_groups,
       },
     }.deep_stringify_keys
-  }
+  end
 
-  let(:child_section_groups) {
+  let(:child_section_groups) do
     []
-  }
+  end
 
-  subject(:decorator) {
+  subject(:decorator) do
     SiblingDecorator.new(
       document: document,
       parent: parent,
     )
-  }
+  end
 
   context "for a section that is an only-child" do
-    let(:child_section_groups) {
+    let(:child_section_groups) do
       [
         {
           child_sections: [
@@ -70,7 +70,7 @@ describe SiblingDecorator do
           ],
         }.deep_stringify_keys,
       ]
-    }
+    end
 
     describe "#previous_sibling" do
       it "should be nil" do
@@ -86,7 +86,7 @@ describe SiblingDecorator do
   end
 
   context "for a section that is a first child" do
-    let(:child_section_groups) {
+    let(:child_section_groups) do
       [
         {
           child_sections: [
@@ -103,7 +103,7 @@ describe SiblingDecorator do
           ],
         }.deep_stringify_keys,
       ]
-    }
+    end
 
     describe "#previous_sibling" do
       it "should be nil" do
@@ -121,7 +121,7 @@ describe SiblingDecorator do
   end
 
   context "for a section that is a last child" do
-    let(:child_section_groups) {
+    let(:child_section_groups) do
       [
         {
           child_sections: [
@@ -138,7 +138,7 @@ describe SiblingDecorator do
           ],
         }.deep_stringify_keys,
       ]
-    }
+    end
 
     describe "#previous_sibling" do
       it "should be present" do
@@ -156,7 +156,7 @@ describe SiblingDecorator do
   end
 
   context "for a section that is a mid child" do
-    let(:child_section_groups) {
+    let(:child_section_groups) do
       [
         {
           child_sections: [
@@ -178,7 +178,7 @@ describe SiblingDecorator do
           ],
         }.deep_stringify_keys,
       ]
-    }
+    end
 
     describe "#previous_sibling" do
       it "should be present" do
@@ -197,13 +197,13 @@ describe SiblingDecorator do
     end
 
     context "for a section not recognised by its parent" do
-      let(:child_section_groups) {
+      let(:child_section_groups) do
         [
           {
             child_sections: [],
           }.deep_stringify_keys,
         ]
-      }
+      end
 
       describe "#previous_sibling" do
         it "should be nil" do
@@ -220,7 +220,7 @@ describe SiblingDecorator do
   end
 
   context "for a section that is the first child and has a cousin" do
-    let(:child_section_groups) {
+    let(:child_section_groups) do
       [
         {
           child_sections: [
@@ -246,7 +246,7 @@ describe SiblingDecorator do
           ],
         }.deep_stringify_keys,
       ]
-    }
+    end
 
     describe "#previous_sibling" do
       it "should be nil" do
