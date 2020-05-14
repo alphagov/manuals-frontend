@@ -5,10 +5,11 @@ class ManualsController < ApplicationController
   def index
     set_expiry(content_store_manual)
 
-    render :index, locals: {
-      presented_manual: presented_manual,
-      content_item: content_store_manual,
-    }
+    render :index,
+           locals: {
+             presented_manual: presented_manual,
+             content_item: content_store_manual,
+           }
   end
 
   def show
@@ -16,16 +17,18 @@ class ManualsController < ApplicationController
     document = Document.new(document_from_repository, manual)
     presented_document = DocumentPresenter.new(document: document)
 
-    render :show, locals: {
-      presented_manual: presented_manual,
-      presented_document: presented_document,
-    }
+    render :show,
+           locals: {
+             presented_manual: presented_manual,
+             presented_document: presented_document,
+           }
   end
 
   def updates
-    render :updates, locals: {
-      presented_manual: presented_manual,
-    }
+    render :updates,
+           locals: {
+             presented_manual: presented_manual,
+           }
   end
 
 private
