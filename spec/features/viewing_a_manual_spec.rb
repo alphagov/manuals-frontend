@@ -23,11 +23,15 @@ feature "Viewing manuals and sections" do
     # expect_page_to_include_section("About this manual",
     #   includes_text: "This manual is a guide to the Income Tax (Earnings and Pensions) Act")
 
-    expect_page_to_include_section("Inheritance tax",
-                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500")
+    expect_page_to_include_section(
+      "Inheritance tax",
+      href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500",
+    )
 
-    expect_page_to_be_affiliated_with_org(title: "HM Revenue & Customs",
-                                          slug: "hm-revenue-customs")
+    expect_page_to_be_affiliated_with_org(
+      title: "HM Revenue & Customs",
+      slug: "hm-revenue-customs",
+    )
 
     expect_page_to_have_machine_readable_metadata("Inheritance Tax Manual")
   end
@@ -61,21 +65,31 @@ feature "Viewing manuals and sections" do
 
     expect_a_child_section_group_title_of("This is a dummy child_section_group title")
 
-    expect_page_to_include_section("Introduction to particular items",
-                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00510")
-    expect_page_to_include_section("Particular items: A to P",
-                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00520")
-    expect_page_to_include_section("Particular items: R to Z",
-                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00530")
+    expect_page_to_include_section(
+      "Introduction to particular items",
+      href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00510",
+    )
+    expect_page_to_include_section(
+      "Particular items: A to P",
+      href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00520",
+    )
+    expect_page_to_include_section(
+      "Particular items: R to Z",
+      href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00530",
+    )
 
     expect(page.response_headers["Cache-Control"]).to eq("max-age=1200, private")
 
     # breadcrumb
-    expect(page).to have_link("Contents",
-                              href: "/hmrc-internal-manuals/inheritance-tax-manual")
+    expect(page).to have_link(
+      "Contents",
+      href: "/hmrc-internal-manuals/inheritance-tax-manual",
+    )
 
-    expect_page_to_be_affiliated_with_org(title: "HM Revenue & Customs",
-                                          slug: "hm-revenue-customs")
+    expect_page_to_be_affiliated_with_org(
+      title: "HM Revenue & Customs",
+      slug: "hm-revenue-customs",
+    )
 
     expect(page).to have_link("Previous page", href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00100")
     expect(page).to have_link("Next page", href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00900")
@@ -88,10 +102,14 @@ feature "Viewing manuals and sections" do
 
     visit_hmrc_manual_section "inheritance-tax-manual", "eim00520"
 
-    expect(page).to have_link("Contents",
-                              href: "/hmrc-internal-manuals/inheritance-tax-manual")
-    expect(page).to have_link("EIM00500",
-                              href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500")
+    expect(page).to have_link(
+      "Contents",
+      href: "/hmrc-internal-manuals/inheritance-tax-manual",
+    )
+    expect(page).to have_link(
+      "EIM00500",
+      href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500",
+    )
 
     expect(page).to have_link("Previous page", href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00510")
     expect(page).to have_link("Next page", href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00530")
@@ -112,8 +130,10 @@ feature "Viewing manuals and sections" do
     visit_hmrc_manual "inheritance-tax-manual"
 
     expect_page_to_include_section(/EIM00100\WAbout this manual/)
-    expect_page_to_include_section("EIM00500 Inheritance tax",
-                                   href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500")
+    expect_page_to_include_section(
+      "EIM00500 Inheritance tax",
+      href: "/hmrc-internal-manuals/inheritance-tax-manual/eim00500",
+    )
   end
 
   scenario "navigating from the manual to a section" do
