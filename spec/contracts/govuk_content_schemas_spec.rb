@@ -8,7 +8,7 @@ feature "Viewing manuals and sections examples from govuk-content-schemas" do
     it "should render a page including the manual title" do
       examples_for_formats(%w[manual hmrc_manual]).each do |example_json|
         content_item = JSON.parse(example_json)
-        content_store_has_item(content_item["base_path"], content_item)
+        stub_content_store_has_item(content_item["base_path"], content_item)
 
         visit content_item["base_path"]
 
@@ -23,12 +23,12 @@ feature "Viewing manuals and sections examples from govuk-content-schemas" do
       # Assumption that there is an example manual relating to every example section
       examples_for_formats(%w[manual hmrc_manual]).each do |example_json|
         content_item = JSON.parse(example_json)
-        content_store_has_item(content_item["base_path"], content_item)
+        stub_content_store_has_item(content_item["base_path"], content_item)
       end
 
       examples_for_formats(%w[manual_section hmrc_manual_section]).each do |example_json|
         content_item = JSON.parse(example_json)
-        content_store_has_item(content_item["base_path"], content_item)
+        stub_content_store_has_item(content_item["base_path"], content_item)
 
         visit content_item["base_path"]
 
