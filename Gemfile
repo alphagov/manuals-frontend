@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 5.2.3"
+gem "rails", "~> 6.0.3"
 gem "slimmer", "~> 14.0.0"
 
 gem "sass-rails", "~> 5.0.6"
