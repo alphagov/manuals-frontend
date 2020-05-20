@@ -5,4 +5,5 @@ require File.expand_path("config/application", __dir__)
 
 ManualsFrontend::Application.load_tasks
 
-task default: ["jasmine:ci"]
+Rake::Task[:default].clear unless Rails.env.production?
+task default: [:lint, :spec, "jasmine:ci"]

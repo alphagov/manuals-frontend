@@ -73,7 +73,7 @@ module ManualHelpers
       },
     }
 
-    content_store_has_item(base_path, manual_json)
+    stub_content_store_has_item(base_path, manual_json)
   end
 
   def stub_hmrc_manual(manual_id = "inheritance-tax-manual", title = "Inheritance Tax Manual")
@@ -118,7 +118,7 @@ module ManualHelpers
       },
     }
 
-    content_store_has_item(
+    stub_content_store_has_item(
       "/hmrc-internal-manuals/#{manual_id}",
       manual_json,
       max_age: 15.minutes.to_i,
@@ -164,7 +164,7 @@ module ManualHelpers
       },
     }
 
-    content_store_has_item(
+    stub_content_store_has_item(
       "/hmrc-internal-manuals/inheritance-tax-manual/eim00500",
       section_json,
       max_age: 20.minutes.to_i,
@@ -195,7 +195,7 @@ module ManualHelpers
       },
     }
 
-    content_store_has_item("/hmrc-internal-manuals/inheritance-tax-manual/eim00520", section_json)
+    stub_content_store_has_item("/hmrc-internal-manuals/inheritance-tax-manual/eim00520", section_json)
   end
 
   def stub_hmrc_manual_section_with_body(manual_id = "inheritance-tax-manual", section_id = "eim15000",
@@ -217,7 +217,7 @@ module ManualHelpers
       },
     }
 
-    content_store_has_item("/hmrc-internal-manuals/#{manual_id}/#{section_id}", section_json)
+    stub_content_store_has_item("/hmrc-internal-manuals/#{manual_id}/#{section_id}", section_json)
   end
 
   def stub_redirected_section(manual_id, section_id)
@@ -255,7 +255,7 @@ module ManualHelpers
         },
       ],
     }
-    content_store_has_item("/guidance/#{manual_id}/#{section_id}", document)
+    stub_content_store_has_item("/guidance/#{manual_id}/#{section_id}", document)
   end
 
   def stub_withdrawn_manual(base_path)
@@ -265,7 +265,7 @@ module ManualHelpers
       phase: "live",
     }
 
-    content_store_has_item(base_path, gone_json)
+    stub_content_store_has_item(base_path, gone_json)
   end
 end
 

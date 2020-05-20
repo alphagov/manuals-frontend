@@ -150,7 +150,7 @@ feature "Viewing manuals and sections" do
 
   scenario "visiting a non-existent section" do
     stub_hmrc_manual
-    content_store_does_not_have_item("/hmrc-internal-manuals/inheritance-tax-manual/nonexistent-manual-section")
+    stub_content_store_does_not_have_item("/hmrc-internal-manuals/inheritance-tax-manual/nonexistent-manual-section")
 
     visit_hmrc_manual_section "inheritance-tax-manual", "nonexistent-manual-section"
     expect(page.status_code).to eq(404)
