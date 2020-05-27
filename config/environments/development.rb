@@ -27,6 +27,4 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-
-  config.action_controller.asset_host = ENV["GOVUK_ASSET_HOST"]
 end
