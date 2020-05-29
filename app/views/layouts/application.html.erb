@@ -5,6 +5,7 @@
   <!--[if gt IE 8]><!--><%= stylesheet_link_tag "application" %><!--<![endif]-->
   <!--[if lte IE 8]><%= stylesheet_link_tag "application-ie8" %><script>var ieVersion = 8;</script><![endif]-->
   <%= stylesheet_link_tag "print", media: "print" %>
+  <%= javascript_include_tag "test-dependencies" if Rails.env.test? %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= render 'govuk_publishing_components/components/meta_tags', content_item: @content_store_manual %>
