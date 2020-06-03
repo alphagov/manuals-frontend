@@ -12,7 +12,12 @@ module ManualsFrontend
 
     config.eager_load_paths << "#{config.root}/lib"
 
-    config.assets.prefix = "/manuals-frontend"
+    # Path within public/ where assets are compiled to
+    config.assets.prefix = "/assets/manuals-frontend"
+
+    # allow overriding the asset host with an enironment variable, useful for
+    # when router is proxying to this app but asset proxying isn't set up.
+    config.asset_host = ENV["ASSET_HOST"]
 
     # Override Rails 4 default which restricts framing to SAMEORIGIN.
     config.action_dispatch.default_headers = {
