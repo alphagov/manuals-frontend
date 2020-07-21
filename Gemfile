@@ -10,7 +10,7 @@ gem "gds-api-adapters", "~> 63.6"
 gem "plek", "4.0.0"
 
 gem "govuk_ab_testing"
-gem "govuk_app_config", "~> 2.2.0"
+gem "govuk_app_config", "~> 2.2.1"
 gem "govuk_publishing_components", "~> 21.59.0"
 
 group :development do
