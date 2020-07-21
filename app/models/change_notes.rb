@@ -44,7 +44,7 @@ private
     end
 
     def updated_at
-      @updated_at ||= Time.zone.parse(update["published_at"]).to_date
+      @updated_at ||= Time.zone.parse(update!["published_at"]).to_date
     end
 
     attr_reader :update, :title, :base_path, :change_note
