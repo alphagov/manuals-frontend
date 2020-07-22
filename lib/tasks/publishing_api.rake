@@ -1,5 +1,4 @@
 require "logger"
-require "services"
 
 class RedirectPublisher
   attr_reader :logger, :publishing_app
@@ -28,8 +27,8 @@ class RedirectPublisher
       "update_type" => "major",
     }
 
-    Services.publishing_api.put_content(content_id, redirect)
-    Services.publishing_api.publish(content_id)
+    GdsApi.publishing_api.put_content(content_id, redirect)
+    GdsApi.publishing_api.publish(content_id)
   end
 end
 

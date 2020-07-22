@@ -71,7 +71,7 @@ private
 
   def content_store_manual
     @content_store_manual ||= begin
-      Services.content_store.content_item(manual_base_path)
+      GdsApi.content_store.content_item(manual_base_path)
                               rescue GdsApi::ContentStore::ItemNotFound
                                 nil
     end
