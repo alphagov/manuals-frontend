@@ -36,18 +36,18 @@ private
   end
 
   class Update
-    def initialize(update)
-      @update = update
-      @title = update["title"]
-      @base_path = update["base_path"]
-      @change_note = update["change_note"]
+    def initialize(attributes)
+      @attributes = attributes
+      @title = attributes["title"]
+      @base_path = attributes["base_path"]
+      @change_note = attributes["change_note"]
     end
 
     def updated_at
-      @updated_at ||= Time.zone.parse(update!["published_at"]).to_date
+      @updated_at ||= Time.zone.parse(attributes["published_at"]).to_date
     end
 
-    attr_reader :update, :title, :base_path, :change_note
+    attr_reader :attributes, :title, :base_path, :change_note
   end
 
   class DocumentUpdates
