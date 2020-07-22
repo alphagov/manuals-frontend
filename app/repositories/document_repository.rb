@@ -15,7 +15,7 @@ class DocumentRepository
 private
 
   def fetch_content_item(base_path)
-    Services.content_store.content_item(base_path)
+    GdsApi.content_store.content_item(base_path)
   rescue GdsApi::ContentStore::ItemNotFound
     nil
   end
