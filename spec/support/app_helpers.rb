@@ -87,7 +87,7 @@ module AppHelpers
   end
 
   def expect_change_note(change_note, options)
-    within(".subsection-collection") do
+    within(".section-content") do
       expect(page).to have_link(options[:section_title], href: options[:section_href])
       expect(page).to have_content(change_note)
     end
