@@ -27,7 +27,7 @@ feature "Viewing updates for a manual" do
     visit_manual "my-manual-about-burritos"
     view_manual_change_notes
 
-    view_change_notes_for("20 June 2014")
+    view_change_notes_for("10 June 2016")
 
     expect_change_note(
       "Added section on fillings",

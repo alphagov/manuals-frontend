@@ -16,6 +16,41 @@ module ManualHelpers
     ).fetch("links")
   end
 
+  def example_change_notes(base_path)
+    [
+      {
+        base_path: "#{base_path}/fillings",
+        title: "Fillings",
+        change_note: "Added section on fillings",
+        published_at: "2016-06-10T10:15:36Z",
+      },
+      {
+        base_path: "#{base_path}/fillings",
+        title: "Fillings",
+        change_note: "   Update fillings \n With a two liner   ",
+        published_at: "2020-03-01T15:45:01Z",
+      },
+      {
+        base_path: "#{base_path}/salsa-options",
+        title: "Added section on salsa",
+        change_note: "Added a section on salsa",
+        published_at: "2014-06-25T09:17:27Z",
+      },
+      {
+        base_path: "#{base_path}/this-is-the-section-on-hot-sauce",
+        title: "This is the section on hot sauce",
+        change_note: "Added section on hot sauce",
+        published_at: "2016-06-10T10:15:36Z",
+      },
+      {
+        base_path: "#{base_path}/guacamole",
+        title: "This is the section on guacamole",
+        change_note: "Added section on guacamole",
+        published_at: "2020-06-20T12:30:00Z",
+      },
+    ]
+  end
+
   def stub_fake_manual(base_path: "/guidance/my-manual-about-burritos", public_updated_at: "2014-06-20T10:17:29+01:00", first_published_at: "2009-02-20T15:31:09+00:00")
     manual_json = {
       base_path: base_path,
@@ -50,26 +85,7 @@ module ManualHelpers
             title: "Cabinet Office",
           },
         ],
-        change_notes: [
-          {
-            base_path: "#{base_path}/fillings",
-            title: "Fillings",
-            change_note: "Added section on fillings",
-            published_at: "2014-06-20T09:17:27Z",
-          },
-          {
-            base_path: "#{base_path}/fillings",
-            title: "Fillings",
-            change_note: "   Update fillings \n With a two liner   ",
-            published_at: "2014-06-20T09:17:27Z",
-          },
-          {
-            base_path: "#{base_path}/this-is-the-section-on-hot-sauce",
-            title: "This is the section on hot sauce",
-            change_note: "Added section on hot sauce",
-            published_at: "2014-06-20T09:17:27Z",
-          },
-        ],
+        change_notes: example_change_notes(base_path),
       },
     }
 
@@ -114,7 +130,7 @@ module ManualHelpers
             title: "HM Revenue & Customs",
           },
         ],
-        change_notes: [],
+        change_notes: example_change_notes("/hmrc-internal-manuals/#{manual_id}"),
       },
     }
 

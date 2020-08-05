@@ -18,13 +18,13 @@ private
   attr_reader :change_notes
 
   def group_updates_by_year(updates)
-    updates.group_by { |update| update.updated_at.year }.map { |year, grouped_updates|
+    updates.group_by { |update| update.updated_at.year }.sort_by { |year, _| year }.map { |year, grouped_updates|
       [year, group_updates_by_day(grouped_updates)]
     }.reverse
   end
 
   def group_updates_by_day(updates)
-    updates.group_by(&:updated_at).map { |day, grouped_updates|
+    updates.group_by(&:updated_at).sort_by { |day, _| day }.map { |day, grouped_updates|
       [day, group_updates_by_document(grouped_updates)]
     }.reverse
   end
