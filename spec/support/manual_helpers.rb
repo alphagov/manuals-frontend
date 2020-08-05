@@ -41,7 +41,6 @@ module ManualHelpers
         title: "This is the section on hot sauce",
         change_note: "Added section on hot sauce",
         published_at: "2016-06-10T10:15:36Z",
-        # published_at: "2014-06-25T09:17:27Z",
       },
       {
         base_path: "#{base_path}/guacamole",
