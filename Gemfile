@@ -1,17 +1,18 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 6.0.3"
-gem "slimmer", "~> 15.0.0"
+gem "rails", "6.0.3.2"
 
-gem "sass-rails", "~> 5.0.6"
-gem "uglifier", ">= 1.3.0"
+gem "slimmer"
 
-gem "gds-api-adapters", "~> 67.0"
+gem "sass-rails"
+gem "uglifier"
+
+gem "gds-api-adapters"
 gem "plek", "4.0.0"
 
 gem "govuk_ab_testing"
-gem "govuk_app_config", "~> 2.2.1"
-gem "govuk_publishing_components", "~> 21.60.3"
+gem "govuk_app_config"
+gem "govuk_publishing_components"
 
 group :development do
   gem "better_errors"
@@ -21,13 +22,13 @@ end
 group :development, :test do
   gem "jasmine"
   gem "pry-byebug"
-  gem "rspec-rails", "~> 4.0"
+  gem "rspec-rails"
   gem "rubocop-govuk"
 end
 
 group :test do
-  gem "govuk-content-schema-test-helpers", "~> 1.6"
+  gem "govuk-content-schema-test-helpers"
   gem "govuk_test"
   gem "launchy"
-  gem "webmock", "~> 3.8.3"
+  gem "webmock"
 end

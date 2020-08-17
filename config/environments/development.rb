@@ -27,4 +27,9 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
+
+  config.hosts += [
+    "manuals-frontend.dev.gov.uk",
+    "draft-manuals-frontend.dev.gov.uk",
+  ]
 end

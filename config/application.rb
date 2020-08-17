@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module ManualsFrontend
   class Application < Rails::Application
-    config.load_defaults 5.1
+    config.load_defaults 6.0
 
     config.eager_load_paths << "#{config.root}/lib"
 
@@ -23,5 +23,11 @@ module ManualsFrontend
     config.action_dispatch.default_headers = {
       "X-Frame-Options" => "ALLOWALL",
     }
+
+    # Using a sass css compressor causes a scss file to be processed twice
+    # (once to build, once to compress) which breaks the usage of "unquote"
+    # to use CSS that has same function names as SCSS such as max.
+    # https://github.com/alphagov/govuk-frontend/issues/1350
+    config.assets.css_compressor = nil
   end
 end
