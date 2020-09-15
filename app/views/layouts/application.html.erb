@@ -14,6 +14,10 @@
 <body>
   <div id="global-breadcrumb" class="header-context"></div>
   <div id="wrapper">
+    <% if @presented_manual.beta? %>
+      <%= render 'govuk_publishing_components/components/phase_banner', phase: "beta" %>
+    <% end %>
+    <%= render 'govuk_publishing_components/components/contextual_breadcrumbs', content_item: @content_store_manual %>
     <main role="main" class="hmrc-internal-manuals-frontend-content outer-block">
       <div id="manuals-frontend" class='manuals-frontend-body inner-block'>
         <%= yield %>
