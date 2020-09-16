@@ -31,5 +31,6 @@ end
 group :test do
   gem "govuk-content-schema-test-helpers"
   gem "launchy"
+  gem "simplecov"
   gem "webmock"
 end
