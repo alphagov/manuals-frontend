@@ -8,7 +8,7 @@ gem "sass-rails"
 gem "uglifier"
 
 gem "gds-api-adapters"
-gem "plek", "4.0.0"
+gem "plek"
 
 gem "govuk_ab_testing"
 gem "govuk_app_config"
