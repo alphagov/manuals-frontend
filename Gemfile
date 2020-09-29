@@ -8,7 +8,7 @@ gem "sass-rails"
 gem "uglifier"
 
 gem "gds-api-adapters"
-gem "plek", "4.0.0"
+gem "plek"
 
 gem "govuk_ab_testing"
 gem "govuk_app_config"
@@ -20,7 +20,9 @@ group :development do
 end
 
 group :development, :test do
+  gem "govuk_test"
   gem "jasmine"
+  gem "jasmine_selenium_runner"
   gem "pry-byebug"
   gem "rspec-rails"
   gem "rubocop-govuk"
@@ -28,7 +30,6 @@ end
 
 group :test do
   gem "govuk-content-schema-test-helpers"
-  gem "govuk_test"
   gem "launchy"
   gem "webmock"
 end
