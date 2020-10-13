@@ -44,7 +44,7 @@ main {
     background: $govuk-brand-colour;
 
     &.hmrc {
-      background: govuk-organisation-colour("hm-revenue-customs", $websafe: false);
+      background: govuk-organisation-colour("hm-revenue-customs");
     }
 
     padding-top: govuk-spacing(6);
