@@ -5,8 +5,9 @@
     <% if presented_manual.hmrc? %>
       <% if presented_document.body.present? %>
         <div class='body-content-wrapper'>
-          <%= render 'govuk_publishing_components/components/govspeak',
-            content: presented_document.body %>
+          <%= render "govuk_publishing_components/components/govspeak", {} do %>
+            <%= sanitize(presented_document.body) %>
+          <% end %>
         </div>
       <% end %>
       <div class='subsection-collection'>
@@ -21,7 +22,9 @@
       <% if presented_document.body.present? %>
         <div class='js-collapsible-collection subsection-collection' data-collapse-depth=<%= presented_document.collapse_depth %>>
           <div class='collapsible-subsections'>
-            <%= render 'govuk_publishing_components/components/govspeak', content: presented_document.body %>
+            <%= render "govuk_publishing_components/components/govspeak", {} do %>
+              <%= sanitize(presented_document.body) %>
+            <% end %>
           </div>
         </div>
       <% end %>
