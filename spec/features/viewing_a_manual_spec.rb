@@ -39,12 +39,14 @@ feature "Viewing manuals and sections" do
   scenario "viewing a non-HMRC manual" do
     stub_fake_manual
     visit_manual "my-manual-about-burritos"
+    expect(page).not_to have_text("There is something afoot")
     expect(page).not_to have_selector(".gem-c-phase-banner")
   end
 
   scenario "viewing an HMRC manual" do
     stub_hmrc_manual
     visit_hmrc_manual "inheritance-tax-manual"
+    expect(page).to have_css(".gem-c-govspeak", text: "There is something afoot")
     expect(page).to have_selector(".gem-c-phase-banner")
   end
 
