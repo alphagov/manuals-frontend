@@ -2,17 +2,14 @@ source "https://rubygems.org"
 
 gem "rails", "6.1.1"
 
-gem "slimmer"
-
-gem "sass-rails"
-gem "uglifier"
-
 gem "gds-api-adapters"
-gem "plek"
-
 gem "govuk_ab_testing"
 gem "govuk_app_config"
 gem "govuk_publishing_components"
+gem "plek"
+gem "sassc-rails"
+gem "slimmer"
+gem "uglifier"
 
 group :development do
   gem "better_errors"
