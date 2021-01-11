@@ -17,7 +17,7 @@ $govuk-use-legacy-palette: false;
 @import 'govuk_publishing_components/components/step-by-step-nav-header';
 
 // some colours used below
-$manual-search-button-border-colour: #222;
+$manual-search-button-border-colour: #222222;
 
 %common-button-styles {
   -webkit-font-smoothing: antialiased;
@@ -128,7 +128,7 @@ main {
 
         border-radius: 0;
 
-        @include govuk-device-pixel-ratio() {
+        @include govuk-device-pixel-ratio {
           background-size: 52.5px 35px;
           background-position: 100% 50%;
         }
@@ -138,7 +138,6 @@ main {
         }
       }
     }
-
   }
 
   .breadcrumb-trail {
@@ -165,7 +164,7 @@ main {
         background-position: 100% 45%;
       }
 
-      @include govuk-device-pixel-ratio() {
+      @include govuk-device-pixel-ratio {
         background-image: image-url("separator-2x.png");
         background-size: 6px 11px;
       }
@@ -281,6 +280,7 @@ main {
 
   .updates-list {
     @include govuk-font(19);
+
     dd {
       margin-bottom: 1em;
       white-space: pre-line;
@@ -386,7 +386,7 @@ main {
         right: 0;
         top: govuk-spacing(2);
 
-        @include govuk-device-pixel-ratio() {
+        @include govuk-device-pixel-ratio {
           background-image: image-url("arrows_sprite-2x.png");
           background-size: 32px 50px;
         }
@@ -407,7 +407,7 @@ main {
       .js-toggle {
         background: image-url("arrows_sprite.png") no-repeat 0 -32px;
 
-        @include govuk-device-pixel-ratio() {
+        @include govuk-device-pixel-ratio {
           background-image: image-url("arrows_sprite-2x.png");
           background-size: 32px 50px;
         }
@@ -451,5 +451,4 @@ main {
       display: block;
     }
   }
-
 }
