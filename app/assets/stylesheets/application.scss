@@ -16,6 +16,11 @@ $govuk-use-legacy-palette: false;
 @import 'govuk_publishing_components/components/previous-and-next-navigation';
 @import 'govuk_publishing_components/components/step-by-step-nav-header';
 
+// stylelint-disable selector-no-qualifying-type, max-nesting-depth -- This
+// file contains a lot of nesting and various usages of selector rules that
+// combine classes with elements. This will likely need a refactor to resolve
+// these problems.
+
 // some colours used below
 $manual-search-button-border-colour: #222222;
 
@@ -89,12 +94,8 @@ main {
       }
 
       .in-manual-search-box {
-        // Disable scss-lint complaining about declaring width twice since
-        // this is for browsers that don't understand calc
-        // scss-lint:disable DuplicateProperty
         width: 86%;
         width: calc(100% - 47px);
-        // scss-lint:enable DuplicateProperty
         border: none;
         padding: 9px 7px;
         height: 16px;
@@ -351,14 +352,11 @@ main {
           padding: 0 govuk-spacing(1) 0 govuk-spacing(1);
           display: inline-block;
 
-          // We're nesting quite deep here...
-          // scss-lint:disable NestingDepth
           &.disabled {
             color: $govuk-secondary-text-colour;
             text-decoration: none;
             cursor: default;
           }
-          // scss-lint:enable NestingDepth
         }
       }
     }
