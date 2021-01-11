@@ -1,5 +1,5 @@
 describe('CollapsibleCollection', function () {
-  var collectionsFromHRMCHTML, collectionsFromBlobHTML, collectionBlob, collection
+  var collectionsFromBlobHTML, collectionsFromBlobString, collection
 
   beforeEach(function () {
     // Content comes as a single blob of markdown from the GDSAPI in the "body" field.
@@ -113,7 +113,7 @@ describe('CollapsibleCollection', function () {
       var sectionHeaderCount = h2Count - excludedH2Count
 
       expect(html.find('h2.js-subsection-title').length).toBe(0)
-      var newCollection = new GOVUK.CollapsibleCollection({ $el: html })
+      new GOVUK.CollapsibleCollection({ $el: html }) // eslint-disable-line no-new
       expect(html.find('h2.js-subsection-title').length).toBe(sectionHeaderCount)
     })
 
@@ -141,12 +141,12 @@ describe('CollapsibleCollection', function () {
     it('should close all collapsibles in this collection', function () {
       collection.openAll()
 
-      for (var collapsible_id in this.collapsibles) {
+      for (var collapsible in this.collapsibles) {
         expect($(this.collapsible[collapsible.id]).isClosed()).toBe(false)
       }
       collection.closeAll()
 
-      for (var collapsible_id in this.collapsibles) {
+      for (collapsible in this.collapsibles) {
         expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true)
       }
     })
@@ -168,12 +168,12 @@ describe('CollapsibleCollection', function () {
     it('should open all collapsibles in this collection', function () {
       collection.closeAll()
 
-      for (var collapsible_id in this.collapsibles) {
+      for (var collapsible in this.collapsibles) {
         expect($(this.collapsible[collapsible.id]).isOpen()).toBe(false)
       }
       collection.openAll()
 
-      for (var collapsible_id in this.collapsibles) {
+      for (collapsible in this.collapsibles) {
         expect($(this.collapsible[collapsible.id]).isClosed()).toBe(true)
       }
     })

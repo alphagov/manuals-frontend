@@ -9,6 +9,6 @@ jQuery(function ($) {
   GOVUK.primaryLinks.init('.primary-item')
 
   $('.js-collapsible-collection').each(function () {
-    new GOVUK.CollapsibleCollection({ $el: $(this) })
+    new GOVUK.CollapsibleCollection({ $el: $(this) }) // eslint-disable-line no-new
   })
 })

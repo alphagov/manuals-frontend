@@ -142,7 +142,7 @@
       // all the sections are open
       this.disableControl(this.$openAll)
       this.enableControl(this.$closeAll)
-    } else if (sectionCount == closedCount) {
+    } else if (sectionCount === closedCount) {
       // all the sections are closed
       this.disableControl(this.$closeAll)
       this.enableControl(this.$openAll)
