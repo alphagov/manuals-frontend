@@ -4,11 +4,11 @@
 //= require govuk_publishing_components/components/govspeak
 //= require_tree ./modules
 
-jQuery(function($) {
-  "use strict";
-  GOVUK.primaryLinks.init('.primary-item');
+jQuery(function ($) {
+  'use strict'
+  GOVUK.primaryLinks.init('.primary-item')
 
-  $('.js-collapsible-collection').each(function(){
-    new GOVUK.CollapsibleCollection({$el:$(this)});
-  });
-});
+  $('.js-collapsible-collection').each(function () {
+    new GOVUK.CollapsibleCollection({ $el: $(this) }) // eslint-disable-line no-new
+  })
+})

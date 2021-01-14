@@ -1,8 +1,8 @@
-(function() {
-  "use strict";
-  window.GOVUK = window.GOVUK || {};
+(function () {
+  'use strict'
+  window.GOVUK = window.GOVUK || {}
 
-  window.GOVUK.getCurrentLocation = function(){
-    return window.location;
-  };
-}());
+  window.GOVUK.getCurrentLocation = function () {
+    return window.location
+  }
+}())

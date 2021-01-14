@@ -36,10 +36,10 @@ a {
     dd {
       font-weight: bold;
       margin-left: 0;
+    }
 
-      a:after {
-        content: "";
-      }
+    dd a:after {
+      content: "";
     }
   }
 }

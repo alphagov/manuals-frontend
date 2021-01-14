@@ -2,3 +2,6 @@ log
 tmp
 spec/failures
 coverage
+node_modules
+yarn-error.log
+public/assets
