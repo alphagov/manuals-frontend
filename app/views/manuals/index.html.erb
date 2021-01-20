@@ -1,3 +1,12 @@
+<% content_for :guide_heading do %>
+  <%= render "govuk_publishing_components/components/heading", {
+      text: presented_manual.title,
+      font_size: "l",
+      inverse: true,
+      id: "manual-title",
+      heading_level: 1,
+  } %>
+<% end %>
 <%=
   render(
     'content_for_head_tag',

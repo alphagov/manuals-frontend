@@ -4,7 +4,7 @@
       <span class='manual-type'>HMRC internal manual</span>
     <% end %>
 
-    <h1 id="manual-title"><%= presented_manual.title %></h1>
+    <%= yield :guide_heading %>
     <%= render 'govuk_publishing_components/components/metadata', presented_manual.metadata %>
 
     <div class="in-manual-search">

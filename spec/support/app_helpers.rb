@@ -67,7 +67,7 @@ module AppHelpers
   def expect_section_title_to_be(section_title)
     raise ArgumentError, "You probably didn't mean to check for a blank section title" if section_title.blank?
 
-    within("h1.section-title") do
+    within("article h1") do
       expect(page).to have_content(section_title)
     end
   end

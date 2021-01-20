@@ -1,6 +1,12 @@
 <div class='manual-body' id="content">
   <article aria-labelledby="section-title">
-    <h1 id="section-title" class='section-title'><%= presented_document.title %></h1>
+    <%= render "govuk_publishing_components/components/heading", {
+      text: presented_document.title,
+      font_size: "m",
+      id: "section-title",
+      heading_level: 1,
+      margin_bottom: 4,
+    } %>
     <% if presented_document.summary %><p class='summary'><%= presented_document.summary %></p><% end %>
 
     <%= render partial: "hmrc_callout", locals: { presented_manual: presented_manual } %>
