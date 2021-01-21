@@ -16,6 +16,7 @@ $govuk-use-legacy-palette: false;
 @import 'govuk_publishing_components/components/metadata';
 @import 'govuk_publishing_components/components/phase-banner';
 @import 'govuk_publishing_components/components/previous-and-next-navigation';
+@import 'govuk_publishing_components/components/search';
 @import 'govuk_publishing_components/components/step-by-step-nav-header';
 
 // stylelint-disable selector-no-qualifying-type, max-nesting-depth -- This
@@ -83,62 +84,6 @@ main {
 
       &:focus {
         @include govuk-focused-text;
-      }
-    }
-
-    .in-manual-search {
-      position: relative;
-      margin: govuk-spacing(6) 0 govuk-spacing(3);
-
-      label {
-        padding-bottom: govuk-spacing(1);
-        display: inline-block;
-      }
-
-      .in-manual-search-box {
-        width: 86%;
-        width: calc(100% - 47px);
-        border: none;
-        padding: 9px 7px;
-        height: 16px;
-
-        &.focus,
-        &:focus {
-          position: relative;
-          z-index: 1;
-          outline-color: $govuk-focus-colour;
-          box-shadow: inset 0 0 0 3px govuk-colour("black");
-        }
-
-        @include govuk-media-query($from: tablet) {
-          padding: 7px;
-          height: 20px;
-        }
-      }
-
-      button {
-        width: 34px;
-        height: 34px;
-        border: 1px solid govuk-colour("black");
-        border-width: 0 0 0 1px;
-        border-left-color: $manual-search-button-border-colour;
-        overflow: hidden;
-        text-indent: -5000px;
-        cursor: pointer;
-        color: govuk-colour("white");
-        background: govuk-colour("black") image-url("search-button.png") no-repeat 0 50%;
-        position: absolute;
-
-        border-radius: 0;
-
-        @include govuk-device-pixel-ratio {
-          background-size: 52.5px 35px;
-          background-position: 100% 50%;
-        }
-
-        &:focus {
-          outline-color: $govuk-focus-colour;
-        }
       }
     }
   }
