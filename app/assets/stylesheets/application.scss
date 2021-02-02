@@ -88,58 +88,6 @@ main {
     }
   }
 
-  .breadcrumb-trail {
-    @include govuk-font(16);
-    margin: govuk-spacing(2) 0 0 0;
-    padding: 0 0 govuk-spacing(2);
-    border-bottom: 1px solid $govuk-border-colour;
-
-    strong {
-      @include govuk-typography-weight-bold;
-    }
-
-    li {
-      background-image: image-url("separator.png");
-      background-position: 100% 20%;
-      background-repeat: no-repeat;
-      display: inline;
-      list-style: none;
-      margin-left: 0;
-      margin-right: govuk-spacing(1);
-      padding: 0 govuk-spacing(3) 0 0;
-
-      @include govuk-media-query($from: tablet) {
-        background-position: 100% 45%;
-      }
-
-      @include govuk-device-pixel-ratio {
-        background-image: image-url("separator-2x.png");
-        background-size: 6px 11px;
-      }
-
-      &:first-child {
-        margin-left: 0;
-      }
-
-      &.last-child {
-        background-image: none;
-        color: $govuk-text-colour;
-      }
-
-      &.no-separator {
-        background-image: none;
-      }
-
-      a {
-        color: $govuk-text-colour;
-
-        &:focus {
-          @include govuk-focused-text;
-        }
-      }
-    }
-  }
-
   .section-list {
     margin-top: govuk-spacing(6);
 
