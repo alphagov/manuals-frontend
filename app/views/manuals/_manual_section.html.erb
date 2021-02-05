@@ -23,13 +23,24 @@
 
     <% else %>
       <% if presented_document.body.present? %>
-        <div class='js-collapsible-collection subsection-collection' data-collapse-depth=<%= presented_document.collapse_depth %>>
-          <div class='collapsible-subsections'>
-            <%= render 'govuk_publishing_components/components/govspeak', {} do %>
-              <%= raw(presented_document.body) %>
-            <% end %>
-          </div>
-        </div>
+        <%= render "govuk_publishing_components/components/govspeak", {} do
+          raw(presented_document.intro)
+        end %>
+
+        <%= render "govuk_publishing_components/components/accordion", {
+          items: presented_document.main.map do |item|
+            rendered_content = render "govuk_publishing_components/components/govspeak", {} do
+              raw(item[:content])
+            end
+
+            {
+              heading: item[:heading],
+              content: {
+                html: rendered_content,
+              },
+            }
+          end
+        } %>
       <% end %>
     <% end %>
   </article>

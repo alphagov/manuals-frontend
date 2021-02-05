@@ -39,6 +39,46 @@ class Document
     details["body"] && details["body"].html_safe
   end
 
+  def intro
+    return nil unless body
+
+    intro = Nokogiri::HTML::DocumentFragment.parse(body)
+
+    # Strip all content following and including the first heading level specified by collapse_path
+    intro.css("h#{collapse_depth}").xpath("following-sibling::*").remove
+    intro.css("h#{collapse_depth}").remove
+
+    intro
+  end
+
+  def main
+    return nil unless body
+
+    document = Nokogiri::HTML::DocumentFragment.parse(body)
+
+    # Identifies all headings of the level specified in collapse_path and creates an array of objects from the heading and its proceeding content up to the next heading
+    # This is so that it can be consumed by accordion components in the template
+    # See _manual_section.html.erb for how this is being rendered
+    document.css("h#{collapse_depth}").map do |heading|
+      content = []
+
+      heading.xpath("following-sibling::*").each do |element|
+        if element.name == "h2"
+          break
+        else
+          content << element.to_html
+        end
+      end
+
+      {
+        heading: {
+          text: heading.text,
+        },
+        content: content.join,
+      }
+    end
+  end
+
   def section_groups
     raw_section_groups.map { |group| SectionGroup.new(group) }
   end
@@ -70,7 +110,7 @@ class Document
     # We will always collapse the lowest given heading.
     # If only one level of headings are given, this returns 1. 2 is returned for 2, etc.
     # Only ever expecting this to return 1 or 2, but the code that uses this method will work for higher integers too.
-    1
+    2
   end
 
 private
