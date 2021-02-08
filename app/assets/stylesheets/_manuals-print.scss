@@ -5,7 +5,6 @@ a {
 // hide all the unnecessary things
 .alpha-label,
 .breadcrumb-trail,
-.js-title-controls-wrap,
 .print-page,
 .secondary .feedback,
 .in-manual-search {
@@ -54,19 +53,4 @@ a {
 
 .govspeak {
   width: 75%;
-}
-
-.js-openable {
-  margin-bottom: 30px;
-
-  h2 button {
-    font-family: "nta", Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 18px;
-    line-height: 1.25;
-    font-weight: bold;
-    border: none;
-    padding-left: 0;
-  }
 }

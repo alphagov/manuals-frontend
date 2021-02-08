@@ -241,12 +241,6 @@ main {
     }
   }
 
-  .section-content {
-    a:focus {
-      @include govuk-focused-text;
-    }
-  }
-
   .manual-body {
     margin: govuk-spacing(3) 0 90px;
 
@@ -297,124 +291,11 @@ main {
     }
   }
 
-  .collapsible-subsections .js-subsection-title {
-    @include govuk-font(19, $weight: bold);
-    display: block;
-    border-top: 1px solid $govuk-border-colour;
-    padding: govuk-spacing(2) govuk-spacing(6) govuk-spacing(2) 0;
-    margin: govuk-spacing(6) 0;
-    position: relative;
-
-    button {
-      @extend %common-button-styles;
-      @include govuk-typography-weight-bold;
-      margin-top: 0;
-      margin-bottom: 0;
-      margin-left: 0;
-      padding-bottom: 0;
-      padding-left: 0;
-      text-align: left;
-    }
-  }
-
   .subsection-collection {
     margin-top: govuk-spacing(3);
 
     @include govuk-media-query($from: tablet) {
       margin-top: govuk-spacing(6);
-    }
-
-    .js-title-controls-wrap {
-      @include govuk-clearfix;
-
-      .section-title {
-        @extend %govuk-heading-m;
-
-        @include govuk-media-query($from: tablet) {
-          float: left;
-          width: 75%;
-        }
-      }
-
-      .js-collection-controls {
-        display: block;
-        margin-left: (- govuk-spacing(1));
-        margin-bottom: govuk-spacing(3);
-
-        @include govuk-media-query($from: tablet) {
-          margin: 0 0 govuk-spacing(6) (- govuk-spacing(1));
-          float: right;
-          display: inline-block;
-        }
-
-        button {
-          @include govuk-font(16);
-          @extend %common-button-styles;
-          padding: 0 govuk-spacing(1) 0 govuk-spacing(1);
-          display: inline-block;
-
-          &.disabled {
-            color: $govuk-secondary-text-colour;
-            text-decoration: none;
-            cursor: default;
-          }
-        }
-      }
-    }
-  }
-
-  .js-openable {
-    border-top: 1px solid $govuk-border-colour;
-    padding-bottom: govuk-spacing(6);
-
-    @include govuk-media-query($from: tablet) {
-      padding-bottom: govuk-spacing(9);
-    }
-
-    .js-subsection-title {
-      cursor: pointer;
-      margin: 0;
-      border: none;
-
-      .js-toggle {
-        height: 25px;
-        width: 25px;
-        display: block;
-        background: image-url("arrows_sprite.png") no-repeat;
-        position: absolute;
-        right: 0;
-        top: govuk-spacing(2);
-
-        @include govuk-device-pixel-ratio {
-          background-image: image-url("arrows_sprite-2x.png");
-          background-size: 32px 50px;
-        }
-      }
-    }
-
-    .js-subsection-body {
-      margin-top: govuk-spacing(3);
-
-      @include govuk-media-query($from: tablet) {
-        margin-top: govuk-spacing(6);
-      }
-    }
-
-    .js-enabled &.closed {
-      padding: 0;
-
-      .js-toggle {
-        background: image-url("arrows_sprite.png") no-repeat 0 -32px;
-
-        @include govuk-device-pixel-ratio {
-          background-image: image-url("arrows_sprite-2x.png");
-          background-size: 32px 50px;
-        }
-      }
-
-      .js-subsection-body {
-        display: none;
-      }
     }
   }
 
