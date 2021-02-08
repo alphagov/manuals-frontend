@@ -39,8 +39,6 @@ If you are using the GDS development virtual machine then the application will b
 
 The test suite includes testing against govuk-content-schemas, so you will need a copy of this repo on your file system. By default this should be in a sibling directory to your project. Alternatively, you can specify their location with the GOVUK_CONTENT_SCHEMAS_PATH environment variable.
 
-jasmine tests are mounted at http://manuals-frontend.dev.gov.uk/specs
-
 All tests can be run using `bundle exec rake` as well.
 
 ## Viewing a manual
