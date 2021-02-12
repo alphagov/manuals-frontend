@@ -28,7 +28,7 @@ module AppHelpers
   end
 
   def view_change_notes_for(label)
-    page.find(".js-subsection-title", text: label).click
+    page.find(".gem-c-accordion__section-button", text: label).click
   end
 
   def expect_page_to_include_section(section_title, options = {})
@@ -87,10 +87,8 @@ module AppHelpers
   end
 
   def expect_change_note(change_note, options)
-    within(".section-content") do
-      expect(page).to have_link(options[:section_title], href: options[:section_href])
-      expect(page).to have_content(change_note)
-    end
+    expect(page).to have_link(options[:section_title], href: options[:section_href])
+    expect(page).to have_content(change_note)
   end
 
   def expect_page_to_have_machine_readable_metadata(title)

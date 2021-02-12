@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   end
 
   root to: proc { [404, {}, ["Not found"]] }
-  mount JasmineRails::Engine => "/specs" if defined?(JasmineRails::Engine)
 
   get "/healthcheck", to: GovukHealthcheck.rack_response
 end
