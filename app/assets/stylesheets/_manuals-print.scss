@@ -17,30 +17,6 @@ a {
     padding: 0 0 10px;
     font-weight: bold;
   }
-
-  dl {
-    float: left;
-    margin-top: 0;
-    width: 100%;
-
-    dt {
-      min-width: 100px;
-      float: left;
-
-      &:after {
-        content: ":";
-      }
-    }
-
-    dd {
-      font-weight: bold;
-      margin-left: 0;
-    }
-
-    dd a:after {
-      content: "";
-    }
-  }
 }
 
 .manual-body {
