@@ -17,14 +17,15 @@
         heading_level: 3,
         items: updates_by_year.map do |day, updated_documents|
           accordion_content = capture do %>
-            <dl class='updates-list'>
+            <div class='updates-list'>
               <% updated_documents.each do |document| %>
-                <dt><%= link_to document.title, document.base_path, class: "govuk-link" %></dt>
-                  <% document.change_notes.each do |note| %>
-                    <dd><%= note.strip %></dd>
-                  <% end %>
+                <p><%= link_to document.title, document.base_path, class: "govuk-link" %></p>
+                <% document.change_notes.each do |note| %>
+                  <p><%= note.strip %></p>
+                <% end %>
+                <br/>
               <% end %>
-            </dl>
+            </div>
           <% end
 
           {

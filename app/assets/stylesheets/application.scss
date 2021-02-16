@@ -276,11 +276,6 @@ main {
 
   .updates-list {
     @include govuk-font(19);
-
-    dd {
-      margin-bottom: 1em;
-      white-space: pre-line;
-    }
   }
 
   .collapsible-subsections {
