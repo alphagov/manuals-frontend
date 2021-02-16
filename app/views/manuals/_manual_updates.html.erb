@@ -21,7 +21,7 @@
               <% updated_documents.each do |document| %>
                 <p><%= link_to document.title, document.base_path, class: "govuk-link" %></p>
                 <% document.change_notes.each do |note| %>
-                  <p><%= note.strip %></p>
+                  <%= simple_format(note) %>
                 <% end %>
                 <br/>
               <% end %>
