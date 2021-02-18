@@ -73,6 +73,7 @@ class Document
       {
         heading: {
           text: heading.text,
+          id: heading[:id],
         },
         content: content.join,
       }
