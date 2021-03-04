@@ -21,6 +21,7 @@ RSpec.configure(&:infer_spec_type_from_file_location!)
 
 RSpec.configure do |c|
   c.example_status_persistence_file_path = "spec/failures"
+  c.include Capybara::RSpecMatchers, type: :request
 end
 
 GovukAbTesting.configure do |config|
