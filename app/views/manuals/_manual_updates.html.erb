@@ -1,12 +1,12 @@
 <div class='manual-body' id="content">
   <article aria-labelledby="section-title">
     <%= render "govuk_publishing_components/components/heading", {
-      text: "Updates: #{presented_manual.title}",
       font_size: "l",
       heading_level: 1,
       id: "section-title",
+      margin_bottom: 4,
+      text: "Updates: #{presented_manual.title}",
     } %>
-
     <% presented_manual.change_notes.by_year.each do |year, updates_by_year| %>
       <%= render "govuk_publishing_components/components/heading", {
         text: year,

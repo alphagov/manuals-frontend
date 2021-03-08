@@ -1,14 +1,29 @@
-<ol class='breadcrumb-trail'>
-  <% if request.path == presented_manual.url %>
-    <li class="no-separator">Contents</li>
-  <% else %>
-    <li><%= link_to 'Contents', presented_manual.url %></li>
-  <% end %>
+<%=
+  crumbs = []
 
-  <% if local_assigns.has_key?(:presented_document) %>
-    <% presented_document.breadcrumbs.each do | crumb | %>
-      <li> <%= link_to crumb.label, crumb.link %></li>
-    <% end %>
-    <li class='last-child'><%= presented_document.breadcrumb %></li>
-  <% end %>
-</ol>
+  if request.path == presented_manual.url
+    crumbs.push({
+      title: "Contents",
+    })
+  else
+    crumbs.push({
+      title: "Contents",
+      url: presented_manual.url,
+    })
+  end
+
+  if local_assigns.has_key?(:presented_document)
+    presented_document.breadcrumbs.each do | crumb |
+      crumbs.push({
+        title: crumb.label,
+        url: crumb.link,
+      })
+    end
+  end
+
+  render "govuk_publishing_components/components/breadcrumbs", {
+    border: "bottom",
+    breadcrumbs: crumbs,
+    collapse_on_mobile: false,
+  }
+%>

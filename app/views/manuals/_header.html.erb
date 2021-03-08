@@ -4,23 +4,19 @@
       <span class='manual-type'>HMRC internal manual</span>
     <% end %>
 
-    <h1 id="manual-title"><%= presented_manual.title %></h1>
+    <%= yield :guide_heading %>
     <%= render 'govuk_publishing_components/components/metadata', presented_manual.metadata %>
 
     <div class="in-manual-search">
       <form action="/search/all" >
-        <label for="search-box">Search this manual</label>
+
         <input type='hidden' name="manual[]" value="<%= presented_manual.url %>">
-        <input id="search-box" class="in-manual-search-box" type="text" name="q"/>
-        <button type="submit">search</button>
+
+        <%= render "govuk_publishing_components/components/search", {
+          on_govuk_blue: true,
+          label_text: "Search this manual",
+        } %>
       </form>
-    </div>
-  </div>
-  <div class='govuk-grid-column-one-third'>
-    <div class='secondary-inner'>
-      <p>
-        <%= link_to 'Give feedback about this page', 'https://www.gov.uk/contact/govuk', :class=> "feedback" %>
-      </p>
     </div>
   </div>
 </header>
