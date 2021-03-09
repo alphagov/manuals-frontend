@@ -1,12 +1,12 @@
 <%
   document_heading = []
-  document_heading << "#{presented_document.breadcrumb} - " if presented_document.breadcrumb.present?
-  document_heading << presented_document.title
+  document_heading << presented_document.breadcrumb if presented_document.breadcrumb.present?
+  document_heading << presented_document.title unless document_heading.include?(presented_document.title)
 
 %><div class='manual-body' id="content">
   <article aria-labelledby="section-title">
     <%= render "govuk_publishing_components/components/heading", {
-      text: document_heading.join,
+      text: document_heading.join(" - "),
       font_size: "m",
       id: "section-title",
       heading_level: 1,
