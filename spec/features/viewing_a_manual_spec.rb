@@ -127,6 +127,23 @@ feature "Viewing manuals and sections" do
     expect(page).to have_content("Sections 386-400 ITEPA 2003")
   end
 
+  scenario "visiting a visually collapsed manual section", js: true do
+    stub_fake_manual
+    stub_fake_manual_sections
+
+    visit_manual_section "my-manual-about-burritos", "collapsed-section"
+
+    expect(page).to have_css(".gem-c-accordion", text: "Show all sections")
+  end
+
+  scenario "visiting a visually expanded manual section", js: true do
+    stub_fake_manual
+    stub_fake_manual_sections
+
+    visit_manual_section "my-manual-about-burritos", "expanded-section"
+    expect(page).not_to have_css(".gem-c-accordion", text: "Show all sections")
+  end
+
   scenario "HMRC manual section IDs are displayed in the title" do
     stub_hmrc_manual
     visit_hmrc_manual "inheritance-tax-manual"

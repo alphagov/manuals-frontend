@@ -39,6 +39,10 @@ class Document
     details["body"] && details["body"].html_safe
   end
 
+  def visually_expanded?
+    details.fetch("visually_expanded", false)
+  end
+
   def intro
     return nil unless body
 
