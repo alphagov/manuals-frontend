@@ -13,6 +13,7 @@ $govuk-use-legacy-palette: false;
 @import 'govuk_publishing_components/components/hint';
 @import 'govuk_publishing_components/components/input';
 @import 'govuk_publishing_components/components/label';
+@import 'govuk_publishing_components/components/lead-paragraph';
 @import 'govuk_publishing_components/components/metadata';
 @import 'govuk_publishing_components/components/phase-banner';
 @import 'govuk_publishing_components/components/previous-and-next-navigation';
@@ -136,30 +137,12 @@ main {
   }
 
   .manual-body {
-    margin: govuk-spacing(3) 0 90px;
-
     @include govuk-media-query($from: tablet) {
       margin-top: govuk-spacing(6);
     }
 
     .section-title {
       @extend %govuk-heading-m;
-    }
-
-    .summary {
-      @include govuk-font(24);
-      margin-bottom: govuk-spacing(3);
-
-      @include govuk-media-query($from: tablet) {
-        max-width: 66.6666%;
-        margin-bottom: govuk-spacing(6);
-      }
-    }
-
-    .body-content-wrapper {
-      @include govuk-media-query($from: tablet) {
-        width: 66.6666%;
-      }
     }
 
     .footnotes {

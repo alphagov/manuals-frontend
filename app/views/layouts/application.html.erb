@@ -13,7 +13,7 @@
 </head>
 <body>
   <div id="global-breadcrumb" class="header-context"></div>
-  <div id="wrapper">
+  <div id="wrapper" class="govuk-width-container">
     <% if @presented_manual.beta? %>
       <%= render 'govuk_publishing_components/components/phase_banner', phase: "beta" %>
     <% end %>

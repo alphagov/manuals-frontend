@@ -23,10 +23,13 @@
     presented_document: presented_document
   )
 %>
-<%=
-  render(
-    'manual_section',
-    presented_manual: presented_manual,
-    presented_document: presented_document
-  )
-%>
+
+<div class="govuk-grid-row">
+  <%=
+    render(
+      'manual_section',
+      presented_manual: presented_manual,
+      presented_document: presented_document
+    )
+  %>
+</div>
