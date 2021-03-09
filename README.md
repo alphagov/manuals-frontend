@@ -5,16 +5,18 @@ Manuals Frontend
 
 Front-end app for the manuals format on GOV.UK
 
-## Live examples
-
-- [gov.uk/guidance/content-design](https://www.gov.uk/guidance/content-design)
-- [gov.uk/hmrc-internal-manuals/pensions-tax-manual](https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual)
-
 ## Nomenclature
 
 - **Manuals** – documents published using [github.com/alphagov/manuals-publisher](https://github.com/alphagov/manuals-publisher).
 - **HMRC Manuals** – Manuals published by HMRC and populated via their API: [github.com/alphagov/hmrc-manuals-api](https://github.com/alphagov/hmrc-manuals-api).
+- **Sections** - individual sub-pages of a Manual or HMRC Manual
 
+## Live examples
+
+- [Manual: gov.uk/guidance/content-design](https://www.gov.uk/guidance/content-design)
+- [Manual Section: gov.uk/guidance/content-design/what-is-content-design](https://www.gov.uk/guidance/content-design/what-is-content-design)
+- [HMRC Manual: gov.uk/hmrc-internal-manuals/pensions-tax-manual](https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual)
+- [HMRC Manual Section: gov.uk/hmrc-internal-manuals/pensions-tax-manual/ptm000001](https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual/ptm000001)
 
 ## Dependencies
 - [https://github.com/alphagov/static](https://github.com/alphagov/static) – Provides static assets (JS/CSS)
