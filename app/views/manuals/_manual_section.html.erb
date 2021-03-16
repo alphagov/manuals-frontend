@@ -5,56 +5,69 @@
 
 %><div class='manual-body' id="content">
   <article aria-labelledby="section-title">
-    <%= render "govuk_publishing_components/components/heading", {
-      text: document_heading.join(" - "),
-      font_size: "m",
-      id: "section-title",
-      heading_level: 1,
-      margin_bottom: 4,
-    } %>
+    <div class="govuk-grid-column-full">
+      <%= render "govuk_publishing_components/components/heading", {
+        text: document_heading.join(" - "),
+        font_size: "m",
+        id: "section-title",
+        heading_level: 1,
+        margin_bottom: 4,
+      } %>
+    </div>
+
     <% if presented_document.summary.present? %>
-      <p class="summary"><%= presented_document.summary %></p>
+      <div class="govuk-grid-column-two-thirds">
+        <%= render "govuk_publishing_components/components/lead_paragraph", {
+          text: presented_document.summary
+        } %>
+      </div>
     <% end %>
 
-    <%= render partial: "hmrc_callout", locals: { presented_manual: presented_manual } %>
+    <div class="govuk-grid-column-full">
+      <%= render partial: "hmrc_callout", locals: { presented_manual: presented_manual } %>
+    </div>
 
     <% if presented_manual.hmrc? %>
       <% if presented_document.body.present? %>
-        <div class='body-content-wrapper'>
+        <div class='govuk-grid-column-two-thirds'>
           <%= render 'govuk_publishing_components/components/govspeak', {} do %>
             <%= raw(presented_document.body) %>
           <% end %>
         </div>
       <% end %>
-      <div class='subsection-collection'>
-        <% presented_document.section_groups.each do | group | %>
-        <%= render 'hmrc_sections', :group => group %>
+
+      <% presented_document.section_groups.each do | group | %>
+        <div class='subsection-collection govuk-grid-column-full'>
+          <%= render 'hmrc_sections', :group => group %>
+        </div>
       <% end %>
+
+      <div class="govuk-grid-column-full">
+        <%= render 'govuk_publishing_components/components/previous_and_next_navigation', previous_and_next_links(presented_document) %>
       </div>
-
-      <%= render 'govuk_publishing_components/components/previous_and_next_navigation', previous_and_next_links(presented_document) %>
-
     <% else %>
       <% if presented_document.body.present? %>
-        <%= render "govuk_publishing_components/components/govspeak", {} do
-          raw(presented_document.intro)
-        end %>
+        <div class='govuk-grid-column-two-thirds'>
+          <%= render "govuk_publishing_components/components/govspeak", {} do
+            raw(presented_document.intro)
+          end %>
 
-        <%= render "govuk_publishing_components/components/accordion", {
-          anchor_navigation: true,
-          items: presented_document.main.map do |item|
-            rendered_content = render "govuk_publishing_components/components/govspeak", {} do
-              raw(item[:content])
+          <%= render "govuk_publishing_components/components/accordion", {
+            anchor_navigation: true,
+            items: presented_document.main.map do |item|
+              rendered_content = render "govuk_publishing_components/components/govspeak", {} do
+                raw(item[:content])
+              end
+
+              {
+                heading: item[:heading],
+                content: {
+                  html: rendered_content,
+                },
+              }
             end
-
-            {
-              heading: item[:heading],
-              content: {
-                html: rendered_content,
-              },
-            }
-          end
-        } %>
+          } %>
+        </div>
       <% end %>
     <% end %>
   </article>

@@ -1,43 +1,48 @@
 <div class='manual-body' id="content">
   <article aria-labelledby="section-title">
-    <%= render "govuk_publishing_components/components/heading", {
-      font_size: "l",
-      heading_level: 1,
-      id: "section-title",
-      margin_bottom: 4,
-      text: "Updates: #{presented_manual.title}",
-    } %>
-    <% presented_manual.change_notes.by_year.each do |year, updates_by_year| %>
+    <div class="govuk-grid-column-full">
       <%= render "govuk_publishing_components/components/heading", {
-        text: year,
-        font_size: "l"
+        font_size: "l",
+        heading_level: 1,
+        id: "section-title",
+        margin_bottom: 4,
+        text: "Updates: #{presented_manual.title}",
       } %>
+    </div>
+    
+    <% presented_manual.change_notes.by_year.each do |year, updates_by_year| %>
+      <div class="govuk-grid-column-two-thirds">
+        <%= render "govuk_publishing_components/components/heading", {
+          text: year,
+          font_size: "l"
+        } %>
 
-      <%= render "govuk_publishing_components/components/accordion", {
-        heading_level: 3,
-        items: updates_by_year.map do |day, updated_documents|
-          accordion_content = capture do %>
-            <div class='updates-list'>
-              <% updated_documents.each do |document| %>
-                <p><%= link_to document.title, document.base_path, class: "govuk-link" %></p>
-                <% document.change_notes.each do |note| %>
-                  <%= simple_format(note) %>
+        <%= render "govuk_publishing_components/components/accordion", {
+          heading_level: 3,
+          items: updates_by_year.map do |day, updated_documents|
+            accordion_content = capture do %>
+              <div class='updates-list'>
+                <% updated_documents.each do |document| %>
+                  <p><%= link_to document.title, document.base_path, class: "govuk-link" %></p>
+                  <% document.change_notes.each do |note| %>
+                    <%= simple_format(note) %>
+                  <% end %>
+                  <br/>
                 <% end %>
-                <br/>
-              <% end %>
-            </div>
-          <% end
+              </div>
+            <% end
 
-          {
-            heading: {
-              text: sanitize("#{marked_up_date(day)} <span class=\"visuallyhidden\">published amendments</span>"),
-            },
-            content: {
-              html: accordion_content
+            {
+              heading: {
+                text: sanitize("#{marked_up_date(day)} <span class=\"visuallyhidden\">published amendments</span>"),
+              },
+              content: {
+                html: accordion_content
+              }
             }
-          }
-        end
-      } %>
+          end
+        } %>
+      </div>
     <% end %>
   </article>
 </div>
