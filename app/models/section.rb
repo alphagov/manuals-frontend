@@ -19,10 +19,6 @@ class Section
     section["base_path"]
   end
 
-  def collapsible?
-    body.present?
-  end
-
   def summary
     section["description"]
   end

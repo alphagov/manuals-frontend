@@ -92,6 +92,55 @@ module ManualHelpers
     stub_content_store_has_item(base_path, manual_json)
   end
 
+  def stub_fake_manual_sections(base_path: "/guidance/my-manual-about-burritos", public_updated_at: "2014-06-20T10:17:29+01:00", first_published_at: "2009-02-20T15:31:09+00:00")
+    collapsed_manual_section_json = {
+      base_path: "#{base_path}/collapsed-section",
+      title: "Fillings",
+      description: "This section details the fillings",
+      format: "manual_section",
+      first_published_at: first_published_at,
+      public_updated_at: public_updated_at,
+      links: example_links,
+      details: {
+        body: "<h2>Heading</h2><p>body and <a href=\"https://example.com\">link</a>.</p>",
+        organisations: [
+          {
+            abbreviation: "CO",
+            web_url: "http://www.gov.uk/government/organisations/cabinet-office",
+            title: "Cabinet Office",
+          },
+        ],
+        change_notes: example_change_notes(base_path),
+        visually_expanded: false,
+      },
+    }
+
+    expanded_manual_section_json = {
+      base_path: "#{base_path}/expanded-section",
+      title: "This is the section on hot sauce",
+      description: "Hot sauces are good",
+      format: "manual_section",
+      first_published_at: first_published_at,
+      public_updated_at: public_updated_at,
+      links: example_links,
+      details: {
+        body: "<h2>Heading</h2><p>body and <a href=\"https://example.com\">link</a>.</p>",
+        organisations: [
+          {
+            abbreviation: "CO",
+            web_url: "http://www.gov.uk/government/organisations/cabinet-office",
+            title: "Cabinet Office",
+          },
+        ],
+        change_notes: example_change_notes(base_path),
+        visually_expanded: true,
+      },
+    }
+
+    stub_content_store_has_item("#{base_path}/collapsed-section", collapsed_manual_section_json)
+    stub_content_store_has_item("#{base_path}/expanded-section", expanded_manual_section_json)
+  end
+
   def stub_hmrc_manual(manual_id = "inheritance-tax-manual", title = "Inheritance Tax Manual")
     manual_json = {
       base_path: "/hmrc-internal-manuals/#{manual_id}",

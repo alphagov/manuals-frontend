@@ -51,7 +51,23 @@
           <%= render "govuk_publishing_components/components/govspeak", {} do
             raw(presented_document.intro)
           end %>
-
+        <% if presented_document.visually_expanded? %>
+          <% presented_document.main.map do |item| %>
+            <div class="subsection__header govuk-!-margin-bottom-3">
+              <%= render "govuk_publishing_components/components/heading", {
+                text: item[:heading][:text],
+                font_size: "m",
+                margin_bottom: 1,
+                id: item[:heading][:id],
+              } %>
+            </div>
+            <div class="govuk-body govuk-!-margin-bottom-1 subsection__description">
+              <%= render "govuk_publishing_components/components/govspeak", {} do
+                raw(item[:content])
+              end %>
+            </div>
+          <% end %>
+        <% else %>
           <%= render "govuk_publishing_components/components/accordion", {
             anchor_navigation: true,
             items: presented_document.main.map do |item|
@@ -67,6 +83,7 @@
               }
             end
           } %>
+        <% end %>
         </div>
       <% end %>
     <% end %>
