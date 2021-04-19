@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   root to: proc { [404, {}, ["Not found"]] }
 
   get "/healthcheck", to: GovukHealthcheck.rack_response
+
+  get "/healthcheck/live", to: proc { [200, {}, %w[OK]] }
+  get "/healthcheck/ready", to: GovukHealthcheck.rack_response
 end
