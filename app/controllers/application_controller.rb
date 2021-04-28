@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  rescue_from GdsApi::HTTPForbidden, with: :error_403
-  rescue_from ActionView::MissingTemplate, with: :error_406
-  rescue_from ActionController::UnknownFormat, with: :error_406
-
   before_action :slimmer_headers
 
   if ENV["BASIC_AUTH_USERNAME"]
@@ -20,14 +16,6 @@ class ApplicationController < ActionController::Base
   end
 
 private
-
-  def error_403
-    render status: :forbidden, plain: "403 forbidden"
-  end
-
-  def error_406
-    render plain: "Not acceptable", status: :not_acceptable
-  end
 
   def slimmer_headers
     slimmer_template "core_layout"

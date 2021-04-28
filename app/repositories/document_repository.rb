@@ -16,8 +16,6 @@ private
 
   def fetch_content_item(base_path)
     GdsApi.content_store.content_item(base_path)
-  rescue GdsApi::ContentStore::ItemNotFound
-    nil
   end
 
   def extract_parent_base_path_from_document(document)

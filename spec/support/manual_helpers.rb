@@ -322,16 +322,6 @@ module ManualHelpers
     }
     stub_content_store_has_item("/guidance/#{manual_id}/#{section_id}", document)
   end
-
-  def stub_withdrawn_manual(base_path)
-    gone_json = {
-      base_path: base_path,
-      format: "gone",
-      phase: "live",
-    }
-
-    stub_content_store_has_item(base_path, gone_json)
-  end
 end
 
 RSpec.configuration.include ManualHelpers

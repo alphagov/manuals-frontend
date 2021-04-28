@@ -175,22 +175,23 @@ feature "Viewing manuals and sections" do
     expect(page.status_code).to eq(404)
   end
 
-  scenario "visiting a withdrawn section" do
+  scenario "visiting a redirected section" do
     stub_fake_manual base_path: "/guidance/my-manual-about-burritos"
     stub_redirected_section "my-manual-about-burritos", "rolls-are-better"
     visit_manual_section "my-manual-about-burritos", "rolls-are-better"
     expect(current_url).to eq("http://www.dev.gov.uk/guidance/my-manual-about-burritos")
   end
 
-  scenario "visiting a withdrawn manual's updates" do
-    slug = "/guidance/a-withdrawn-manual"
-    stub_withdrawn_manual(slug)
+  scenario "visiting a gone page" do
+    base_path = "/hmrc-internal-manuals/admin-law-manual/gone-page"
+    stub_hmrc_manual("admin-law-manual")
+    stub_content_store_has_gone_item(base_path)
 
-    visit "#{slug}/updates"
+    visit base_path
     expect(page.status_code).to eq(410)
   end
 
-  scenario "visiting access limited manual returns 403 forbidden" do
+  scenario "visiting access limited manual" do
     slug = "guidance/an-access-limited-manual"
     stub_request(:get, "#{Plek.find('content-store')}/content/#{slug}")
       .to_return(status: 403, headers: {})
