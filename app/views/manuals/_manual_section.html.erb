@@ -22,11 +22,6 @@
         } %>
       </div>
     <% end %>
-
-    <div class="govuk-grid-column-full">
-      <%= render partial: "hmrc_callout", locals: { presented_manual: presented_manual } %>
-    </div>
-
     <% if presented_manual.hmrc? %>
       <% if presented_document.body.present? %>
         <div class='govuk-grid-column-two-thirds'>
