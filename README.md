@@ -1,7 +1,4 @@
-Manuals Frontend
-================
-
-## Purpose
+# Manuals Frontend
 
 Front-end app for the manuals format on GOV.UK
 
