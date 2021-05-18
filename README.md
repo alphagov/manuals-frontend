@@ -15,11 +15,6 @@ Front-end app for the manuals format on GOV.UK
 - [HMRC Manual: gov.uk/hmrc-internal-manuals/pensions-tax-manual](https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual)
 - [HMRC Manual Section: gov.uk/hmrc-internal-manuals/pensions-tax-manual/ptm000001](https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual/ptm000001)
 
-## Dependencies
-- [https://github.com/alphagov/static](https://github.com/alphagov/static) – Provides static assets (JS/CSS)
-- [https://github.com/alphagov/content-store](https://github.com/alphagov/content-store) – Provides content
-
-
 ## Installation and running
 
 In a terminal, run:
