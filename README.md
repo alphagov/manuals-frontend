@@ -15,25 +15,19 @@ Front-end app for the manuals format on GOV.UK
 - [HMRC Manual: gov.uk/hmrc-internal-manuals/pensions-tax-manual](https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual)
 - [HMRC Manual Section: gov.uk/hmrc-internal-manuals/pensions-tax-manual/ptm000001](https://www.gov.uk/hmrc-internal-manuals/pensions-tax-manual/ptm000001)
 
-## Installation and running
+## Technical documentation
 
-In a terminal, run:
+This is a Ruby on Rails app, and should follow [our Rails app conventions](https://docs.publishing.service.gov.uk/manual/conventions-for-rails-applications.html).
+
+You can use the [GOV.UK Docker environment](https://github.com/alphagov/govuk-docker) or the local `startup.sh` script to run the app. Read the [guidance on local frontend development](https://docs.publishing.service.gov.uk/manual/local-frontend-development.html) to find out more about each approach, before you get started.
+
+If you are using GOV.UK Docker, remember to combine it with the commands that follow. See the [GOV.UK Docker usage instructions](https://github.com/alphagov/govuk-docker#usage) for examples.
+
+### Running the tests
 
 ```
-./startup.sh
+bundle exec rake
 ```
-
-or using bowler:
-
-`bowl manuals-frontend`
-
-If you are using the GDS development virtual machine then the application will be available on the host at http://manuals-frontend.dev.gov.uk/
-
-## Running the tests
-
-The test suite includes testing against govuk-content-schemas, so you will need a copy of this repo on your file system. By default this should be in a sibling directory to your project. Alternatively, you can specify their location with the GOVUK_CONTENT_SCHEMAS_PATH environment variable.
-
-All tests can be run using `bundle exec rake` as well.
 
 ## Viewing a manual
 
