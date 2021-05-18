@@ -29,11 +29,6 @@ If you are using GOV.UK Docker, remember to combine it with the commands that fo
 bundle exec rake
 ```
 
-## Viewing a manual
-
-You can see the content design manual at http://manuals-frontend.dev.gov.uk/guidance/content-design
-
-
 ## Publishing a manual on dev
 
 Manuals are published using `manuals-publisher` to publish a manual run `manuals-publisher` (instructions here: https://github.com/alphagov/manuals-publisher), publish a manual, and you should then be able to view it on `manuals-frontend`. If you have replicated from preview recently then you should be able to see currently published manuals at http://manuals-frontend.dev.gov.uk/[preview-slug] too.
