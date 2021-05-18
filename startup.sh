@@ -9,5 +9,8 @@ if [[ $1 == "--live" ]] ; then
   PLEK_SERVICE_STATIC_URI=${PLEK_SERVICE_STATIC_URI-assets.publishing.service.gov.uk} \
   bundle exec rails s -p 3072
 else
-  bundle exec rails s -p 3072
+  echo "ERROR: other startup modes are not supported"
+  echo ""
+  echo "https://docs.publishing.service.gov.uk/manual/local-frontend-development.html"
+  exit 1
 fi
