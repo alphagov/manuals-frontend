@@ -4,9 +4,9 @@ Front-end app for the manuals format on GOV.UK
 
 ## Nomenclature
 
-- **Manuals** – documents published using [github.com/alphagov/manuals-publisher](https://github.com/alphagov/manuals-publisher).
-- **HMRC Manuals** – Manuals published by HMRC and populated via their API: [github.com/alphagov/hmrc-manuals-api](https://github.com/alphagov/hmrc-manuals-api).
-- **Sections** - individual sub-pages of a Manual or HMRC Manual
+- **Manuals** – documents published using [Manuals Publisher](https://github.com/alphagov/manuals-publisher).
+- **HMRC Manuals** – Manuals published by HMRC and populated via [HMRC Manuals API](https://github.com/alphagov/hmrc-manuals-api).
+- **Sections** - individual sub-pages of a Manual or HMRC Manual.
 
 ## Live examples
 
