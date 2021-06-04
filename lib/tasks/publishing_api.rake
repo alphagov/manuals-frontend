@@ -35,7 +35,7 @@ end
 namespace :publishing_api do
   desc "Publish special routes via publishing api"
   task publish_special_routes: :environment do
-    logger = Logger.new(STDOUT)
+    logger = Logger.new($stdout)
 
     redirect_publisher = RedirectPublisher.new(logger: logger, publishing_app: "manuals-frontend")
     redirect_publisher.call("09346008-7c4f-4cc4-b8d5-19d1ebf8ef5f", "/guidance", "exact", "/government/publications")
