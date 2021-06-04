@@ -23,9 +23,9 @@ class Manual
     title += " - " if title.present?
 
     if hmrc?
-      title + "HMRC internal manual"
+      "#{title}HMRC internal manual"
     else
-      title + "Guidance"
+      "#{title}Guidance"
     end
   end
 

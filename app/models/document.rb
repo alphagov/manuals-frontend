@@ -1,5 +1,6 @@
 class Document
   attr_reader :document, :manual
+
   delegate :previous_sibling, :next_sibling, to: :document
 
   def initialize(document, manual)
@@ -28,7 +29,7 @@ class Document
   end
 
   def full_title
-    breadcrumb + " - " + @manual.full_title
+    "#{breadcrumb} - #{@manual.full_title}"
   end
 
   def summary
@@ -100,6 +101,7 @@ class Document
 
   class Breadcrumb
     attr_reader :link, :label
+
     def initialize(link:, label:)
       @link = link
       @label = label
