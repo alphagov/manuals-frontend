@@ -16,16 +16,18 @@
         <%= render 'hmrc_sections', group: group %>
       </div>
       <% else %>
-        <ol class='section-list'>
-        <% group.sections.each do | section | %>
-          <li>
-          <%= link_to section.path, class: "#{section.section_id.present? ? 'subsection-with-id' : ''}" do %>
-              <span class='subsection-title-text'><%= section.title %></span>
-              <span class='subsection-summary'><%= section.summary %></span>
-          <% end %>
-          </li>
-        <% end %>
-        </ol>
+        <%= render "govuk_publishing_components/components/document_list", {
+          items: group.sections.map do | section |
+            {
+              link: {
+                text: section.title,
+                path: section.path,
+                description: section.summary,
+                full_size_description: true,
+              }
+            }
+          end
+        } %>
       <% end %>
     <% end %>
   </div>
