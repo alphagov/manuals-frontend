@@ -1,11 +1,13 @@
 $govuk-compatibility-govuktemplate: true;
 $govuk-use-legacy-palette: false;
+$govuk-new-link-styles: true;
 
 @import 'govuk_publishing_components/govuk_frontend_support';
 @import 'govuk_publishing_components/component_support';
 @import 'govuk_publishing_components/components/accordion';
 @import 'govuk_publishing_components/components/breadcrumbs';
 @import 'govuk_publishing_components/components/button';
+@import 'govuk_publishing_components/components/document-list';
 @import 'govuk_publishing_components/components/error-message';
 @import 'govuk_publishing_components/components/feedback';
 @import 'govuk_publishing_components/components/govspeak';
@@ -125,12 +127,19 @@ main {
 
         .subsection-title-text {
           @include govuk-typography-weight-bold;
+          @include govuk-link-decoration;
           display: block;
         }
 
         .subsection-summary {
           color: $govuk-text-colour;
           display: block;
+        }
+
+        &:hover {
+          .subsection-title-text {
+            @include govuk-link-hover-decoration;
+          }
         }
       }
     }
