@@ -1,9 +1,8 @@
-$govuk-compatibility-govuktemplate: true;
+$govuk-compatibility-govuktemplate: false;
 $govuk-use-legacy-palette: false;
 $govuk-new-link-styles: true;
 
 @import 'govuk_publishing_components/govuk_frontend_support';
-@import 'govuk_publishing_components/component_support';
 @import 'govuk_publishing_components/components/accordion';
 @import 'govuk_publishing_components/components/breadcrumbs';
 @import 'govuk_publishing_components/components/button';
@@ -151,7 +150,9 @@ main {
     }
 
     .section-title {
-      @extend %govuk-heading-m;
+      @include govuk-text-colour;
+      @include govuk-font($size: 24, $weight: bold);
+      @include govuk-responsive-margin(4, "bottom");
     }
 
     .footnotes {
