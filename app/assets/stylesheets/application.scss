@@ -92,6 +92,7 @@ main {
 
   .section-list {
     margin-top: govuk-spacing(6);
+    padding: 0;
 
     @include govuk-media-query($from: tablet) {
       margin-top: govuk-spacing(9);
