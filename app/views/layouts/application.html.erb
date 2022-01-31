@@ -21,9 +21,8 @@
     <main role="main" class="hmrc-internal-manuals-frontend-content outer-block">
       <div id="manuals-frontend" class='manuals-frontend-body inner-block'>
         <%= yield %>
-        <div class="print-page">
-          <%= link_to 'Print this page', '#', :onclick => 'window.print();return false;', :class => 'govuk-link'%>
-        </div>
+        <%= render "govuk_publishing_components/components/print_link", {
+        } %>
       </div>
     </main>
   </div>
