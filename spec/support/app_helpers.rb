@@ -28,7 +28,7 @@ module AppHelpers
   end
 
   def view_change_notes_for(label)
-    page.find(".gem-c-accordion__section-button", text: label).click
+    page.find(".govuk-accordion__section-button", text: label).click
   end
 
   def expect_page_to_include_section(section_title, options = {})
