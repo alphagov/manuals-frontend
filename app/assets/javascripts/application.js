@@ -5,7 +5,6 @@
 //= require govuk_publishing_components/components/govspeak
 //= require govuk_publishing_components/components/print-link
 
-jQuery(function ($) {
-  'use strict'
+if (GOVUK.primaryLinks) {
   GOVUK.primaryLinks.init('.primary-item')
-})
+}
