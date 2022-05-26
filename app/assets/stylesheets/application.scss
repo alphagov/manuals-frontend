@@ -2,25 +2,25 @@ $govuk-compatibility-govuktemplate: false;
 $govuk-use-legacy-palette: false;
 $govuk-new-link-styles: true;
 
-@import 'govuk_publishing_components/govuk_frontend_support';
-@import 'govuk_publishing_components/components/accordion';
-@import 'govuk_publishing_components/components/breadcrumbs';
-@import 'govuk_publishing_components/components/button';
-@import 'govuk_publishing_components/components/document-list';
-@import 'govuk_publishing_components/components/error-message';
-@import 'govuk_publishing_components/components/feedback';
-@import 'govuk_publishing_components/components/govspeak';
-@import 'govuk_publishing_components/components/heading';
-@import 'govuk_publishing_components/components/hint';
-@import 'govuk_publishing_components/components/input';
-@import 'govuk_publishing_components/components/label';
-@import 'govuk_publishing_components/components/lead-paragraph';
-@import 'govuk_publishing_components/components/metadata';
-@import 'govuk_publishing_components/components/phase-banner';
-@import 'govuk_publishing_components/components/previous-and-next-navigation';
-@import 'govuk_publishing_components/components/print-link';
-@import 'govuk_publishing_components/components/search';
-@import 'govuk_publishing_components/components/step-by-step-nav-header';
+@import "govuk_publishing_components/govuk_frontend_support";
+@import "govuk_publishing_components/components/accordion";
+@import "govuk_publishing_components/components/breadcrumbs";
+@import "govuk_publishing_components/components/button";
+@import "govuk_publishing_components/components/document-list";
+@import "govuk_publishing_components/components/error-message";
+@import "govuk_publishing_components/components/feedback";
+@import "govuk_publishing_components/components/govspeak";
+@import "govuk_publishing_components/components/heading";
+@import "govuk_publishing_components/components/hint";
+@import "govuk_publishing_components/components/input";
+@import "govuk_publishing_components/components/label";
+@import "govuk_publishing_components/components/lead-paragraph";
+@import "govuk_publishing_components/components/metadata";
+@import "govuk_publishing_components/components/phase-banner";
+@import "govuk_publishing_components/components/previous-and-next-navigation";
+@import "govuk_publishing_components/components/print-link";
+@import "govuk_publishing_components/components/search";
+@import "govuk_publishing_components/components/step-by-step-nav-header";
 
 // stylelint-disable selector-no-qualifying-type, max-nesting-depth -- This
 // file contains a lot of nesting and various usages of selector rules that
