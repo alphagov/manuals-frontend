@@ -1,3 +1,5 @@
+** Manuals Frontend is retired and all manuals are now being rendered by [Government Frontend](https://github.com/alphagov/government-frontend/) **
+
 # Manuals Frontend
 
 Front-end app for the manuals format on GOV.UK
