@@ -1,4 +1,4 @@
-** Manuals Frontend is retired and all manuals are now being rendered by [Government Frontend](https://github.com/alphagov/government-frontend/) **
+**Manuals Frontend is retired and all manuals are now being rendered by [Government Frontend](https://github.com/alphagov/government-frontend/)**
 
 # Manuals Frontend
 
